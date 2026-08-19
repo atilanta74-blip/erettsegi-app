@@ -244,7 +244,7 @@ tetelek_irodalom = {
         "kulcsszavak": ["Új versek 1906", "A magyar Ugaron", "Léda vs. Csinszka", "Harc a Nagyúrral"],
         "audio_szoveg": "Ady Endre 1906-os Új versek című kötetével megteremtette a modern magyar szimbolista költészetet...",
         "vazlat": "### I. 1906: Új versek (Góg és Magóg...).\n### II. Témák: Ugar-versek, Pénz-versek, Szerelem (Léda vs. Csinszka).\n### III. Háborús líra: Ember az embertelenségben.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. 1906 forradalma -> 2. Ugar és Nagyúr toposz -> 3. Léda és Csinszka -> 4. Háborús versek.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1906 költői forradalma -> 2. Ugar és Disznófejű Nagyúr toposz -> 3. Léda és Csinszka -> 4. Háborús versek.",
         "kviz": [{"k": "Ady korszakalkotó kötete az Új versek 1906-ban jelent meg.", "v": True, "m": "Ez nyitotta meg a modern magyar lírát."}]
     },
     "9. Babits Mihály: Jónás könyve": {
@@ -841,8 +841,31 @@ flashcards_matek = [
     {"q": "Mi a klasszikus valószínűség kiszámítási képlete?", "a": "P(A) = Kedvező esetek száma / Összes lehetséges eset száma (k / n)"}
 ]
 
-# Idővonal
-idovonal_adat = [
+# -------------------------------------------------------------
+# TANTÁRGYANKÉNT KÜLÖNVÁLASZTOTT IDŐVONAL / KÉPLET-TÉRKÉP
+# -------------------------------------------------------------
+timeline_irodalom = [
+    {"ev": "1848–1849", "cim": "A forradalom és szabadságharc lírája", "leiras": "Petőfi forradalmi látomásköltészete (A XIX. század költői, Nemzeti dal); Arany János korai korszaka."},
+    {"ev": "1850-es évek", "cim": "A nagykőrösi balladák korszaka", "leiras": "Arany János allegorikus nemzeti ellenállása (A walesi bárdok, Szondi két apródja) és mély lélektana (Ágnes asszony)."},
+    {"ev": "1859–1860", "cim": "Az ember tragédiája születése", "leiras": "Madách Imre drámai költeménye az emberiség eszméinek és küzdelmének filozófiájáról."},
+    {"ev": "1872", "cim": "Az arany ember megjelenése", "leiras": "Jókai Mór érett romantikus-realista regénye a polgári meghasonlásról és a Senki szigetéről."},
+    {"ev": "1877", "cim": "Arany János Őszikék korszaka", "leiras": "Margitszigeti kései líra a Kapcsos könyvben; nagyvárosi haláltánc a Híd-avatásban."},
+    {"ev": "1906–1908", "cim": "A modern magyar irodalom robbanása", "leiras": "Ady Endre: Új versek (1906) és a Nyugat folyóirat indulása (1908) Osvát Ernő és Babits vezetésével."},
+    {"ev": "1926", "cim": "Édes Anna és a lélektani próza", "leiras": "Kosztolányi Dezső regénye az 1919-es történelmi háttérben az elfojtott sérelmek robbanásáról."},
+    {"ev": "1938–1944", "cim": "A fasizmus árnyékában", "leiras": "Babits megírja a Jónás könyvét (1938); Radnóti Miklós bori noteszének kései eclogái és Razglednicái."}
+]
+
+timeline_nyelvtan = [
+    {"ev": "Kr. e. 3000-től", "cim": "Az uráli és finnugor együttélés kora", "leiras": "Alapvető szókészletünk (testrészek, természeti jelenségek, számok) és a ragozó (agglutináló) nyelvtan kialakulása."},
+    {"ev": "1055", "cim": "A Tihanyi apátság alapítólevele", "leiras": "Legkorábbi magyar szórványemlékünk ('feheruuaru rea meneh hodu utu rea')."},
+    {"ev": "1195 körül", "cim": "A Halotti Beszéd és Könyörgés", "leiras": "A Pray-kódexben fennmaradt legkorábbi összefüggő magyar szövegemlék."},
+    {"ev": "1300 körül", "cim": "Ómagyar Mária-siralom", "leiras": "Az első fennmaradt magyar nyelvű verses nyelvemlék (Leuveni kódex)."},
+    {"ev": "1790–1820", "cim": "A Nyelvújítás korszaka", "leiras": "Kazinczy Ferenc és a neológusok harca az ortológusokkal; több mint tízezer új magyar szó teremtése."},
+    {"ev": "1832", "cim": "Az első hivatalos Helyesírási Szabályzat", "leiras": "A Magyar Tudományos Akadémia rögzíti a 4 alapelvet és a hivatalos akadémiai normát."},
+    {"ev": "2000-től", "cim": "A digitális kommunikáció kora", "leiras": "Az online kommunikáció, az írott beszéltség, a rövidítések és az emojik elterjedése."}
+]
+
+timeline_tortenelem = [
     {"ev": "Kr. e. V. sz.", "cim": "Az athéni demokrácia virágkora", "leiras": "Periklész kora, a népgyűlés és az esküdtbíróságok működése, a napidíjak bevezetése."},
     {"ev": "Kr. e. 27", "cim": "A Római Principátus születése", "leiras": "Augustus egyeduralma, köztársasági látszat, a Pax Romana békéje."},
     {"ev": "1000", "cim": "Szent István király koronázása", "leiras": "A keresztény magyar állam és a vármegyerendszer megalapítása, egyházmegyék kiépítése."},
@@ -861,14 +884,46 @@ idovonal_adat = [
     {"ev": "1989–1990", "cim": "A Békés Rendszerváltás", "leiras": "Ellenzéki Kerekasztal, Nagy Imre újratemetése, határnyitás, a Köztársaság kikiáltása és az 1990-es szabad választások."}
 ]
 
-# Detektív játék adatbázis
-detektiv_adatbazis = [
+timeline_matek = [
+    {"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz és a derékszögű háromszögek", "leiras": "A Pitagorasz-tétel (a² + b² = c²) felfedezése és a geometriai bizonyítások kezdete."},
+    {"ev": "Kr. e. III. sz.", "cim": "Euklidész és a geometriai axiómák", "leiras": "Az 'Elemek' című mű: a síkgeometria, a párhuzamossági axióma és a prímek végtelenségének bizonyítása."},
+    {"ev": "IX. század", "cim": "Al-Hvárizmi és az Algebra születése", "leiras": "A másodfokú egyenletek szisztematikus megoldási módszere és az algoritmus fogalmának alapjai."},
+    {"ev": "1637", "cim": "René Descartes és a Koordinátageometria", "leiras": "A derékszögű koordináta-rendszer megalkotása: geometriai alakzatok leírása algebrai egyenletekkel (egyenesek, körök)."},
+    {"ev": "1687", "cim": "Newton és Leibniz: Differenciálszámítás", "leiras": "A derivált és a határérték felfedezése: a függvények pillanatnyi változási sebességének és érintőjének kiszámítása."},
+    {"ev": "1736", "cim": "Leonhard Euler és a Gráfelmélet", "leiras": "A königsbergi hidak problémájának megoldása: a csúcsok, élek és fokszámok összefüggései."},
+    {"ev": "XIX. század", "cim": "Bolyai János és a nemeuklideszi geometria", "leiras": "„A semmiből egy új, más világot teremtettem”: a hiperbolikus geometria felfedezése."},
+    {"ev": "XX. század", "cim": "Kolmogorov és a modern Valószínűségszámítás", "leiras": "A valószínűségszámítás és matematikai statisztika egzakt axiomatikus felépítése."}
+]
+
+# -------------------------------------------------------------
+# TANTÁRGYANKÉNT KÜLÖNVÁLASZTOTT DETEKTÍV JÁTÉK
+# -------------------------------------------------------------
+detektiv_irodalom = [
     {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A prófétai és értelmiségi felelősségvállalás alaptétele."},
     {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Új vizeken járok"], "info": "Petőfi forradalmi felhívó lírájának remeke."},
     {"idezet": "„Mondottam, ember: küzdj és bízva bízzál!”", "helyes": "Madách Imre: Az ember tragédiája", "opciok": ["Madách Imre: Az ember tragédiája", "Arany János: A walesi bárdok", "Vörösmarty: Csongor és Tünde", "Katona József: Bánk bán"], "info": "Az Úr szózata a 15. szín lezárásaként."},
+    {"idezet": "„Góg és Magóg fia vagyok én, / Hiába döngetek kaput, falat...”", "helyes": "Ady Endre: Góg és Magóg fia vagyok én...", "opciok": ["Ady Endre: Góg és Magóg fia vagyok én...", "Babits Mihály: In Horatium", "József Attila: A Dunánál", "Kosztolányi: Boldog, szomorú dal"], "info": "Ady 1906-os Új versek kötetének nyitóverse."}
+]
+
+detektiv_nyelvtan = [
+    {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi részleges hasonulás", "Írásban jelölt teljes hasonulás", "Mássalhangzó-kiesés"], "info": "A t + s hangokból egy harmadik, hosszú [ccs] hang keletkezik."},
+    {"idezet": "„lila dalra kelt az éjcsend”", "helyes": "Szinesztézia (Költői kép)", "opciok": ["Szinesztézia (Költői kép)", "Megszemélyesítés", "Metonímia", "Szinekdoché"], "info": "Látási (lila), hallási (dal) és csend érzékterületek összekapcsolása."},
+    {"idezet": "„vasgolyó [kiejtve: vazsgolyó]”", "helyes": "Zöngésség szerinti részleges hasonulás", "opciok": ["Zöngésség szerinti részleges hasonulás", "Képzés helye szerinti hasonulás", "Teljes hasonulás", "Összeolvadás"], "info": "A zöngés 'g' zöngéssé teszi az előtte álló 's' hangot [zs]."},
+    {"idezet": "„ház-as-ság-ok-at”", "helyes": "Szótő + Képző + Képző + Jel + Rag", "opciok": ["Szótő + Képző + Képző + Jel + Rag", "Szótő + Jel + Rag + Képző", "Szótő + Rag + Jel + Képző", "Szótő + Képző + Rag + Jel"], "info": "A magyar toldalékolás szabályos kötött hierarchiája."}
+]
+
+detektiv_tortenelem = [
     {"idezet": "„Ius resistendi (A nemesek joga a királlyal szembeni ellenállásra)”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Nagy Lajos 1351-es törvényei", "Szent István I. törvénykönyve", "Kollonics Lipót rendelete"], "info": "A magyar rendi nemesi szabadságjogok sarokköve."},
+    {"idezet": "„Eb ura fakó, József császár nem királyunk!”", "helyes": "1707-es Ónodi országgyűlés (Trónfosztás)", "opciok": ["1707-es Ónodi országgyűlés (Trónfosztás)", "1849-es Debreceni trónfosztás", "1526-os Rákosi gyűlés", "1608-as koronázási cikkelyek"], "info": "A Rákóczi-szabadságharc alatt kimondott Habsburg-trónfosztás jelszava."},
+    {"idezet": "„A Dunánál... A harcot, amelyet őseink vívtak, békévé oldja az emlékezés.”", "helyes": "1848-as érdekegyesítés történelmi eszméje", "opciok": ["1848-as érdekegyesítés történelmi eszméje", "1867-es Kiegyezés politikai kompromisszuma", "1920-as Trianoni revízió", "1956-os Nemzeti Bizottság kiáltványa"], "info": "A nemzeti és közép-európai megbékélés filozófiája."},
+    {"idezet": "„Minden tíz falu építsen egy templomot...”", "helyes": "Szent István király törvényei", "opciok": ["Szent István király törvényei", "Szent László törvényei", "Könyves Kálmán dekrétumai", "IV. Béla rendeletei"], "info": "A keresztény egyházszervezet falusi megalapozásának alaptörvénye."}
+]
+
+detektiv_matek = [
     {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel (Általános háromszögekre)", "opciok": ["Koszinusztétel (Általános háromszögekre)", "Szinusztétel", "Pitagorasz-tétel", "Héron-képlet"], "info": "A Pitagorasz-tétel általánosítása tetszőleges háromszögre."},
-    {"idezet": "(x^n)' = n · x^(n-1)", "helyes": "Hatványfüggvény deriválási szabálya", "opciok": ["Hatványfüggvény deriválási szabálya", "Logaritmus azonosság", "Binomiális tétel", "Sorozat összegképlet"], "info": "A differenciálszámítás legalapvetőbb műveleti szabálya."}
+    {"idezet": "(x^n)' = n · x^(n-1)", "helyes": "Hatványfüggvény deriválási szabálya", "opciok": ["Hatványfüggvény deriválási szabálya", "Logaritmus azonosság", "Binomiális tétel", "Sorozat összegképlet"], "info": "A differenciálszámítás legalapvetőbb műveleti szabálya."},
+    {"idezet": "V = (r²π · M) / 3", "helyes": "Egyenes körkúp térfogatképlete", "opciok": ["Egyenes körkúp térfogatképlete", "Henger térfogatképlete", "Gömb térfogatképlete", "Gúla felszínképlete"], "info": "A csúcsos körtestek térfogatszámítási képlete."},
+    {"idezet": "∑ d(v) = 2 · e", "helyes": "Gráfelméleti fokszámtétel (Kézfogási lemma)", "opciok": ["Gráfelméleti fokszámtétel (Kézfogási lemma)", "Euler-féle poliédertétel", "De Morgan azonosság", "Binomiális eloszlás"], "info": "A csúcsok fokszámösszege mindig az élek számának kétszerese."}
 ]
 
 # Állapotkezelés
@@ -998,29 +1053,37 @@ menupont = st.sidebar.radio(
         "🎴 Villámkártyák (Flashcards)",
         "🎙️ Szóbeli Szimulátor (Beszéd / Írás)",
         "✍️ Esszé & Feladatmegoldó Labor",
-        "🎭 Idézet- & Képlet-Detektív",
-        "🧭 Történelmi & Irodalmi Idővonal",
+        "🎭 Tantárgyi Detektív Játék",
+        "🧭 Tantárgyi Idővonal & Térkép",
         "🏆 Nagy Próbavizsga",
         "🤖 AI Érettségi Mentor"
     ]
 )
 
-# Adatbázisok és villámkártyák szétválasztása a választott tantárgyhoz
+# Adatbázisok szétválasztása a választott tantárgyhoz
 if "Irodalom" in kivalasztott_tantargy:
     aktiv_adatbazis = tetelek_irodalom
     aktiv_flashcards = flashcards_irodalom
+    aktiv_timeline = timeline_irodalom
+    aktiv_detektiv = detektiv_irodalom
     tantargy_cimke = "Magyar Irodalom"
 elif "Nyelvtan" in kivalasztott_tantargy:
     aktiv_adatbazis = tetelek_nyelvtan
     aktiv_flashcards = flashcards_nyelvtan
+    aktiv_timeline = timeline_nyelvtan
+    aktiv_detektiv = detektiv_nyelvtan
     tantargy_cimke = "Magyar Nyelvtan"
 elif "Történelem" in kivalasztott_tantargy:
     aktiv_adatbazis = tetelek_tortenelem
     aktiv_flashcards = flashcards_tortenelem
+    aktiv_timeline = timeline_tortenelem
+    aktiv_detektiv = detektiv_tortenelem
     tantargy_cimke = "Történelem"
 else:
     aktiv_adatbazis = tetelek_matek
     aktiv_flashcards = flashcards_matek
+    aktiv_timeline = timeline_matek
+    aktiv_detektiv = detektiv_matek
     tantargy_cimke = "Matematika"
 
 # PDF Letöltés
@@ -1117,13 +1180,12 @@ elif menupont == "🎧 Hangoskönyv (Monológ)":
         st.write(adat_hangos["audio_szoveg"].strip())
 
 # -------------------------------------------------------------
-# 3. MENÜPONT: VILLÁMKÁRTYÁK (FLASHCARDS - CSAK AZ AKTUÁLIS TANTÁRGYHOZ!)
+# 3. MENÜPONT: VILLÁMKÁRTYÁK (FLASHCARDS)
 # -------------------------------------------------------------
 elif menupont == "🎴 Villámkártyák (Flashcards)":
     st.title(f"🎴 {tantargy_cimke} Villámkártyák (Astra Flashcards)")
     st.caption(f"Pörgesd át a legfontosabb {tantargy_cimke} fogalmakat és szabályokat!")
     
-    # Kártya index biztonságos illesztése az aktuális tantárgyhoz
     card_index = st.session_state.card_idx % len(aktiv_flashcards)
     aktualis_kartya = aktiv_flashcards[card_index]
     
@@ -1216,7 +1278,7 @@ elif menupont == "🎙️ Szóbeli Szimulátor (Beszéd / Írás)":
 # -------------------------------------------------------------
 elif menupont == "✍️ Esszé & Feladatmegoldó Labor":
     st.title("✍️ Esszé & Feladatmegoldó Labor")
-    st.caption("Másold be az irodalmi/történelmi esszédet vagy egy nehéz matekfeladat szövegét – az AI kijavítja vagy levezeti a teljes megoldást!")
+    st.caption(f"Másold be a(z) {tantargy_cimke} fogalmazásodat vagy egy feladat szövegét – az AI kijavítja vagy levezeti a teljes megoldást!")
     
     diak_essze = st.text_area("Másold be a szöveget vagy matematikai feladatot:", height=220)
     
@@ -1246,16 +1308,17 @@ elif menupont == "✍️ Esszé & Feladatmegoldó Labor":
             st.info("Kérlek előbb másold be a szöveget a fenti mezőbe!")
 
 # -------------------------------------------------------------
-# 6. MENÜPONT: IDÉZET- ÉS KÉPLET-DETEKTÍV
+# 6. MENÜPONT: TANTÁRGYI DETEKTÍV JÁTÉK
 # -------------------------------------------------------------
-elif menupont == "🎭 Idézet- & Képlet-Detektív":
-    st.title("🎭 Idézet- és Képlet-Detektív Játék")
-    st.caption("Felismered a legfontosabb irodalmi sorokat, történelmi forrásokat és matematikai képleteket?")
+elif menupont == "🎭 Tantárgyi Detektív Játék":
+    st.title(f"🎭 {tantargy_cimke} Detektív Játék")
+    st.caption(f"Felismered a legfontosabb {tantargy_cimke} idézeteket, forrásokat és képleteket?")
     
     if 'game_idx' not in st.session_state:
         st.session_state.game_idx = 0
         
-    feladvany = detektiv_adatbazis[st.session_state.game_idx]
+    game_index = st.session_state.game_idx % len(aktiv_detektiv)
+    feladvany = aktiv_detektiv[game_index]
     
     st.markdown(f"""
     <div class='topic-card' style='border-color:#ec4899; text-align:center;'>
@@ -1263,7 +1326,7 @@ elif menupont == "🎭 Idézet- & Képlet-Detektív":
     </div>
     """, unsafe_allow_html=True)
     
-    valasztott_tipp = st.radio("Válaszd ki a helyes megfejtést:", feladvany['opciok'], key=f"detektiv_{st.session_state.game_idx}")
+    valasztott_tipp = st.radio("Válaszd ki a helyes megfejtést:", feladvany['opciok'], key=f"detektiv_{tantargy_cimke}_{game_index}")
     
     if st.button("🔍 Tipp ellenőrzése"):
         if valasztott_tipp == feladvany['helyes']:
@@ -1274,17 +1337,17 @@ elif menupont == "🎭 Idézet- & Képlet-Detektív":
             st.error(f"Sajnos nem! ❌ A helyes válasz: **{feladvany['helyes']}**\n\n📌 Magyarázat: {feladvany['info']}")
             
     if st.button("➡️ Következő feladvány"):
-        st.session_state.game_idx = (st.session_state.game_idx + 1) % len(detektiv_adatbazis)
+        st.session_state.game_idx = (game_index + 1) % len(aktiv_detektiv)
         st.rerun()
 
 # -------------------------------------------------------------
-# 7. MENÜPONT: TÖRTÉNELMI & IRODALMI IDŐVONAL
+# 7. MENÜPONT: TANTÁRGYI IDŐVONAL & TÉRKÉP
 # -------------------------------------------------------------
-elif menupont == "🧭 Történelmi & Irodalmi Idővonal":
-    st.title("🧭 Történelmi & Művelődéstörténeti Idővonal (Timeline)")
-    st.caption("Lásd át a magyar és világtörténelem, valamint az irodalom korszakait egyben!")
+elif menupont == "🧭 Tantárgyi Idővonal & Térkép":
+    st.title(f"🧭 {tantargy_cimke} Idővonal & Tudástérkép")
+    st.caption(f"Lásd át a(z) {tantargy_cimke} fejlődésének, tételeinek és korszakainak összefüggéseit!")
     
-    for item in idovonal_adat:
+    for item in aktiv_timeline:
         st.markdown(f"""
         <div class='timeline-item'>
             <span style='background:#7c3aed; color:white; padding:4px 10px; border-radius:8px; font-weight:700;'>{item['ev']}</span>
@@ -1313,7 +1376,7 @@ elif menupont == "🏆 Nagy Próbavizsga":
             valaszok[idx] = st.radio(
                 "Választásod:",
                 ["Nem válaszoltam", "Igaz", "Hamis"],
-                key=f"probavizsga_{idx}",
+                key=f"probavizsga_{tantargy_cimke}_{idx}",
                 horizontal=True
             )
             st.markdown("---")
