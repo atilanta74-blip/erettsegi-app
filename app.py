@@ -119,7 +119,7 @@ tetelek = {
     },
     "3. Madách Imre: Az ember tragédiája": {
         "alcim": "A drámai költemény fogalma, színek elemzése",
-        "kulcsszavak": ["Drámai költemény", "15 szín", "Ádám és Lucifer", "Küzdj és bízva bízzál"],
+        "kulcsszavak": ["Drámai köktemény", "15 szín", "Ádám és Lucifer", "Küzdj és bízva bízzál"],
         "vazlat": """
 ### 1. Műfaj
 - Drámai költemény (világdráma): Emberiség- és létezésfilozófiai kérdések dialógusos formában.
@@ -582,15 +582,37 @@ elif menupont == "🤖 AI Érettségi Mentor":
             st.session_state.chat_history.append({"role": "user", "text": felh_kerdes})
             
             if api_key:
+                ai_valasz = None
                 try:
                     client = genai.Client(api_key=api_key.strip())
                     prompt = f"Magyar irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
                     
-                    response = client.models.generate_content(
-                        model="gemini-3.6-flash",
-                        contents=prompt
-                    )
-                    ai_valasz = response.text
+                    # Automatikus modellkeresés a fiókodban engedélyezett modellek közül
+                    cel_modellek = []
+                    try:
+                        for m in client.models.list():
+                            if "flash" in m.name.lower() or "gemini" in m.name.lower():
+                                cel_modellek.append(m.name.replace("models/", ""))
+                    except Exception:
+                        pass
+                        
+                    if not cel_modellek:
+                        cel_modellek = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
+                        
+                    for model_nev in cel_modellek:
+                        try:
+                            response = client.models.generate_content(
+                                model=model_nev,
+                                contents=prompt
+                            )
+                            if response and response.text:
+                                ai_valasz = response.text
+                                break
+                        except Exception:
+                            continue
+                            
+                    if not ai_valasz:
+                        ai_valasz = "Nem sikerült választ kapni az AI modelltől. Kérlek ellenőrizd az API kulcsodat!"
                 except Exception as e:
                     ai_valasz = f"Hiba az API hívás közben: {e}"
             else:
