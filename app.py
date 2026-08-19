@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Sötét téma és prémium stílusok
+# Astra AI prémium sötét téma és vizuális elemek
 st.markdown("""
 <style>
     .stApp { background-color: #0b0f19; color: #f3f4f6; }
@@ -46,6 +46,19 @@ st.markdown("""
         border-radius: 12px;
         line-height: 1.8;
         font-size: 1.05rem;
+    }
+    .flashcard {
+        background: linear-gradient(135deg, #1e1b4b, #31104b);
+        border: 2px solid #818cf8;
+        border-radius: 16px;
+        padding: 35px;
+        text-align: center;
+        margin: 20px 0;
+        min-height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
     }
     .audio-card {
         background-color: #182234;
@@ -120,8 +133,7 @@ A második nagy korszak az 1877-es margitszigeti Őszikék ideje. A Kapcsos kön
   - *Központi szimbólum:* A patakban mosott véres lepedő – a bűn fizikai tisztítása mint a lelkiismeret tisztára mosásának kudarca.
   - *Szerkezeti hármasság:* 1–4. strófa: helyszín és tett (patak); 5–19. strófa: bírósági tárgyalás (a megbomló elme); 20–26. strófa: a megvénült Ágnes végtelen, céltalan mosása.
   - *Refrén:* *„Könyörülj, Jézus, a sok szegény bűnösön!”* – részvét és ima a bűnbeesett emberért.
-- **Tetemre hívás (1877-hez közel / népi hagyomány):**
-  - Bárczi Benő meggyilkolása; a középkori istenítélet toposza. Kund Abigél kacaja a bűn lelepleződésének pillanatában.
+- **Tetemre hívás (1877-hez közel / népi hagyomány):** Bárczi Benő meggyilkolása; a középkori istenítélet toposza.
 
 ---
 
@@ -130,33 +142,22 @@ A második nagy korszak az 1877-es margitszigeti Őszikék ideje. A Kapcsos kön
 - **Híd-avatás (1877):**
   - *Téma:* A Margit híd avatásához kötődő babona (öngyilkosok ugrása a folyóba).
   - *Műfaji elem:* Modern haláltánc (*danse macabre*).
-  - *Társadalomkép:* A kártyavesztett nemes, a megcsalt lány, a csődbe ment alkusz, a reménytelen szegény diák – az elidegenedett modernitás áldozatainak felvonulása.
+  - *Társadalomkép:* A kártyavesztett nemes, a megcsalt lány, a csődbe ment alkusz, a reménytelen diák – az elidegenedett modernitás áldozatainak felvonulása.
         """,
         "szobeli": """
 **🎙️ Részletes 3 perces szóbeli feleletvázlat (Vizsgastratégia):**
 
-1. **Bevezetés (kb. 40 másodperc):**
-   * Határozd meg a ballada műfaját Greguss Ágost híres formulájával (*„Tragédia dalban elbeszélve”*).
-   * Emeld ki a három műnem (líra, epika, dráma) egybefonódását és a legfontosabb formanyelvi eszközöket (balladai homály, kihagyás/ellipszis, sűrítés, refrén).
-
-2. **Tárgyalás I. – Nagykőrösi történelmi és lélektani balladák (kb. 70 másodperc):**
-   * *Történelmi vonal:* Említsd meg a Bach-korszak politikai válságát. Elemezd *A walesi bárdok* zsarnokellenes magatartását és a *Szondi két apródja* kétszólamú, hűséget hirdető felépítését.
-   * *Lélektani vonal:* Részletezd az *Ágnes asszony* belső drámáját! Hangsúlyozd a lepedőmosás motívumát: a fizikai tisztogatás nem képes eltörölni a lelkiismeret-furdalást, ami végül elmezavarhoz vezet.
-
-3. **Tárgyalás II. – Az Őszikék korszaka (kb. 40 másodperc):**
-   * Ismertesd az 1877-es margitszigeti alkotói periódust és a Kapcsos könyv jelentőségét.
-   * Elemezd a *Híd-avatás* modern nagyvárosi haláltáncát, ahol a modern kapitalista világ céltalansága sodorja végzetbe a különböző társadalmi rétegeket.
-
-4. **Befejezés és összegzés (kb. 30 másodperc):**
-   * Zárd a gondolatmenetet azzal, hogy Arany János a népköltészeti alapokból világirodalmi rangra emelte a magyar balladát, és formaművészetével felkészítette a modern költészetet a 20. századi lélekábrázolásra.
+1. **Bevezetés (kb. 40 mp):** Greguss Ágost meghatározása (*„Tragédia dalban elbeszélve”*), 3 műnem találkozása, formai eszközök (balladai homály, ellipszis, sűrítés).
+2. **Tárgyalás I. – Nagykőrösi történelmi és lélektani balladák (kb. 70 mp):** Bach-korszak ellenállása (*A walesi bárdok*, *Szondi két apródja* kétszólamúsága); *Ágnes asszony* bűntudat-lélektana (a lepedőmosás szimbóluma).
+3. **Tárgyalás II. – Az Őszikék korszaka (kb. 40 mp):** 1877, Margitsziget, Kapcsos könyv. A *Híd-avatás* modern nagyvárosi haláltánca.
+4. **Befejezés (kb. 30 mp):** A klasszikus magyar ballada nyelvi és formai csúcspontjának értékelése.
         """,
         "kviz": [
             {"k": "A balladát Greguss Ágost 'tragédia dalban elbeszélve' névvel illette.", "v": True, "m": "A meghatározás a líra, epika és dráma ötvözésére utal."},
             {"k": "A walesi bárdok nyíltan, burkolás nélkül támadta Ferenc Józsefet.", "v": False, "m": "Allegorikus formában, a walesi monda köntösében fogalmazta meg az ellenállást."},
             {"k": "Az Ágnes asszony lepedőmosása a bűn letörölhetetlenségének lélektani szimbóluma.", "v": True, "m": "A tisztaság kényszeres keresése a lelkiismeret megbomlását mutatja be."},
-            {"k": "A Szondi két apródja című ballada Drégely várának ostromát idézi fel párhuzamos szólamokkal.", "v": True, "m": "A török küldönc és az apródok éneke éles kontrasztban áll."},
-            {"k": "A Híd-avatás című ballada az Őszikék korszakban, a Margitszigeten íródott.", "v": True, "m": "1877-ben került be a híres Kapcsos könyvbe."},
-            {"k": "A Tetemre hívásban az istenítélet középkori babonája leplezi le a gyilkost.", "v": True, "m": "Kund Abigél jelenlétében a seb újra vérezni kezd."}
+            {"k": "A Szondi két apródja Drégely várának ostromát idézi fel párhuzamos szólamokkal.", "v": True, "m": "A török küldönc és az apródok éneke éles kontrasztban áll."},
+            {"k": "A Híd-avatás című ballada az Őszikék korszakban, a Margitszigeten íródott.", "v": True, "m": "1877-ben került be a híres Kapcsos könyvbe."}
         ]
     },
     "2. Jókai Mór: Az arany ember": {
@@ -169,59 +170,38 @@ Timár belső hasadtsága addig nem oldódhat fel, amíg a civilizációhoz köt
         """,
         "vazlat": """
 ### I. A mű keletkezéstörténete és stílusszintézise
-- **Keletkezés:** 1872 – a kiegyezést követő magyar kapitalizálódás és polgári felvirágzás időszaka. Jókai személyes házassági válsága (Laborfalvi Róza mellett a fiatal Lukanics Ottília iránti vonzalma) ihlette a kettős nőalakot.
-- **Romantikus elemek:** Mesés véletlenek (a süllyedő Szent Borbála búzaszállítmánya, a rejtett kincs, Krisztyán Tódor végzetes halála), éles jellembeli kontrasztok, a Senki szigete rousseau-i idillje.
-- **Realista elemek:** Pontos gazdasági, hajózási és pénzügyi folyamatok (búzakereskedelem, spekuláció, csődeljárás); mély, modern lélektani jellemfejlődés.
+- **Keletkezés:** 1872 – a kiegyezést követő magyar kapitalizálódás időszaka.
+- **Romantikus elemek:** Mesés véletlenek (a süllyedő Szent Borbála búzaszállítmánya, a kincs, Krisztyán Tódor halála), a Senki szigete természeti idillje.
+- **Realista elemek:** Pontos gazdasági és pénzügyi folyamatok (búzakereskedelem, spekuláció, csődeljárás); modern lélektani jellemábrázolás.
 
 ---
 
-### II. Timár Mihály belső hasadtsága (A meghasonlott polgár)
-- **A név paradoxona:** „Arany ember” – a külvilág szemében sikeres, jótékony nábob, önmaga szemében tolvaj és álszent csábító.
-- **Morális bűnbeesése:** Elveszi az elhunyt Ali Csorbadzsi kincsét, majd a vagyont felhasználva megalázza Brazovicsot, és elveszi a védtelen, hálás Timeát.
-- **A boldogtalanság oka:** Rájön, hogy a pénzen minden megvehető, csak az őszinte, szívből jövő szeretet nem.
+### II. Timár Mihály belső hasadtsága
+- **A név paradoxona:** „Arany ember” – a külvilág szemében sikeres nagypolgár, önmaga szemében tolvaj és álszent csábító.
+- **Morális bűnbeesése:** Megtartja Ali Csorbadzsi kincsét, tönkreteszi Brazovicsot, és feleségül veszi a hálás Timeát.
+- **A boldogtalanság oka:** A pénzen minden megvehető, csak a valódi szívbéli szeretet nem.
 
 ---
 
 ### III. Kettős térszerkezet és nőalakok
 
-| Polgári világ (Komárom, Bécs, Levetinc) | Természeti utópia (Senki szigete) |
+| Polgári világ (Komárom, Bécs) | Természeti utópia (Senki szigete) |
 | :--- | :--- |
 | **Képviselője:** Timea | **Képviselője:** Noémi és Teréza mama |
-| **Jellemzők:** Pénz, rang, társadalmi konvenciók, hideg pompa. | **Jellemzők:** Pénzmentesség, önfenntartó munka, tiszta erkölcs. |
-| **Érzelmi kapcsolat:** Szoborszerű tisztelet, hűség és hála; hiányzó intimitás. | **Érzelmi kapcsolat:** Ösztönös, odaadó, feltétel nélküli szerelem. |
-| **Társadalomkép:** Brazovics mohósága, Krisztyán Tódor zsarolása. | **Társadalomkép:** Törvényen és államhatárokon kívüli béke. |
-
----
-
-### IV. A cselekmény zárlata és megoldása
-- **A krízis:** Timár kettős életének fenntarthatatlansága; az öngyilkosság gondolata a Balaton jegénél.
-- **A fordulat:** Krisztyán Tódor lezuhan a Balaton rianásában Timár kabátjában $\rightarrow$ a társadalom Timárt halottnak hiszi.
-- **Végső tanulság:** Az anyagi javak és a társadalmi pozíció feladása az egyetlen út a valódi lelki békéhez.
+| **Jellemzők:** Pénz, rang, konvenciók, hideg pompa. | **Jellemzők:** Pénzmentesség, tiszta munka, erkölcs. |
+| **Érzelmi viszony:** Szoborszerű tisztelet és hála; hidegség. | **Érzelmi viszony:** Ösztönös, odaadó, tiszta szerelem. |
         """,
         "szobeli": """
 **🎙️ Részletes 3 perces szóbeli feleletvázlat:**
-
-1. **Bevezetés (30 mp):**
-   * Ismertesd a mű keletkezési idejét (1872) és jelentőségét Jókai életművében.
-   * Emeld ki a romantikus regénytechnika és a realista társadalomábrázolás ötvöződését.
-
-2. **Tárgyalás I. – Timár alakja és lélektani válsága (1 perc):**
-   * Mutasd be Timár Mihály figuráját: az ügyes nagypolgár, akit kísért a bűntudat a török kincs megtartása és a Timeával kötött érdekházasság miatt.
-   * Magyarázd el a polgári meghasonlás folyamatát: a külső anyagi siker nem hozhat belső harmóniát.
-
-3. **Tárgyalás II. – A kettős térszerkezet és a két női eszmény (1 perc):**
-   * Állítsd szembe Komáromot (Timea szoborszerű, rideg világa) a Senki szigetével (Noémi természetes, tiszta szerelme).
-   * Elemezd a Senki szigetét mint rousseau-i természetközeli utópiát, ahol nincsenek pénzügyi vagy jogi kötöttségek.
-
-4. **Befejezés (30 mp):**
-   * Ismertesd a Balaton jegén lezajló feloldást és Timár társadalomból való kilépését mint az emberi boldogság megtalálásának egyetlen útját.
+1. **Bevezetés (30 mp):** 1872, Jókai legszemélyesebb műve; romantika és realizmus találkozása.
+2. **Timár jelleme (1 perc):** Anyagi felemelkedés vs. morális meghasonlás (a török kincs terhe).
+3. **A két világmodell (1 perc):** Komárom és Timea ridegsége vs. Senki szigete és Noémi utópiája.
+4. **Befejezés (30 mp):** A Balaton jegén bekövetkező sorsfordulat és a társadalomból való kilépés.
         """,
         "kviz": [
-            {"k": "Timár Mihály felesége, Timea szerelemből házasodott össze Timárral.", "v": False, "m": "Timea hálából ment hozzá, szívében Kacsuka kapitányt szerette."},
+            {"k": "Timea szerelemből házasodott össze Timárral.", "v": False, "m": "Timea hálából ment hozzá, szívében Kacsukát szerette."},
             {"k": "A Senki szigete pénz- és adómentes, önellátó természeti menedék a regényben.", "v": True, "m": "A társadalmi törvényeken kívül álló romantikus édenkert."},
-            {"k": "Krisztyán Tódor a Balaton jegének rianásába zuhanva leli halálát.", "v": True, "m": "Timár ruhájában hal meg, így Timár eltűnhet a civilizáció elől."},
-            {"k": "A Szent Borbála nevű hajó a Duna fenekére süllyed a búzaszállítmánnyal.", "v": True, "m": "A megázott búzában találja meg Timár Ali Csorbadzsi kincsét."},
-            {"k": "A regényben a romantikus mesei fordulatok pontos realista gazdasági leírásokkal párosulnak.", "v": True, "m": "A búzakereskedelem és az üzleti világ leírása mélyen realista."}
+            {"k": "Krisztyán Tódor a Balaton jegének rianásába zuhanva leli halálát Timár ruhájában.", "v": True, "m": "Így Timár eltűnhet a civilizáció elől és Noémivel élhet."}
         ]
     },
     "3. Madách Imre: Az ember tragédiája": {
@@ -234,133 +214,104 @@ A dráma egyetlen olyan színe, amelyből Ádám hittel és elszántsággal ébr
         """,
         "vazlat": """
 ### I. Műfaji sajátosságok és filozófiai gyökerek
-- **Műfaj:** Drámai költemény (világdráma, könyvdráma) – a színpadra állítás helyett az eszmék dialógusos ütköztetésére koncentrál.
-- **Filozófiai háttér:**
-  - *Hegeli dialektika:* Tézis (egy új eszme fellobbanása), Antitézis (az eszme elfajulása és kiábrándulás), Szintézis (továbblépés a következő szintre).
-  - *Pozitivizmus és mechanikus materializmus:* Az ember biológiai és fizikai determináltsága.
+- **Műfaj:** Drámai költemény (világdráma, könyvdráma) – filozófiai kérdések dialógusos formában.
+- **Hegeli dialektika:** Tézis (új eszme) $\rightarrow$ Antitézis (elfajulás, csalódás) $\rightarrow$ Szintézis (új korszak).
 
 ---
 
-### II. A három archetípus szerepe és viszonyrendszere
-- **Ádám:** Az örök emberi szellem, a hit, az eszmékért küzdő és folyton újrakezdő teremtő erő.
-- **Lucifer:** A hideg ész, az abszolút tagadás és szkepszis szelleme; célja a teremtés értelmetlenségének bizonyítása és Isten megbuktatása Ádám öngyilkossága révén.
-- **Éva:** A természet, az érzelmek, a költészet és a megújulás hordozója; ő testesíti meg az eszmék tisztaságát és az anyaság révén az élet folytonosságát.
+### II. A három archetípus
+- **Ádám:** Az örök küzdő emberi szellem, a hit, az eszmék keresője.
+- **Lucifer:** A hideg ráció, a kétely és tagadás szelleme.
+- **Éva:** A természet, az érzelmek, a költészet és az élet folytonossága.
 
 ---
 
-### III. A történelmi színek tematikus struktúrája (4–14. szín)
-
-1. **Egyiptom (4. szín):** *Eszme:* Szabadság. *Bukás:* A fáraó ráébred, hogy a piramist építő milliók rabszolgasága érvényteleníti a nagyságot.
-2. **Athén (5. szín):** *Eszme:* Demokrácia. *Bukás:* A nép hálátlan és megvesztegethető (Miltiadész halála).
-3. **Róma (6. szín):** *Eszme:* Érzéki örömök, hedonizmus. *Bukás:* Erkölcsi züllés, pestis és a hit hiánya.
-4. **Bizánc (7. szín):** *Eszme:* Keresztény hit. *Bukás:* Fanatizmus, vallásháború és dogmatikus viták (homousion vs. homoiusion).
-5. **Prága I. (8. szín):** *Eszme:* Tudomány. *Bukás:* Kepler kénytelen horoszkópkészítésből élni a császári udvarban.
-6. **Párizs (9. szín – Álom az álomban):** *Eszme:* Egyenlőség, testvériség, szabadság (Danton). **Kivétel:** Ádám nem csalódik, tettre készen ébred.
-7. **Prága II. (10. szín):** Kepler felismeri a szabad gondolat és a jövő diákjainak erejét.
-8. **London (11. szín):** *Eszme:* Szabadversenyes kapitalizmus. *Bukás:* Pénzuralom, emberi elszemélytelenedés $\rightarrow$ Haláltánc a Temze partján.
-9. **Falanszter (12. szín):** *Eszme:* Racionális tudomány és egyenlőség. *Bukás:* Az egyéniség, érzelmek és művészet (Platón, Michelangelo) teljes elfojtása.
-10. **Űr (13. szín):** *Eszme:* Az anyagtól való elszakadás. *Bukás:* A Föld szelleme visszahívja Ádámot.
-11. **Eszkimó szín (14. szín):** *Eszme:* Puszta túlélés a kihűlt világban. *Bukás:* Az ember állati sorba való visszasüllyedése.
-
----
-
-### IV. A 15. záró szín katarzisa
-- Ádám az öngyilkossággal akarja megcáfolni Istent és megállítani a történelmet.
-- Éva anyasága elvágja Lucifer tervét.
-- **Az Úr zárszava:** Nem ad tételes választ a jövőre, de kijelöli az erkölcsi kötelességet: *„Mondottam, ember: küzdj és bízva bízzál!”*
+### III. Történelmi színek (4–14. szín)
+- Egyiptom (szabadság), Athén (demokrácia), Róma (hedonizmus), Bizánc (vallás), Prága (tudomány), Párizs (forradalom – *nem csalódik!*), London (szabadpiaci kapitalizmus – *haláltánc*), Falanszter (mechanikus tudomány), Űr (anyagtalanodás), Eszkimó szín (kihűlő világ).
+- **15. szín:** Az Úr zárszava: *„Mondottam, ember: küzdj és bízva bízzál!”*
         """,
         "szobeli": """
 **🎙️ Részletes 3 perces szóbeli feleletvázlat:**
-
-1. **Bevezetés (30 mp):**
-   * Határozd meg a drámai költemény fogalmát és helyezd el a művet az 1859–60-as nemzeti válság kontextusában.
-   * Mutasd be a mű alapkoncepcióját: a teremtés értelmének filozófiai vizsgálata.
-
-2. **Tárgyalás I. – A szereplők hármassága és a dialektika (1 perc):**
-   * Jellemezd Ádámot (a tettvágy és a hit képviselője), Lucifert (a destruktív hideg ráció) és Évát (az élet és az érzelem elve).
-   * Magyarázd el a hegel-i dialektikus fejlődést: hogyan vezet minden történelmi eszme az elkorcsosuláshoz.
-
-3. **Tárgyalás II. – A történelmi színek csomópontjai (1 perc):**
-   * Emeld ki, miért Párizs a Tragédia tengelye (egyetlen szín, ami nem kiábrándulással zárul).
-   * Állítsd szembe London szabad piacát és a Falanszter mechanikus tudományát mint a modern társadalom két végletét.
-
-4. **Befejezés (30 mp):**
-   * Elemezd a 15. szín feloldását: Éva anyaságát és az Úr híres zárszavát, amely a determinizmus helyett a morális küzdelem értékét hirdeti.
+1. **Bevezetés (30 mp):** A drámai költemény műfaja, 1859–60 nemzeti válsága.
+2. **Karakterek hármassága (1 perc):** Ádám (hit és tettvágy), Lucifer (ráció és tagadás), Éva (természetesség és anyaság).
+3. **Történelmi színek (1 perc):** Eszmék felívelése és bukása; Párizs (Danton) és London (haláltánc) kontrasztja.
+4. **Befejezés (30 mp):** A 15. szín feloldása és az Úr etikai parancsa.
         """,
         "kviz": [
-            {"k": "Az ember tragédiája összesen 15 színből áll.", "v": True, "m": "4 keretszín és 11 történelmi szín alkotja."},
-            {"k": "Ádám a párizsi színből kiábrándultan és csalódottan ébred fel.", "v": False, "m": "Párizs az egyetlen szín, amiből Ádám hittel és harci kedvvel ébred."},
-            {"k": "A londoni szín végén a szereplők haláltánc kíséretében ugranak a nyitott sírba.", "v": True, "m": "A kapitalista piac zűrzavarának allegorikus lezárása."},
-            {"k": "A falanszter színben Michelangelo és Platón elismerést kapnak zseniális alkotásaikért.", "v": False, "m": "Büntetést kapnak, mert a társadalom tiltja az egyéniséget."},
-            {"k": "Az Úr végső mondata: 'Mondottam, ember: küzdj és bízva bízzál!'.", "v": True, "m": "Az emberi cselekvés örök erkölcsi parancsa."}
+            {"k": "Az ember tragédiája 15 színből áll.", "v": True, "m": "4 keretszín és 11 történelmi szín alkotja."},
+            {"k": "Ádám a párizsi színből kiábrándultan ébred fel.", "v": False, "m": "Párizs az egyetlen szín, amiből Ádám hittel és elszántsággal tér magához."},
+            {"k": "A londoni szín végén a szereplők haláltánc kíséretében ugranak a sírba.", "v": True, "m": "A kapitalista piac zűrzavarának allegorikus lezárása."}
         ]
     }
 }
 
+# Flashcard adatbázis az érettségi kulcsfogalmakhoz
+flashcards_adat = [
+    {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra (dalforma, rím), epika (cselekmény) és dráma (konfliktus, dialógus) műnemi sajátosságait."},
+    {"q": "Mi a balladai homály és az ellipszis lényege?", "a": "Az elbeszélő szándékosan kihagy részleteket és összefüggéseket, ezáltal feszültséget teremt és a befogadó képzeletére bízza a történet kiegészítését."},
+    {"q": "Melyik történelmi esemény ihlette Arany 'A walesi bárdok' című balladáját?", "a": "Ferenc József 1857-es magyarországi látogatása. Arany a költői meg nem alkuvás és a zsarnokellenes hűség példájaként írta meg."},
+    {"q": "Mit szimbolizál az Ágnes asszonyban a véres lepedő kényszeres mosása?", "a": "A bűn letörölhetetlenségét és a lelkiismeret-furdalás által kiváltott elmezavart."},
+    {"q": "Mi a kettős világmodell 'Az arany ember' című regényben?", "a": "Komárom/Bécs (a pénz, a spekuláció és a rideg polgári társadalom világa Timeával) vs. Senki szigete (a pénzmentes, romlatlan természeti utópia Noémivel)."},
+    {"q": "Miért különleges a párizsi szín 'Az ember tragédiájában'?", "a": "Ez az egyetlen olyan történelmi szín, amelyből Ádám nem csalódottan és kiábrándultan, hanem hittel és cselekvési vággyal ébred fel."},
+    {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás ízlésű irodalmi szerkesztője."},
+    {"q": "Mit jelképez a disznófejű Nagyúr Ady Endre költészetében?", "a": "A pénz, az anyagi kiszolgáltatottság és az emberi méltóságot elnyomó tőke kegyetlen bálványát."},
+    {"q": "Mi a központi szállóige és tanulság Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember és a művész morális felelősségvállalása a gonosszal szemben."},
+    {"q": "Ki képviseli a tiszta humanizmus hangját Kosztolányi 'Édes Anna' című regényében?", "a": "Moviszter doktor, aki egyedüliként tekinti Annát emberi lénynek és szólal fel mellette a bíróság előtt."}
+]
+
 stilusiranyzatok = {
     "Realizmus (19. sz. közepe)": """
 ### Realizmus (19. század dereka)
-- **Történelmi háttér:** Az ipari forradalom kibontakozása, a polgári társadalmak megszilárdulása és a természettudományos gondolkodás térnyerése.
 - **Központi esztétikai cél:** A valóság sallangmentes, tárgyilagos, hiteles és tipikus ábrázolása.
 - **Módszertan:**
-  - *Tipikus jellemek tipikus körülmények között:* A főhősök nem rendkívüli romantikus titánok, hanem koruk társadalmi rétegének hű képviselői.
-  - *Társadalmi determináció:* Az egyén jellemét és sorsát környezete, neveltetése és anyagi helyzete határozza meg.
-  - *Részletező leírások:* A tárgyi környezet, ruházat, enteriőr és pénzügyi folyamatok aprólékos bemutatása.
-- **Kulcsszerzők:** Honoré de Balzac (*Goriot apó*), Lev Tolsztoj (*Anna Karenina*), Mikszáth Kálmán, Jókai Mór késői korszakának regényei.
+  - *Tipikus jellemek tipikus körülmények között:* A főhősök a társadalmi rétegük hű képviselői.
+  - *Társadalmi determináció:* Az egyén sorsát a környezet és az anyagi helyzet határozza meg.
+- **Képviselők:** Honoré de Balzac, Lev Tolsztoj, Mikszáth Kálmán, Jókai Mór.
     """,
     "Naturalizmus (19. sz. vége)": """
 ### Naturalizmus (19. század vége)
-- **Történelmi és filozófiai háttér:** Darwin evolúcióelmélete, Taine környezetelmélete és a pozitivizmus.
-- **Központi esztétikai cél:** A valóság fotószerű, klinikai és kíméletlen rögzítése, tabutémák (ösztönök, szexualitás, betegség, nyomor) beemelése.
-- **Módszertan:**
-  - *Biológiai determinizmus:* Az ember az öröklött gének, ösztönök és a környezet kiszolgáltatottja.
-  - *A társadalmi mélyrétegek feltárása:* Bűnözés, alkoholizmus, züllés és a nyomor leírása tudományos objektivitással.
-- **Kulcsszerzők:** Émile Zola (*Germinal*, *Nana*), Móricz Zsigmond (*Tragédia*, *Barbárok*).
+- **Központi esztétikai cél:** A valóság fotószerű, kíméletlen rögzítése, tabutémák (ösztönök, betegség, nyomor) beemelése.
+- **Módszertan:** Biológiai determinizmus – az ember az ösztönök és gének rabja.
+- **Képviselők:** Émile Zola, Móricz Zsigmond (*Tragédia*, *Barbárok*).
     """,
     "Impresszionizmus (19. sz. vége – 20. sz. eleje)": """
 ### Impresszionizmus (19–20. század fordulója)
-- **Központi esztétikai cél:** A pillanatnyi benyomások, tovatűnő hangulatok, színek és fények lírai megragadása.
-- **Formanyelvi sajátosságok:**
-  - Névszói és jelzős stílus, melléknevek halmozása.
-  - Erős zeneiség, alliterációk, asszonáncok, hangulatfestő szavak.
-  - Szinesztézia (érzékelési területek összekapcsolása, pl. *„lila dalra kelt az éjcsend”*).
-- **Kulcsszerzők:** Kosztolányi Dezső, Tóth Árpád, Juhász Gyula, Paul Verlaine.
+- **Központi esztétikai cél:** A pillanatnyi benyomások, hangulatok és fények megragadása.
+- **Stílusjegyek:** Névszói stílus, zeneiség, szinesztézia (*„lila dalra kelt az éjcsend”*).
+- **Képviselők:** Kosztolányi Dezső, Tóth Árpád, Juhász Gyula.
     """,
     "Szimbolizmus (19. sz. vége – 20. sz. eleje)": """
 ### Szimbolizmus (19–20. század fordulója)
-- **Központi esztétikai cél:** A látható világ mögött rejtőző mélyebb, transzcendens igazságok és lelki állapotok sejtetése többértelmű szimbólumokkal.
-- **Formanyelvi sajátosságok:**
-  - Rejtélyesség, titokzatosság és látomásszerűség.
-  - Egyéni, mítoszteremtő jelképrendszer kialakítása.
-  - Zeneiség mint a lélek legközvetlenebb kifejezőeszköze (*„Zenét minékünk, csak zenét!”*).
-- **Kulcsszerzők:** Charles Baudelaire (*A romlás virágai*), Arthur Rimbaud, Ady Endre, Vajda János.
+- **Központi esztétikai cél:** A látható világ mögötti transzcendens igazságok kifejezése többértelmű szimbólumokkal.
+- **Stílusjegyek:** Rejtélyesség, mítoszteremtés, mély zeneiség.
+- **Képviselők:** Charles Baudelaire, Ady Endre, Vajda János.
     """
 }
 
-# Állapot inicializálása
+# Állapotkezelés
 if 'xp' not in st.session_state:
     st.session_state.xp = 180
 if 'level' not in st.session_state:
     st.session_state.level = 2
 if 'streak' not in st.session_state:
     st.session_state.streak = 4
+if 'card_idx' not in st.session_state:
+    st.session_state.card_idx = 0
+if 'card_flipped' not in st.session_state:
+    st.session_state.card_flipped = False
+if 'oral_history' not in st.session_state:
+    st.session_state.oral_history = []
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = [
         {"role": "ai", "text": "Szia! Én vagyok az érettségi mentorod. Kérdezz bátran bármelyik tételről, versről vagy szerzőről!"}
     ]
 
-# Biztos és elcsúszásmentes szövegformázó a beépített PDF motorhoz
+# PDF Segédfüggvény
 def tiszta_pdf_szoveg(szoveg):
     cserel = {
-        'ő': 'o', 'Ő': 'O',
-        'ű': 'u', 'Ű': 'U',
-        'á': 'a', 'Á': 'A',
-        'é': 'e', 'É': 'E',
-        'í': 'i', 'Í': 'I',
-        'ó': 'o', 'Ó': 'O',
-        'ö': 'o', 'Ö': 'O',
-        'ú': 'u', 'Ú': 'U',
-        'ü': 'u', 'Ü': 'U',
+        'ő': 'o', 'Ő': 'O', 'ű': 'u', 'Ű': 'U', 'á': 'a', 'Á': 'A',
+        'é': 'e', 'É': 'E', 'í': 'i', 'Í': 'I', 'ó': 'o', 'Ó': 'O',
+        'ö': 'o', 'Ö': 'O', 'ú': 'u', 'Ú': 'U', 'ü': 'u', 'Ü': 'U',
         '„': '"', '”': '"', '’': "'", '–': '-'
     }
     for k, v in cserel.items():
@@ -373,21 +324,18 @@ def letoltheto_pdf_generalas(tetelek_adat):
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
     
-    # Cím
     pdf.set_font('Helvetica', 'B', 15)
     pdf.set_x(15)
     pdf.cell(180, 8, 'Magyar Irodalom Erettsegi Tetelvazlatok', align='C', new_x="LMARGIN", new_y="NEXT")
     pdf.ln(4)
     
     for cim, adat in tetelek_adat.items():
-        # Tétel címe
         pdf.set_font('Helvetica', 'B', 10.5)
         pdf.set_x(15)
         fejlec = tiszta_pdf_szoveg(f"{cim} - {adat['alcim']}")
         pdf.multi_cell(180, 5.5, fejlec, align='L')
         pdf.ln(1)
         
-        # Vázlat sorai
         pdf.set_font('Helvetica', '', 8.5)
         tiszta_vazlat = adat['vazlat'].replace('###', '').replace('**', '').replace('*', '')
         for sor in tiszta_vazlat.strip().split('\n'):
@@ -403,7 +351,7 @@ def letoltheto_pdf_generalas(tetelek_adat):
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
     st.title("✨ Edited by Nagy Attila")
-    st.caption("Komplett Magyar Irodalom Érettségi Platform")
+    st.caption("Astra AI Irodalom Érettségi Platform & Tréningközpont")
 with col_h2:
     st.markdown(f"""
     <div style='text-align: right; padding-top: 10px;'>
@@ -415,11 +363,20 @@ with col_h2:
 
 st.markdown("---")
 
-# Oldalsáv navigáció
+# Oldalsáv navigáció (Bővítve az új Astra funkciókkal)
 st.sidebar.markdown("<h2 style='color:#818cf8;'>Navigáció</h2>", unsafe_allow_html=True)
 menupont = st.sidebar.radio(
     "Válassz funkciót:",
-    ["📖 Tételek & Vázlatok", "🎧 Hangoskönyv (Monológ)", "🎨 Stílusirányzatok", "🏆 Nagy Próbavizsga", "🤖 AI Érettségi Mentor"]
+    [
+        "📖 Tételek & Vázlatok",
+        "🎴 Villámkártyák (Flashcards)",
+        "🎙️ Szóbeli Érettségi Szimulátor",
+        "✍️ Esszé & Elemzés Értékelő",
+        "🎧 Hangoskönyv (Monológ)",
+        "🎨 Stílusirányzatok",
+        "🏆 Nagy Próbavizsga",
+        "🤖 AI Érettségi Mentor"
+    ]
 )
 
 # PDF Letöltés
@@ -434,7 +391,7 @@ if st.sidebar.button("📄 PDF Puska elkészítése"):
         mime="application/pdf"
     )
 
-# 1. Menüpont: Tételek, Vázlatok, Szóbeli és Kvíz
+# 1. Menüpont: Tételek & Vázlatok
 if menupont == "📖 Tételek & Vázlatok":
     kivalasztott_tetel = st.selectbox("Válassz tételt:", list(tetelek.keys()))
     adat = tetelek[kivalasztott_tetel]
@@ -480,7 +437,132 @@ if menupont == "📖 Tételek & Vázlatok":
                     st.error(f"Helytelen! ❌ Magyarázat: {q['m']}")
             st.markdown("---")
 
-# 2. Menüpont: Hangoskönyv (2 perces összefüggő tanári monológ)
+# 2. Menüpont: Villámkártyák (Flashcards)
+elif menupont == "🎴 Villámkártyák (Flashcards)":
+    st.title("🎴 Érettségi Villámkártyák (Astra Flashcards)")
+    st.caption("Pörgesd át a legfontosabb fogalmakat, évszámokat és összefüggéseket!")
+    
+    aktualis_kartya = flashcards_adat[st.session_state.card_idx]
+    
+    st.progress((st.session_state.card_idx + 1) / len(flashcards_adat))
+    st.write(f"Kártya: {st.session_state.card_idx + 1} / {len(flashcards_adat)}")
+    
+    if not st.session_state.card_flipped:
+        st.markdown(f"<div class='flashcard'>❓ {aktualis_kartya['q']}</div>", unsafe_allow_html=True)
+        if st.button("🔄 Kártya megfordítása (Válasz megtekintése)", use_container_width=True):
+            st.session_state.card_flipped = True
+            st.rerun()
+    else:
+        st.markdown(f"<div class='flashcard' style='background:linear-gradient(135deg, #064e3b, #065f46); border-color:#34d399;'>💡 {aktualis_kartya['a']}</div>", unsafe_allow_html=True)
+        col_b1, col_b2 = st.columns(2)
+        if col_b1.button("✅ Tudtam (+10 XP)", use_container_width=True):
+            st.session_state.xp += 10
+            st.session_state.card_flipped = False
+            st.session_state.card_idx = (st.session_state.card_idx + 1) % len(flashcards_adat)
+            st.rerun()
+        if col_b2.button("❌ Ismételni kell", use_container_width=True):
+            st.session_state.card_flipped = False
+            st.session_state.card_idx = (st.session_state.card_idx + 1) % len(flashcards_adat)
+            st.rerun()
+
+# 3. Menüpont: Szóbeli Érettségi Szimulátor
+elif menupont == "🎙️ Szóbeli Érettségi Szimulátor":
+    st.title("🎙️ Szóbeli Érettségi Szimulátor (Mock Exam)")
+    st.caption("Gyakorold a szóbeli feleletet! Az AI vizsgaelnökként meghallgat, belekérdez és leosztályoz.")
+    
+    api_key_oral = st.text_input("🔑 Google Gemini API kulcs a szimulációhoz:", type="password", key="oral_key")
+    valasztott_szim_tetel = st.selectbox("Válassz tételt a próbavizsgához:", list(tetelek.keys()))
+    
+    if st.button("🏁 Új szóbeli felelet indítása"):
+        st.session_state.oral_history = [
+            {"role": "ai", "text": f"Jó napot kívánok! Húzza ki a tételét... Az Ön tétele: **{valasztott_szim_tetel}**. Kérem, kezdje meg a feleletét a bevezetéssel és a legfontosabb műfaji, formai sajátosságokkal!"}
+        ]
+        st.rerun()
+        
+    for msg in st.session_state.oral_history:
+        if msg["role"] == "user":
+            st.markdown(f"<div class='chat-user'>🧑‍🎓 <strong>Ön feleli:</strong><br>{msg['text']}</div>", unsafe_allow_html=True)
+        else:
+            st.markdown(f"<div class='chat-ai'>👨‍🏫 <strong>Vizsgaelnök (AI):</strong><br>{msg['text']}</div>", unsafe_allow_html=True)
+            
+    with st.form("oral_form", clear_on_submit=True):
+        felelet_reszlet = st.text_area("Mondd el / írd be a feleleted következő részét:")
+        kuld_felelet = st.form_submit_button("Felelet beküldése")
+        
+        if kuld_felelet and felelet_reszlet:
+            st.session_state.oral_history.append({"role": "user", "text": felelet_reszlet})
+            if api_key_oral:
+                try:
+                    client = genai.Client(api_key=api_key_oral.strip())
+                    prompt = f"""
+                    Magyar irodalom szóbeli érettségi elnök vagy. A diák a(z) '{valasztott_szim_tetel}' tételből felel.
+                    A diák eddigi felelete: '{felelet_reszlet}'.
+                    Feladatod:
+                    1. Röviden értékeld az elmondottakat (pontosság, fogalmak).
+                    2. Tegyél fel egy célzott, érettségi szintű kérdést a tétel egy másik fontos részletére vonatkozóan, vagy ha a felelet lezárult, adj egy konkrét érdemjegyet (1-5) és részletes vizsgaértékelést.
+                    Legyél támogató, de szakmailag szigorú tanár!
+                    """
+                    
+                    cel_modellek = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
+                    ai_valasz = None
+                    for m in cel_modellek:
+                        try:
+                            res = client.models.generate_content(model=m, contents=prompt)
+                            if res and res.text:
+                                ai_valasz = res.text
+                                break
+                        except:
+                            continue
+                    if not ai_valasz:
+                        ai_valasz = "Nagyon jó gondolatok! Kérem, térjen ki részletesebben a konkrét művek elemzésére is!"
+                except Exception as e:
+                    ai_valasz = f"Hiba az API hívásban: {e}"
+            else:
+                ai_valasz = "Köszönöm! Hallgassuk meg a művek részletes elemzését is: említsen konkrét motívumokat és szereplőket!"
+                
+            st.session_state.oral_history.append({"role": "ai", "text": ai_valasz})
+            st.session_state.xp += 30
+            st.rerun()
+
+# 4. Menüpont: Esszé & Elemzés Értékelő
+elif menupont == "✍️ Esszé & Elemzés Értékelő":
+    st.title("✍️ Esszé & Műelemzés Értékelő Labor")
+    st.caption("Másold be az írásbeli fogalmazásodat vagy verselemzés-tervezetedet, és az AI pontozza az érettségi szempontrendszer szerint!")
+    
+    api_key_essay = st.text_input("🔑 Google Gemini API kulcs az értékeléshez:", type="password", key="essay_key")
+    diak_essze = st.text_area("Másold be a fogalmazásodat (műelemzés, összehasonlító elemzés vagy esszé):", height=220)
+    
+    if st.button("📊 Esszé ellenőrzése és pontozása"):
+        if diak_essze:
+            if api_key_essay:
+                with st.spinner("Az esszé elemzése érettségi szempontok alapján..."):
+                    try:
+                        client = genai.Client(api_key=api_key_essay.strip())
+                        prompt = f"""
+                        Magyar nyelv és irodalom érettségi javító tanár vagy. Értékeld az alábbi diákfogalmazást:
+                        ---
+                        {diak_essze}
+                        ---
+                        Kérlek, az alábbi szempontok szerint strukturáld az értékelést:
+                        1. **Tartalmi minőség & Szakmai pontosság (max 40 pont):** Irodalomtörténeti tények, fogalmak használata.
+                        2. **Szerkezet & Logikai felépítés (max 20 pont):** Bevezetés, tárgyalás, befejezés, bekezdések.
+                        3. **Nyelvhelyesség & Stílus (max 20 pont):** Szókincs, megfogalmazás.
+                        4. **Összesített érettségi pontszám & Érdemjegy (1-5)**
+                        5. **Konkrét javítási javaslatok:** 2-3 pontban, mit kell hozzátenni a tökéletes felelethez.
+                        """
+                        res = client.models.generate_content(model="gemini-3.6-flash", contents=prompt)
+                        st.markdown("<div class='deep-text'>", unsafe_allow_html=True)
+                        st.markdown(res.text)
+                        st.markdown("</div>", unsafe_allow_html=True)
+                        st.session_state.xp += 50
+                    except Exception as e:
+                        st.error(f"Hiba történt: {e}")
+            else:
+                st.warning("Kérlek írd be a Gemini API kulcsodat az élő AI javításhoz!")
+        else:
+            st.info("Kérlek előbb másold be a fogalmazás szövegét!")
+
+# 5. Menüpont: Hangoskönyv
 elif menupont == "🎧 Hangoskönyv (Monológ)":
     st.title("🎧 Hangoskönyv Érettségi Felkészítő")
     st.caption("Hallgasd meg a tételek teljes, 1.5–2 perces összefüggő szóbeli elemzését!")
@@ -498,7 +580,7 @@ elif menupont == "🎧 Hangoskönyv (Monológ)":
     col_a1, col_a2 = st.columns([2, 1])
     with col_a1:
         if st.button(f"▶️ Hangos monológ elindítása ({kivalasztott_hangos})"):
-            with st.spinner("Hangfájl előkészítése és generálása magyar nyelven..."):
+            with st.spinner("Hangfájl generálása tiszta magyar kiejtéssel..."):
                 tts = gTTS(text=adat_hangos["audio_szoveg"].strip(), lang='hu', slow=False)
                 audio_buffer = io.BytesIO()
                 tts.write_to_fp(audio_buffer)
@@ -510,14 +592,14 @@ elif menupont == "🎧 Hangoskönyv (Monológ)":
     with st.expander("📖 A monológ teljes szövege (olvasáshoz és követéshez)", expanded=True):
         st.write(adat_hangos["audio_szoveg"].strip())
 
-# 3. Menüpont: Stílusirányzatok
+# 6. Menüpont: Stílusirányzatok
 elif menupont == "🎨 Stílusirányzatok":
     st.title("Kulcs Stílusirányzatok Mélyelemzése")
     for nev, leiras in stilusiranyzatok.items():
         with st.expander(f"📌 {nev}", expanded=True):
             st.markdown(leiras)
 
-# 4. Menüpont: Nagy Próbavizsga
+# 7. Menüpont: Nagy Próbavizsga
 elif menupont == "🏆 Nagy Próbavizsga":
     st.title("Teljes Érettségi Próbavizsga")
     st.write("Válaszold meg az összes tételkérdést a tudásszinted ellenőrzéséhez!")
@@ -566,7 +648,7 @@ elif menupont == "🏆 Nagy Próbavizsga":
         else:
             st.error("❌ Értékelés: Elégtelen (1) – Ismételd át a tételeket!")
 
-# 5. Menüpont: AI Érettségi Mentor Chat
+# 8. Menüpont: AI Érettségi Mentor Chat
 elif menupont == "🤖 AI Érettségi Mentor":
     st.title("🤖 AI Érettségi Mentor")
     st.caption("Kérdezz bármilyen irodalmi műről, versről vagy szerzőről!")
@@ -592,17 +674,7 @@ elif menupont == "🤖 AI Érettségi Mentor":
                     client = genai.Client(api_key=api_key.strip())
                     prompt = f"Magyar irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
                     
-                    cel_modellek = []
-                    try:
-                        for m in client.models.list():
-                            if "flash" in m.name.lower() or "gemini" in m.name.lower():
-                                cel_modellek.append(m.name.replace("models/", ""))
-                    except Exception:
-                        pass
-                        
-                    if not cel_modellek:
-                        cel_modellek = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
-                        
+                    cel_modellek = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
                     for model_nev in cel_modellek:
                         try:
                             response = client.models.generate_content(
