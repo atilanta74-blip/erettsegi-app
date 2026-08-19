@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Sötét téma és vizuális stílusok
+# Sötét téma és prémium stílusok
 st.markdown("""
 <style>
     .stApp { background-color: #0b0f19; color: #f3f4f6; }
@@ -34,15 +34,24 @@ st.markdown("""
     .oral-box {
         background-color: #1e1b4b;
         border-left: 4px solid #818cf8;
-        padding: 16px;
+        padding: 18px;
         border-radius: 8px;
         margin-top: 15px;
+        line-height: 1.6;
+    }
+    .deep-text {
+        background-color: #111827;
+        border: 1px solid #374151;
+        padding: 24px;
+        border-radius: 12px;
+        line-height: 1.8;
+        font-size: 1.05rem;
     }
     .audio-card {
         background-color: #182234;
         border: 1px solid #3b82f6;
         border-radius: 12px;
-        padding: 18px;
+        padding: 20px;
         margin-bottom: 15px;
     }
     .chat-user {
@@ -70,403 +79,261 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Bővített tételtár: Részletes háttér, 2 perces hangos monológ, kibővített kvíz
+# 11 Mély, tankönyvi szintű érettségi tétel
 tetelek = {
     "1. Arany János balladái": {
-        "alcim": "A ballada műfaja, nagykőrösi korszak és Őszikék lélektana",
-        "kulcsszavak": ["Tragédia dalban elbeszélve", "Nagykőrös", "Őszikék", "Ágnes asszony", "Szondi két apródja"],
+        "alcim": "A ballada műfajelmélete, a nagykőrösi és margitszigeti balladaköltészet mélyelemzése",
+        "kulcsszavak": ["Tragédia dalban elbeszélve", "Nagykőrös", "Őszikék", "Ágnes asszony", "Szondi két apródja", "A walesi bárdok", "Híd-avatás"],
         "audio_szoveg": """
-Arany János a magyar irodalom történetének legnagyobb balladaírója. A műfajt Greguss Ágost esztéta nyomán tragédia dalban elbeszélveként szoktuk meghatározni, ami arra utal, hogy a líra, az epika és a dráma műnemi jegyei egyszerre jelennek meg benne. A művek feszültségét az úgynevezett balladai homály, a tömörítés és a kihagyásos szerkesztésmód teremti meg. 
-Arany balladaformája két meghatározó alkotói korszakra bontható. Az első az 1850-es évek nagykőrösi korszaka. A szabadságharc leverését követő elnyomás éveiben a költő a történelmi allegóriák eszközével ébresztette a nemzeti öntudatot. Ennek csúcspontja A walesi bárdok és a Szondi két apródja, amelyek a zsarnoksággal szembeni meg nem alkuvás és a hűség örök példái. Ugyanebben az időszakban születtek meg a mély lélektani balladák is, mint az Ágnes asszony vagy a Tetemre hívás, amelyek a bűn és a lelkiismeret-furdalás tébolyító hatását ábrázolják. 
-A második korszak a kései, 1877-es Őszikék időszaka a Margitszigeten, amikor a Kapcsos könyvbe lejegyzett műveiben már a modernizálódó, elidegenedő nagyvárosi világ krízisei jelennek meg. A Híd-avatásban az öngyilkosok seregszemléjén keresztül a társadalmi felelősségvállalás kérdését veti fel.
+Arany János a magyar irodalom történetének legnagyobb balladaírója. A ballada műfaját Greguss Ágost esztéta nyomán tragédia dalban elbeszélveként szoktuk meghatározni, ami arra utal, hogy a líra, az epika és a dráma műnemi jegyei egyszerre jelennek meg benne. A művek sűrített feszültségét az úgynevezett balladai homály, a kihagyásos szerkesztésmód és a gyors idősíkváltás teremti meg. 
+Arany balladaművészete két meghatározó alkotói korszakra bontható. Az első az 1850-es évek nagykőrösi időszaka. A szabadságharc leverését követő Bach-korszak elnyomásában a költő történelmi allegóriákkal ébresztette a nemzet lelkiismeretét. A walesi bárdok és a Szondi két apródja a zsarnoksággal szembeni megalkuvást nem ismerő hűség örök emlékművei. Ugyanebben az időszakban születtek meg a lélektani balladák is: az Ágnes asszonyban a bűn letörölhetetlensége miatti tébolyt, a Tetemre hívásban pedig az istenítélet drámai mechanizmusát mutatja be. 
+A második nagy korszak az 1877-es margitszigeti Őszikék ideje. A Kapcsos könyvbe írt kései művekben, például a Híd-avatásban, már a felgyorsult, modern nagyváros elidegenedése, a társadalmi felelőtlenség és az öngyilkosok tragikus haláltánca áll a középpontban.
         """,
         "vazlat": """
-### 1. A műfaj elméleti háttere
-- **Műfaji szintézis:** Lírai forma és dallamosság, epikus történetvezetés, drámai konfliktusok és dialógusok.
-- **Formanyelv:** *Balladai homály*, idősíkok váltogatása, kihagyásos szerkesztés (*ellipszis*).
+### I. A műfaj elméleti és esztétikai meghatározása
+- **A három műnem találkozása:**
+  - *Lírai vonások:* Dalforma, rím- és ritmusképlet, erős atmoszféra, szubjektív hangulati töltet.
+  - *Epikai vonások:* Cselekményvonal, kibontakozó eseménysor, elbeszélői hang.
+  - *Drámai vonások:* Éles sorsfordulók, kiélezett konfliktusok, dialógusos forma, tragikus végkifejlet.
+- **Formanyelvi sajátosságok:**
+  - **Balladai homály:** Az elbeszélő elhallgat összefüggéseket; az olvasó gondolati társítására (*asszociációjára*) épít.
+  - **Ellipszis (kihagyás):** A fordulópontok közötti átvezetések hiánya fokozza a drámaiságot.
+  - **Refrén:** Szerkezeti tartóoszlop, mely folyamatosan modulálja a hangulatot (*„Kocog a szekér...”* vagy *„Árva fejem...”*).
 
-### 2. A nagykőrösi korszak (1850-es évek)
-- **Történelmi-allegorikus balladák:** Válasz a Bach-korszak önkényuralmára; hűség és erkölcsi ellenállás (*A walesi bárdok*, *Szondi két apródja* – többszólamúság, kétféle értékrend).
-- **Lélektani balladák:** Bűn és megbomló elme (*Ágnes asszony* – a lepedőmosás mint a bűn letörölhetetlenségének szimbóluma; *Tetemre hívás* – istenítélet).
-- **Népies-románcos művek:** *Tengeri-hántás*, *Vörös Rébék*.
+---
 
-### 3. Az Őszikék korszaka (1877, Margitsziget)
-- Időskori rezignáció, technikai civilizáció és elidegenedés.
-- *Híd-avatás:* Haláltánc-motívum (*danse macabre*), a nagyvárosi nyomor és céltalanság társadalomrajza.
+### II. A nagykőrösi korszak (1850-es évek) – Történelmi és lélektani szintézis
+
+#### 1. Történelmi-allegorikus balladák (Nemzeti ellenállás a Bach-rendszerben)
+- **A walesi bárdok (1857):**
+  - *Kontextus:* Ferenc József 1857-es magyarországi látogatása. Arany visszautasította az üdvözlő vers megírását.
+  - *Mondai keret:* I. Edward király és Montgomery vára.
+  - *Üzenet:* Az 500 walesi bárd máglyahalála a magyar értelmiség morális kötelességét hirdeti: a zsarnokot tilos dicsőíteni; a költő feladata az igazság megőrzése a halál árnyékában is.
+- **Szondi két apródja (1856):**
+  - *Szerkezet:* Párhuzamos, kétszólamú szerkesztés (Drégely romjai vs. Ali pasa dőzsölő sátra).
+  - *Konfliktus:* A török küldönc csábító szavai (*hírnév, vagyon, pompa*) állnak szemben az apródok hűséges, Szondi hősies küzdelmét zengő énekével.
+  - *Mondandó:* A fizikai vereség dacára a morális győzelem a nemzeté marad.
+
+#### 2. Lélektani balladák (A lelkiismeret drámája)
+- **Ágnes asszony (1853):**
+  - *Téma:* A bűnrészesség és a lélektani téboly folyamata.
+  - *Központi szimbólum:* A patakban mosott véres lepedő – a bűn fizikai tisztítása mint a lelkiismeret tisztára mosásának kudarca.
+  - *Szerkezeti hármasság:* 1–4. strófa: helyszín és tett (patak); 5–19. strófa: bírósági tárgyalás (a megbomló elme); 20–26. strófa: a megvénült Ágnes végtelen, céltalan mosása.
+  - *Refrén:* *„Könyörülj, Jézus, a sok szegény bűnösön!”* – részvét és ima a bűnbeesett emberért.
+- **Tetemre hívás (1877-hez közel / népi hagyomány):**
+  - Bárczi Benő meggyilkolása; a középkori istenítélet toposza. Kund Abigél kacaja a bűn lelepleződésének pillanatában.
+
+---
+
+### III. Az Őszikék korszaka (1877, Margitsziget, Kapcsos könyv)
+- **Korszakjellemzők:** Időskori rezignáció, testi fájdalmak, az urbanizáció és modern polgári társadalom árnyoldalai.
+- **Híd-avatás (1877):**
+  - *Téma:* A Margit híd avatásához kötődő babona (öngyilkosok ugrása a folyóba).
+  - *Műfaji elem:* Modern haláltánc (*danse macabre*).
+  - *Társadalomkép:* A kártyavesztett nemes, a megcsalt lány, a csődbe ment alkusz, a reménytelen szegény diák – az elidegenedett modernitás áldozatainak felvonulása.
         """,
         "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** Greguss-féle meghatározás, a három műnem találkozása, Arany helye a műfaj történetében.
-2. **Nagykőrös (1 perc):** Nemzeti gyász és burkolt ellenállás (*Szondi két apródja*), valamint a lélektani bűntudat ábrázolása (*Ágnes asszony*).
-3. **Őszikék (1 perc):** A nagyvárosi élet válságai és a Margitszigeti kései líra (*Híd-avatás* haláltánca).
-4. **Befejezés (30 mp):** A klasszikus magyar ballada nyelvi és formai csúcspontjának értékelése.
+**🎙️ Részletes 3 perces szóbeli feleletvázlat (Vizsgastratégia):**
+
+1. **Bevezetés (kb. 40 másodperc):**
+   * Határozd meg a ballada műfaját Greguss Ágost híres formulájával (*„Tragédia dalban elbeszélve”*).
+   * Emeld ki a három műnem (líra, epika, dráma) egybefonódását és a legfontosabb formanyelvi eszközöket (balladai homály, kihagyás/ellipszis, sűrítés, refrén).
+
+2. **Tárgyalás I. – Nagykőrösi történelmi és lélektani balladák (kb. 70 másodperc):**
+   * *Történelmi vonal:* Említsd meg a Bach-korszak politikai válságát. Elemezd *A walesi bárdok* zsarnokellenes magatartását és a *Szondi két apródja* kétszólamú, hűséget hirdető felépítését.
+   * *Lélektani vonal:* Részletezd az *Ágnes asszony* belső drámáját! Hangsúlyozd a lepedőmosás motívumát: a fizikai tisztogatás nem képes eltörölni a lelkiismeret-furdalást, ami végül elmezavarhoz vezet.
+
+3. **Tárgyalás II. – Az Őszikék korszaka (kb. 40 másodperc):**
+   * Ismertesd az 1877-es margitszigeti alkotói periódust és a Kapcsos könyv jelentőségét.
+   * Elemezd a *Híd-avatás* modern nagyvárosi haláltáncát, ahol a modern kapitalista világ céltalansága sodorja végzetbe a különböző társadalmi rétegeket.
+
+4. **Befejezés és összegzés (kb. 30 másodperc):**
+   * Zárd a gondolatmenetet azzal, hogy Arany János a népköltészeti alapokból világirodalmi rangra emelte a magyar balladát, és formaművészetével felkészítette a modern költészetet a 20. századi lélekábrázolásra.
         """,
         "kviz": [
             {"k": "A balladát Greguss Ágost 'tragédia dalban elbeszélve' névvel illette.", "v": True, "m": "A meghatározás a líra, epika és dráma ötvözésére utal."},
             {"k": "A walesi bárdok nyíltan, burkolás nélkül támadta Ferenc Józsefet.", "v": False, "m": "Allegorikus formában, a walesi monda köntösében fogalmazta meg az ellenállást."},
-            {"k": "Az Ágnes asszony a nagykőrösi lélektani balladák sorába tartozik.", "v": True, "m": "A lelkiismeret-furdalás és a megőrülés belső folyamatát bontja ki."},
-            {"k": "A Szondi két apródja műben Drégely várának ostroma elevenedik meg.", "v": True, "m": "Szondi György török elleni hősi halálát dolgozza fel."},
-            {"k": "A Híd-avatás című kései ballada a Margitszigeten, az Őszikék korszakban született.", "v": True, "m": "1877-ben írta a Margitszigeten a Kapcsos könyvbe."}
+            {"k": "Az Ágnes asszony lepedőmosása a bűn letörölhetetlenségének lélektani szimbóluma.", "v": True, "m": "A tisztaság kényszeres keresése a lelkiismeret megbomlását mutatja be."},
+            {"k": "A Szondi két apródja című ballada Drégely várának ostromát idézi fel párhuzamos szólamokkal.", "v": True, "m": "A török küldönc és az apródok éneke éles kontrasztban áll."},
+            {"k": "A Híd-avatás című ballada az Őszikék korszakban, a Margitszigeten íródott.", "v": True, "m": "1877-ben került be a híres Kapcsos könyvbe."},
+            {"k": "A Tetemre hívásban az istenítélet középkori babonája leplezi le a gyilkost.", "v": True, "m": "Kund Abigél jelenlétében a seb újra vérezni kezd."}
         ]
     },
     "2. Jókai Mór: Az arany ember": {
-        "alcim": "Romantika és realizmus határán, a polgári meghasonlás kérdése",
-        "kulcsszavak": ["Timár Mihály", "Senki szigete", "Timea és Noémi", "Ali Csorbadzsi", "Krisztyán Tódor"],
+        "alcim": "A romantika és realizmus szintézise, a polgári meghasonlás és a Senki szigete utópiája",
+        "kulcsszavak": ["Timár Mihály", "Senki szigete", "Timea és Noémi", "Ali Csorbadzsi", "Krisztyán Tódor", "Balaton"],
         "audio_szoveg": """
-Jókai Mór 1872-ben megjelent Az arany ember című regénye az író legszemélyesebb és legmélyebb lélektani műve. Bár stílusában a romantika gazdag mesemondása és éles kontrasztjai dominálnak, a mű társadalomrajza és jellemábrázolása már a realizmus felé mutat. 
-A regény központi alakja Timár Mihály, a mindent arannyá változtató tehetséges nagypolgár, akit a vagyon megszerzésének körülményei és a kényszerű házassága miatt súlyos lelkiismereti válság gyötör. A cselekmény egy kettős térszerkezetre épül fel. Az egyik oldalon Komárom és a modern kapitalista világ áll a rideg, hálából feleségül vett Timeával, ahol Timár sikeres, de boldogtalan. A másik oldalon a Senki szigete jelenik meg, amely a társadalomból kivonult, pénzmentes, romlatlan természeti idillt képviseli Noémivel és Teréza mamával. 
-A regény feloldása csak a civilizációból való kilépéssel, a társadalmi én halálával és az újrakezdéssel valósulhat meg.
+Jókai Mór 1872-ben megjelent regénye, Az arany ember az író legérettebb és legszemélyesebb alkotása. Bár az elbeszélésmód hordozza a romantika gazdag mesemondását és nagy léptékű fordulatait, a társadalmi környezetrajz és a főhős lélektani vívódása már a realizmus mélységeit idézi. 
+A cselekmény fókuszában Timár Mihály áll, a zseniális polgári vállalkozó, akinek minden anyagi vállalkozását siker koronázza, magánéletében és lelkiismeretében mégis mélyen boldogtalan. A mű központi konfliktusa egy kettős világmodellre épül fel. Az egyik oldalon a rideg polgári társadalom áll, a komáromi és bécsi kapitalista világ a hálából feleségül vett Timeával, akinek szoborszerű hidegsége fojtogató. A másik pólust a Senki szigete jelenti: a pénz és államhatalom nélküli természeti paradicsom Noémi őszinte, természetes szerelmével. 
+Timár belső hasadtsága addig nem oldódhat fel, amíg a civilizációhoz köti a neve és vagyona. A véletlen szerencse és Krisztyán Tódor halála teremti meg a lehetőséget a teljes újjászületésre.
         """,
         "vazlat": """
-### 1. Stílusszintézis és háttér
-- 1872-es megjelenés; a polgári fejlődés árnyoldalainak realista ábrázolása romantikus elbeszélésmóddal ötvözve.
-- Timár Mihály tragédiája: az anyagi felemelkedés és az erkölcsi tiszta lelkiismeret összeférhetetlensége.
+### I. A mű keletkezéstörténete és stílusszintézise
+- **Keletkezés:** 1872 – a kiegyezést követő magyar kapitalizálódás és polgári felvirágzás időszaka. Jókai személyes házassági válsága (Laborfalvi Róza mellett a fiatal Lukanics Ottília iránti vonzalma) ihlette a kettős nőalakot.
+- **Romantikus elemek:** Mesés véletlenek (a süllyedő Szent Borbála búzaszállítmánya, a rejtett kincs, Krisztyán Tódor végzetes halála), éles jellembeli kontrasztok, a Senki szigete rousseau-i idillje.
+- **Realista elemek:** Pontos gazdasági, hajózási és pénzügyi folyamatok (búzakereskedelem, spekuláció, csődeljárás); mély, modern lélektani jellemfejlődés.
 
-### 2. Kettős világmodell és karakterpárhuzamok
-- **A polgári világ (Komárom, Bécs):** Pénzuralom, rideg konvenciók, látszatboldogság (*Timea* – szoborszerű, hűséges, de szeretetlen hála).
-- **A Senki szigete (Természeti utópia):** Társadalmon kívüli éden, pénzmentes tiszta szeretet (*Noémi* – ösztönös, érzelmes természetesség).
-- **Ellenpontok:** *Brazovics Athanáz* (mohó spekuláció), *Krisztyán Tódor* (züllött zsarolás).
+---
+
+### II. Timár Mihály belső hasadtsága (A meghasonlott polgár)
+- **A név paradoxona:** „Arany ember” – a külvilág szemében sikeres, jótékony nábob, önmaga szemében tolvaj és álszent csábító.
+- **Morális bűnbeesése:** Elveszi az elhunyt Ali Csorbadzsi kincsét, majd a vagyont felhasználva megalázza Brazovicsot, és elveszi a védtelen, hálás Timeát.
+- **A boldogtalanság oka:** Rájön, hogy a pénzen minden megvehető, csak az őszinte, szívből jövő szeretet nem.
+
+---
+
+### III. Kettős térszerkezet és nőalakok
+
+| Polgári világ (Komárom, Bécs, Levetinc) | Természeti utópia (Senki szigete) |
+| :--- | :--- |
+| **Képviselője:** Timea | **Képviselője:** Noémi és Teréza mama |
+| **Jellemzők:** Pénz, rang, társadalmi konvenciók, hideg pompa. | **Jellemzők:** Pénzmentesség, önfenntartó munka, tiszta erkölcs. |
+| **Érzelmi kapcsolat:** Szoborszerű tisztelet, hűség és hála; hiányzó intimitás. | **Érzelmi kapcsolat:** Ösztönös, odaadó, feltétel nélküli szerelem. |
+| **Társadalomkép:** Brazovics mohósága, Krisztyán Tódor zsarolása. | **Társadalomkép:** Törvényen és államhatárokon kívüli béke. |
+
+---
+
+### IV. A cselekmény zárlata és megoldása
+- **A krízis:** Timár kettős életének fenntarthatatlansága; az öngyilkosság gondolata a Balaton jegénél.
+- **A fordulat:** Krisztyán Tódor lezuhan a Balaton rianásában Timár kabátjában $\rightarrow$ a társadalom Timárt halottnak hiszi.
+- **Végső tanulság:** Az anyagi javak és a társadalmi pozíció feladása az egyetlen út a valódi lelki békéhez.
         """,
         "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** Jókai pályája, az 1872-es mű személyes jellege és stíluskettőssége.
-2. **Timár jelleme (1 perc):** Az „arany ember” paradoxona: külső siker vs. belső morális válság.
-3. **A két nő és két világ (1 perc):** Timea (Komárom ridegsége) és Noémi (Senki szigete utópiája) kontrasztja.
-4. **Befejezés (30 mp):** A Balaton jegén bekövetkező sorsfordulat és a polgári társadalomból való kilépés tanulsága.
+**🎙️ Részletes 3 perces szóbeli feleletvázlat:**
+
+1. **Bevezetés (30 mp):**
+   * Ismertesd a mű keletkezési idejét (1872) és jelentőségét Jókai életművében.
+   * Emeld ki a romantikus regénytechnika és a realista társadalomábrázolás ötvöződését.
+
+2. **Tárgyalás I. – Timár alakja és lélektani válsága (1 perc):**
+   * Mutasd be Timár Mihály figuráját: az ügyes nagypolgár, akit kísért a bűntudat a török kincs megtartása és a Timeával kötött érdekházasság miatt.
+   * Magyarázd el a polgári meghasonlás folyamatát: a külső anyagi siker nem hozhat belső harmóniát.
+
+3. **Tárgyalás II. – A kettős térszerkezet és a két női eszmény (1 perc):**
+   * Állítsd szembe Komáromot (Timea szoborszerű, rideg világa) a Senki szigetével (Noémi természetes, tiszta szerelme).
+   * Elemezd a Senki szigetét mint rousseau-i természetközeli utópiát, ahol nincsenek pénzügyi vagy jogi kötöttségek.
+
+4. **Befejezés (30 mp):**
+   * Ismertesd a Balaton jegén lezajló feloldást és Timár társadalomból való kilépését mint az emberi boldogság megtalálásának egyetlen útját.
         """,
         "kviz": [
-            {"k": "Timár Mihály felesége, Timea szerelemből ment hozzá Timárhoz.", "v": False, "m": "Timea csupán hálából kötött házasságot vele."},
-            {"k": "A Senki szigete a pénz és ipari forradalom mintaképe a műben.", "v": False, "m": "A pénztől mentes, romantikus természeti menedék jelképe."},
-            {"k": "Krisztyán Tódor a Balaton jegének rianásába fullad bele Timár kabátjában.", "v": True, "m": "Ez a véletlen halál teszi lehetővé Timár névtelenségét."},
-            {"k": "Ali Csorbadzsi kincsét a Szent Borbála hajó szállította el süllyedése előtt.", "v": True, "m": "A búza közé rejtett kincs alapozza meg Timár vagyonát."},
-            {"k": "A regényben a romantikus és a realista stílusjegyek egyszerre vannak jelen.", "v": True, "m": "A mesei fordulatok és a pontos gazdasági-társadalmi rajz ötvöződik."}
+            {"k": "Timár Mihály felesége, Timea szerelemből házasodott össze Timárral.", "v": False, "m": "Timea hálából ment hozzá, szívében Kacsuka kapitányt szerette."},
+            {"k": "A Senki szigete pénz- és adómentes, önellátó természeti menedék a regényben.", "v": True, "m": "A társadalmi törvényeken kívül álló romantikus édenkert."},
+            {"k": "Krisztyán Tódor a Balaton jegének rianásába zuhanva leli halálát.", "v": True, "m": "Timár ruhájában hal meg, így Timár eltűnhet a civilizáció elől."},
+            {"k": "A Szent Borbála nevű hajó a Duna fenekére süllyed a búzaszállítmánnyal.", "v": True, "m": "A megázott búzában találja meg Timár Ali Csorbadzsi kincsét."},
+            {"k": "A regényben a romantikus mesei fordulatok pontos realista gazdasági leírásokkal párosulnak.", "v": True, "m": "A búzakereskedelem és az üzleti világ leírása mélyen realista."}
         ]
     },
     "3. Madách Imre: Az ember tragédiája": {
-        "alcim": "A drámai költemény műfaja, eszmék harca a történelemben",
-        "kulcsszavak": ["Világdráma", "15 szín", "Ádám, Éva, Lucifer", "Küzdj és bízva bízzál"],
+        "alcim": "A drámai költemény műfaja, eszmék harca és az emberi küzdelem dialektikája a történelemben",
+        "kulcsszavak": ["Drámai költemény", "15 szín", "Ádám, Éva, Lucifer", "Párizs", "London", "Küzdj és bízva bízzál"],
         "audio_szoveg": """
-Madách Imre főműve, Az ember tragédiája 1859 és 1860 között született, a magyar nemzet legsötétebb válságidőszakában. A mű műfaja drámai költemény, más néven világdráma, amely az emberi létezés végső értelmét, a szabadság határait és az eszmék történelmi fejlődését vizsgálja. 
-A dráma 15 színből áll. A keretszínekben, az első háromban és a tizenötödikben, a transzcendens világban zajlik az Úr és Lucifer fogadása. A közbülső tizenegy színben Ádám és Lucifer álomutazást tesznek a világtörténelem nagy korszakaiban. Ádám minden színben egy-egy új eszméért lelkesedik, ám Lucifer rámutat ezen eszmék elkorcsosulására. Egyetlen kivétel van: a francia forradalmat bemutató párizsi szín, amelyből Ádám nem csalódottan, hanem hittel telve ébred fel. 
-A mű zárásában az Úr zárszava felülírja Lucifer hideg rációját: a küzdelem maga a cél.
+Madách Imre remekműve, Az ember tragédiája 1859 és 1860 között, a Bach-korszak legmélyebb nemzeti és személyes válságában született. A műfaja drámai költemény, azaz világdráma, amely a goethei Faust és a bibliai hagyományok nyomán az emberi lét alapvető filozófiai kérdéseit feszegeti: van-e célja a történelemnek, szabad-e az ember akarata, és érdemes-e küzdeni az eszmékért. 
+A mű tizenöt színből épül fel. A transzcendens keretszínekben Lucifer és a Teremtő vitája nyitja meg a cselekményt. A közbülső tizenegy történelmi színben Lucifer álmot bocsát Ádámra, végigvezetve őt az emberiség történetének korszakain az ókori Egyiptomtól a Föld kihűlését mutató eszkimó színig. Ádám minden történelmi színben egy-egy magasztos eszméért lelkesedik, ám Lucifer hideg rációja leleplezi az eszmék elkorcsosulását. 
+A dráma egyetlen olyan színe, amelyből Ádám hittel és elszántsággal ébred fel, a francia forradalmat bemutató párizsi szín. A mű végén Éva anyasága és a Teremtő zárszava helyreállítja a reményt: a küzdelem maga az emberi létezés értelme.
         """,
         "vazlat": """
-### 1. Műfaj és filozófiai gyökerek
-- **Műfaj:** Drámai költemény (világdráma, könyvdráma) – Hegel dialektikája (tézis-antitézis-szintézis).
-- **Szereplők filozófiai archetípusai:**
-  - *Ádám:* Az örök küzdő emberi szellem, az eszmék keresője.
-  - *Lucifer:* A hideg ész, a kritikai ráció, a tagadás és kétely szelleme.
-  - *Éva:* Az érzelmek, a természet, az élet folytonossága és a megváltás ígérete.
+### I. Műfaji sajátosságok és filozófiai gyökerek
+- **Műfaj:** Drámai költemény (világdráma, könyvdráma) – a színpadra állítás helyett az eszmék dialógusos ütköztetésére koncentrál.
+- **Filozófiai háttér:**
+  - *Hegeli dialektika:* Tézis (egy új eszme fellobbanása), Antitézis (az eszme elfajulása és kiábrándulás), Szintézis (továbblépés a következő szintre).
+  - *Pozitivizmus és mechanikus materializmus:* Az ember biológiai és fizikai determináltsága.
 
-### 2. A 15 szín szerkezeti íve
-- **Keretszínek (1–3. és 15.):** Égi hierarchia, a Paradicsom elvesztése, és a záró feloldás a hófedte pusztaságban.
-- **Történelmi színek (4–14.):**
-  - Egyiptom (szabadság), Athén (demokrácia), Róma (élvezetek), Bizánc (vallás), Prága (tudomány), Párizs (forradalom), London (kapitalista piac), Falanszter (rideg tudomány), Űr (anyagtalanodás), Eszkimó szín (kihűlő Föld).
-- **Konklúzió:** *„Mondottam, ember: küzdj és bízva bízzál!”*
+---
+
+### II. A három archetípus szerepe és viszonyrendszere
+- **Ádám:** Az örök emberi szellem, a hit, az eszmékért küzdő és folyton újrakezdő teremtő erő.
+- **Lucifer:** A hideg ész, az abszolút tagadás és szkepszis szelleme; célja a teremtés értelmetlenségének bizonyítása és Isten megbuktatása Ádám öngyilkossága révén.
+- **Éva:** A természet, az érzelmek, a költészet és a megújulás hordozója; ő testesíti meg az eszmék tisztaságát és az anyaság révén az élet folytonosságát.
+
+---
+
+### III. A történelmi színek tematikus struktúrája (4–14. szín)
+
+1. **Egyiptom (4. szín):** *Eszme:* Szabadság. *Bukás:* A fáraó ráébred, hogy a piramist építő milliók rabszolgasága érvényteleníti a nagyságot.
+2. **Athén (5. szín):** *Eszme:* Demokrácia. *Bukás:* A nép hálátlan és megvesztegethető (Miltiadész halála).
+3. **Róma (6. szín):** *Eszme:* Érzéki örömök, hedonizmus. *Bukás:* Erkölcsi züllés, pestis és a hit hiánya.
+4. **Bizánc (7. szín):** *Eszme:* Keresztény hit. *Bukás:* Fanatizmus, vallásháború és dogmatikus viták (homousion vs. homoiusion).
+5. **Prága I. (8. szín):** *Eszme:* Tudomány. *Bukás:* Kepler kénytelen horoszkópkészítésből élni a császári udvarban.
+6. **Párizs (9. szín – Álom az álomban):** *Eszme:* Egyenlőség, testvériség, szabadság (Danton). **Kivétel:** Ádám nem csalódik, tettre készen ébred.
+7. **Prága II. (10. szín):** Kepler felismeri a szabad gondolat és a jövő diákjainak erejét.
+8. **London (11. szín):** *Eszme:* Szabadversenyes kapitalizmus. *Bukás:* Pénzuralom, emberi elszemélytelenedés $\rightarrow$ Haláltánc a Temze partján.
+9. **Falanszter (12. szín):** *Eszme:* Racionális tudomány és egyenlőség. *Bukás:* Az egyéniség, érzelmek és művészet (Platón, Michelangelo) teljes elfojtása.
+10. **Űr (13. szín):** *Eszme:* Az anyagtól való elszakadás. *Bukás:* A Föld szelleme visszahívja Ádámot.
+11. **Eszkimó szín (14. szín):** *Eszme:* Puszta túlélés a kihűlt világban. *Bukás:* Az ember állati sorba való visszasüllyedése.
+
+---
+
+### IV. A 15. záró szín katarzisa
+- Ádám az öngyilkossággal akarja megcáfolni Istent és megállítani a történelmet.
+- Éva anyasága elvágja Lucifer tervét.
+- **Az Úr zárszava:** Nem ad tételes választ a jövőre, de kijelöli az erkölcsi kötelességet: *„Mondottam, ember: küzdj és bízva bízzál!”*
         """,
         "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** A drámai költemény fogalma, a keletkezés kontextusa (szabadságharc utáni kiábrándulás).
-2. **Karakterek dialektikája (1 perc):** Ádám cselekvési vágya, Lucifer destruktív logikája és Éva megtisztító jelenléte.
-3. **Történelmi körkép (1 perc):** Eszmék felívelése és bukása; miért Párizs a Tragédia tengelye és csúcspontja.
-4. **Befejezés (30 mp):** A 15. szín értelmezése: a determinizmus elutasítása és az etikai cselekvés imperatívusza.
+**🎙️ Részletes 3 perces szóbeli feleletvázlat:**
+
+1. **Bevezetés (30 mp):**
+   * Határozd meg a drámai költemény fogalmát és helyezd el a művet az 1859–60-as nemzeti válság kontextusában.
+   * Mutasd be a mű alapkoncepcióját: a teremtés értelmének filozófiai vizsgálata.
+
+2. **Tárgyalás I. – A szereplők hármassága és a dialektika (1 perc):**
+   * Jellemezd Ádámot (a tettvágy és a hit képviselője), Lucifert (a destruktív hideg ráció) és Évát (az élet és az érzelem elve).
+   * Magyarázd el a hegel-i dialektikus fejlődést: hogyan vezet minden történelmi eszme az elkorcsosuláshoz.
+
+3. **Tárgyalás II. – A történelmi színek csomópontjai (1 perc):**
+   * Emeld ki, miért Párizs a Tragédia tengelye (egyetlen szín, ami nem kiábrándulással zárul).
+   * Állítsd szembe London szabad piacát és a Falanszter mechanikus tudományát mint a modern társadalom két végletét.
+
+4. **Befejezés (30 mp):**
+   * Elemezd a 15. szín feloldását: Éva anyaságát és az Úr híres zárszavát, amely a determinizmus helyett a morális küzdelem értékét hirdeti.
         """,
         "kviz": [
-            {"k": "Az ember tragédiája összesen 15 színből áll.", "v": True, "m": "4 keretszín és 11 történelmi szín alkotja a művet."},
-            {"k": "Ádám a párizsi színből csalódottan ébred fel.", "v": False, "m": "Párizs az egyetlen szín, amiből Ádám hittel és lelkesedéssel tér magához."},
-            {"k": "A londoni színben a Temze partján a szereplők a nyitott sírba ugranak.", "v": True, "m": "A londoni haláltánc-jelenet a mű egyik legdrámaibb zárása."},
-            {"k": "A falanszter színben Michelangelo és Platón büntetést kapnak egyéniségük miatt.", "v": True, "m": "A túlracionalizált társadalom elnyomja a művészi egyéniséget."},
-            {"k": "A mű záró mondata: 'Mondottam, ember: küzdj és bízva bízzál!'.", "v": True, "m": "Az Úr szózata a küzdelem erkölcsi kötelességét hirdeti."}
-        ]
-    },
-    "4. Mikszáth Kálmán prózája": {
-        "alcim": "Anekdotizmus, novellisztika és a dzsentri világ ábrázolása",
-        "kulcsszavak": ["Anekdota", "A tót atyafiak", "A jó palócok", "Beszterce ostroma", "Pongrácz István"],
-        "audio_szoveg": """
-Mikszáth Kálmán a 19. és 20. század fordulójának legkiválóbb prózaírója. Pályája hídként köti össze a romantika mesélő hagyományát a modern realizmussal. Művészetének alapköve az anekdota, azaz a csattanóra épülő, rövid, közvetlen hangú történetmesélés. 
-Az országos hírnevet az 1880-as évek elején megjelent két novelláskötete hozta meg számára. Az 1881-es A tót atyafiak négy hosszabb elbeszélésben mutatja be a zord felvidéki hegyek között élő, tiszta erkölcsű embereket. Az 1882-es A jó palócok tizenöt rövid, tömör novellában ábrázolja a falu zárt, babonákkal teli közösségét és balladisztikus tragédiáit. 
-Későbbi korszakának remekműve a Beszterce ostroma, amelyben a Don Quijote-i alakú Pongrácz István gróf tragikomikus történetén keresztül a hanyatló magyar nemesi világot szembesíti a valósággal.
-        """,
-        "vazlat": """
-### 1. Az elbeszélői hang és stílus
-- Élőbeszédszerű mesélés, szelíd irónia, empátia, anekdotikus szerkesztés.
-
-### 2. A novelláskötetek párhuzama
-- **A tót atyafiak (1881):** 4 terjedelmes elbeszélés; magashegyi ridegség, tiszta lelkű óriások (*Lapaj a híres dudás*, *Az a fekete folt*).
-- **A jó palócok (1882):** 15 tömör novella; lenti lankás falu, balladisztikus kihagyások, babonák és bűntudat (*Bede Anna tartozása*).
-
-### 3. A Beszterce ostroma (1895)
-- **Pongrácz István gróf:** Anakronisztikus jellem, aki a középkori lovagkorban él a 19. század végén.
-- **Társadalomkritika:** A dzsentri illúziók és a kapitalizálódó modern világ összeférhetetlensége.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** Mikszáth stílusa, a romantika és realizmus találkozása az anekdotában.
-2. **Két kötet világa (1 perc):** *A tót atyafiak* és *A jó palócok* térbeli, formai és lélektani ellentéte.
-3. **Beszterce ostroma (1 perc):** Pongrácz István Don Quijote-i szerepe mint a magyar dzsentri önáltatásának szimbóluma.
-4. **Befejezés (30 mp):** Mikszáth hatása a modern magyar regényírás születésére.
-        """,
-        "kviz": [
-            {"k": "A tót atyafiak kötetben 15 rövid novella kapott helyet.", "v": False, "m": "A tót atyafiakban 4 hosszabb, míg A jó palócokban 15 rövid novella van."},
-            {"k": "A Bede Anna tartozása című novellában Erzsi megy el elhunyt nővére helyett a bíróságra.", "v": True, "m": "A tiszta palóc erkölcs és bűnbánat példája."},
-            {"k": "Pongrácz István a modern vasútépítés élharcosa a Beszterce ostromában.", "v": False, "m": "Középkori várúrként éli életét Nedec várában."},
-            {"k": "Mikszáth művészetének alapja az anekdotikus történetmondás.", "v": True, "m": "A szóbeli mesemondásból és apró történetekből építi fel regényeit."}
-        ]
-    },
-    "5. Vajda János költészete": {
-        "alcim": "Lírai magány, a Gina-szerelem és a szimbolizmus hajnala",
-        "kulcsszavak": ["Gina-versek", "Montblanc", "A vaáli erdőben", "A virrasztók"],
-        "audio_szoveg": """
-Vajda János a 19. század második felének legmagányosabb magyar költője. Pályája a kiegyezés utáni Magyarország légüres terében bontakozott ki, ahol a meg nem értettség, a politikai passzivitás miatti keserűség és az egyéni elszigeteltség vált lírájának fő témájává. 
-Költészetének legfontosabb vonulata a végzetes Gina-szerelem, amely évtizedeken át ihlette legnagyobb verseit. A Húsz év múlva című költeményében a híres Montblanc-metafora segítségével fejezi ki érzelmeit: a külvilág felé fagyos, elérhetetlen hegycsúcs képében mutatja meg a lélek mélyén örökké égő, el nem múló szerelmi tüzet. 
-Filozofikus tájlírájának csúcsa A vaáli erdőben, ahol a gyermekkori táj békéje és a panteista természeti csend révén jut el a halállal való megbékélésig. Vajda új szimbólumalkotása már közvetlenül az Ady-féle modern szimbolizmust készíti elő.
-        """,
-        "vazlat": """
-### 1. Történelmi és lélektani háttér
-- A kiegyezés utáni csalódottság és politikai kiábrándulás (*A virrasztók*).
-- A magány kultusza: az átokverte művész toposza.
-
-### 2. A Gina-líra fejlődése
-- Kratochwill Zsuzsanna (Gina) iránti viszonzatlan és pusztító szerelem.
-- *Húsz év múlva (1876):* A Montblanc-hasonlat – a fagyos külső és az izzó belső magma kettőssége.
-- *Harminc év után (1892):* Kései rezignáció, a vágyak végleges kihűlése.
-
-### 3. Filozofikus csend-versek
-- *A vaáli erdőben:* Panteisztikus egység a természettel; a megnyugvás és halálfélelem feloldása.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** Vajda mint híd Petőfi és Ady világa között; a korszak passzivitása.
-2. **Gina-szerelem (1 perc):** A Montblanc-metafora elemzése (*Húsz év múlva*) és az örök szerelem mítosza.
-3. **Filozofikus magány (1 perc):** *A vaáli erdőben* csend-motívuma és a természeti harmónia.
-4. **Befejezés (30 mp):** A modern magyar szimbolizmus előkészítésének méltatása.
-        """,
-        "kviz": [
-            {"k": "Vajda János szerelmi költészetének múzsája Kratochwill Zsuzsanna volt, akit Ginának nevezett.", "v": True, "m": "A Gina-ciklus egész életét végigkísérte."},
-            {"k": "A Montblanc-metafora a 'Harminc év után' című vers központi képe.", "v": False, "m": "A Montblanc-hasonlat a Húsz év múlva című költeményben található."},
-            {"k": "A vaáli erdőben a halállal való megbékélés és természeti csend verse.", "v": True, "m": "A gyermekkori erdő panteista békéjét énekli meg."}
-        ]
-    },
-    "6. XIX. századi dráma: Ibsen és Csehov": {
-        "alcim": "Az analitikus dramaturgia és a csehovi hangulatdráma megújítása",
-        "kulcsszavak": ["Henrik Ibsen", "Analitikus dráma", "Nóra", "Anton Csehov", "Sirály", "Cseresznyéskert"],
-        "audio_szoveg": """
-A 19. század végén a polgári színház gyökeres formai és tartalmi átalakuláson ment keresztül. Két új irányzat határozta meg a modern európai drámafejlődést: a Henrik Ibsen által tökéletesített analitikus dráma és az Anton Csehov nevéhez fűződő hangulatdráma. 
-Ibsen a Nóra vagy Babaszoba című művében az antik sorstragédiák szerkesztésmódját ülteti át a modern polgári otthonba. A drámai feszültséget nem a jelen eseményei, hanem a múltban elkövetett tettek fokozatos napvilágra kerülése adja. Nóra felismeri, hogy házasságában csupán játékszer volt, és az egyéni autonómia megteremtéséért elhagyja a családját. 
-Ezzel szemben Csehov darabjaiban, mint a Sirály vagy a Cseresznyéskert, nincsenek látványos tettek és nyílt konfliktusok. Hősei cselekvésképtelenek, egymás mellett elbeszélő monológokban élnek. A drámát a belső hangulat, a líraiság és az elmúlás atmoszférája uralja.
-        """,
-        "vazlat": """
-### 1. Henrik Ibsen: Az analitikus technika
-- **Módszer:** A cselekmény a múltbeli titkok lépésről lépésre történő kiderüléséből fakad.
-- **Nóra (Babaszoba, 1879):** A polgári látszatboldogság lelepleződése; a női emancipáció és az önálló személyiség joga.
-
-### 2. Anton Csehov: A drámaiatlan dráma (Hangulatdráma)
-- **Módszer:** Cselekményszegénység, párhuzamos monológok, ki nem mondott gondolatok (*szubtextus*).
-- **Fő művek:** *Sirály*, *Három nővér*, *Cseresznyéskert*.
-- **Alaptéma:** Az orosz nemesség és értelmiség lecsúszása, életképtelensége és céltalan vágyakozása.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** A klasszikus konfliktusos dráma felbomlása a 19. század végén.
-2. **Ibsen analitikája (1 perc):** A múlt feltárása mint konfliktusforrás a *Nóra* példáján keresztül.
-3. **Csehov atmoszférateremtése (1 perc):** A cselekvésképtelenség és a párhuzamos monológok technikája.
-4. **Befejezés (30 mp):** A modern színjátszásra gyakorolt alapvető hatás összehasonlítása.
-        """,
-        "kviz": [
-            {"k": "Ibsen darabjaiban a drámai robbanást a múltban történt titkok kiderülése idézi elő.", "v": True, "m": "Ez az analitikus dramaturgia lényege."},
-            {"k": "Nóra a darab végén megalkuszik férjével és otthon marad.", "v": False, "m": "Nóra elhagyja férjét és gyermekeit, hogy önálló emberré válhasson."},
-            {"k": "Csehov színműveire a pergő párbeszédek és folyamatos kardcsaták jellemzőek.", "v": False, "m": "A passzivitás, elvágyódás és a hangulati elemek uralják műveit."}
-        ]
-    },
-    "7. A Nyugat folyóirat": {
-        "alcim": "A modern magyar irodalom zászlóbontása, nemzedékek és hatások",
-        "kulcsszavak": ["1908", "Osvát Ernő", "Ignotus", "Mikes-emlékérem", "Három nemzedék"],
-        "audio_szoveg": """
-A huszadik századi magyar kultúra legfontosabb szellemi műhelye a Nyugat folyóirat volt, amely 1908. január elsején indult útjára és Babits Mihály 1941-es haláláig létezett. A lap emblémája Beck Ödön Fülöp Mikes Kelemen-emlékérme lett, amely a hűséget és a művészi elhivatottságot szimbolizálta. 
-A lap célja a magyar irodalom felzárkóztatása volt a fejlett nyugat-európai művészeti szintre, megteremtve a teljes esztétikai függetlenséget. A szerkesztőség meghatározó alakja Ignotus főszerkesztő és a zseniális ízlésű szerkesztő, Osvát Ernő volt. 
-A folyóirat három egymást követő nemzedék tehetségeit tömörítette. Az első nagy generációhoz tartozott Ady Endre, Babits Mihály, Kosztolányi Dezső és Móricz Zsigmond. A második nemzedéket Szabó Lőrinc és Illyés Gyula fémjelezte, míg a harmadik hullámban tűnt fel Radnóti Miklós, Weöres Sándor és Szerb Antal.
-        """,
-        "vazlat": """
-### 1. A folyóirat indulása és céljai
-- **Kezdet:** 1908. január 1. – 1941 (Babits halála).
-- **Eszmény:** Európaiság, művészi szabadság (*l'art pour l'art*), szakítás a konzervatív akadémizmussal.
-- **Vezetői:** Ignotus (főszerkesztő), Osvát Ernő (irodalmi válogató zseni), Hatvany Lajos (mecénás).
-
-### 2. A Nyugat három nagy nemzedéke
-- **1. nemzedék:** Ady Endre, Babits Mihály, Kosztolányi Dezső, Móricz Zsigmond, Tóth Árpád, Juhász Gyula, Kaffka Margit.
-- **2. nemzedék (1920-as évek):** Szabó Lőrinc, Illyés Gyula, Németh László, Márai Sándor.
-- **3. nemzedék (1930-as évek):** Radnóti Miklós, Weöres Sándor, Vas István, Szerb Antal.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** 1908 mint korszakhatár a magyar kultúrában, a lap indulása.
-2. **Szerkesztőségi műhelymunka (1 perc):** Osvát Ernő ízlésformáló szigora és az esztétikai autonómia megteremtése.
-3. **A nemzedékek íve (1 perc):** Az 1. nemzedék stílusforradalma és a későbbi nemzedékek beilleszkedése.
-4. **Befejezés (30 mp):** A Nyugat kánonképző szerepe a mai magyar műveltségben.
-        """,
-        "kviz": [
-            {"k": "A Nyugat folyóirat címoldalán a Mikes Kelemen-emlékérem szerepelt.", "v": True, "m": "Beck Ödön Fülöp alkotása a bujdosó hűség jelképe."},
-            {"k": "A Nyugat folyóirat 1908 és 1941 között működött.", "v": True, "m": "Babits Mihály 1941-es halálával szűnt meg a folyóirat."},
-            {"k": "Radnóti Miklós a Nyugat első nemzedékének tagja volt.", "v": False, "m": "Radnóti a harmadik nemzedékhez tartozott."}
-        ]
-    },
-    "8. Ady Endre költészete": {
-        "alcim": "Szimbolizmus, magyarságtudat, lírai párharc és háborús apokalipszis",
-        "kulcsszavak": ["Új versek 1906", "A magyar Ugaron", "Léda vs. Csinszka", "Harc a Nagyúrral"],
-        "audio_szoveg": """
-Ady Endre 1906-ban megjelent Új versek című kötetével gyökeresen megújította a magyar költészet nyelvét és szemléletét. Művészetének gerincét a modern szimbolizmus alkotja: egyéni, többrétegű szimbólumrendszert épített fel, amelyben az Ugar, a Bakony, a Hortobágy és a Pénz mitikus jelentést kapnak. 
-Költészete több nagy tematikus pillérre támaszkodik. Magyarság-verseiben, mint A magyar Ugaron című szonettben, a nemzeti elmaradottságot és a kultúra pusztulását fájlalja ostorozó hazaszeretettel. Pénz-verseiben a Disznófejű Nagyúrral vív megalázó harcot az alkotói létért és szabadságért. Szerelmi lírája kettős arculatú: a Léda-verseket a gyötrelmes párharc és a pusztulásvágy uralja, míg a Boncza Bertával kötött házassága alatt a Csinszka-versek a menedéket és védelmet jelentik a világháború tombolása idején.
-        """,
-        "vazlat": """
-### 1. Az 1906-os költői forradalom
-- *Új versek:* Új költői szerep, provokatív magatartás, kötetkompozíciós tudatosság.
-- **Ars poetica:** *Góg és Magóg fia vagyok én...*, *Új vizeken járok* (hagyomány és modernitás feszültsége).
-
-### 2. Főbb tematikus vonulatok
-- **A magyarság toposzai:** *A magyar Ugaron*, *A Tisza-parton* (az elmaradott, parlagon heverő táj mint a szellemi pusztulás metaforája).
-- **A létharc és pénz:** *Harc a Nagyúrral* (a disznófejű bálvány és az emberi méltóság).
-- **A szerelmi líra kettőssége:**
-  - *Léda-szerelem:* Diszharmonikus küzdelem, halálhangulat (*Héja-nász az avaron*, *Elbocsátó, szép üzenet*).
-  - *Csinszka-szerelem:* Békés menedék és biztonságkeresés (*Őrizem a szemed*).
-- **Háborús látomások:** *Ember az embertelenségben*, *Emlékezés egy nyár-éjszakára*.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** 1906: az *Új versek* robbanásszerű hatása és a szimbolizmus térhódítása.
-2. **Magyarság és egzisztencia (1 perc):** Az Ugar sár-motívuma és a disznófejű Nagyúr elleni küzdelem.
-3. **A szerelmi líra pólusai (1 perc):** A Léda-féle pusztító héjanász és a Csinszka-féle menedéklíra ellentéte.
-4. **Befejezés (30 mp):** A háborús költészet humánuma (*Ember az embertelenségben*).
-        """,
-        "kviz": [
-            {"k": "Ady Endre korszakalkotó kötete az Új versek 1906-ban látott napvilágot.", "v": True, "m": "Ez a mű nyitotta meg a modern magyar líra korszakát."},
-            {"k": "A Harc a Nagyúrral költeményben a Nagyúr a nemzeti dicsőséget jelképezi.", "v": False, "m": "A sertésfejű Nagyúr a pénz és az anyagi kiszolgáltatottság kegyetlen bálványa."},
-            {"k": "A Héja-nász az avaron című vers a Léda-korszak diszharmonikus szerelmét ábrázolja.", "v": True, "m": "A ragadozó madarak násza a halálba zuhanó szerelmet mintázza."}
-        ]
-    },
-    "9. Babits Mihály: Jónás könyve": {
-        "alcim": "A prófétai szerep, a morális felelősségvállalás és a Jónás imája",
-        "kulcsszavak": ["Jónás könyve", "Jónás imája", "Ninive", "Cinkos, aki néma", "1938"],
-        "audio_szoveg": """
-Babits Mihály életművének összefoglaló csúcsa az 1938-ban megjelent Jónás könyve és annak lírai függeléke, a Jónás imája. A mű keletkezésekor a költő a gégeműtétje után a halálos kórral küzdött, miközben Európában feltartóztathatatlanul terjedt a fasizmus fenyegetése. 
-A mű egy ószövetségi parafrázis, ám Babits a prófétát emberi esendőségekkel ruházza fel. Jónás el akar menekülni az elhívás elől, kényelmes életre vágyik, ám a cethal gyomrában megtisztulva belátja, hogy nem bújhat ki a kötelessége alól. Elmegy a bűnös Ninivébe, hogy hirdesse az igét. A mű legfontosabb etikai imperatívusza így szól: mert vétkesek közt cinkos, aki néma. 
-A záró Jónás imája alázatos fohász a tiszta, halálig kitartó költői beszédért.
-        """,
-        "vazlat": """
-### 1. A mű keletkezése és lélektana
-- 1938: Babits gégerákja (beszélőfüzetek) és a totalitárius eszmék árnyéka.
-- Műfaj: Epikus költemény, bibliai parafrázis öniróniával és groteszk elemekkel.
-
-### 2. A négy rész szerkezeti dinamikája
-- **1. rész:** A menekülés és a cethal gyomra (a prófétai sors elkerülhetetlensége).
-- **2. rész:** Bűnbánat és ima a hal gyomrában (megtisztulás).
-- **3. rész:** Ninive bűnei és kigúnyolt próféciája (az igazság kimondása).
-- **4. rész:** A tök növekedése és elszáradása – az Úr tanítása a kegyelemről és a világ fenntartásáról.
-
-### 3. Jónás imája (1939)
-- Lírai ars poetica: Alázat a sors és az alkotói küldetés előtt a halál árnyékában.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** 1938 sorsfordító éve, a prófétaszerep megújítása Babits kései korszakában.
-2. **Jónás emberi portréja (1 perc):** A feladat elől menekülő kisember groteszk vonásai és a cethal általi beavatás.
-3. **Ninive és az etikai imperatívusz (1 perc):** A némák bűnrészessége és az isteni irgalom összefüggése.
-4. **Befejezés (30 mp):** A *Jónás imája* mint a halállal szembenéző tiszta költészet vallomása.
-        """,
-        "kviz": [
-            {"k": "A Jónás könyve 1938-ban született Babits súlyos betegsége idején.", "v": True, "m": "A gégeműtétje után írta a fasizmus árnyékában."},
-            {"k": "A 'Mert vétkesek közt cinkos, aki néma' gondolat a Jónás könyvében hangzik el.", "v": True, "m": "Az értelmiségi felelősségvállalás legfontosabb etikai parancsa."},
-            {"k": "Az Úr végül azonnal elpusztítja Ninivét Jónás követelésére.", "v": False, "m": "Az Úr megkegyelmez Ninivének, megmutatva a teremtés fenntartásának fontosságát."}
-        ]
-    },
-    "10. Móricz Zsigmond prózája": {
-        "alcim": "A paraszti világ és dzsentri réteg naturalista és kritikai ábrázolása",
-        "kulcsszavak": ["Naturalizmus", "Tragédia", "Barbárok", "Úri muri", "Szakhmáry Zoltán"],
-        "audio_szoveg": """
-Móricz Zsigmond a magyar kritikai realizmus és naturalizmus legnagyobb elbeszélője. Művészete gyökeres szakítást jelentett a 19. századi idillikus, népieskedő parasztábrázolással. A magyar valóságot a maga kíméletlen, biológiai és társadalmi meztelenségében mutatta be. 
-Az 1909-es Tragédia című novellájában Kis János zsellér alakján keresztül a biológiai ösztönökbe és nyomorba szorult ember sorsát ábrázolja, akinek egyetlen lázadása a gazda lakodalmán való mértéktelen evésbe torkollik. Az 1931-es Barbárok balladisztikus tömörséggel mutatja be a pusztai pásztorok nyers, civilizációtól elzárt ösztönvilágát és a kapzsiságból elkövetett gyilkosságot. 
-Későbbi nagyregényében, az Úri muriban a magyar dzsentri pusztulásra ítélt világát vizsgálja Szakhmáry Zoltán önsorsrontó mulatozásán keresztül.
-        """,
-        "vazlat": """
-### 1. A realista-naturalista stílusreform
-- Szakítás a népszínművek hamis idilljével; ösztönök, éhség, kapzsiság, társadalmi determináció.
-
-### 2. Novellisztika
-- **Tragédia (1909):** Kis János karaktere; az ember mint biológiai lény; az evés abszurd bosszúja és a zsíros húsba való belefulladás.
-- **Barbárok (1931):** Háromrészes balladisztikus szerkezet; Bodri juhász meggyilkolása a rézkilincses szíjért; a civilizálatlan pusztai ösztönvilág.
-
-### 3. A dzsentri társadalmi csődje
-- **Úri muri (1928):** Szakhmáry Zoltán alakja; tenni akarás vs. a talajvesztett nemesi osztály dorbézolása és önpusztítása.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** Móricz fellépése a Nyugatban és a hamis népiesség felszámolása.
-2. **A szegénység ösztönei (1 perc):** *Tragédia* (Kis János) és a *Barbárok* naturalista lélektana.
-3. **A nemesség válsága (1 perc):** Az *Úri muri* dorbézolása és Szakhmáry Zoltán bukása.
-4. **Befejezés (30 mp):** A kritikai realizmus máig ható tanulságai.
-        """,
-        "kviz": [
-            {"k": "A Tragédia című novellában Kis János a túlzott evés miatt fullad meg.", "v": True, "m": "A nyomorban élő zsellér egyetlen groteszk lázadása az evés volt."},
-            {"k": "A Barbárok című novellában Bodri juhászt rézkilincses szíjáért ölik meg a veres juhászok.", "v": True, "m": "Az értelmetlen pusztai kapzsiság balladisztikus példája."},
-            {"k": "Szakhmáry Zoltán az Úri muriban a sikeres, modern mintagazdaság megalapítója.", "v": False, "m": "Szakhmáry belebukik tehetetlenségébe és felgyújtja saját birtokát."}
-        ]
-    },
-    "11. Kosztolányi Dezső: Édes Anna": {
-        "alcim": "A lélektani regény, a megalázottság tudattalan robbanása és a humanizmus",
-        "kulcsszavak": ["Édes Anna", "Vizy család", "Moviszter doktor", "1919", "Freudizmus"],
-        "audio_szoveg": """
-Kosztolányi Dezső 1926-ban megjelent Édes Anna című regénye a magyar lélektani próza remekműve. A történet történelmi kerete pontos: 1919 nyarán, a Tanácsköztársaság bukása és a román megszállás napjaiban indul Budapesten. 
-A regény cselekménye a tiszta lelkű cselédlány, Édes Anna és a méltóságos Vizy család kapcsolatát mutatja be. Vizyné büszkén mintagépként kezeli Annát, teljesen megfosztva őt emberi személyiségétől. Amikor a ház úrfi rokona, Jancsi elcsábítja, majd terhesen magára hagyja, a hosszú ideje elfojtott sérelmek és megaláztatások a tudattalan mélyén felhalmozódnak. Egy éjszaka a feszültség ösztönös kettős gyilkosságban robban ki. 
-A bírósági tárgyaláson egyedül a halálos beteg Moviszter doktor áll ki Anna mellett, képviselve a tiszta irgalmat és az emberi méltóság sérthetetlenségét.
-        """,
-        "vazlat": """
-### 1. Történelmi keret és pszichoanalízis
-- Kezdőpont: 1919. július 31. (Kun Béla elmenekülése Krisztinavárosból).
-- Sigmund Freud lélektani hatása: a tudatalatti elfojtások felgyülemlése (*ösztön-én vs. felettes-én*).
-
-### 2. A dehumanizálás folyamata
-- **Anna tárgyiasítása:** Mintagép, aki nem eszik, nem alszik, tökéletesen takarít.
-- **Vizyné karaktere:** Elvetélt anyaság, lelki sivárság, birtoklási vágy.
-- **Jancsi úrfi árulása:** Felelőtlen csábítás és megalázó eldobás.
-- **A bűntett:** Nem előre megfontolt gyilkosság, hanem a felgyűlt fojtogató feszültség ösztönös kitörése.
-
-### 3. A regény etikai zárása
-- **Moviszter doktor:** A keresztény humanizmus és részvét hangja a rideg bíróság előtt.
-        """,
-        "szobeli": """
-**🎙️ 3 perces strukturált felelet:**
-1. **Bevezetés (30 mp):** A freudi lélektan hatása és az 1919-es történelmi háttér jelentősége.
-2. **Anna tárgyiasítása (1 perc):** A cselédsors mechanizálása és Vizyné rideg önzése.
-3. **A gyilkosság lélektana (1 perc):** Miért nem hidegvérű gaztett a késelés, hanem pszichikai robbanás.
-4. **Befejezés (30 mp):** Moviszter doktor humánuma mint Kosztolányi legfőbb üzenete.
-        """,
-        "kviz": [
-            {"k": "Édes Anna a regény cselekménye szerint előre kitervelt politikai bosszúból gyilkol.", "v": False, "m": "Anna tette az elfojtott megaláztatások ösztönös, tudattalan robbanása."},
-            {"k": "A regényben Moviszter doktor az egyetlen, aki emberi méltósággal és részvéttel tekint Annára.", "v": True, "m": "Moviszter képviseli az író humanista értékrendjét."},
-            {"k": "A regény nyitójelenete Kun Béla repülőgépes elmenekülésének pletykájával indul 1919-ben.", "v": True, "m": "A Tanácsköztársaság bukása a történelmi díszlet."}
+            {"k": "Az ember tragédiája összesen 15 színből áll.", "v": True, "m": "4 keretszín és 11 történelmi szín alkotja."},
+            {"k": "Ádám a párizsi színből kiábrándultan és csalódottan ébred fel.", "v": False, "m": "Párizs az egyetlen szín, amiből Ádám hittel és harci kedvvel ébred."},
+            {"k": "A londoni szín végén a szereplők haláltánc kíséretében ugranak a nyitott sírba.", "v": True, "m": "A kapitalista piac zűrzavarának allegorikus lezárása."},
+            {"k": "A falanszter színben Michelangelo és Platón elismerést kapnak zseniális alkotásaikért.", "v": False, "m": "Büntetést kapnak, mert a társadalom tiltja az egyéniséget."},
+            {"k": "Az Úr végső mondata: 'Mondottam, ember: küzdj és bízva bízzál!'.", "v": True, "m": "Az emberi cselekvés örök erkölcsi parancsa."}
         ]
     }
 }
 
 stilusiranyzatok = {
     "Realizmus (19. sz. közepe)": """
-- **Cél:** A társadalmi valóság tárgyilagos, hiteles ábrázolása.
-- **Módszer:** Tipikus jellemek tipikus körülmények között.
-- **Képviselők:** Mikszáth Kálmán, Lev Tolsztoj, Honoré de Balzac.
+### Realizmus (19. század dereka)
+- **Történelmi háttér:** Az ipari forradalom kibontakozása, a polgári társadalmak megszilárdulása és a természettudományos gondolkodás térnyerése.
+- **Központi esztétikai cél:** A valóság sallangmentes, tárgyilagos, hiteles és tipikus ábrázolása.
+- **Módszertan:**
+  - *Tipikus jellemek tipikus körülmények között:* A főhősök nem rendkívüli romantikus titánok, hanem koruk társadalmi rétegének hű képviselői.
+  - *Társadalmi determináció:* Az egyén jellemét és sorsát környezete, neveltetése és anyagi helyzete határozza meg.
+  - *Részletező leírások:* A tárgyi környezet, ruházat, enteriőr és pénzügyi folyamatok aprólékos bemutatása.
+- **Kulcsszerzők:** Honoré de Balzac (*Goriot apó*), Lev Tolsztoj (*Anna Karenina*), Mikszáth Kálmán, Jókai Mór késői korszakának regényei.
     """,
     "Naturalizmus (19. sz. vége)": """
-- **Cél:** A valóság szépítés nélküli, nyers leírása.
-- **Emberkép:** Az ember a biológiai ösztönök és öröklődés rabja.
-- **Képviselők:** Émile Zola, Móricz Zsigmond (*Tragédia*, *Barbárok*).
+### Naturalizmus (19. század vége)
+- **Történelmi és filozófiai háttér:** Darwin evolúcióelmélete, Taine környezetelmélete és a pozitivizmus.
+- **Központi esztétikai cél:** A valóság fotószerű, klinikai és kíméletlen rögzítése, tabutémák (ösztönök, szexualitás, betegség, nyomor) beemelése.
+- **Módszertan:**
+  - *Biológiai determinizmus:* Az ember az öröklött gének, ösztönök és a környezet kiszolgáltatottja.
+  - *A társadalmi mélyrétegek feltárása:* Bűnözés, alkoholizmus, züllés és a nyomor leírása tudományos objektivitással.
+- **Kulcsszerzők:** Émile Zola (*Germinal*, *Nana*), Móricz Zsigmond (*Tragédia*, *Barbárok*).
     """,
     "Impresszionizmus (19. sz. vége – 20. sz. eleje)": """
-- **Cél:** A múló pillanatok, hangulatok, fények megragadása.
-- **Stílusjegyek:** Névszói stílus, erős zeneiség, finom asszociációk.
-- **Képviselők:** Kosztolányi Dezső, Tóth Árpád, Juhász Gyula.
+### Impresszionizmus (19–20. század fordulója)
+- **Központi esztétikai cél:** A pillanatnyi benyomások, tovatűnő hangulatok, színek és fények lírai megragadása.
+- **Formanyelvi sajátosságok:**
+  - Névszói és jelzős stílus, melléknevek halmozása.
+  - Erős zeneiség, alliterációk, asszonáncok, hangulatfestő szavak.
+  - Szinesztézia (érzékelési területek összekapcsolása, pl. *„lila dalra kelt az éjcsend”*).
+- **Kulcsszerzők:** Kosztolányi Dezső, Tóth Árpád, Juhász Gyula, Paul Verlaine.
     """,
     "Szimbolizmus (19. sz. vége – 20. sz. eleje)": """
-- **Cél:** A látható világ mögötti magasabb rendű valóság kifejezése többértelmű képekkel.
-- **Stílusjegyek:** Rejtettség, titokzatosság, gazdag jelképrendszer.
-- **Képviselők:** Baudelaire, Verlaine, Ady Endre, Vajda János.
+### Szimbolizmus (19–20. század fordulója)
+- **Központi esztétikai cél:** A látható világ mögött rejtőző mélyebb, transzcendens igazságok és lelki állapotok sejtetése többértelmű szimbólumokkal.
+- **Formanyelvi sajátosságok:**
+  - Rejtélyesség, titokzatosság és látomásszerűség.
+  - Egyéni, mítoszteremtő jelképrendszer kialakítása.
+  - Zeneiség mint a lélek legközvetlenebb kifejezőeszköze (*„Zenét minékünk, csak zenét!”*).
+- **Kulcsszerzők:** Charles Baudelaire (*A romlás virágai*), Arthur Rimbaud, Ady Endre, Vajda János.
     """
 }
 
@@ -582,10 +449,12 @@ if menupont == "📖 Tételek & Vázlatok":
     </div>
     """, unsafe_allow_html=True)
     
-    tab1, tab2, tab3 = st.tabs(["📝 Részletes írásbeli vázlat", "🎙️ 3 perces szóbeli feleletvázlat", "⚡ Gyors teszt"])
+    tab1, tab2, tab3 = st.tabs(["📚 Részletes tankönyvi elemzés", "🎙️ 3 perces szóbeli feleletvázlat", "⚡ Gyors teszt"])
     
     with tab1:
+        st.markdown("<div class='deep-text'>", unsafe_allow_html=True)
         st.markdown(adat["vazlat"])
+        st.markdown("</div>", unsafe_allow_html=True)
         
     with tab2:
         st.markdown("<div class='oral-box'>", unsafe_allow_html=True)
@@ -628,7 +497,7 @@ elif menupont == "🎧 Hangoskönyv (Monológ)":
     
     col_a1, col_a2 = st.columns([2, 1])
     with col_a1:
-        if st.button(f"▶️ Hangos összefoglaló elindítása ({kivalasztott_hangos})"):
+        if st.button(f"▶️ Hangos monológ elindítása ({kivalasztott_hangos})"):
             with st.spinner("Hangfájl előkészítése és generálása magyar nyelven..."):
                 tts = gTTS(text=adat_hangos["audio_szoveg"].strip(), lang='hu', slow=False)
                 audio_buffer = io.BytesIO()
@@ -636,14 +505,14 @@ elif menupont == "🎧 Hangoskönyv (Monológ)":
                 audio_buffer.seek(0)
                 st.audio(audio_buffer, format="audio/mp3")
                 st.session_state.xp += 25
-                st.success("Jó hallgatást! (+25 XP) 🎧")
+                st.success("Jó tanulást és hallgatást! (+25 XP) 🎧")
                 
-    with st.expander("📖 A monológ szöveges változata (olvasáshoz és követéshez)", expanded=True):
+    with st.expander("📖 A monológ teljes szövege (olvasáshoz és követéshez)", expanded=True):
         st.write(adat_hangos["audio_szoveg"].strip())
 
 # 3. Menüpont: Stílusirányzatok
 elif menupont == "🎨 Stílusirányzatok":
-    st.title("Kulcs Stílusirányzatok")
+    st.title("Kulcs Stílusirányzatok Mélyelemzése")
     for nev, leiras in stilusiranyzatok.items():
         with st.expander(f"📌 {nev}", expanded=True):
             st.markdown(leiras)
