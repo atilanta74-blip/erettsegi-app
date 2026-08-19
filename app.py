@@ -587,7 +587,7 @@ elif menupont == "🤖 AI Érettségi Mentor":
                     prompt = f"Magyar irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
                     
                     response = client.models.generate_content(
-                        model="gemini-2.5-flash",
+                        model="gemini-3.6-flash",
                         contents=prompt
                     )
                     ai_valasz = response.text
