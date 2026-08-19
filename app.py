@@ -527,7 +527,7 @@ tetelek_tortenelem = {
         "alcim": "Hűbéri lánc (feudalizmus), a jobbágyság és a háromnyomásos gazdálkodás",
         "kulcsszavak": ["Senior és Vazallus", "Feudum", "Majorság", "Háromnyomásos gazdálkodás"],
         "audio_szoveg": "A középkori Európa társadalmi és gazdasági rendszere a hűbériségen alapult...",
-        "vazlat": "### I. Hűbériség: Földért katonai szolgálat.\n### II. Uradalom: Majorság, jobbágytelek, robot.\n### III. Technika: Háromnyomásos gazdálkodás.",
+        "vazlat": "### I. Hűbériség: Földért katonai szolgálat.\n### II. Uradalom: Majorság, jobbágytelek, robot.\n### III. Agrártechnika: Háromnyomásos gazdálkodás.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Feudalizmus -> 2. Uradalom -> 3. Technika.",
         "kviz": [{"k": "A háromnyomásos gazdálkodásban a föld 1/3-a pihent.", "v": True, "m": "Az ugar."}]
     },
@@ -558,7 +558,7 @@ tetelek_tortenelem = {
     "8. Az Anjouk kora Magyarországon": {
         "alcim": "Károly Róbert gazdasági reformjai és Nagy Lajos 1351-es törvényei",
         "kulcsszavak": ["Bányabér (Urbura)", "Aranyforint", "Kapuadó", "1351 Ősiség és Kilenced"],
-        "audio_szoveg": "Károly Róbert legyőzte a tartományurakat és gazdasági reformokat hozott...",
+        "audio_szoveg": "Károly Róbert legyőzte a tartományurakat és stabil gazdasági reformokat vezetett be...",
         "vazlat": "### I. Károly Róbert: Urbura, aranyforint, kapuadó, 1335 Visegrád.\n### II. Nagy Lajos (1351): Ősiség, Kilenced.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Károly Róbert -> 2. Visegrád -> 3. Nagy Lajos.",
         "kviz": [{"k": "Az 1351-es ősiség törvénye védte a nemesi birtokot.", "v": True, "m": "Nem lehetett eladni."}]
@@ -575,7 +575,7 @@ tetelek_tortenelem = {
         "alcim": "A Jagelló-kor gyengesége, Mohács tragédiája, kettős királyválasztás és Buda eleste",
         "kulcsszavak": ["1526 Mohács", "Szapolyai és Ferdinánd", "1541 Buda eleste", "Három országrész"],
         "audio_szoveg": "1526. augusztus 29-én a mohácsi síkon megsemmisült a magyar haderő...",
-        "vazlat": "### I. Mohács (1526) -> II. Kettős királyválasztás -> III. Buda eleste (1541): 3 részre szakadás.",
+        "vazlat": "### I. Mohács (1526) -> II. Kettős királyság -> III. Buda eleste (1541): 3 részre szakadás.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Mohács -> 2. Kettős királyság -> 3. Buda eleste.",
         "kviz": [{"k": "Buda 1541-es elfoglalásával szakadt három részre az ország.", "v": True, "m": "Szulejmán csellel vette be."}]
     },
@@ -968,7 +968,7 @@ timeline_matek = [
     {"ev": "1736", "cim": "Leonhard Euler és a Gráfelmélet", "leiras": "A königsbergi hidak problémájának megoldása: a csúcsok, élek és fokszámok összefüggései."}
 ]
 
-# Detektív játék adatbázisok tantárgyanként különválasztva
+# Detektív játék adatbázisok
 detektiv_irodalom = [
     {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A prófétai és értelmiségi felelősségvállalás alaptétele."},
     {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Új vizeken járok"], "info": "Petőfi forradalmi felhívó lírájának remeke."}
@@ -1471,11 +1471,11 @@ elif menupont == "🏆 Nagy Próbavizsga":
             st.error("❌ Értékelés: Elégtelen (1) – Ismételd át a tételeket!")
 
 # -------------------------------------------------------------
-# 9. MENÜPONT: AI ÉRETTSÉGI MENTOR CHAT
+# 9. MENÜPONT: AI ÉRETTSÉGI MENTOR CHAT (Beszéd + Írás)
 # -------------------------------------------------------------
 elif menupont == "🤖 AI Érettségi Mentor":
     st.title("🤖 AI Érettségi Mentor")
-    st.caption("Kérdezz bármilyen Irodalmi, Nyelvtani, Történelmi vagy Matematikai témáról, levezetésről, fogalomról!")
+    st.caption("Kérdezz bátran írásban vagy hanggal Irodalmi, Nyelvtani, Történelmi vagy Matematikai témáról!")
 
     for msg in st.session_state.chat_history:
         if msg["role"] == "user":
@@ -1483,13 +1483,30 @@ elif menupont == "🤖 AI Érettségi Mentor":
         else:
             st.markdown(f"<div class='chat-ai'>🤖 {msg['text']}</div>", unsafe_allow_html=True)
 
+    st.markdown("---")
+    st.subheader("🎤 Hangüzenet küldése a mentornak")
+    audio_mentor = st.audio_input("Kérdezz hangban a mentortól:", key="mentor_audio_input")
+    
+    if audio_mentor is not None:
+        if st.button("🚀 Hangalapú kérdés elküldése"):
+            with st.spinner("A hangüzenet feldolgozása és válasz generálása..."):
+                h_bytes = audio_mentor.read()
+                prompt_m = f"Tapasztalt magyar középiskolai érettségi felkészítő tanár vagy. Válaszolj tömören, pontosan és érthetően a diák csatolt hangalapú kérdésére ({tantargy_cimke} tantárgy keretében)."
+                ai_valasz = ai_generalas(prompt_m, audio_bytes=h_bytes, mime_type="audio/wav")
+                st.session_state.chat_history.append({"role": "user", "text": "🎙️ *(Hangüzenet elküldve)*"})
+                st.session_state.chat_history.append({"role": "ai", "text": ai_valasz})
+                st.session_state.xp += 15
+                st.rerun()
+
+    st.markdown("---")
+    st.subheader("⌨️ Írásbeli kérdés feltevése")
     with st.form("mentor_chat_form", clear_on_submit=True):
         felh_kerdes = st.text_input("Írd be a kérdésed:")
         kuld = st.form_submit_button("Küldés")
         
         if kuld and felh_kerdes:
             st.session_state.chat_history.append({"role": "user", "text": felh_kerdes})
-            prompt = f"Tapasztalt magyar középiskolai érettségi felkészítő tanár vagy. Válaszolj tömören, pontosan és érthetően a diák kérdésére: {felh_kerdes}"
+            prompt = f"Tapasztalt magyar középiskolai érettségi felkészítő tanár vagy. Válaszolj tömören, pontosan és érthetően a diák kérdésére ({tantargy_cimke} tantárgy keretében): {felh_kerdes}"
             ai_valasz = ai_generalas(prompt)
             st.session_state.chat_history.append({"role": "ai", "text": ai_valasz})
             st.session_state.xp += 10
