@@ -18,24 +18,37 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# Stílusok (javított fájlfeltöltő láthatósággal)
+# Stílusok (teljesen sötétre igazított fájlfeltöltővel és gombbal)
 st.markdown("""
 <style>
     .stApp { background-color: #0b0f19; color: #f3f4f6; }
     .css-1d391kg, .stSidebar { background-color: #111827 !important; border-right: 1px solid #1f2937; }
     p, .stMarkdown, div[data-testid="stMarkdownContainer"] p { color: #f3f4f6 !important; }
+    
     .stButton>button, .stDownloadButton>button, div[data-testid="stFormSubmitButton"]>button {
         background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
         color: #ffffff !important; font-weight: 700 !important; border-radius: 10px !important; padding: 10px 24px !important;
     }
+    
     div[data-testid="stExpander"] { background-color: #1f2937 !important; border: 1px solid #4b5563 !important; border-radius: 10px !important; }
     div[data-testid="stExpander"] details summary { background-color: #1e1b4b !important; color: #ffffff !important; font-weight: 700 !important; padding: 12px !important; }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea { background-color: #1f2937 !important; color: #ffffff !important; border: 1px solid #4b5563 !important; border-radius: 8px !important; }
     
-    /* Fájlfeltöltő stílus igazítás a sötét témához */
+    /* Fájlfeltöltő teljes sötét téma stílusozása */
     [data-testid="stFileUploader"] { background-color: #111827 !important; padding: 15px; border-radius: 12px; border: 1px solid #374151; }
     [data-testid="stFileUploader"] section { background-color: #1f2937 !important; border: 2px dashed #6366f1 !important; }
     [data-testid="stFileUploader"] span, [data-testid="stFileUploader"] small, [data-testid="stFileUploader"] div { color: #f3f4f6 !important; }
+    
+    /* A fájlfeltöltő belsejében lévő Upload gomb sötétítése */
+    [data-testid="stFileUploader"] button {
+        background-color: #374151 !important;
+        color: #ffffff !important;
+        border: 1px solid #4b5563 !important;
+    }
+    [data-testid="stFileUploader"] button:hover {
+        background-color: #4f46e5 !important;
+        color: #ffffff !important;
+    }
 
     .stat-badge { background: linear-gradient(135deg, #6366f1, #a855f7); padding: 8px 16px; border-radius: 20px; font-weight: 700; display: inline-block; margin-right: 8px; }
     .topic-card { background-color: #1f2937; border: 1px solid #374151; border-radius: 16px; padding: 24px; margin-bottom: 20px; }
@@ -49,7 +62,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# ADATBÁZISok
+# ADATBÁZISOK
 # -------------------------------------------------------------
 tetelek_irodalom = {
     "1. Arany János balladái": {
