@@ -1,23 +1,24 @@
 import io
 import os
+import random
 import streamlit as st
 from fpdf import FPDF
 from google import genai
 from gtts import gTTS
 
 st.set_page_config(
-    page_title="Irodalom Érettségi Platform - Edited by Nagy Attila",
-    page_icon="✨",
+    page_title="Érettségi Felkészítő Központ - Edited by Nagy Attila",
+    page_icon="🎓",
     layout="wide"
 )
 
-# Háttérben tárolt kulcs automatikus betöltése
+# Háttérben tárolt Secrets kulcs automatikus betöltése
 def get_api_key():
     if "GEMINI_API_KEY" in st.secrets:
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# Astra AI prémium stílusok - tökéletes gomb- és szövegkontraszttal
+# Astra AI stílusú prémium UI és vizuális elemek
 st.markdown("""
 <style>
     .stApp { background-color: #0b0f19; color: #f3f4f6; }
@@ -68,6 +69,16 @@ st.markdown("""
         display: inline-block;
         margin-right: 8px;
     }
+    .subject-pill {
+        background: #1e1b4b;
+        border: 1px solid #6366f1;
+        padding: 6px 14px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 12px;
+    }
     .topic-card {
         background-color: #1f2937;
         border: 1px solid #374151;
@@ -111,6 +122,13 @@ st.markdown("""
         padding: 20px;
         margin-bottom: 15px;
     }
+    .timeline-item {
+        background-color: #1f2937;
+        border-left: 4px solid #a855f7;
+        padding: 16px 20px;
+        margin-bottom: 15px;
+        border-radius: 0 12px 12px 0;
+    }
     .chat-user {
         background-color: #4f46e5;
         color: white;
@@ -132,411 +150,395 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 11 Mély, tankönyvi szintű érettségi tétel adatbázisa
-tetelek = {
+# -------------------------------------------------------------
+# 1. MAGYAR IRODALOM TÉTELTÁR (11 Tétel)
+# -------------------------------------------------------------
+tetelek_irodalom = {
     "1. Arany János balladái": {
-        "alcim": "A ballada műfajelmélete, a nagykőrösi és margitszigeti balladaköltészet mélyelemzése",
-        "kulcsszavak": ["Tragédia dalban elbeszélve", "Nagykőrös", "Őszikék", "Ágnes asszony", "Szondi két apródja", "A walesi bárdok", "Híd-avatás"],
-        "audio_szoveg": """
-Arany János a magyar irodalom történetének legnagyobb balladaírója. A ballada műfaját Greguss Ágost esztéta nyomán tragédia dalban elbeszélveként szoktuk meghatározni, ami arra utal, hogy a líra, az epika és a dráma műnemi jegyei egyszerre jelennek meg benne. A művek sűrített feszültségét az úgynevezett balladai homály, a kihagyásos szerkesztésmód és a gyors idősíkváltás teremti meg. 
-Arany balladaművészete két meghatározó alkotói korszakra bontható. Az első az 1850-es évek nagykőrösi időszaka. A szabadságharc leverését követő Bach-korszak elnyomásában a költő történelmi allegóriákkal ébresztette a nemzet lelkiismeretét. A walesi bárdok és a Szondi két apródja a zsarnoksággal szembeni megalkuvást nem ismerő hűség örök emlékművei. Ugyanebben az időszakban születtek meg a lélektani balladák is: az Ágnes asszonyban a bűn letörölhetetlensége miatti tébolyt, a Tetemre hívásban pedig az istenítélet drámai mechanizmusát mutatja be. 
-A második nagy korszak az 1877-es margitszigeti Őszikék ideje. A Kapcsos könyvbe írt kései művekben, például a Híd-avatásban, már a felgyorsult, modern nagyváros elidegenedése, a társadalmi felelőtlenség és az öngyilkosok tragikus haláltánca áll a középpontban.
-        """,
+        "alcim": "A ballada műfajelmélete, nagykőrösi és margitszigeti korszak",
+        "kulcsszavak": ["Tragédia dalban elbeszélve", "Nagykőrös", "Őszikék", "Ágnes asszony", "Szondi két apródja", "A walesi bárdok"],
+        "audio_szoveg": "Arany János a magyar irodalom legnagyobb balladaírója. A műfajt Greguss Ágost nyomán tragédia dalban elbeszélveként határozzuk meg, mert egyesíti a líra, epika és dráma sajátosságait...",
         "vazlat": """
-### I. A műfaj elméleti és esztétikai meghatározása
-- **A három műnem találkozása:** Líra (dalforma, dallam, rímek), Epika (cselekmény, elbeszélő), Dráma (tragikus konfliktus, dialógusok).
-- **Formanyelvi sajátosságok:**
-  - *Balladai homály:* Az elbeszélő szándékosan homályban hagy részleteket; az olvasó képzeletére bízza az összefüggéseket.
-  - *Ellipszis (kihagyás):* Az átvezetések elhagyása, ami gyorsítja a cselekmény ritmusát.
-  - *Refrén:* Érzelmi nyomatékosítás és feszültségteremtés (*„Könyörülj, Jézus, a sok szegény bűnösön!”*).
+### I. A műfaj elméleti meghatározása
+- **Három műnem szintézise:** Lírai forma, epikus cselekmény, drámai konfliktusok és dialógusok.
+- **Formai sajátosságok:** Balladai homály, ellipszis (kihagyás), sűrítés, refrén.
 
----
+### II. Nagykőrösi korszak (1850-es évek)
+- **Történelmi-allegorikus balladák:** *A walesi bárdok* (szellemi meg nem alkuvás), *Szondi két apródja* (kétszólamú hűségének).
+- **Lélektani balladák:** *Ágnes asszony* (a bűntudat és megbomló elme drámája, lepedőmosás).
 
-### II. A nagykőrösi korszak (1850-es évek)
-- **Történelmi-allegorikus balladák:**
-  - *A walesi bárdok (1857):* Ferenc József látogatása ellen írt morális kiáltvány; az 500 bárd halála a szellemi függetlenség és a nemzeti hűség örök szimbóluma.
-  - *Szondi két apródja (1856):* Kétszólamú szerkesztés; a hős Szondi dicsérete felesel Ali pasa szolgájának csábító ígéreteivel.
-- **Lélektani balladák:**
-  - *Ágnes asszony (1853):* A bűntudat és az elmezavar folyamata; a patakban mosott véres lepedő a letörölhetetlen bűn szimbóluma.
-
----
-
-### III. Az Őszikék korszaka (1877, Margitsziget)
-- **Híd-avatás:** Modern haláltánc (*danse macabre*); a nagyvárosi elidegenedés és céltalanság elől a halálba menekülő társadalmi rétegek bemutatása.
+### III. Őszikék korszak (1877, Margitsziget)
+- *Híd-avatás:* Nagyvárosi modern haláltánc (*danse macabre*), társadalmi felelősség.
         """,
-        "szobeli": """
-**🎙️ Részletes 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (40 mp):** Greguss Ágost műfaji meghatározása, a 3 műnem szintézise, formai jegyek (homály, ellipszis, sűrítés).
-2. **Nagykőrös (70 mp):** Történelmi ellenállás (*A walesi bárdok*, *Szondi két apródja*) és lélektani bűntudat (*Ágnes asszony* lepedőmosása).
-3. **Őszikék (40 mp):** 1877, Margitsziget, Kapcsos könyv. A *Híd-avatás* nagyvárosi haláltánca.
-4. **Befejezés (30 mp):** A klasszikus magyar ballada csúcspontjának összegzése.
-        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Bevezetés (Greguss definíció) -> 2. Nagykőrös (Walesi bárdok, Ágnes asszony) -> 3. Őszikék (Híd-avatás) -> 4. Összegzés.",
         "kviz": [
-            {"k": "A balladát Greguss Ágost 'tragédia dalban elbeszélve' névvel illette.", "v": True, "m": "A líra, epika és dráma ötvözésére utal."},
-            {"k": "A walesi bárdok nyíltan, burkolás nélkül támadta Ferenc Józsefet.", "v": False, "m": "Allegorikus formában, a walesi monda köntösében fogalmazta meg az ellenállást."},
-            {"k": "Az Ágnes asszony lepedőmosása a bűn letörölhetetlenségének lélektani szimbóluma.", "v": True, "m": "A kényszeres mosás a megbomló elme belső drámája."}
+            {"k": "A balladát Greguss Ágost 'tragédia dalban elbeszélve' névvel illette.", "v": True, "m": "A három műnem találkozására utal."},
+            {"k": "Az Ágnes asszony lepedőmosása a bűn letörölhetetlenségének szimbóluma.", "v": True, "m": "A kényszeres mosás a lelkiismeret-furdalást jelzi."}
         ]
     },
     "2. Jókai Mór: Az arany ember": {
-        "alcim": "A romantika és realizmus szintézise, a polgári meghasonlás és a Senki szigete utópiája",
-        "kulcsszavak": ["Timár Mihály", "Senki szigete", "Timea és Noémi", "Ali Csorbadzsi", "Krisztyán Tódor", "Balaton"],
-        "audio_szoveg": """
-Jókai Mór 1872-ben megjelent regénye, Az arany ember az író legérettebb és legszemélyesebb alkotása. Bár az elbeszélésmód hordozza a romantika gazdag mesemondását és nagy léptékű fordulatait, a társadalmi környezetrajz és a főhős lélektani vívódása már a realizmus mélységeit idézi. 
-A cselekmény fókuszában Timár Mihály áll, a zseniális polgári vállalkozó, akinek minden anyagi vállalkozását siker koronázza, magánéletében és lelkiismeretében mégis mélyen boldogtalan. A mű központi konfliktusa egy kettős világmodellre épül fel. Az egyik oldalon a rideg polgári társadalom áll, a komáromi és bécsi kapitalista világ a hálából feleségül vett Timeával, akinek szoborszerű hidegsége fojtogató. A másik pólust a Senki szigete jelenti: a pénz és államhatalom nélküli természeti paradicsom Noémi őszinte, természetes szerelmével. 
-Timár belső hasadtsága addig nem oldódhat fel, amíg a civilizációhoz köti a neve és vagyona. A véletlen szerencse és Krisztyán Tódor halála teremti meg a lehetőséget a teljes újjászületésre.
-        """,
+        "alcim": "Romantika és realizmus szintézise, polgári meghasonlás és a Senki szigete",
+        "kulcsszavak": ["Timár Mihály", "Senki szigete", "Timea és Noémi", "Ali Csorbadzsi", "Krisztyán Tódor"],
+        "audio_szoveg": "Jókai Mór 1872-es Az arany ember című regénye az író legszemélyesebb alkotása, melyben a romantika és realizmus elemei ötvöződnek...",
         "vazlat": """
 ### I. Műfaj és stílusszintézis
-- 1872-es megjelenés; a romantikus mesei fordulatok és a pontos realista társadalomrajz találkozása.
-
-### II. Timár Mihály belső hasadtsága
-- Külső siker és gazdagság vs. belső bűntudat (a török kincs megtartása és a Timeával kötött boldogtalan érdekházasság).
-
+- 1872: Romantikus mesei fordulatok és pontos realista gazdasági leírások.
+### II. Timár Mihály meghasonlása
+- Anyagi siker vs. belső boldogtalanság (török kincs, érdekházasság).
 ### III. Kettős világmodell
-- **Komárom/Bécs:** Pénz, spekuláció, hideg pompa, látszatboldogság (*Timea* szoborszerű hálája).
-- **Senki szigete:** Pénzmentes, romlatlan természeti utópia, őszinte szerelem (*Noémi*).
+- Komárom/Bécs (Timea hideg hálája) <-> Senki szigete (Noémi tiszta természeti szerelme).
         """,
-        "szobeli": """
-**🎙️ Részletes 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** 1872, Jókai legérettebb alkotása, romantika és realizmus ötvöződése.
-2. **Timár alakja (1 perc):** Anyagi felemelkedés vs. morális válság.
-3. **Két világ és két nő (1 perc):** Timea ridegsége vs. Noémi és a Senki szigete természeti idillje.
-4. **Befejezés (30 mp):** A társadalomból való kilépés tanulsága.
-        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Bevezetés (1872, stíluskettősség) -> 2. Timár jelleme -> 3. Két tér és két nőalak -> 4. Zárás (Balatoni sorsfordulat).",
         "kviz": [
-            {"k": "Timea szerelemből házasodott össze Timárral.", "v": False, "m": "Timea pusztán hálából kötött vele házasságot."},
-            {"k": "A Senki szigete pénzmentes, önellátó természeti menedék.", "v": True, "m": "A civilizáció törvényein kívül álló romantikus édenkert."}
+            {"k": "Timea szerelemből ment hozzá Timár Mihályhoz.", "v": False, "m": "Pusztán hálából házasodtak össze."},
+            {"k": "A Senki szigete pénzmentes, természeti utópia.", "v": True, "m": "A civilizáció törvényein kívül áll."}
         ]
     },
     "3. Madách Imre: Az ember tragédiája": {
-        "alcim": "A drámai költemény műfaja, eszmék harca és az emberi küzdelem dialektikája a történelemben",
-        "kulcsszavak": ["Drámai költemény", "15 szín", "Ádám, Éva, Lucifer", "Párizs", "London", "Küzdj és bízva bízzál"],
-        "audio_szoveg": """
-Madách Imre remekműve, Az ember tragédiája 1859 és 1860 között, a Bach-korszak legmélyebb nemzeti és személyes válságában született. A műfaja drámai költemény, azaz világdráma, amely a goethei Faust és a bibliai hagyományok nyomán az emberi lét alapvető filozófiai kérdéseit feszegeti: van-e célja a történelemnek, szabad-e az ember akarata, és érdemes-e küzdeni az eszmékért. 
-A mű tizenöt színből épül fel. A transzcendens keretszínekben Lucifer és a Teremtő vitája nyitja meg a cselekményt. A közbülső tizenegy történelmi színben Lucifer álmot bocsát Ádámra, végigvezetve őt az emberiség történetének korszakain az ókori Egyiptomtól a Föld kihűlését mutató eszkimó színig. Ádám minden történelmi színben egy-egy magasztos eszméért lelkesedik, ám Lucifer hideg rációja leleplezi az eszmék elkorcsosulását. 
-A dráma egyetlen olyan színe, amelyből Ádám hittel és elszántsággal ébred fel, a francia forradalmat bemutató párizsi szín. A mű végén Éva anyasága és a Teremtő zárszava helyreállítja a reményt: a küzdelem maga az emberi létezés értelme.
-        """,
+        "alcim": "A drámai költemény műfaja, eszmék küzdelme és az Úr zárszava",
+        "kulcsszavak": ["Drámai költemény", "15 szín", "Ádám, Éva, Lucifer", "Párizs", "London"],
+        "audio_szoveg": "Madách Imre Az ember tragédiája című drámai költeménye 1859-60-ban született, vizsgálva az emberi lét és a történelem végső értelmét...",
         "vazlat": """
 ### I. Műfaj és filozófia
-- Drámai költemény (világdráma) – filozófiai kérdések dialógusos formában, hegel-i dialektikával.
-
-### II. A három archetípus
-- **Ádám:** A hit és az eszmékért küzdő emberi szellem.
-- **Lucifer:** A hideg ráció, a tagadás és kétely szelleme.
-- **Éva:** Az érzelmek, a természetesség és az élet folytonossága.
-
-### III. A 15 szín íve
-- Párizs (Danton forradalma: *egyetlen szín, amiből Ádám hittel ébred*).
-- London (szabad piac, haláltánc a sírnál).
-- 15. szín zárszava: *„Mondottam, ember: küzdj és bízva bízzál!”*
+- Drámai költemény (világdráma) hegel-i dialektikával.
+### II. Szereplők
+- Ádám (hit és tettvágy), Lucifer (ráció és tagadás), Éva (természetesség és élet).
+### III. Történelmi ív (15 szín)
+- Párizs (Danton – *egyetlen szín, amiből Ádám hittel ébred*), London (haláltánc).
+- 15. szín: *„Mondottam, ember: küzdj és bízva bízzál!”*
         """,
-        "szobeli": """
-**🎙️ Részletes 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** Drámai költemény fogalma, 1859–60-as válság.
-2. **Karakterek hármassága (1 perc):** Ádám, Lucifer és Éva szerepe.
-3. **Történelmi színek (1 perc):** Párizs hite és London haláltánca.
-4. **Befejezés (30 mp):** A 15. szín: Éva anyasága és az Úr parancsa.
-        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Drámai költemény fogalma -> 2. Szereplők hármassága -> 3. Történelmi színek csomópontjai -> 4. 15. szín katarzisa.",
         "kviz": [
-            {"k": "Az ember tragédiája 15 színből áll.", "v": True, "m": "4 keretszín és 11 történelmi szín alkotja."},
-            {"k": "Ádám a párizsi színből kiábrándultan ébred fel.", "v": False, "m": "Párizs az egyetlen szín, amiből Ádám hittel tér magához."}
+            {"k": "Az ember tragédiája 15 színből áll.", "v": True, "m": "4 keretszín és 11 történelmi szín."},
+            {"k": "Ádám a párizsi színből kiábrándultan ébred fel.", "v": False, "m": "Párizs az egyetlen szín, amiből hittel ébred."}
         ]
     },
     "4. Mikszáth Kálmán prózája": {
-        "alcim": "Anekdotizmus, a felvidéki novellisztika és a dzsentri társadalombírálat a Beszterce ostromában",
+        "alcim": "Anekdotizmus, A tót atyafiak, A jó palócok és a Beszterce ostroma",
         "kulcsszavak": ["Anekdota", "A tót atyafiak", "A jó palócok", "Beszterce ostroma", "Pongrácz István"],
-        "audio_szoveg": """
-Mikszáth Kálmán a 19. és 20. század fordulójának legkiválóbb magyar epikusa. Pályája összeköti a romantika mesemondó báját a modern kritikai realizmussal. Művészetének legfőbb építőeleme az anekdota: a csattanóra végződő, élőbeszédszerűen előadott történet. 
-Hírnevét az 1880-as évek elején megjelent novelláskötetei alapozták meg. Az 1881-es A tót atyafiak négy hosszabb elbeszélésben a zord felvidéki hegyek tiszta lelkű, hallgatag embereit ábrázolja. Az 1882-es A jó palócok tizenöt rövid, tömör novellában a lankás falvak babonás, érzelmes világát és balladisztikus bűnbánatát mutatja be. 
-Nagyregénye, a Beszterce ostroma a Don Quijote-i Pongrácz István gróf tragikomikus sorsán keresztül leplezi le a modern világtól elszakadt magyar nemesi réteg, a dzsentrik illúziókba menekülő válságát.
-        """,
+        "audio_szoveg": "Mikszáth Kálmán a 19. és 20. század fordulójának legnagyobb magyar mesélője, akinek művészete az anekdotára épül...",
         "vazlat": """
-### I. Mikszáth stílusa és az anekdotizmus
-- Élőbeszédszerű előadásmód, szelíd irónia, empátia a kisemberek iránt.
-- Az anekdota mint a regényépítés alapegysége.
-
-### II. A két klasszikus novelláskötet párhuzama
-- **A tót atyafiak (1881):** 4 hosszú elbeszélés; magas hegyek, magányos, monumentális erkölcsű alakok (*Lapaj a híres dudás*, *Az a fekete folt*).
-- **A jó palócok (1882):** 15 rövid novella; lenti falu, balladisztikus kihagyások, tiszta népi etika (*Bede Anna tartozása*).
-
-### III. Beszterce ostroma (1895)
-- **Pongrácz István gróf:** A 19. század végén középkori várúrként viselkedő anakronisztikus nemes.
-- **Társadalomkritika:** A magyar dzsentri képtelen szembenézni a polgárosodó valósággal.
+### I. Stílusjegyek: Anekdotizmus, szelíd irónia, élőbeszédszerű mesélés.
+### II. Novelláskötetek: A tót atyafiak (4 hosszú elbeszélés) vs. A jó palócok (15 rövid novella).
+### III. Beszterce ostroma: Pongrácz István Don Quijote-i alakja és a dzsentri világ kritikája.
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** Átmenet a romantika és realizmus között, az élőbeszédszerű anekdota.
-2. **Novelláskötetek (1 perc):** *A tót atyafiak* zord hegyei vs. *A jó palócok* érzelmes faluja.
-3. **Beszterce ostroma (1 perc):** Pongrácz István Don Quijote-i figurája és a dzsentri világ kritikája.
-4. **Befejezés (30 mp):** Mikszáth öröksége a modern magyar próza megalapozásában.
-        """,
-        "kviz": [
-            {"k": "A tót atyafiak kötetben 15 rövid novella kapott helyet.", "v": False, "m": "A tót atyafiakban 4 hosszabb elbeszélés, míg A jó palócokban 15 rövid novella van."},
-            {"k": "Pongrácz István a Beszterce ostromában középkori lovagként rendezi be életét Nedec várában.", "v": True, "m": "Anakronisztikus Don Quijote-i alakként küzd a modern világ ellen."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Bevezetés -> 2. Két kötet ellentéte -> 3. Beszterce ostroma -> 4. Összegzés.",
+        "kviz": [{"k": "Pongrácz István középkori lovagként viselkedik Nedec várában.", "v": True, "m": "Anakronisztikus nemesi figura."}]
     },
     "5. Vajda János költészete": {
         "alcim": "A lírai magány mítosza, a Gina-szerelem és a szimbolizmus előfutára",
         "kulcsszavak": ["Gina-versek", "Montblanc", "A vaáli erdőben", "A virrasztók"],
-        "audio_szoveg": """
-Vajda János a 19. század második felének legmagányosabb magyar költője. Pályája a kiegyezés utáni Magyarország légüres terében bontakozott ki, ahol a meg nem értettség, a politikai passzivitás miatti keserűség és az egyéni elszigeteltség vált lírájának fő témájává. 
-Költészetének legfontosabb vonulata a végzetes Gina-szerelem, amely évtizedeken át ihlette legnagyobb verseit. A Húsz év múlva című költeményében a híres Montblanc-metafora segítségével fejezi ki érzelmeit: a külvilág felé fagyos, elérhetetlen hegycsúcs képében mutatja meg a lélek mélyén örökké égő, el nem múló szerelmi tüzet. 
-Filozofikus tájlírájának csúcsa A vaáli erdőben, ahol a gyermekkori táj békéje és a panteista természeti csend révén jut el a halállal való megbékélésig. Vajda új szimbólumalkotása már közvetlenül az Ady-féle modern szimbolizmust készíti elő.
-        """,
+        "audio_szoveg": "Vajda János a kiegyezés korának legmagányosabb költője, aki a Gina-szerelem és a panteista tájlíra mestere volt...",
         "vazlat": """
-### I. A meg nem értett művész magánya
-- A kiegyezés utáni társadalmi közöny elutasítása (*A virrasztók*).
-- Átmeneti szerep: a romantika pátoszától a modern szimbolista látomásig.
-
-### II. A Gina-líra (Kratochwill Zsuzsanna)
-- **Húsz év múlva (1876):** A Montblanc-metafora – a külső jég és a belső vulkanikus tűz kontrasztja mint az örök szerelem kifejezője.
-- **Harminc év után (1892):** Kései megfáradás, a vágyak kihűlése.
-
-### III. Filozofikus csend-líra
-- **A vaáli erdőben:** Panteisztikus természetélmény; a halálfélelem feloldása az erdő örök csendjében.
+### I. Magány és társadalmi kiábrándulás (*A virrasztók*).
+### II. Gina-líra: *Húsz év múlva* (Montblanc-metafora: külső jég és belső láva).
+### III. Csend-líra: *A vaáli erdőben* (panteista megnyugvás és megbékélés a halállal).
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** A magány költője a kiegyezés utáni korban; a modernitás előfutára.
-2. **Gina-szerelem (1 perc):** A *Húsz év múlva* Montblanc-hasonlatának elemzése.
-3. **Panteizmus és halál (1 perc):** *A vaáli erdőben* csend-motívuma és a természeti harmónia.
-4. **Befejezés (30 mp):** Vajda közvetlen hatása Ady Endre szimbolizmusára.
-        """,
-        "kviz": [
-            {"k": "A Montblanc-metafora a Húsz év múlva című költemény központi képe.", "v": True, "m": "A fagyos hegycsúcs és a mélyben égő tűz a viszonzatlan szerelem jelképe."},
-            {"k": "A vaáli erdőben a harcias politikai ellenállás verse.", "v": False, "m": "A panteista természeti csend és a megnyugvás költeménye."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Bevezetés -> 2. Gina-szerelem (Montblanc) -> 3. Panteizmus (Vaáli erdő) -> 4. Hatása Adyra.",
+        "kviz": [{"k": "A Montblanc-metafora a Húsz év múlva című vers központi képe.", "v": True, "m": "A fagyos csúcs és a vulkáni tűz ellentéte."}]
     },
     "6. XIX. századi dráma: Ibsen és Csehov": {
-        "alcim": "Az analitikus dramaturgia (Nóra) és a csehovi hangulatdráma (Sirály, Cseresznyéskert) megújítása",
+        "alcim": "Az analitikus dráma (Nóra) és a csehovi hangulatdráma (Sirály, Cseresznyéskert)",
         "kulcsszavak": ["Henrik Ibsen", "Analitikus dráma", "Nóra", "Anton Csehov", "Sirály", "Cseresznyéskert"],
-        "audio_szoveg": """
-A 19. század végén a polgári színház gyökeres formai és tartalmi átalakuláson ment keresztül. Két új irányzat határozta meg a modern európai drámafejlődést: a Henrik Ibsen által tökéletesített analitikus dráma és az Anton Csehov nevéhez fűződő hangulatdráma. 
-Ibsen a Nóra vagy Babaszoba című művében az antik sorstragédiák szerkesztésmódját ülteti át a modern polgári otthonba. A drámai feszültséget nem a jelen eseményei, hanem a múltban elkövetett tettek fokozatos napvilágra kerülése adja. Nóra felismeri, hogy házasságában csupán játékszer volt, és az egyéni autonómia megteremtéséért elhagyja a családját. 
-Ezzel szemben Csehov darabjaiban, mint a Sirály vagy a Cseresznyéskert, nincsenek látványos tettek és nyílt konfliktusok. Hősei cselekvésképtelenek, egymás mellett elbeszélő monológokban élnek. A drámát a belső hangulat, a líraiság és az elmúlás atmoszférája uralja.
-        """,
+        "audio_szoveg": "A 19. század végén Henrik Ibsen analitikus drámája és Anton Csehov hangulatdrámája forradalmasította a színházat...",
         "vazlat": """
-### I. Henrik Ibsen és az analitikus dráma
-- **Módszer:** A cselekmény mozgatórugója a múltbeli titkok lépésről lépésre történő lelepleződése.
-- **Nóra (Babaszoba, 1879):** A polgári házasság babaház-illúziójának szétesése; a női autonómia és önálló emberi méltóság kivívása.
-
-### II. Anton Csehov és a hangulatdráma
-- **Módszer:** Cselekményszegénység, párhuzamos monológok, ki nem mondott belső feszültségek (*szubtextus*).
-- **Művek:** *Sirály*, *Cseresznyéskert*, *Három nővér* – az orosz nemesi réteg tehetetlensége és céltalan vágyakozása.
+### I. Henrik Ibsen: Analitikus technika (a múltbeli titkok lelepleződése); *Nóra* női önállósodása.
+### II. Anton Csehov: Hangulatdráma; cselekvésképtelenség, párhuzamos monológok (*Sirály*, *Cseresznyéskert*).
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** A hagyományos színpadi formák válsága a 19. század végén.
-2. **Ibsen analitikája (1 perc):** A múlt feltárása mint drámai motor a *Nóra* példáján.
-3. **Csehov atmoszférateremtése (1 perc):** Párhuzamos monológok és cselekvésképtelenség.
-4. **Befejezés (30 mp):** A kétféle drámatípus hatása a 20. századi színházművészetre.
-        """,
-        "kviz": [
-            {"k": "Ibsen analitikus darabjaiban a múltban rejtőző titkok robbantják ki a válságot.", "v": True, "m": "Ez az analitikus technika alapelve."},
-            {"k": "Nóra a darab végén engedelmesen megbékél a férjével.", "v": False, "m": "Nóra elhagyja otthonát, hogy megtalálja önálló személyiségét."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Polgári dráma válsága -> 2. Ibsen analitikája -> 3. Csehov atmoszférája -> 4. Modern színházi hatás.",
+        "kviz": [{"k": "Ibsen darabjaiban a múltbeli titkok kiderülése robbantja ki a válságot.", "v": True, "m": "Ez az analitikus szerkesztés alapja."}]
     },
     "7. A Nyugat folyóirat": {
-        "alcim": "A modern magyar irodalom zászlóbontása, esztétikai célok, szerkesztők és a 3 nemzedék",
+        "alcim": "A modern magyar irodalom indulása 1908-ban, szerkesztők és a 3 nemzedék",
         "kulcsszavak": ["1908", "Osvát Ernő", "Ignotus", "Mikes-emlékérem", "Három nemzedék"],
-        "audio_szoveg": """
-A huszadik századi magyar kultúra legfontosabb szellemi műhelye a Nyugat folyóirat volt, amely 1908. január elsején indult útjára és Babits Mihály 1941-es haláláig létezett. A lap emblémája Beck Ödön Fülöp Mikes Kelemen-emlékérme lett, amely a hűséget és a művészi elhivatottságot szimbolizálta. 
-A lap célja a magyar irodalom felzárkóztatása volt a fejlett nyugat-európai művészeti szintre, megteremtve a teljes esztétikai függetlenséget. A szerkesztőség meghatározó alakja Ignotus főszerkesztő és a zseniális ízlésű szerkesztő, Osvát Ernő volt. 
-A folyóirat három egymást követő nemzedék tehetségeit tömörítette. Az első nagy generációhoz tartozott Ady Endre, Babits Mihály, Kosztolányi Dezső és Móricz Zsigmond. A második nemzedéket Szabó Lőrinc és Illyés Gyula fémjelezte, míg a harmadik hullámban tűnt fel Radnóti Miklós, Weöres Sándor és Szerb Antal.
-        """,
+        "audio_szoveg": "1908. január 1-jén indult a Nyugat folyóirat, amely a magyar kultúra legfontosabb irodalmi műhelyévé vált...",
         "vazlat": """
-### I. A folyóirat indulása és missziója
-- **1908. január 1. – 1941:** Beck Ö. Fülöp Mikes-emlékérme (hűség és művészi autonómia).
-- **Célkitűzés:** Csatlakozás a modern európai kultúrához, a művészi szabadság védelme a konzervatív akadémizmussal szemben.
-- **Vezetői:** Ignotus (főszerkesztő), Osvát Ernő (irodalmi szerkesztő), Hatvany Lajos (mecénás).
-
-### II. A három nemzedék
-- **1. nemzedék:** Ady Endre, Babits Mihály, Kosztolányi Dezső, Móricz Zsigmond, Tóth Árpád, Juhász Gyula.
-- **2. nemzedék (1920-as évek):** Szabó Lőrinc, Illyés Gyula, Németh László.
-- **3. nemzedék (1930-as évek):** Radnóti Miklós, Weöres Sándor, Szerb Antal.
+### I. Indulás: 1908–1941; Mikes-emlékérem, művészi autonómia (*l'art pour l'art*).
+### II. Szerkesztők: Ignotus (főszerkesztő), Osvát Ernő (irodalmi válogató zseni), Hatvany Lajos.
+### III. Nemzedékek: 1. nemzedék (Ady, Babits, Kosztolányi, Móricz), 2. nemzedék (Szabó Lőrinc), 3. nemzedék (Radnóti).
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** 1908: a Nyugat indulása mint korszakhatár a magyar kultúrában.
-2. **Szerkesztőség és esztétika (1 perc):** Osvát Ernő szigora és a művészi függetlenség elve.
-3. **Nemzedékek bemutatása (1 perc):** Az 1. nemzedék lírai forradalma és a későbbi nemzedékek kibontakozása.
-4. **Befejezés (30 mp):** A lap kánonképző öröksége a mai napig.
-        """,
-        "kviz": [
-            {"k": "A Nyugat folyóirat 1908 és 1941 között működött.", "v": True, "m": "Babits haláláig létezett a folyóirat."},
-            {"k": "Radnóti Miklós a Nyugat első nemzedékéhez tartozott.", "v": False, "m": "Radnóti a harmadik nemzedék tagja volt."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1908 jelentősége -> 2. Osvát Ernő szerepe -> 3. Három nemzedék -> 4. Örökség.",
+        "kviz": [{"k": "A Nyugat folyóirat 1908 és 1941 között működött.", "v": True, "m": "Babits haláláig állt fenn."}]
     },
     "8. Ady Endre költészete": {
         "alcim": "Szimbolizmus, magyarságtudat, lírai párharc és háborús apokalipszis",
         "kulcsszavak": ["Új versek 1906", "A magyar Ugaron", "Léda vs. Csinszka", "Harc a Nagyúrral"],
-        "audio_szoveg": """
-Ady Endre 1906-ban megjelent Új versek című kötetével gyökeresen megújította a magyar költészet nyelvét és szemléletét. Művészetének gerincét a modern szimbolizmus alkotja: egyéni, többrétegű szimbólumrendszert épített fel, amelyben az Ugar, a Bakony, a Hortobágy és a Pénz mitikus jelentést kapnak. 
-Költészete több nagy tematikus pillérre támaszkodik. Magyarság-verseiben, mint A magyar Ugaron című szonettben, a nemzeti elmaradottságot és a kultúra pusztulását fájlalja ostorozó hazaszeretettel. Pénz-verseiben a Disznófejű Nagyúrral vív megalázó harcot az alkotói létért és szabadságért. Szerelmi lírája kettős arculatú: a Léda-verseket a gyötrelmes párharc és a pusztulásvágy uralja, míg a Boncza Bertával kötött házassága alatt a Csinszka-versek a menedéket és védelmet jelentik a világháború tombolása idején.
-        """,
+        "audio_szoveg": "Ady Endre 1906-os Új versek című kötetével megteremtette a modern magyar szimbolista költészetet...",
         "vazlat": """
-### I. Az 1906-os költői forradalom (Új versek)
-- Új költői szerep, prófétai magatartás, kötetkompozíciós tudatosság.
-- **Ars poetica:** *Góg és Magóg fia vagyok én...*, *Új vizeken járok*.
-
-### II. Főbb tematikus vonulatok
-- **Magyarság-versek:** *A magyar Ugaron* (az elmaradott, parlagon heverő táj mint a szellemi pusztulás metaforája).
-- **Létharc és pénz:** *Harc a Nagyúrral* (a disznófejű aranybálvány és az emberi méltóság).
-- **Szerelmi líra:**
-  - *Léda-szerelem:* Gyötrelmes párharc, halálhangulat (*Héja-nász az avaron*, *Elbocsátó, szép üzenet*).
-  - *Csinszka-szerelem:* Békés menedék a világháborúban (*Őrizem a szemed*).
-- **Háborús versek:** *Ember az embertelenségben*.
+### I. 1906: Új versek kötetkompozíciója, ars poetica (*Góg és Magóg fia vagyok én...*).
+### II. Témák: Magyarság-versek (*A magyar Ugaron*), Pénz-versek (*Harc a Nagyúrral*), Szerelem (Léda párharc vs. Csinszka menedék).
+### III. Háborús versek: *Ember az embertelenségben*.
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** 1906: az *Új versek* robbanása és az egyéni szimbólumrendszer.
-2. **Magyarság és létküzdelem (1 perc):** Az Ugar toposza és a Disznófejű Nagyúr elleni küzdelem.
-3. **Szerelmi líra pólusai (1 perc):** Léda pusztító héjanásza vs. Csinszka menedéke.
-4. **Befejezés (30 mp):** A humánum védelme a világháborúban (*Ember az embertelenségben*).
-        """,
-        "kviz": [
-            {"k": "Ady korszakalkotó kötete, az Új versek 1906-ban jelent meg.", "v": True, "m": "Ez a mű nyitotta meg a modern magyar líra korszakát."},
-            {"k": "A Harc a Nagyúrral költeményben a disznófejű lény a nemzeti dicsőséget jelképezi.", "v": False, "m": "A pénz és az anyagi kiszolgáltatottság bálványa."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1906 forradalma -> 2. Ugar és Nagyúr toposz -> 3. Léda és Csinszka -> 4. Háborús humánum.",
+        "kviz": [{"k": "Ady korszakalkotó kötete az Új versek 1906-ban jelent meg.", "v": True, "m": "Ez nyitotta a modern magyar költészetet."}]
     },
     "9. Babits Mihály: Jónás könyve": {
         "alcim": "A prófétai szerep, a morális felelősségvállalás és a Jónás imája",
         "kulcsszavak": ["Jónás könyve", "Jónás imája", "Ninive", "Cinkos, aki néma", "1938"],
-        "audio_szoveg": """
-Babits Mihály életművének összefoglaló csúcsa az 1938-ban megjelent Jónás könyve és annak lírai függeléke, a Jónás imája. A mű keletkezésekor a költő a gégeműtétje után a halálos kórral küzdött, miközben Európában feltartóztathatatlanul terjedt a fasizmus fenyegetése. 
-A mű egy ószövetségi parafrázis, ám Babits a prófétát emberi esendőségekkel ruházza fel. Jónás el akar menekülni az elhívás elől, kényelmes életre vágyik, ám a cethal gyomrában megtisztulva belátja, hogy nem bújhat ki a kötelessége alól. Elmegy a bűnös Ninivébe, hogy hirdesse az igét. A mű legfontosabb etikai imperatívusza így szól: mert vétkesek közt cinkos, aki néma. 
-A záró Jónás imája alázatos fohász a tiszta, halálig kitartó költői beszédért.
-        """,
+        "audio_szoveg": "Babits Mihály 1938-ban írta meg a Jónás könyvét a gégerákja és a fasizmus fenyegetése idején...",
         "vazlat": """
-### I. Keletkezési háttér és műfaj
-- 1938: Babits gégerákja és a fasizmus előretörése.
-- Műfaj: Epikus költemény, bibliai parafrázis öniróniával és groteszk elemekkel.
-
-### II. A mű szerkezeti íve
-- Menekülés a küldetés elől $\rightarrow$ Cethal gyomra (megtisztulás és ima) $\rightarrow$ Ninive bűneinek ostorozása $\rightarrow$ A tök példázata (az isteni kegyelem diadala).
-- **Fő tétel:** *„Mert vétkesek közt cinkos, aki néma.”*
-
-### III. Jónás imája (1939)
-- Lírai ars poetica: Alázatos fohász a tiszta kifejezésért a halál küszöbén.
+### I. 1938: Babits betegsége és a fasizmus előretörése; bibliai parafrázis groteszk elemekkel.
+### II. Jónás útja: Menekülés -> Cethal (megtisztulás) -> Ninive intése -> Kegyelem diadala.
+### III. Alaptétel: *„Mert vétkesek közt cinkos, aki néma.”* és a záró *Jónás imája*.
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** 1938 válsága, a prófétai sors újraértelmezése Babitsnál.
-2. **Jónás figurája (1 perc):** A menekülő esendő próféta és a cethal általi beavatás.
-3. **Ninive és a morális parancs (1 perc):** A némaság bűnrészessége és az isteni irgalom.
-4. **Befejezés (30 mp):** A *Jónás imája* mint a halállal szembenéző alkotó hitvallása.
-        """,
-        "kviz": [
-            {"k": "A Jónás könyve 1938-ban íródott Babits gégeműtétje után.", "v": True, "m": "A betegség és a fasizmus fenyegetése ihlette."},
-            {"k": "Az Úr végül azonnal elpusztítja Ninivét Jónás dühös kérésére.", "v": False, "m": "Az Úr megkegyelmez Ninivének, hirdetve a teremtés védelmét."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1938 kontextusa -> 2. Jónás esendősége és beavatása -> 3. Morális parancs -> 4. Jónás imája.",
+        "kviz": [{"k": "A Jónás könyve központi szállóigéje: 'Mert vétkesek közt cinkos, aki néma'.", "v": True, "m": "Az értelmiségi felelősség imperatívusza."}]
     },
     "10. Móricz Zsigmond prózája": {
-        "alcim": "A paraszti világ és dzsentri réteg naturalista és kritikai ábrázolása (Tragédia, Barbárok, Úri muri)",
+        "alcim": "A paraszti és dzsentri világ naturalista és kritikai ábrázolása (Tragédia, Barbárok, Úri muri)",
         "kulcsszavak": ["Naturalizmus", "Tragédia", "Barbárok", "Úri muri", "Szakhmáry Zoltán"],
-        "audio_szoveg": """
-Móricz Zsigmond a magyar kritikai realizmus és naturalizmus legnagyobb elbeszélője. Művészete gyökeres szakítást jelentett a 19. századi idillikus, népieskedő parasztábrázolással. A magyar valóságot a maga kíméletlen, biológiai és társadalmi meztelenségében mutatta be. 
-Az 1909-es Tragédia című novellájában Kis János zsellér alakján keresztül a biológiai ösztönökbe és nyomorba szorult ember sorsát ábrázolja, akinek egyetlen lázadása a gazda lakodalmán való mértéktelen evésbe torkollik. Az 1931-es Barbárok balladisztikus tömörséggel mutatja be a pusztai pásztorok nyers, civilizációtól elzárt ösztönvilágát és a kapzsiságból elkövetett gyilkosságot. 
-Későbbi nagyregényében, az Úri muriban a magyar dzsentri pusztulásra ítélt világát vizsgálja Szakhmáry Zoltán önsorsrontó mulatozásán keresztül.
-        """,
+        "audio_szoveg": "Móricz Zsigmond szakított a hamis népi idillel, és a valóságot a maga kíméletlen ösztönvilágában mutatta be...",
         "vazlat": """
-### I. A naturalista-realista stílusreform
-- Szakítás a hamis népi idillel; ösztönök, éhség, biológiai kiszolgáltatottság.
-
-### II. Főbb novellák
-- **Tragédia (1909):** Kis János karaktere; az ember mint biológiai lény; az evésbe fulladó lázadás abszurditása.
-- **Barbárok (1931):** Háromrészes balladisztikus felépítés; a rézkilincses szíjért elkövetett gyilkosság; a pusztai ösztönvilág.
-
-### III. A dzsentri társadalmi csődje
-- **Úri muri (1928):** Szakhmáry Zoltán nemesi vergődése; pusztító dorbézolás a tettek helyett.
+### I. Stílusreform: Naturalizmus, biológiai és társadalmi determináció.
+### II. Novellák: *Tragédia* (Kis János evésbe torkolló lázadása), *Barbárok* (pusztai kapzsiság és gyilkosság).
+### III. Dzsentri válság: *Úri muri* (Szakhmáry Zoltán önpusztítása).
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** Móricz fellépése a Nyugatban, a hamis népiesség lebontása.
-2. **A szegénység ösztönei (1 perc):** *Tragédia* (Kis János) és a *Barbárok* naturalista világa.
-3. **A nemesség válsága (1 perc):** Az *Úri muri* dorbézolása és Szakhmáry Zoltán bukása.
-4. **Befejezés (30 mp):** A kritikai realizmus jelentősége.
-        """,
-        "kviz": [
-            {"k": "A Tragédia című novellában Kis János a túlzott evés miatt veszíti életét.", "v": True, "m": "A zsíros húsba fullad bele a lakodalmon."},
-            {"k": "Szakhmáry Zoltán sikeres nagybirtokot hoz létre az Úri muri végén.", "v": False, "m": "Felgyújtja saját tanyáját a tehetetlenség miatti kétségbeesésében."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Szakítás a népiességgel -> 2. Kis János és a Barbárok -> 3. Úri muri csődje -> 4. Összegzés.",
+        "kviz": [{"k": "A Tragédia című novellában Kis János a lakodalmi evésbe pusztul bele.", "v": True, "m": "A zsíros hús jelenti vesztét."}]
     },
     "11. Kosztolányi Dezső: Édes Anna": {
         "alcim": "A lélektani regény, a megalázottság tudattalan robbanása és a humanizmus",
         "kulcsszavak": ["Édes Anna", "Vizy család", "Moviszter doktor", "1919", "Freudizmus"],
-        "audio_szoveg": """
-Kosztolányi Dezső 1926-ban megjelent Édes Anna című regénye a magyar lélektani próza remekműve. A történet történelmi kerete pontos: 1919 nyarán, a Tanácsköztársaság bukása és a román megszállás napjaiban indul Budapesten. 
-A regény cselekménye a tiszta lelkű cselédlány, Édes Anna és a méltóságos Vizy család kapcsolatát mutatja be. Vizyné büszkén mintagépként kezeli Annát, teljesen megfosztva őt emberi személyiségétől. Amikor a ház úrfi rokona, Jancsi elcsábítja, majd terhesen magára hagyja, a hosszú ideje elfojtott sérelmek és megaláztatások a tudattalan mélyén felhalmozódnak. Egy éjszaka a feszültség ösztönös kettős gyilkosságban robban ki. 
-A bírósági tárgyaláson egyedül a halálos beteg Moviszter doktor áll ki Anna mellett, képviselve a tiszta irgalmat és az emberi méltóság sérthetetlenségét.
-        """,
+        "audio_szoveg": "Kosztolányi Dezső 1926-os Édes Anna című regénye az elfojtott sérelmek tudattalan kitörésének lélektani remekműve...",
         "vazlat": """
-### I. Történelmi keret és pszichoanalízis
-- Keret: 1919 nyara (Tanácsköztársaság bukása).
-- Freud lélektani hatása: elfojtott sérelmek a tudatalattiban.
-
-### II. A dehumanizálás és a bűntett
-- Anna tárgyiasítása Vizyné részéről (mintagép).
-- Jancsi úrfi felelőtlen csábítása és eldobása.
-- A gyilkosság nem megfontolt gaztett, hanem az elfojtások tudattalan robbanása.
-
-### III. Moviszter doktor szerepe
-- A keresztény humanizmus és irgalom hangja a rideg bírósági tárgyaláson.
+### I. Történelmi keret: 1919 nyara; Sigmund Freud pszichoanalízisének hatása.
+### II. Anna dehumanizálása: Mintagépként kezelik, Jancsi úrfi elcsábítja és eldobja -> Kettős gyilkosság.
+### III. Moviszter doktor: A tiszta részvét és emberi méltóság hangja.
         """,
-        "szobeli": """
-**🎙️ 3 perces szóbeli feleletvázlat:**
-1. **Bevezetés (30 mp):** 1919-es történelmi keret, freudi pszichoanalízis hatása.
-2. **Anna tárgyiasítása (1 perc):** A cselédsors mechanizálása és Jancsi úrfi árulása.
-3. **A gyilkosság lélektana (1 perc):** Az elfojtott megaláztatások váratlan robbanása.
-4. **Befejezés (30 mp):** Moviszter doktor humánuma mint Kosztolányi végső üzenete.
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1919 és a freudizmus -> 2. Anna tárgyiasítása -> 3. A gyilkosság lélektana -> 4. Moviszter üzenete.",
+        "kviz": [{"k": "Moviszter doktor az egyetlen, aki emberi részvéttel tekint Annára.", "v": True, "m": "Ő képviseli a szerző humanista értékrendjét."}]
+    }
+}
+
+# -------------------------------------------------------------
+# 2. MAGYAR NYELVTAN TÉTELTÁR (8 Teljes Tétel)
+# -------------------------------------------------------------
+tetelek_nyelvtan = {
+    "1. A kommunikáció folyamata és tényezői": {
+        "alcim": "A kommunikációs modell, nyelvi és nem nyelvi jelek, kommunikációs funkciók",
+        "kulcsszavak": ["Adó és Vevő", "Kód és Csatorna", "Jakobson modellje", "Metakommunikáció", "Zaj"],
+        "audio_szoveg": "A kommunikáció információk, gondolatok és érzelmek átadása valamilyen jelrendszer segítségével. Jakobson klasszikus modellje szerint a folyamat alapvető tényezői az adó, a vevő, az üzenet, a kód, a csatorna és a valóságos kontextus...",
+        "vazlat": """
+### I. A kommunikációs folyamat tényezői (Jakobson-modell)
+- **Adó (beszélő/feladó):** Aki az üzenetet kódolja és elindítja.
+- **Vevő (címzett):** Aki az üzenetet felfogja és dekódolja.
+- **Üzenet:** Maga a továbbított információ.
+- **Kód:** A közös jelrendszer (pl. a magyar nyelv).
+- **Csatorna:** A fizikai közeg, amin az információ áramlik (hanghullám, papír, digitális hálózat).
+- **Kontextus (beszédhelyzet):** A valóságnak az a része, amire az üzenet utal.
+- **Zaj:** Minden olyan tényező, ami akadályozza a megértést (pl. háttérzaj, félreértés).
+
+### II. A nyelv funkciói
+- *Tájékoztató (referenciális):* Ismeretátadás.
+- *Érzelemkifejező (emotív):* A beszélő érzéseinek tükrözése.
+- *Felhívó (konatív):* A vevő cselekvésre késztetése.
+- *Kapcsolattartó (fatikus):* Kapcsolat felvétele és fenntartása (*„Halló!”, „Szép napot!”*).
+- *Értelmező (metanyelvi):* Magáról a nyelvről való beszéd (*„Hogy érted ezt?”*).
+- *Gyönyörködtető (poétikai):* Az esztétikai hatás megteremtése.
+
+### III. Nem nyelvi (nonverbális) jelek
+- Testbeszéd (gesztusok, mimika, testtartás), térközszabályozás (*proxemika*), vokális jelek (hangerő, intonáció, beszédtempó).
         """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Kommunikáció definíciója -> 2. A modell 6 alaptényezője (Jakobson) -> 3. Nyelvi funkciók bemutatása -> 4. Nonverbális jelek szerepe a mindennapi érintkezésben.",
         "kviz": [
-            {"k": "Édes Anna politikai indíttatásból gyilkol a regényben.", "v": False, "m": "Anna tette az elfojtott megaláztatások tudattalan robbanása."},
-            {"k": "Moviszter doktor az egyetlen, aki emberként és részvéttel tekint Annára.", "v": True, "m": "Ő képviseli a szerző humanista értékrendjét."}
+            {"k": "A fatikus funkció célja a kapcsolatfelvétel és kapcsolattartás.", "v": True, "m": "Például a köszönések és bejelentkezések tartoznak ide."},
+            {"k": "A nem nyelvi jelekhez tartozik a mimika és a térközszabályozás is.", "v": True, "m": "A nonverbális kommunikáció alapvető részei."}
+        ]
+    },
+    "2. A szövegtan alapjai és a szövegtípusok": {
+        "alcim": "A szöveg fogalma, kohéziós erői, szerkezeti egységei és típusai",
+        "kulcsszavak": ["Globális kohézió", "Lokális kohézió", "Anafora és Katafora", "Elbeszélő, leíró, érvelő"],
+        "audio_szoveg": "A szöveg a nyelv legmagasabb szintű, lezárt, kerek egysége, amely egy adott kommunikációs helyzetben keletkezik...",
+        "vazlat": """
+### I. A szöveg fogalma és kohéziója
+- **Szöveg:** A nyelv és a beszéd legnagyobb, önálló, lezárt és egész egysége.
+- **Grammatikai kohézió (Lokális):**
+  - Kötőszók, névmási utalások (*anafora* = visszautalás, *katafora* = előreutalás), egyeztetések.
+- **Jelentéstani kohézió (Globális):**
+  - Témamegtartás, kulcsszavak hálózata, szinonimák, hiperonímiák (fölérendelt fogalmak).
+
+### II. A szöveg szerkezete
+- Cím $\rightarrow$ Bevezetés $\rightarrow$ Tárgyalás (bekezdések logikai íve) $\rightarrow$ Befejezés / Konklúzió.
+
+### III. Szövegtípusok felosztása
+- *Funkció szerint:* Elbeszélő, leíró, érvelő, magyarázó.
+- *Kommunikációs színtér szerint:* Hétköznapi, publicisztikai, hivatalos, tudományos, szépirodalmi.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Szöveg fogalma -> 2. Lokális és globális kohéziós erők -> 3. Szerkezeti hármasság -> 4. Főbb szövegtípusok.",
+        "kviz": [
+            {"k": "Az anafora a szövegben előre mutató névmási utalást jelent.", "v": False, "m": "Az anafora visszautalás, az előreutalás a katafora."},
+            {"k": "A szöveg a nyelv legmagasabb szintű, önálló egysége.", "v": True, "m": "A mondatok feletti strukturált szint."}
+        ]
+    },
+    "3. A magyar helyesírás alapelvei": {
+        "alcim": "A 4 alapelv rendszere és alkalmazásuk a gyakorlatban",
+        "kulcsszavak": ["Kiejtés elve", "Szóelemzés elve", "Hagyomány elve", "Egyszerűsítés elve", "Mássalhangzótörvények"],
+        "audio_szoveg": "A magyar helyesírás rendszere négy alapelvre épül: a kiejtés, a szóelemzés, a hagyomány és az egyszerűsítés elvére...",
+        "vazlat": """
+### I. A 4 helyesírási alapelv
+
+1. **A kiejtés (fonetikus) elve:**
+   - Úgy írjuk a szót, ahogy ejtjük (pl. *asztal, ember, szép*).
+2. **A szóelemzés (etimologikus) elve:**
+   - Összetett és toldalékos szavaknál a szótövet és a toldalékot eredeti alakjukban rögzítjük, figyelmen kívül hagyva a kiejtésbeli mássalhangzótörvényeket (pl. *látja* [láttya], *barátság* [baraccság], *színpad* [szímpad]).
+3. **A hagyomány elve:**
+   - Történelmi családnevek és régies írásmódok megőrzése (pl. *Kossuth, Széchenyi, Weöres, ly betűs szavak: folyó, király*).
+4. **Az egyszerűsítés elve:**
+   - Hosszú kétjegyű mássalhangzók kettőzésekor csak az első jegyet kettőzzük (pl. *asszony, mennyi, loccsan*).
+   - Három azonos mássalhangzó találkozásakor összevonjuk (pl. *tollal*, de összetételnél kötőjelezzük: *sakk-kör*).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Bevezetés (A helyesírás szerepe) -> 2. Kiejtés és szóelemzés elve -> 3. Hagyomány és egyszerűsítés elve -> 4. Kivételek és példák.",
+        "kviz": [
+            {"k": "A 'látja' szó leírása a szóelemzés elvét követi a kiejtett [láttya] hangzás ellenére.", "v": True, "m": "A szótő (lát) és toldalék (ja) tiszta marad."},
+            {"k": "A családnevek írásakor a kiejtés elve mindig felülírja a hagyomány elvét.", "v": False, "m": "A történelmi családneveknél a hagyomány elve érvényesül (pl. Kossuth)."}
+        ]
+    },
+    "4. Szófajok és mondatrészek rendszere": {
+        "alcim": "Alapszófajok, viszonyszók, mondatrészi szerepek és mondattani elemzés",
+        "kulcsszavak": ["Ige, Névszó, Igenév", "Névelő, Névutó, Kötőszó", "Alany, Állítmány, Tárgy, Határozó, Jelző"],
+        "audio_szoveg": "A szófajok a szavak alaktani, mondattani és jelentéstani tulajdonságai alapján kialakított kategóriák...",
+        "vazlat": """
+### I. A szófaji rendszer felosztása
+- **Alapszófajok:** Önálló jelentéssel bírnak, mondatrészek lehetnek.
+  - *Ige* (cselekvés, történés, létezés).
+  - *Névszók* (főnév, melléknév, számnév, névmás).
+  - *Igenevek* (főnévi, melléknévi, határozói igenév).
+  - *Határozószók* (itt, most, holnap).
+- **Viszonyszók:** Nincs önálló mondatrészi szerepük, viszonyt fejeznek ki (névelő, névutó, kötőszó, igekötő, segédige).
+- **Mondatszók:** Érzelmet, indulatot fejeznek ki (indulatszók, módosítószók: *igen, nem, talán, jaj*).
+
+### II. Mondatrészek rendszere
+- **Predikatív viszony:** Állítmány és Alany kapcsolata (a mondat magja).
+- **Bővítmények:**
+  - *Tárgy* (Kit? Mit?).
+  - *Határozók* (Hely-, idő-, mód-, ok-, cél-, eszközhatározó stb.).
+  - *Jelzők* (Minőség-, mennyiség-, birtokos, értelmező jelző).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Szófajok hármas felosztása -> 2. Alapszófajok és viszonyszók -> 3. Mondatrészek rendszere -> 4. Szintaktikai elemzés.",
+        "kviz": [
+            {"k": "A névelők és kötőszók az alapszófajok csoportjába tartoznak.", "v": False, "m": "A viszonyszókhoz tartoznak, nincs önálló mondatrészi szerepük."}]
+    },
+    "5. Retorika és érvelési technikák": {
+        "alcim": "A szónoki beszéd szerkezete, érvtípusok és vitatechnikák",
+        "kulcsszavak": ["Érv szerkezete (Tétel, Bizonyíték, Összekötés)", "Szónoki beszéd részei", "Dedukció és Indukció"],
+        "audio_szoveg": "A retorika az ékesszólás és meggyőzés tudománya. Az érvelés legkisebb egysége a hármas felépítésű érv...",
+        "vazlat": """
+### I. Az érv felépítése (Toulmin-modell)
+1. **Tétel:** Az állítás, amit el akarunk fogadtatni.
+2. **Bizonyíték (Adat):** A tényt alátámasztó példa, statisztika, hivatkozás.
+3. **Összekötő elem:** A tétel és bizonyíték közötti logikai kapocs.
+
+### II. Főbb érvtípusok
+- *Meghatározásból levezetett érv* (definíció).
+- *Ok-okozati érv* (a következmények bemutatása).
+- *Tekintélyre hivatkozó érv* (szakértő, tudós idézése).
+- *Analógián (hasonlóságon) alapuló érv*.
+
+### III. A klasszikus szónoki beszéd szerkezete
+1. Bevezetés (*Exordium*) -> 2. Elbeszélés (*Narratio*) -> 3. Részletezés (*Divisio*) -> 4. Bizonyítás (*Confirmatio*) -> 5. Cáfolás (*Refutatio*) -> 6. Befejezés (*Peroratio*).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Retorika célja -> 2. Érv 3 szerkezeti eleme -> 3. Érvtípusok -> 4. A szónoki beszéd 6 lépése.",
+        "kviz": [{"k": "A szónoki beszéd klasszikus felépítésében a cáfolás (refutatio) megelőzi a befejezést.", "v": True, "m": "A bizonyítás után a cáfolat következik."}]
+    },
+    "6. Stilisztika: Alakzatok és trópusok": {
+        "alcim": "Költői képek (metafora, metonímia, szinesztézia) és szövegalakzatok",
+        "kulcsszavak": ["Metafora, Metonímia, Szinekdoché", "Szinesztézia, Hasonlat", "Anafora, Párhuzam, Ellentét"],
+        "audio_szoveg": "A stilisztika a nyelvi kifejezőeszközöket vizsgálja. Két fő csoportra osztjuk őket: a szóképekre és a szövegalakzatokra...",
+        "vazlat": """
+### I. Képi kifejezőeszközök (Trópusok / Szóképek)
+- **Metafora:** Két fogalom azonosítása külső vagy belső hasonlóság alapján (pl. *„rabok legyünk vagy szabadok”*).
+- **Metonímia:** Névátvitel térbeli, időbeli vagy anyagbeli érintkezés alapján (pl. *„alszik a ház”*, *„aranyat ér a szava”*).
+- **Szinekdoché:** Rész-egész felcserélése (pl. *„lélek sem járt ott”*).
+- **Szinesztézia:** Különböző érzékelési területek összekapcsolása (pl. *„sötét csend”*, *„lila dal”*).
+- **Megszemélyesítés:** Élettelen dolgok felruházása emberi tulajdonságokkal.
+
+### II. Alakzatok (Szövegformáló eszközök)
+- *Ismétlések:* Anafora (sor eleji ismétlés), refrén.
+- *Gondolati alakzatok:* Párhuzam (*paralelizmus*), ellentét (*antitézis*), túlzás (*hiperbola*), fokozás (*klimax*).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Trópusok fogalma -> 2. Metafora és metonímia különbsége -> 3. Szinesztézia és megszemélyesítés -> 4. Szövegalakzatok.",
+        "kviz": [{"k": "A 'sötét csend' kifejezés a szinesztézia példája.", "v": True, "m": "A látás és hallás érzetét kapcsolja össze."}]
+    },
+    "7. A szókészlet rétegződése és változása": {
+        "alcim": "Társadalmi és területi nyelvváltozatok, szleng, argó, neologizmusok és archaizmusok",
+        "kulcsszavak": ["Köznyelv és Irodalmi nyelv", "Nyelvjárások (Dialektusok)", "Szleng és Szaknyelv", "Archaizmus és Neologizmus"],
+        "audio_szoveg": "A magyar szókészlet folyamatosan változó, rétegzett rendszer, amely területi és társadalmi tagolódást mutat...",
+        "vazlat": """
+### I. Vízszintes (Területi) rétegződés: Nyelvjárások
+- Regionális tájnyelvek (palóc, alföldi, dunántúli, északkeleti, székely stb.) tájszavakkal és egyedi hangkészlettel.
+
+### II. Függőleges (Társadalmi) rétegződés: Szociolektusok
+- **Szaknyelvek:** Pontos szakkifejezések (*terminológia*).
+- **Rétegnyelvek:** Diáknyelv, hobbinyelvek.
+- **Szleng és Argó:** Gyorsan változó, közvetlen, csoportkohéziót erősítő kifejezéskészlet.
+
+### III. A szókészlet időbeli változása
+- *Archaizmusok:* Elavult, kikopott szavak (pl. *delej, atyafi*).
+- *Neologizmusok:* Újonnan született szavak (pl. *okostelefon, lájkol*).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Területi nyelvjárások -> 2. Társadalmi rétegnyelvek (szleng, szaknyelv) -> 3. Szókincs időbeli mozgása (új és régi szavak).",
+        "kviz": [{"k": "Az archaizmusok az újonnan született szavakat jelentik a nyelvben.", "v": False, "m": "Az archaizmusok a régies, elavult szavak."}]
+    },
+    "8. A magyar nyelv története és a nyelvújítás": {
+        "alcim": "A finnugor rokonság, a nyelvújítás korszaka és Kazinczy Ferenc szerepe",
+        "kulcsszavak": ["Uráli / Finnugor nyelvcsalád", "Halotti Beszéd (1195)", "Nyelvújítás (1790-1820)", "Kazinczy Ferenc", "Neológusok és Ortológusok"],
+        "audio_szoveg": "A magyar nyelv az uráli nyelvcsalád finnugor ágába tartozik. Írásbeliségünk legrégebbi emléke a Halotti Beszéd és Könyörgés...",
+        "vazlat": """
+### I. Eredet és korai nyelvemlékek
+- **Rokonság:** Uráli nyelvcsalád, finnugor ág (alapszókincs és ragozó/*agglutináló* jelleg azonossága).
+- **Legfontosabb nyelvemlékek:**
+  - *Tihanyi apátság alapítólevele (1055):* Szórványemlék.
+  - *Halotti Beszéd és Könyörgés (1195 körül):* Első összefüggő szövegemlék.
+  - *Ómagyar Mária-siralom (1300 körül):* Első magyar nyelvű vers.
+
+### II. A Nyelvújítás korszaka (kb. 1790–1820)
+- **Cél:** A magyar nyelv alkalmassá tétele a tudományok, művészetek és államigazgatás művelésére.
+- **Vezéralakja:** Kazinczy Ferenc (Széphalom).
+- **Viták:** Neológusok (újítók) vs. Ortológusok (hagyományőrzők) $\rightarrow$ *Tövisek és virágok*, *Mondolat*.
+- **Szóalkotási módok:** Szóösszetétel, szóképzés, szóelvonás (*kapál $\rightarrow$ kapa*), szócsonkítás, szóösszerántás (*cső + orr $\rightarrow$ csőr*).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Finnugor rokonság -> 2. Legkorábbi nyelvemlékek -> 3. Nyelvújítás célja és Kazinczy szerepe -> 4. Szóalkotási módok.",
+        "kviz": [
+            {"k": "A Halotti Beszéd és Könyörgés a legrégebbi fennmaradt összefüggő magyar szövegemlék.", "v": True, "m": "1195 körül keletkezett a Pray-kódexben."},
+            {"k": "A nyelvújítási harcban Kazinczy Ferenc az ortológus hagyományőrzők vezére volt.", "v": False, "m": "Kazinczy a neológus újítók vezéralakja volt."}
         ]
     }
 }
 
-# Flashcard adatbázis
-flashcards_adat = [
-    {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra (dalforma, rím), epika (cselekmény) és dráma (konfliktus, dialógus) műnemi sajátosságait."},
-    {"q": "Mi a balladai homály és az ellipszis lényege?", "a": "Az elbeszélő szándékosan kihagy részleteket és összefüggéseket, ezáltal feszültséget teremt és a befogadó képzeletére bízza a történet kiegészítését."},
-    {"q": "Melyik történelmi esemény ihlette Arany 'A walesi bárdok' című balladáját?", "a": "Ferenc József 1857-es magyarországi látogatása. Arany a költői meg nem alkuvás és a zsarnokellenes hűség példájaként írta meg."},
-    {"q": "Mit szimbolizál az Ágnes asszonyban a véres lepedő kényszeres mosása?", "a": "A bűn letörölhetetlenségét és a lelkiismeret-furdalás által kiváltott elmezavart."},
-    {"q": "Mi a kettős világmodell 'Az arany ember' című regényben?", "a": "Komárom/Bécs (a pénz, a spekuláció és a rideg polgári társadalom világa Timeával) vs. Senki szigete (a pénzmentes, romlatlan természeti utópia Noémivel)."},
-    {"q": "Miért különleges a párizsi szín 'Az ember tragédiájában'?", "a": "Ez az egyetlen olyan történelmi szín, amelyből Ádám nem csalódottan és kiábrándultan, hanem hittel és cselekvési vággyal ébred fel."},
-    {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás ízlésű irodalmi szerkesztője."},
-    {"q": "Mit jelképez a disznófejű Nagyúr Ady Endre költészetében?", "a": "A pénz, az anyagi kiszolgáltatottság és az emberi méltóságot elnyomó tőke kegyetlen bálványát."},
-    {"q": "Mi a központi szállóige és tanulság Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember és a művész morális felelősségvállalása a gonosszal szemben."},
-    {"q": "Ki képviseli a tiszta humanizmus hangját Kosztolányi 'Édes Anna' című regényében?", "a": "Moviszter doktor, aki egyedüliként tekinti Annát emberi lénynek és szólal fel mellette a bíróság előtt."}
+# -------------------------------------------------------------
+# 3. IDÉZET-DETEKTÍV JÁTÉK ADATBÁZISA
+# -------------------------------------------------------------
+idezet_adatbazis = [
+    {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A morális felelősségvállalás központi parancsa 1938-ból."},
+    {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Góg és Magóg fia vagyok én"], "info": "Petőfi forradalmi költészetének kiemelkedő felhívó verse."},
+    {"idezet": "„Csillagok, csillagok, mondjátok el nekem: / Merre van, hol lakik az én bús szerelmem?”", "helyes": "Vajda János: Gina-versek", "opciok": ["Vajda János: Gina-versek", "Juhász Gyula: Milyen volt...", "Tóth Árpád: Körúti hajnal", "Kosztolányi Dezső: Boldog, szomorú dal"], "info": "Vajda kései szerelmi lírájának magányos hangulatképe."},
+    {"idezet": "„Góg és Magóg fia vagyok én, / Hiába döngetek kaput, falat / S mégis megkérdem tőletek: / Szabad-e sírni a Kárpátok alatt?”", "helyes": "Ady Endre: Góg és Magóg fia vagyok én...", "opciok": ["Ady Endre: Góg és Magóg fia vagyok én...", "Babits Mihály: In Horatium", "Kosztolányi Dezső: A szegény kisgyermek panaszai", "József Attila: A Dunánál"], "info": "Ady 1906-os Új versek kötetének programadó nyitóverse."},
+    {"idezet": "„Mondottam, ember: küzdj és bízva bízzál!”", "helyes": "Madách Imre: Az ember tragédiája", "opciok": ["Madách Imre: Az ember tragédiája", "Arany János: A walesi bárdok", "Vörösmarty Mihály: Csongor és Tünde", "Katona József: Bánk bán"], "info": "A 15. szín zárómondata, az Úr szózata Ádámhoz."}
 ]
 
-stilusiranyzatok = {
-    "Realizmus (19. sz. közepe)": """
-### Realizmus (19. század dereka)
-- **Központi esztétikai cél:** A valóság sallangmentes, tárgyilagos, hiteles és tipikus ábrázolása.
-- **Módszertan:** Tipikus jellemek tipikus körülmények között; társadalmi determináció.
-- **Képviselők:** Honoré de Balzac, Lev Tolsztoj, Mikszáth Kálmán, Jókai Mór.
-    """,
-    "Naturalizmus (19. sz. vége)": """
-### Naturalizmus (19. század vége)
-- **Központi esztétikai cél:** A valóság fotószerű, kíméletlen rögzítése, tabutémák beemelése.
-- **Módszertan:** Biológiai determinizmus – az ember az ösztönök és gének rabja.
-- **Képviselők:** Émile Zola, Móricz Zsigmond (*Tragédia*, *Barbárok*).
-    """,
-    "Impresszionizmus (19. sz. vége – 20. sz. eleje)": """
-### Impresszionizmus (19–20. század fordulója)
-- **Központi esztétikai cél:** A pillanatnyi benyomások, hangulatok és fények megragadása.
-- **Stílusjegyek:** Névszói stílus, zeneiség, szinesztéziák.
-- **Képviselők:** Kosztolányi Dezső, Tóth Árpád, Juhász Gyula.
-    """,
-    "Szimbolizmus (19. sz. vége – 20. sz. eleje)": """
-### Szimbolizmus (19–20. század fordulója)
-- **Központi esztétikai cél:** A látható világ mögötti transzcendens igazságok kifejezése szimbólumokkal.
-- **Stílusjegyek:** Rejtélyesség, mítoszteremtés, mély zeneiség.
-- **Képviselők:** Charles Baudelaire, Ady Endre, Vajda János.
-    """
-}
+# -------------------------------------------------------------
+# 4. IDŐVONAL ADATBÁZIS
+# -------------------------------------------------------------
+idovonal_adat = [
+    {"ev": "1848–1849", "cim": "Forradalom és Szabadságharc", "leiras": "Petőfi és a márciusi ifjak forradalmi költészete; Arany János korai korszaka és a nemzeti összefogás."},
+    {"ev": "1850-es évek", "cim": "Bach-korszak & Elnyomás", "leiras": "Passzív ellenállás. Arany János nagykőrösi balladái (A walesi bárdok, Szondi két apródja); Madách megírja Az ember tragédiáját (1859-60)."},
+    {"ev": "1867", "cim": "A Kiegyezés kora", "leiras": "Polgárosodás és gazdasági fejlődés. Jókai Mór érett regényei (Az arany ember, 1872), Mikszáth palóc novellái, Vajda János lírai magánya."},
+    {"ev": "1877", "cim": "Arany János Őszikék korszaka", "leiras": "A Margitszigeten írt Kapcsos könyv; a modern nagyvárosi elidegenedés és a Híd-avatás haláltánca."},
+    {"ev": "1908", "cim": "A Nyugat folyóirat indulása", "leiras": "A modern magyar irodalom forradalma. Ady Endre (Új versek), Babits Mihály, Kosztolányi Dezső, Móricz Zsigmond fellépése."},
+    {"ev": "1914–1919", "cim": "I. Világháború és Tanácsköztársaság", "leiras": "Keserű háborús költészet (Ady: Ember az embertelenségben). Kosztolányi Édes Anna című regényének történelmi kezdőpontja (1919 nyara)."},
+    {"ev": "1938–1944", "cim": "Fasizmus árnyéka és II. Világháború", "leiras": "Babits megírja a Jónás könyvét (1938), Radnóti Miklós kései eclogái és bori notesze a humanizmus védelmében."}
+]
+
+# Flashcard lista mindkét tantárgyból
+flashcards_adat = [
+    {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra (dalforma), epika (cselekmény) és dráma (konfliktus) sajátosságait."},
+    {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás irodalmi szerkesztője."},
+    {"q": "Mi a magyar helyesírás 4 alapelve?", "a": "1. Kiejtés elve, 2. Szóelemzés elve, 3. Hagyomány elve, 4. Egyszerűsítés elve."},
+    {"q": "Mi a különbség az anafora és a katafora között a szövegtanban?", "a": "Az anafora visszautal egy korábbi szövegelemre, míg a katafora előreutal egy későbbi elemre."},
+    {"q": "Mi a szónoki beszéd 6 klasszikus szerkezeti része?", "a": "Bevezetés (Exordium) -> Elbeszélés (Narratio) -> Részletezés -> Bizonyítás -> Cáfolás -> Befejezés (Peroratio)."},
+    {"q": "Mit szimbolizál az Ágnes asszonyban a véres lepedő kényszeres mosása?", "a": "A bűn letörölhetetlenségét és a lelkiismeret-furdalás által kiváltott elmezavart."},
+    {"q": "Melyik a legkorábbi fennmaradt összefüggő magyar szövegemlék?", "a": "A Halotti Beszéd és Könyörgés (1195 körül, a Pray-kódexben)."}
+]
 
 # Állapotkezelés
 if 'xp' not in st.session_state:
@@ -553,10 +555,10 @@ if 'oral_history' not in st.session_state:
     st.session_state.oral_history = []
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = [
-        {"role": "ai", "text": "Szia! Én vagyok az érettségi mentorod. Kérdezz bátran bármelyik tételről, versről vagy szerzőről!"}
+        {"role": "ai", "text": "Szia! Én vagyok az érettségi mentorod. Kérdezz bátran irodalomról vagy nyelvtanról!"}
     ]
 
-# PDF Segédfüggvény
+# PDF Generálás
 def tiszta_pdf_szoveg(szoveg):
     cserel = {
         'ő': 'o', 'Ő': 'O', 'ű': 'u', 'Ű': 'U', 'á': 'a', 'Á': 'A',
@@ -568,7 +570,7 @@ def tiszta_pdf_szoveg(szoveg):
         szoveg = szoveg.replace(k, v)
     return szoveg.encode('latin-1', 'replace').decode('latin-1')
 
-def letoltheto_pdf_generalas(tetelek_adat):
+def letoltheto_pdf_generalas(tetelek_adat, tantargy_nev):
     pdf = FPDF(orientation="P", unit="mm", format="A4")
     pdf.set_margins(15, 15, 15)
     pdf.set_auto_page_break(auto=True, margin=15)
@@ -576,7 +578,7 @@ def letoltheto_pdf_generalas(tetelek_adat):
     
     pdf.set_font('Helvetica', 'B', 15)
     pdf.set_x(15)
-    pdf.cell(180, 8, 'Magyar Irodalom Erettsegi Tetelvazlatok', align='C', new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(180, 8, f'{tantargy_nev} Erettsegi Tetelvazlatok', align='C', new_x="LMARGIN", new_y="NEXT")
     pdf.ln(4)
     
     for cim, adat in tetelek_adat.items():
@@ -620,7 +622,7 @@ def ai_generalas(prompt_text):
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
     st.title("✨ Edited by Nagy Attila")
-    st.caption("Astra AI Irodalom Érettségi Platform & Tréningközpont")
+    st.caption("Astra AI Érettségi Felkészítő Platform")
 with col_h2:
     st.markdown(f"""
     <div style='text-align: right; padding-top: 10px;'>
@@ -632,38 +634,63 @@ with col_h2:
 
 st.markdown("---")
 
-# Oldalsáv navigáció
-st.sidebar.markdown("<h2 style='color:#818cf8;'>Navigáció</h2>", unsafe_allow_html=True)
+# =============================================================
+# FŐ TANTÁRGY VÁLASZTÓ (Irodalom vs. Nyelvtan vs. Későbbi tantárgyak)
+# =============================================================
+st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
+kivalasztott_tantargy = st.sidebar.selectbox(
+    "Válassz tantárgyat:",
+    ["📖 Magyar Irodalom (11 tétel)", "🔤 Magyar Nyelvtan (8 tétel)", "🏛️ Történelem (Hamarosan)", "📐 Matematika (Hamarosan)"]
+)
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("<h2 style='color:#818cf8;'>Funkciók</h2>", unsafe_allow_html=True)
 menupont = st.sidebar.radio(
-    "Válassz funkciót:",
+    "Válassz menüpontot:",
     [
-        "📖 Tételek & Vázlatok",
-        "🎴 Villámkártyák (Flashcards)",
-        "🎙️ Szóbeli Érettségi Szimulátor",
-        "✍️ Esszé & Elemzés Értékelő",
+        "📚 Tételek & Vázlatok",
         "🎧 Hangoskönyv (Monológ)",
-        "🎨 Stílusirányzatok",
+        "🎴 Villámkártyák (Flashcards)",
+        "🎙️ Szóbeli Szimulátor",
+        "✍️ Esszé & Írásbeli Javító",
+        "🎭 Idézet-Detektív Játék",
+        "🧭 Történelmi & Irodalmi Idővonal",
         "🏆 Nagy Próbavizsga",
         "🤖 AI Érettségi Mentor"
     ]
 )
 
+# Adatbázis hozzárendelése a kiválasztott tantárgyhoz
+if "Irodalom" in kivalasztott_tantargy:
+    aktiv_adatbazis = tetelek_irodalom
+    tantargy_cimke = "Magyar Irodalom"
+elif "Nyelvtan" in kivalasztott_tantargy:
+    aktiv_adatbazis = tetelek_nyelvtan
+    tantargy_cimke = "Magyar Nyelvtan"
+else:
+    st.info("Ez a tantárgyi modul hamarosan elérhető lesz! Addig válaszd a Magyar Irodalom vagy Magyar Nyelvtan tantárgyat.")
+    aktiv_adatbazis = tetelek_irodalom
+    tantargy_cimke = "Magyar Irodalom"
+
 # PDF Letöltés
 st.sidebar.markdown("---")
-st.sidebar.subheader("📥 Letölthető anyag")
-if st.sidebar.button("📄 PDF Puska elkészítése"):
-    pdf_bytes = letoltheto_pdf_generalas(tetelek)
+st.sidebar.subheader("📥 Letölthető tananyag")
+if st.sidebar.button(f"📄 {tantargy_cimke} PDF Puska"):
+    pdf_bytes = letoltheto_pdf_generalas(aktiv_adatbazis, tantargy_cimke)
     st.sidebar.download_button(
         label="⬇️ Letöltés indítása",
         data=pdf_bytes,
-        file_name="Irodalom_Erettsegi_Puska.pdf",
+        file_name=f"{tantargy_cimke}_Erettsegi_Puska.pdf",
         mime="application/pdf"
     )
 
-# 1. Menüpont: Tételek & Vázlatok
-if menupont == "📖 Tételek & Vázlatok":
-    kivalasztott_tetel = st.selectbox("Válassz tételt:", list(tetelek.keys()))
-    adat = tetelek[kivalasztott_tetel]
+# -------------------------------------------------------------
+# 1. MENÜPONT: TÉTELEK ÉS VÁZLATOK
+# -------------------------------------------------------------
+if menupont == "📚 Tételek & Vázlatok":
+    st.markdown(f"<div class='subject-pill'>🎯 Aktuális tantárgy: {tantargy_cimke}</div>", unsafe_allow_html=True)
+    kivalasztott_tetel = st.selectbox("Válassz tételt a kidolgozáshoz:", list(aktiv_adatbazis.keys()))
+    adat = aktiv_adatbazis[kivalasztott_tetel]
     
     st.markdown(f"""
     <div class='topic-card'>
@@ -706,7 +733,41 @@ if menupont == "📖 Tételek & Vázlatok":
                     st.error(f"Helytelen! ❌ Magyarázat: {q['m']}")
             st.markdown("---")
 
-# 2. Menüpont: Villámkártyák (Flashcards)
+# -------------------------------------------------------------
+# 2. MENÜPONT: HANGOSKÖNYV (1.5-2 perces monológok)
+# -------------------------------------------------------------
+elif menupont == "🎧 Hangoskönyv (Monológ)":
+    st.title(f"🎧 Hangoskönyv Felkészítő – {tantargy_cimke}")
+    st.caption("Hallgasd meg a tételek teljes, 1.5–2 perces összefüggő szóbeli elemzését!")
+    
+    kivalasztott_hangos = st.selectbox("Válassz meghallgatandó tételt:", list(aktiv_adatbazis.keys()), key="audio_select")
+    adat_hangos = aktiv_adatbazis[kivalasztott_hangos]
+    
+    st.markdown(f"""
+    <div class='audio-card'>
+        <h3 style='color:#60a5fa; margin-top:0;'>🎙️ {kivalasztott_hangos}</h3>
+        <p style='color:#cbd5e1;'><strong>Fókusz:</strong> {adat_hangos['alcim']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    col_a1, col_a2 = st.columns([2, 1])
+    with col_a1:
+        if st.button(f"▶️ Hangos monológ elindítása ({kivalasztott_hangos})"):
+            with st.spinner("Hangfájl generálása tiszta magyar kiejtéssel..."):
+                tts = gTTS(text=adat_hangos["audio_szoveg"].strip(), lang='hu', slow=False)
+                audio_buffer = io.BytesIO()
+                tts.write_to_fp(audio_buffer)
+                audio_buffer.seek(0)
+                st.audio(audio_buffer, format="audio/mp3")
+                st.session_state.xp += 25
+                st.success("Jó tanulást és hallgatást! (+25 XP) 🎧")
+                
+    with st.expander("📖 A monológ teljes szövege (olvasáshoz és követéshez)", expanded=True):
+        st.write(adat_hangos["audio_szoveg"].strip())
+
+# -------------------------------------------------------------
+# 3. MENÜPONT: VILLÁMKÁRTYÁK (FLASHCARDS)
+# -------------------------------------------------------------
 elif menupont == "🎴 Villámkártyák (Flashcards)":
     st.title("🎴 Érettségi Villámkártyák (Astra Flashcards)")
     st.caption("Pörgesd át a legfontosabb fogalmakat, évszámokat és összefüggéseket!")
@@ -734,16 +795,18 @@ elif menupont == "🎴 Villámkártyák (Flashcards)":
             st.session_state.card_idx = (st.session_state.card_idx + 1) % len(flashcards_adat)
             st.rerun()
 
-# 3. Menüpont: Szóbeli Érettségi Szimulátor
-elif menupont == "🎙️ Szóbeli Érettségi Szimulátor":
+# -------------------------------------------------------------
+# 4. MENÜPONT: SZÓBELI SZIMULÁTOR
+# -------------------------------------------------------------
+elif menupont == "🎙️ Szóbeli Szimulátor":
     st.title("🎙️ Szóbeli Érettségi Szimulátor (Mock Exam)")
     st.caption("Gyakorold a szóbeli feleletet! Az AI vizsgaelnökként automatikusan meghallgat, belekérdez és leosztályoz.")
     
-    valasztott_szim_tetel = st.selectbox("Válassz tételt a próbavizsgához:", list(tetelek.keys()))
+    valasztott_szim_tetel = st.selectbox(f"Válassz {tantargy_cimke} tételt a próbavizsgához:", list(aktiv_adatbazis.keys()))
     
     if st.button("🏁 Új szóbeli felelet indítása"):
         st.session_state.oral_history = [
-            {"role": "ai", "text": f"Jó napot kívánok! Húzza ki a tételét... Az Ön tétele: **{valasztott_szim_tetel}**. Kérem, kezdje meg a feleletét a bevezetéssel és a legfontosabb műfaji, formai sajátosságokkal!"}
+            {"role": "ai", "text": f"Jó napot kívánok! Húzza ki a tételét... Az Ön tétele: **{valasztott_szim_tetel}**. Kérem, kezdje meg a feleletét a bevezetéssel és a legfontosabb fogalmi sajátosságokkal!"}
         ]
         st.rerun()
         
@@ -760,24 +823,26 @@ elif menupont == "🎙️ Szóbeli Érettségi Szimulátor":
         if kuld_felelet and felelet_reszlet:
             st.session_state.oral_history.append({"role": "user", "text": felelet_reszlet})
             prompt = f"""
-            Magyar irodalom szóbeli érettségi elnök vagy. A diák a(z) '{valasztott_szim_tetel}' tételből felel.
+            {tantargy_cimke} szóbeli érettségi elnök vagy. A diák a(z) '{valasztott_szim_tetel}' tételből felel.
             A diák eddigi válasza: '{felelet_reszlet}'.
             Feladatod:
-            1. Röviden értékeld az elmondottakat (pontosság, fogalmak).
+            1. Röviden értékeld az elmondottakat (pontosság, szakszavak).
             2. Tegyél fel egy célzott, érettségi szintű kérdést a tétel egy másik fontos részletére vonatkozóan, vagy ha a felelet végére ért, adj egy konkrét érdemjegyet (1-5) és szöveges záróértékelést.
-            Legyél támogató, de szakmailag pontos tanár!
+            Legyél támogató, de szakmailag precíz tanár!
             """
             ai_valasz = ai_generalas(prompt)
             st.session_state.oral_history.append({"role": "ai", "text": ai_valasz})
             st.session_state.xp += 30
             st.rerun()
 
-# 4. Menüpont: Esszé & Elemzés Értékelő
-elif menupont == "✍️ Esszé & Elemzés Értékelő":
+# -------------------------------------------------------------
+# 5. MENÜPONT: ESSZÉ & ÍRÁSBELI JAVÍTÓ
+# -------------------------------------------------------------
+elif menupont == "✍️ Esszé & Írásbeli Javító":
     st.title("✍️ Esszé & Műelemzés Értékelő Labor")
-    st.caption("Másold be az írásbeli fogalmazásodat vagy verselemzés-tervezetedet, és az AI azonnal pontozza az érettségi szempontrendszer szerint!")
+    st.caption("Másold be az írásbeli fogalmazásodat vagy érvelésedet, és az AI azonnal pontozza az érettségi szempontrendszer szerint!")
     
-    diak_essze = st.text_area("Másold be a fogalmazásodat (műelemzés, összehasonlító elemzés vagy esszé):", height=220)
+    diak_essze = st.text_area("Másold be a fogalmazásodat (műelemzés, összehasonlító elemzés vagy érvelés):", height=220)
     
     if st.button("📊 Esszé automatikus ellenőrzése és pontozása"):
         if diak_essze:
@@ -788,9 +853,9 @@ elif menupont == "✍️ Esszé & Elemzés Értékelő":
                 {diak_essze}
                 ---
                 Kérlek, az alábbi szempontok szerint strukturáld az értékelést:
-                1. **Tartalmi minőség & Szakmai pontosság (max 40 pont):** Irodalomtörténeti tények, fogalmak helyes használata.
-                2. **Szerkezet & Logikai felépítés (max 20 pont):** Bevezetés, tárgyalás, befejezés, logikus átvezetések.
-                3. **Nyelvhelyesség & Stílus (max 20 pont):** Választékos szókincs, helyesírás.
+                1. **Tartalmi minőség & Szakmai pontosság (max 40 pont):** Tények, fogalmak helyes használata.
+                2. **Szerkezet & Logikai felépítés (max 20 pont):** Bevezetés, tárgyalás, befejezés, bekezdések.
+                3. **Nyelvhelyesség & Stílus (max 20 pont):** Szókincs, helyesírás.
                 4. **Összesített érettségi pontszám & Érdemjegy (1-5)**
                 5. **Konkrét javítási javaslatok:** 2-3 pontban, mit kell hozzátenni a maximális pontszámhoz.
                 """
@@ -802,50 +867,63 @@ elif menupont == "✍️ Esszé & Elemzés Értékelő":
         else:
             st.info("Kérlek előbb másold be a fogalmazás szövegét a fenti mezőbe!")
 
-# 5. Menüpont: Hangoskönyv
-elif menupont == "🎧 Hangoskönyv (Monológ)":
-    st.title("🎧 Hangoskönyv Érettségi Felkészítő")
-    st.caption("Hallgasd meg a tételek teljes, 1.5–2 perces összefüggő szóbeli elemzését!")
+# -------------------------------------------------------------
+# 6. MENÜPONT: IDÉZET-DETEKTÍV JÁTÉK
+# -------------------------------------------------------------
+elif menupont == "🎭 Idézet-Detektív Játék":
+    st.title("🎭 Idézet-Detektív Játék")
+    st.caption("Felismered a legfontosabb kötelező irodalmi idézeteket és szerzőiket?")
     
-    kivalasztott_hangos = st.selectbox("Válassz meghallgatandó tételt:", list(tetelek.keys()), key="audio_select")
-    adat_hangos = tetelek[kivalasztott_hangos]
+    if 'game_idx' not in st.session_state:
+        st.session_state.game_idx = 0
+        
+    feladvany = idezet_adatbazis[st.session_state.game_idx]
     
     st.markdown(f"""
-    <div class='audio-card'>
-        <h3 style='color:#60a5fa; margin-top:0;'>🎙️ {kivalasztott_hangos}</h3>
-        <p style='color:#cbd5e1;'><strong>Fókusz:</strong> {adat_hangos['alcim']}</p>
+    <div class='topic-card' style='border-color:#ec4899; text-align:center;'>
+        <h3 style='color:#f472b6; font-style:italic;'>{feladvany['idezet']}</h3>
     </div>
     """, unsafe_allow_html=True)
     
-    col_a1, col_a2 = st.columns([2, 1])
-    with col_a1:
-        if st.button(f"▶️ Hangos monológ elindítása ({kivalasztott_hangos})"):
-            with st.spinner("Hangfájl generálása tiszta magyar kiejtéssel..."):
-                tts = gTTS(text=adat_hangos["audio_szoveg"].strip(), lang='hu', slow=False)
-                audio_buffer = io.BytesIO()
-                tts.write_to_fp(audio_buffer)
-                audio_buffer.seek(0)
-                st.audio(audio_buffer, format="audio/mp3")
-                st.session_state.xp += 25
-                st.success("Jó tanulást és hallgatást! (+25 XP) 🎧")
-                
-    with st.expander("📖 A monológ teljes szövege (olvasáshoz és követéshez)", expanded=True):
-        st.write(adat_hangos["audio_szoveg"].strip())
+    valasztott_tipp = st.radio("Válaszd ki a helyes művet és szerzőt:", feladvany['opciok'], key=f"detektiv_{st.session_state.game_idx}")
+    
+    if st.button("🔍 Tipp ellenőrzése"):
+        if valasztott_tipp == feladvany['helyes']:
+            st.balloons()
+            st.session_state.xp += 30
+            st.success(f"TÖKÉLETES! 🎉 Helyes válasz! (+30 XP)\n\n📌 Háttér: {feladvany['info']}")
+        else:
+            st.error(f"Sajnos nem! ❌ A helyes válasz: **{feladvany['helyes']}**\n\n📌 Háttér: {feladvany['info']}")
+            
+    if st.button("➡️ Következő idézet"):
+        st.session_state.game_idx = (st.session_state.game_idx + 1) % len(idezet_adatbazis)
+        st.rerun()
 
-# 6. Menüpont: Stílusirányzatok
-elif menupont == "🎨 Stílusirányzatok":
-    st.title("Kulcs Stílusirányzatok Mélyelemzése")
-    for nev, leiras in stilusiranyzatok.items():
-        with st.expander(f"📌 {nev}", expanded=True):
-            st.markdown(leiras)
+# -------------------------------------------------------------
+# 7. MENÜPONT: TÖRTÉNELMI & IRODALMI IDŐVONAL
+# -------------------------------------------------------------
+elif menupont == "🧭 Történelmi & Irodalmi Idővonal":
+    st.title("🧭 Történelmi & Irodalmi Idővonal (Timeline)")
+    st.caption("Lásd át egyben, melyik szerző és mű melyik történelmi korszakhoz kapcsolódik!")
+    
+    for item in idovonal_adat:
+        st.markdown(f"""
+        <div class='timeline-item'>
+            <span style='background:#7c3aed; color:white; padding:4px 10px; border-radius:8px; font-weight:700;'>{item['ev']}</span>
+            <h3 style='color:#c084fc; margin:8px 0 4px 0;'>{item['cim']}</h3>
+            <p style='color:#e2e8f0; margin:0;'>{item['leiras']}</p>
+        </div>
+        """, unsafe_allow_html=True)
 
-# 7. Menüpont: Nagy Próbavizsga
+# -------------------------------------------------------------
+# 8. MENÜPONT: NAGY PRÓBAVIZSGA
+# -------------------------------------------------------------
 elif menupont == "🏆 Nagy Próbavizsga":
-    st.title("Teljes Érettségi Próbavizsga")
-    st.write("Válaszold meg az összes tételkérdést a tudásszinted ellenőrzéséhez!")
+    st.title(f"🏆 Teljes Érettségi Próbavizsga – {tantargy_cimke}")
+    st.write("Válaszold meg az összes kérdést a felkészültségi szinted ellenőrzéséhez!")
     
     osszes_kerdes = []
-    for t_nev, t_adat in tetelek.items():
+    for t_nev, t_adat in aktiv_adatbazis.items():
         for q in t_adat["kviz"]:
             osszes_kerdes.append((t_nev, q))
             
@@ -872,7 +950,7 @@ elif menupont == "🏆 Nagy Próbavizsga":
                 if (v == "Igaz") == q["v"]:
                     pont += 1
                     
-        szazalek = int((pont / len(osszes_kerdes)) * 100)
+        szazalek = int((pont / len(osszes_kerdes)) * 100) if len(osszes_kerdes) > 0 else 0
         st.metric("Elért vizsgaeredmény", f"{pont} / {len(osszes_kerdes)} pont", f"{szazalek}%")
         
         if szazalek >= 85:
@@ -888,10 +966,12 @@ elif menupont == "🏆 Nagy Próbavizsga":
         else:
             st.error("❌ Értékelés: Elégtelen (1) – Ismételd át a tételeket!")
 
-# 8. Menüpont: AI Érettségi Mentor Chat
+# -------------------------------------------------------------
+# 9. MENÜPONT: AI ÉRETTSÉGI MENTOR CHAT
+# -------------------------------------------------------------
 elif menupont == "🤖 AI Érettségi Mentor":
     st.title("🤖 AI Érettségi Mentor")
-    st.caption("Kérdezz bármilyen irodalmi műről, versről vagy szerzőről!")
+    st.caption("Kérdezz bármilyen irodalmi vagy nyelvtani tételről, fogalomról, versről vagy szerzőről!")
 
     for msg in st.session_state.chat_history:
         if msg["role"] == "user":
@@ -905,7 +985,7 @@ elif menupont == "🤖 AI Érettségi Mentor":
         
         if kuld and felh_kerdes:
             st.session_state.chat_history.append({"role": "user", "text": felh_kerdes})
-            prompt = f"Magyar irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
+            prompt = f"Magyar nyelv és irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
             ai_valasz = ai_generalas(prompt)
             st.session_state.chat_history.append({"role": "ai", "text": ai_valasz})
             st.session_state.xp += 10
