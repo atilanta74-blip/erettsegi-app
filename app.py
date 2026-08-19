@@ -4,7 +4,7 @@ from fpdf import FPDF
 from google import genai
 
 st.set_page_config(
-    page_title="Astra Study Pro - Irodalom Érettségi",
+    page_title="Irodalom Érettségi Platform - Edited by Nagy Attila",
     page_icon="✨",
     layout="wide"
 )
@@ -119,7 +119,7 @@ tetelek = {
     },
     "3. Madách Imre: Az ember tragédiája": {
         "alcim": "A drámai költemény fogalma, színek elemzése",
-        "kulcsszavak": ["Drámai köktemény", "15 szín", "Ádám és Lucifer", "Küzdj és bízva bízzál"],
+        "kulcsszavak": ["Drámai költemény", "15 szín", "Ádám és Lucifer", "Küzdj és bízva bízzál"],
         "vazlat": """
 ### 1. Műfaj
 - Drámai költemény (világdráma): Emberiség- és létezésfilozófiai kérdések dialógusos formában.
@@ -426,10 +426,10 @@ def letoltheto_pdf_generalas(tetelek_adat):
         
     return bytes(pdf.output())
 
-# Felső fejlécek & Gamifikáció
+# Felső fejlécek & Gamifikáció (Frissített névvel)
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
-    st.title("✨ Astra Study Pro")
+    st.title("✨ Edited by Nagy Attila")
     st.caption("Komplett Magyar Irodalom Érettségi Platform")
 with col_h2:
     st.markdown(f"""
@@ -587,7 +587,6 @@ elif menupont == "🤖 AI Érettségi Mentor":
                     client = genai.Client(api_key=api_key.strip())
                     prompt = f"Magyar irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
                     
-                    # Automatikus modellkeresés a fiókodban engedélyezett modellek közül
                     cel_modellek = []
                     try:
                         for m in client.models.list():
