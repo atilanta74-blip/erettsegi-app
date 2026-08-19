@@ -230,23 +230,33 @@ if menupont == "📚 Tételek & Vázlatok":
 
 elif menupont == "📂 Saját Tételek Feltöltése":
     st.markdown("<div class='topic-card'>", unsafe_allow_html=True)
-    st.subheader("📂 Saját Tételek Feltöltése és Kvízgenerálás")
-    st.write("Tölts fel egy saját szöveges (`.txt`) tételt, és az AI azonnal generál belőle gyakorló kérdéseket!")
+    st.subheader("📂 Saját Tételek és Fotók Feltöltése")
+    st.write("Tölts fel egy szöveges tételt (`.txt`) vagy egy fotót a kidolgozott jegyzetedről, és az AI generál belőle kérdéseket!")
     
-    feltoltott_fajl = st.file_uploader("Kattints ide vagy húzd ide a fájlt (TXT formátum):", type=["txt"])
+    feltoltott_fajl = st.file_uploader("Válassz fájlt (TXT vagy Kép: JPG, PNG):", type=["txt", "jpg", "jpeg", "png"])
     
     if feltoltott_fajl is not None:
         try:
-            tartalom = feltoltott_fajl.read().decode("utf-8", errors="ignore")
-            st.success(f"Sikeres fájlfeltöltés: **{feltoltott_fajl.name}**")
-            
-            if st.button("🚀 Kérdések generálása a fájlból"):
-                with st.spinner("Az AI elemzi a tételt és generálja a kérdéseket..."):
-                    prompt = f"Készíts 5 darab igaz/hamis kérdést és válaszmagyarázatot az alábbi tananyagból: {tartalom[:5000]}"
-                    valasz = ai_generalas(prompt)
-                    st.markdown(f"<div class='deep-text' style='margin-top: 15px;'>{valasz}</div>", unsafe_allow_html=True)
+            if feltoltott_fajl.type.startswith("image/"):
+                st.image(feltoltott_fajl, caption="Feltöltött tétel fotó", use_column_width=True)
+                image_bytes = feltoltott_fajl.read()
+                
+                if st.button("🚀 Kérdések generálása a fotóból"):
+                    with st.spinner("Az AI elemzi a képet és olvassa a szöveget..."):
+                        prompt = "Olvasd el a képen látható tananyagot, majd készíts belőle 5 darab igaz/hamis gyakorló kérdést válaszmagyarázattal."
+                        valasz = ai_generalas(prompt, audio_bytes=image_bytes, mime_type=feltoltott_fajl.type)
+                        st.markdown(f"<div class='deep-text' style='margin-top: 15px;'>{valasz}</div>", unsafe_allow_html=True)
+            else:
+                tartalom = feltoltott_fajl.read().decode("utf-8", errors="ignore")
+                st.success(f"Sikeres fájlfeltöltés: **{feltoltott_fajl.name}**")
+                
+                if st.button("🚀 Kérdések generálása a fájlból"):
+                    with st.spinner("Az AI elemzi a tételt és generálja a kérdéseket..."):
+                        prompt = f"Készíts 5 darab igaz/hamis kérdést és válaszmagyarázatot az alábbi tananyagból: {tartalom[:5000]}"
+                        valasz = ai_generalas(prompt)
+                        st.markdown(f"<div class='deep-text' style='margin-top: 15px;'>{valasz}</div>", unsafe_allow_html=True)
         except Exception as e:
-            st.error(f"Hiba történt a fájl olvasása közben: {e}")
+            st.error(f"Hiba történt a fájl feldolgozása közben: {e}")
     st.markdown("</div>", unsafe_allow_html=True)
 
 elif menupont == "🎧 Hangoskönyv (Monológ)":
