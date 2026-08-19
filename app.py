@@ -18,11 +18,16 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# Astra AI stílusú prémium sötét téma és javított kontrasztok
+# Astra AI stílusú prémium sötét téma és tökéletesen olvasható fehér szövegek
 st.markdown("""
 <style>
     .stApp { background-color: #0b0f19; color: #f3f4f6; }
     .css-1d391kg, .stSidebar { background-color: #111827 !important; border-right: 1px solid #1f2937; }
+    
+    /* Minden kis leírás és címke tisztán fehér/világos legyen */
+    p, label, span, .stMarkdown, div[data-testid="stMarkdownContainer"] p {
+        color: #f3f4f6 !important;
+    }
     
     /* Gombok stílusa */
     .stButton>button, .stDownloadButton>button, div[data-testid="stFormSubmitButton"]>button {
@@ -875,118 +880,68 @@ tetelek_matek = {
     }
 }
 
-# -------------------------------------------------------------
-# TANTÁRGYANKÉNT KÜLÖNVÁLASZTOTT VILLÁMKÁRTYÁK (FLASHCARDS)
-# -------------------------------------------------------------
+# Tantárgyspecifikus villámkártyák, idővonalak és detektív játékok
 flashcards_irodalom = [
     {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra (dalforma), epika (cselekmény) és dráma (konfliktus) sajátosságait."},
     {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás irodalmi szerkesztője."},
     {"q": "Mi a központi szállóige Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember morális felelősségvállalása."},
-    {"q": "Hogyan végződik Örkény István 'Tóték' című műve?", "a": "Tót Lajos a dobozvágó margóvágóval négy egyforma darabba vágja az Őrnagyot."},
-    {"q": "Mit szimbolizál az Ágnes asszonyban a véres lepedő kényszeres mosása?", "a": "A bűn letörölhetetlenségét és a lelkiismeret-furdalás által kiváltott elmezavart."},
-    {"q": "Miért különleges a párizsi szín 'Az ember tragédiájában'?", "a": "Ez az egyetlen olyan történelmi szín, amelyből Ádám nem csalódottan, hanem hittel és tettre készen ébred fel."},
-    {"q": "Ki képviseli a tiszta humanizmus hangját Kosztolányi 'Édes Anna' című regényében?", "a": "Moviszter doktor, aki egyedüliként tekinti Annát érző emberi lénynek."},
-    {"q": "Melyik kötet nyitotta meg Ady Endre szimbolista költői forradalmát?", "a": "Az 1906-ban megjelent Új versek című kötet."}
+    {"q": "Hogyan végződik Örkény István 'Tóték' című műve?", "a": "Tót Lajos a dobozvágó margóvágóval négy egyforma darabba vágja az Őrnagyot."}
 ]
 
 flashcards_nyelvtan = [
     {"q": "Mi a magyar helyesírás 4 alapelve?", "a": "1. Kiejtés elve, 2. Szóelemzés elve, 3. Hagyomány elve, 4. Egyszerűsítés elve."},
     {"q": "Mi a toldalékok szigorú kötött sorrendje a magyar szavakban?", "a": "Szótő + KÉPZŐ + JEL + RAG (pl. ház-as-ság-ok-at)."},
-    {"q": "Mi a különbség a szólás és a közmondás között?", "a": "A szólás képszerű kifejezés mondatérték nélkül (pl. feni a fogát), a közmondás kerek egész mondat tanulsággal (pl. Ki korán kel, aranyat lel)."},
-    {"q": "Mi a különbség az anafora és a katafora között a szövegtanban?", "a": "Az anafora visszautal egy korábbi szövegelemre, míg a katafora előreutal egy későbbi elemre."},
-    {"q": "Melyik a legkorábbi fennmaradt összefüggő magyar szövegemlék?", "a": "A Halotti Beszéd és Könyörgés (1195 körül, a Pray-kódexben)."},
-    {"q": "Mi a szónoki beszéd 6 klasszikus szerkezeti része?", "a": "Bevezetés (Exordium) -> Elbeszélés (Narratio) -> Részletezés -> Bizonyítás -> Cáfolás -> Befejezés (Peroratio)."},
-    {"q": "Milyen mássalhangzótörvény érvényesül a 'barátság' szóban?", "a": "Összeolvadás: a t + s hangokból hosszú [ccs] hang keletkezik [baraccság]."}
+    {"q": "Mi a különbség a szólás és a közmondás között?", "a": "A szólás képszerű kifejezés mondatérték nélkül (pl. feni a fogát), a közmondás kerek egész mondat tanulsággal (pl. Ki korán kel, aranyat lel)."}
 ]
 
 flashcards_tortenelem = [
     {"q": "Mikor adta ki Nagy Lajos az Ősiség törvényét és mit jelentett az?", "a": "1351-ben. A nemesi birtok nem adható el, nemes kihalásakor a rokonokra, végül a királyra száll vissza."},
     {"q": "Mikor foglalta el a török csellel Buda várát, amivel 3 részre szakadt az ország?", "a": "1541. augusztus 29-én."},
     {"q": "Milyen új pénznemet vezetett be Bethlen István 1927-ben a gazdasági stabilitásért?", "a": "A Pengőt."},
-    {"q": "Mikor és hol adta ki II. András az Aranybullát?", "a": "1222-ben Fehérváron, rögzítve a szerviensek nemesi szabadságjogait és az ellenállási záradékot."},
-    {"q": "Mikor és hol kiáltották ki a Függetlenségi Nyilatkozatot 1849-ben?", "a": "1849. április 14-én a debreceni Nagytemplomban, kimondva a Habsburg-ház trónfosztását."},
-    {"q": "Melyek voltak az Osztrák-Magyar Monarchia közös ügyei az 1867-es Kiegyezés után?", "a": "A külügy, a hadügy és az ezek fedezésére szolgáló pénzügy."},
-    {"q": "Mikor robbant ki az 1956-os forradalom és mi volt a szovjet megtorlás kezdőnapja?", "a": "1956. október 23-án robbant ki, és 1956. november 4-én indult meg a szovjet invázió."}
+    {"q": "Mikor adta ki II. András az Aranybullát?", "a": "1222-ben Fehérváron, rögzítve a szerviensek nemesi jogait."}
 ]
 
 flashcards_matek = [
     {"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x1,2 = (-b ± √(b² - 4ac)) / (2a)"},
     {"q": "Mi a számtani és a mértani sorozat n-edik tagjának képlete?", "a": "Számtani: an = a1 + (n - 1)d | Mértani: an = a1 * q^(n - 1)"},
     {"q": "Mit mond ki a gráfelmélet fokszámtétele?", "a": "A gráf csúcsainak fokszámösszege mindig páros, és egyenlő az élek számának kétszeresével (2e)."},
-    {"q": "Mikor merőleges egymásra két vektor?", "a": "Ha a skaláris szorzatuk pontosan 0 (a1*b1 + a2*b2 = 0)."},
-    {"q": "Mennyi a konvex n-szög belső szögeinek összege?", "a": "Sn = (n - 2) * 180°"},
-    {"q": "Mi a koszinusztétel képlete általános háromszögre?", "a": "a² = b² + c² - 2bc · cos(α)"},
-    {"q": "Mi a henger és a kúp térfogatképlete?", "a": "Henger: V = r²π · M | Kúp: V = (r²π · M) / 3"},
-    {"q": "Hogyan deriváljuk a hatványfüggvényt (x^n)?", "a": "(x^n)' = n · x^(n - 1)"},
-    {"q": "Mi a klasszikus valószínűség kiszámítási képlete?", "a": "P(A) = Kedvező esetek száma / Összes lehetséges eset száma (k / n)"}
+    {"q": "Mikor merőleges egymásra két vektor?", "a": "Ha a skaláris szorzatuk pontosan 0 (a1*b1 + a2*b2 = 0)."}
 ]
 
-# Idővonalak tantárgyanként
 timeline_irodalom = [
-    {"ev": "1848–1849", "cim": "A forradalom és szabadságharc lírája", "leiras": "Petőfi forradalmi látomásköltészete (A XIX. század költői, Nemzeti dal); Arany János korai korszaka."},
-    {"ev": "1850-es évek", "cim": "A nagykőrösi balladák korszaka", "leiras": "Arany János allegorikus nemzeti ellenállása (A walesi bárdok, Szondi két apródja) és mély lélektana (Ágnes asszony)."},
-    {"ev": "1859–1860", "cim": "Az ember tragédiája születése", "leiras": "Madách Imre drámai költeménye az emberiség eszméinek és küzdelmének filozófiájáról."},
-    {"ev": "1872", "cim": "Az arany ember megjelenése", "leiras": "Jókai Mór érett romantikus-realista regénye a polgári meghasonlásról és a Senki szigetéről."},
-    {"ev": "1877", "cim": "Arany János Őszikék korszaka", "leiras": "Margitszigeti kései líra a Kapcsos könyvben; nagyvárosi haláltánc a Híd-avatásban."},
-    {"ev": "1906–1908", "cim": "A modern magyar irodalom robbanása", "leiras": "Ady Endre: Új versek (1906) és a Nyugat folyóirat indulása (1908) Osvát Ernő és Babits vezetésével."},
-    {"ev": "1926", "cim": "Édes Anna és a lélektani próza", "leiras": "Kosztolányi Dezső regénye az 1919-es történelmi háttérben az elfojtott sérelmek robbanásáról."},
-    {"ev": "1938–1944", "cim": "A fasizmus árnyékában", "leiras": "Babits megírja a Jónás könyvét (1938); Radnóti Miklós bori noteszének kései eclogái és Razglednicái."}
+    {"ev": "1848–1849", "cim": "A forradalom és szabadságharc lírája", "leiras": "Petőfi forradalmi látomásköltészete; Arany János korszaka."},
+    {"ev": "1908", "cim": "A Nyugat folyóirat indulása", "leiras": "Ady Endre és a Nyugat nemzedékeinek szellemi forradalma."}
 ]
 
 timeline_nyelvtan = [
-    {"ev": "Kr. e. 3000-től", "cim": "Az uráli és finnugor együttélés kora", "leiras": "Alapvető szókészletünk (testrészek, természeti jelenségek, számok) és a ragozó (agglutináló) nyelvtan kialakulása."},
-    {"ev": "1055", "cim": "A Tihanyi apátság alapítólevele", "leiras": "Legkorábbi magyar szórványemlékünk ('feheruuaru rea meneh hodu utu rea')."},
-    {"ev": "1195 körül", "cim": "A Halotti Beszéd és Könyörgés", "leiras": "A Pray-kódexben fennmaradt legkorábbi összefüggő magyar szövegemlék."},
-    {"ev": "1300 körül", "cim": "Ómagyar Mária-siralom", "leiras": "Az első fennmaradt magyar nyelvű verses nyelvemlék (Leuveni kódex)."},
-    {"ev": "1790–1820", "cim": "A Nyelvújítás korszaka", "leiras": "Kazinczy Ferenc és a neológusok harca az ortológusokkal; több mint tízezer új magyar szó teremtése."},
-    {"ev": "1832", "cim": "Az első hivatalos Helyesírási Szabályzat", "leiras": "A Magyar Tudományos Akadémia rögzíti a 4 alapelvet és a hivatalos akadémiai normát."},
-    {"ev": "2000-től", "cim": "A digitális kommunikáció kora", "leiras": "Az online kommunikáció, az írott beszéltség, a rövidítések és az emojik elterjedése."}
+    {"ev": "1055", "cim": "Tihanyi apátság alapítólevele", "leiras": "Legkorábbi magyar szórványemlék."},
+    {"ev": "1790–1820", "cim": "A Nyelvújítás korszaka", "leiras": "Kazinczy Ferenc és a neológusok munkássága."}
 ]
 
 timeline_tortenelem = [
-    {"ev": "Kr. e. V. sz.", "cim": "Az athéni demokrácia virágkora", "leiras": "Periklész kora, a népgyűlés és az esküdtbíróságok működése, a napidíjak bevezetése."},
-    {"ev": "1000", "cim": "Szent István király koronázása", "leiras": "A keresztény magyar állam és a vármegyerendszer megalapítása, egyházmegyék kiépítése."},
-    {"ev": "1222", "cim": "Az Aranybulla kiadása", "leiras": "II. András törvénye a szerviensek nemesi jogairól és az ellenállási záradékról."},
-    {"ev": "1351", "cim": "Nagy Lajos törvényei", "leiras": "Az ősiség törvénye (aviticitas), a kilenced bevezetése és az egységes nemesi szabadság."},
-    {"ev": "1458–1490", "cim": "Hunyadi Mátyás királysága", "leiras": "Központosított királyi hatalom, füstpénz, a Fekete sereg és a reneszánsz kultúra virágkora."},
-    {"ev": "1526 / 1541", "cim": "Mohács és az ország 3 részre szakadása", "leiras": "1526 Mohácsi csatavesztés, 1541 Buda török kézre kerülése, Hódoltság és Erdély létrejötte."},
-    {"ev": "1703–1711", "cim": "A Rákóczi-szabadságharc", "leiras": "Habsburg-ellenes nemzeti küzdelem, 1707 Ónodi trónfosztás, 1711 Szatmári béke."},
-    {"ev": "1830–1848", "cim": "A magyar reformkor", "leiras": "Széchenyi Hitel című művével indul, Kossuth érdekegyesítési programja, a polgári átalakulás előkészítése."},
-    {"ev": "1848–1849", "cim": "Forradalom és Szabadságharc", "leiras": "Március 15., Áprilisi törvények, függetlenségi háború és az 1849-es tavaszi hadjárat sikerei."},
-    {"ev": "1867", "cim": "A Kiegyezés – Dualizmus kora", "leiras": "Az Osztrák-Magyar Monarchia létrejötte, Deák Ferenc, fél évszázados gazdasági és kulturális aranykor."},
-    {"ev": "1920", "cim": "A Trianoni békediktátum", "leiras": "Az ország területének 2/3 része elcsatolva, 3,3 millió magyar rekedt a határokon túl."},
-    {"ev": "1956. okt. 23.", "cim": "Forradalom és Szabadságharc", "leiras": "Fegyveres harc a szovjet elnyomás ellen, Nagy Imre kormánya, nov. 4-i invázió."},
-    {"ev": "1989–1990", "cim": "A Békés Rendszerváltás", "leiras": "Ellenzéki Kerekasztal, Nagy Imre újratemetése, határnyitás, a Köztársaság kikiáltása és az 1990-es szabad választások."}
+    {"ev": "1000", "cim": "Szent István koronázása", "leiras": "A keresztény magyar állam megalapítása."},
+    {"ev": "1526 / 1541", "cim": "Mohács és a 3 részre szakadás", "leiras": "A középkori Magyar Királyság bukása és török hódoltság."}
 ]
 
 timeline_matek = [
-    {"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz és a derékszögű háromszögek", "leiras": "A Pitagorasz-tétel (a² + b² = c²) felfedezése és a geometriai bizonyítások kezdete."},
-    {"ev": "Kr. e. III. sz.", "cim": "Euklidész és a geometriai axiómák", "leiras": "Az 'Elemek' című mű: a síkgeometria, a párhuzamossági axióma és a prímek végtelenségének bizonyítása."},
-    {"ev": "IX. század", "cim": "Al-Hvárizmi és az Algebra születése", "leiras": "A másodfokú egyenletek szisztematikus megoldási módszere és az algoritmus fogalmának alapjai."},
-    {"ev": "1637", "cim": "René Descartes és a Koordinátageometria", "leiras": "A derékszögű koordináta-rendszer megalkotása: geometriai alakzatok leírása algebrai egyenletekkel."},
-    {"ev": "1687", "cim": "Newton és Leibniz: Differenciálszámítás", "leiras": "A derivált és a határérték felfedezése: a függvények pillanatnyi változási sebességének kiszámítása."},
-    {"ev": "1736", "cim": "Leonhard Euler és a Gráfelmélet", "leiras": "A königsbergi hidak problémájának megoldása: a csúcsok, élek és fokszámok összefüggései."}
+    {"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz", "leiras": "A derékszögű háromszögek tétele."},
+    {"ev": "1687", "cim": "Newton és Leibniz", "leiras": "A differenciálszámítás felfedezése."}
 ]
 
-# Detektív játék adatbázisok
 detektiv_irodalom = [
-    {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A prófétai és értelmiségi felelősségvállalás alaptétele."},
-    {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Új vizeken járok"], "info": "Petőfi forradalmi felhívó lírájának remeke."}
+    {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Új versek", "Arany János: Toldi"], "info": "A felelősségvállalás parancsa."}
 ]
 
 detektiv_nyelvtan = [
-    {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi részleges hasonulás", "Írásban jelölt teljes hasonulás", "Mássalhangzó-kiesés"], "info": "A t + s hangokból egy harmadik, hosszú [ccs] hang keletkezik."},
-    {"idezet": "„lila dalra kelt az éjcsend”", "helyes": "Szinesztézia (Költői kép)", "opciok": ["Szinesztézia (Költői kép)", "Megszemélyesítés", "Metonímia", "Szinekdoché"], "info": "Látási (lila), hallási (dal) és csend érzékterületek összekapcsolása."}
+    {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi hasonulás", "Kiesés"], "info": "A t + s hangokból [ccs] keletkezik."}
 ]
 
 detektiv_tortenelem = [
-    {"idezet": "„Ius resistendi (A nemesek joga a királlyal szembeni ellenállásra)”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Nagy Lajos 1351-es törvényei", "Szent István I. törvénykönyve", "Kollonics Lipót rendelete"], "info": "A magyar rendi nemesi szabadságjogok sarokköve."},
-    {"idezet": "„Eb ura fakó, József császár nem királyunk!”", "helyes": "1707-es Ónodi országgyűlés (Trónfosztás)", "opciok": ["1707-es Ónodi országgyűlés (Trónfosztás)", "1849-es Debreceni trónfosztás", "1526-os Rákosi gyűlés", "1608-as koronázási cikkelyek"], "info": "A Rákóczi-szabadságharc alatt kimondott Habsburg-trónfosztás jelszava."}
+    {"idezet": "„Ius resistendi (Ellenállási záradék)”", "helyes": "Az 1222-es Aranybulla", "opciok": ["Az 1222-es Aranybulla", "1351-es ősiség", "Szent István törvényei"], "info": "A nemesek joga a királlyal szemben."}
 ]
 
 detektiv_matek = [
-    {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel (Általános háromszögekre)", "opciok": ["Koszinusztétel (Általános háromszögekre)", "Szinusztétel", "Pitagorasz-tétel", "Héron-képlet"], "info": "A Pitagorasz-tétel általánosítása tetszőleges háromszögre."},
-    {"idezet": "(x^n)' = n · x^(n-1)", "helyes": "Hatványfüggvény deriválási szabálya", "opciok": ["Hatványfüggvény deriválási szabálya", "Logaritmus azonosság", "Binomiális tétel", "Sorozat összegképlet"], "info": "A differenciálszámítás legalapvetőbb műveleti szabálya."}
+    {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel", "opciok": ["Koszinusztétel", "Szinusztétel", "Pitagorasz-tétel"], "info": "Általános háromszögekre érvényes."}
 ]
 
 # Állapotkezelés
@@ -1475,7 +1430,7 @@ elif menupont == "🏆 Nagy Próbavizsga":
 # -------------------------------------------------------------
 elif menupont == "🤖 AI Érettségi Mentor":
     st.title("🤖 AI Érettségi Mentor")
-    st.caption("Kérdezz bátran írásban vagy hanggal Irodalmi, Nyelvtani, Történelmi vagy Matematikai témáról!")
+    st.caption("Kérdezz bármilyen Irodalmi, Nyelvtani, Történelmi vagy Matematikai témáról, levezetésről, fogalomról!")
 
     for msg in st.session_state.chat_history:
         if msg["role"] == "user":
