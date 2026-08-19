@@ -378,18 +378,26 @@ if 'chat_history' not in st.session_state:
         {"role": "ai", "text": "Szia! Én vagyok az érettségi mentorod. Kérdezz bátran bármelyik tételről, versről vagy szerzőről!"}
     ]
 
-# Hibátlan Unicode PDF generáló
+# Hibátlan Unicode PDF generáló böngésző álcával
 def letoltheto_pdf_generalas(tetelek_adat):
     pdf = FPDF(orientation="P", unit="mm", format="A4")
     pdf.set_margins(15, 15, 15)
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
     
-    # DejaVuSans Unicode betűtípus letöltése (ha még nincs a lemezen)
+    # DejaVuSans Unicode betűtípus letöltése (Böngészőnek álcázva a GitHub blokkolás ellen)
+    font_url = "https://raw.githubusercontent.com/dejavu-fonts/dejavu-fonts/master/ttf/DejaVuSans.ttf"
+    font_bold_url = "https://raw.githubusercontent.com/dejavu-fonts/dejavu-fonts/master/ttf/DejaVuSans-Bold.ttf"
+    
     if not os.path.exists("DejaVuSans.ttf"):
-        urllib.request.urlretrieve("https://github.com/dejavu-fonts/dejavu-fonts/raw/master/ttf/DejaVuSans.ttf", "DejaVuSans.ttf")
+        req = urllib.request.Request(font_url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req) as response, open("DejaVuSans.ttf", 'wb') as out_file:
+            out_file.write(response.read())
+            
     if not os.path.exists("DejaVuSans-Bold.ttf"):
-        urllib.request.urlretrieve("https://github.com/dejavu-fonts/dejavu-fonts/raw/master/ttf/DejaVuSans-Bold.ttf", "DejaVuSans-Bold.ttf")
+        req = urllib.request.Request(font_bold_url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req) as response, open("DejaVuSans-Bold.ttf", 'wb') as out_file:
+            out_file.write(response.read())
         
     pdf.add_font("DejaVu", "", "DejaVuSans.ttf")
     pdf.add_font("DejaVu", "B", "DejaVuSans-Bold.ttf")
