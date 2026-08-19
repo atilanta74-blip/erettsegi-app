@@ -17,11 +17,49 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# Astra AI prémium sötét téma és vizuális elemek
+# Astra AI prémium stílusok - tökéletes gomb- és szövegkontraszttal
 st.markdown("""
 <style>
     .stApp { background-color: #0b0f19; color: #f3f4f6; }
     .css-1d391kg, .stSidebar { background-color: #111827 !important; border-right: 1px solid #1f2937; }
+    
+    /* Gombok univerzális stílusa: élénk, kontrasztos, jól látható */
+    .stButton>button, .stDownloadButton>button, div[data-testid="stFormSubmitButton"]>button {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        font-size: 1rem !important;
+        border: 1px solid #818cf8 !important;
+        border-radius: 10px !important;
+        padding: 10px 24px !important;
+        transition: all 0.2s ease-in-out !important;
+        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3) !important;
+    }
+    .stButton>button:hover, .stDownloadButton>button:hover, div[data-testid="stFormSubmitButton"]>button:hover {
+        background: linear-gradient(135deg, #6366f1, #9333ea) !important;
+        color: #ffffff !important;
+        border-color: #a78bfa !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4) !important;
+    }
+    
+    /* Szövegbeviteli mezők és lenyílók igazítása */
+    .stTextInput>div>div>input, .stTextArea>div>div>textarea {
+        background-color: #1f2937 !important;
+        color: #ffffff !important;
+        border: 1px solid #4b5563 !important;
+        border-radius: 8px !important;
+    }
+    .stTextInput>div>div>input:focus, .stTextArea>div>div>textarea:focus {
+        border-color: #818cf8 !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+    }
+    div[data-baseweb="select"] > div {
+        background-color: #1f2937 !important;
+        color: #ffffff !important;
+        border-color: #4b5563 !important;
+    }
+    
     .stat-badge {
         background: linear-gradient(135deg, #6366f1, #a855f7);
         padding: 8px 16px;
@@ -90,10 +128,6 @@ st.markdown("""
         border-radius: 16px 16px 16px 4px;
         margin-bottom: 12px;
         max-width: 80%;
-    }
-    .stButton>button {
-        border-radius: 10px;
-        font-weight: 600;
     }
 </style>
 """, unsafe_allow_html=True)
