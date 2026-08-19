@@ -44,24 +44,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# ADATBÁZISOK (Irodalom, Nyelvtan, Történelem, Matek)
+# ADATBÁZISOK
 # -------------------------------------------------------------
 tetelek_irodalom = {
     "1. Arany János balladái": {
         "alcim": "A ballada műfajelmélete, nagykőrösi és margitszigeti korszak",
-        "kulcsszavak": ["Tragédia dalban elbeszélve", "Nagykőrös", "Őszikék", "Ágnes asszony", "Szondi két apródja", "A walesi bárdok"],
+        "kulcsszavak": ["Tragédia dalban elbeszélve", "Nagykőrös", "Őszikék", "Ágnes asszony"],
         "audio_szoveg": "Arany János a magyar irodalom legnagyobb balladaírója...",
-        "vazlat": "### I. Műfajelmélet: Líra, epika és dráma szintézise.\n### II. Nagykőrösi korszak: Történelmi ellenállás és lélektan.",
+        "vazlat": "### I. Műfajelmélet: Líra, epika és dráma szintézise.\n### II. Nagykőrösi korszak.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Definíció -> 2. Nagykőrösi balladák.",
         "kviz": [{"k": "A balladát Greguss Ágost 'tragédia dalban elbeszélve' névvel illette.", "v": True, "m": "A három műnem találkozása."}]
-    },
-    "2. Jókai Mór: Az arany ember": {
-        "alcim": "Romantika és realizmus szintézise, polgári meghasonlás és a Senki szigete",
-        "kulcsszavak": ["Timár Mihály", "Senki szigete", "Timea és Noémi"],
-        "audio_szoveg": "Jókai Mór 1872-es Az arany ember című regénye...",
-        "vazlat": "### I. Műfaj: Romantikus mesei fordulatok és realista társadalomrajz.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. 1872 kontextusa -> 2. Timár jelleme.",
-        "kviz": [{"k": "A Senki szigete pénzmentes természeti utópia a regényben.", "v": True, "m": "A társadalmi konvenciókon kívül áll."}]
     }
 }
 
@@ -98,44 +90,20 @@ tetelek_matek = {
     }
 }
 
-flashcards_irodalom = [
-    {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra, epika és dráma sajátosságait."},
-    {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a szerkesztője?", "a": "1908-ban indult, Osvát Ernő szerkesztette."}
-]
-flashcards_nyelvtan = [
-    {"q": "Mi a 4 helyesírási alapelv?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."},
-    {"q": "Mi a toldalékok sorrendje?", "a": "Tő + Képző + Jel + Rag."}
-]
-flashcards_tortenelem = [
-    {"q": "Mikor adta ki Nagy Lajos az Ősiség törvényét?", "a": "1351-ben."},
-    {"q": "Mikor esett el Buda (török kéz)?", "a": "1541. augusztus 29."}
-]
-flashcards_matek = [
-    {"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x1,2 = (-b ± √(b² - 4ac)) / (2a)"},
-    {"q": "Melyik tétel általánosítja Pitagoraszt?", "a": "Koszinusztétel."}
-]
+flashcards_irodalom = [{"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve”."}]
+flashcards_nyelvtan = [{"q": "Mi a 4 helyesírási alapelv?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."}]
+flashcards_tortenelem = [{"q": "Mikor esett el Buda?", "a": "1541. augusztus 29."}]
+flashcards_matek = [{"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x1,2 = (-b ± √(b² - 4ac)) / (2a)"}]
 
 timeline_irodalom = [{"ev": "1848–1849", "cim": "Forradalom lírája", "leiras": "Petőfi és Arany."}]
 timeline_nyelvtan = [{"ev": "1055", "cim": "Tihany", "leiras": "Szórványemlék."}]
 timeline_tortenelem = [{"ev": "1000", "cim": "Államalapítás", "leiras": "Szent István."}]
 timeline_matek = [{"ev": "Kr. e. VI.", "cim": "Pitagorasz", "leiras": "Derékszögű háromszög."}]
 
-detektiv_irodalom = [
-    {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Új versek", "Arany János: Toldi", "Radnóti Miklós"], "info": "A felelősségvállalás parancsa."},
-    {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb...”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János", "Ady Endre"], "info": "Petőfi forradalmi felhívó lírája."}
-]
-detektiv_nyelvtan = [
-    {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi részleges hasonulás", "Írásban jelölt teljes hasonulás", "Mássalhangzó-kiesés"], "info": "t + s -> [ccs]."},
-    {"idezet": "„lila dalra kelt az éjcsend”", "helyes": "Szinesztézia (Költői kép)", "opciok": ["Szinesztézia (Költői kép)", "Megszemélyesítés", "Metonímia", "Szinekdoché"], "info": "Érzékkeverés."}
-]
-detektiv_tortenelem = [
-    {"idezet": "„Ius resistendi (A nemesek joga az ellenállásra)”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Nagy Lajos 1351", "Szent István", "Kollonics"], "info": "Rendi szabadságjog."},
-    {"idezet": "„Eb ura fakó, József császár nem királyunk!”", "helyes": "1707-es Ónodi országgyűlés (Trónfosztás)", "opciok": ["1707-es Ónodi országgyűlés (Trónfosztás)", "1849", "1526", "1608"], "info": "Habsburg-trónfosztás."}
-]
-detektiv_matek = [
-    {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel (Általános háromszögekre)", "opciok": ["Koszinusztétel (Általános háromszögekre)", "Szinusztétel", "Pitagorasz", "Héron"], "info": "Pitagorasz általánosítása."},
-    {"idezet": "(x^n)' = n · x^(n-1)", "helyes": "Hatványfüggvény deriválási szabálya", "opciok": ["Hatványfüggvény deriválási szabálya", "Logaritmus", "Binomiális", "Sorozat"], "info": "Differenciálás."}
-]
+detektiv_irodalom = [{"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János"], "info": "A felelősségvállalás parancsa."}]
+detektiv_nyelvtan = [{"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi részleges hasonulás"], "info": "t + s -> [ccs]."}]
+detektiv_tortenelem = [{"idezet": "„Ius resistendi”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Szent István"], "info": "Rendi jog."}]
+detektiv_matek = [{"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel", "opciok": ["Koszinusztétel", "Pitagorasz"], "info": "Általános háromszög."}]
 
 # Állapotkezelés
 if 'xp' not in st.session_state: st.session_state.xp = 180
@@ -243,18 +211,25 @@ if menupont == "📚 Tételek & Vázlatok":
             if c2.button("❌ Hamis", key=f"f_{i}"): st.error(f"Nem jó. {q['m']}")
 
 elif menupont == "📂 Saját Tételek Feltöltése":
-    st.subheader("Saját tételek alapú kvízgenerálás")
-    feltoltott_fajl = st.file_uploader("Töltsd fel a kidolgozott tételodat (txt):", type=["txt"])
+    st.markdown("<div class='topic-card'>", unsafe_allow_html=True)
+    st.subheader("📂 Saját Tételek Feltöltése és Kvízgenerálás")
+    st.write("Tölts fel egy saját szöveges (`.txt`) tételt, és az AI azonnal generál belőle gyakorló kérdéseket!")
     
-    if feltoltott_fajl:
-        tartalom = feltoltott_fajl.read().decode("utf-8", errors="ignore")
-        st.success("Fájl sikeresen feldolgozva!")
-        
-        if st.button("Kérdések generálása a fájlból"):
-            with st.spinner("AI generálja a kérdéseket..."):
-                prompt = f"Készíts 5 darab igaz/hamis kérdést az alábbi tananyagból: {tartalom[:5000]}"
-                valasz = ai_generalas(prompt)
-                st.markdown(f"<div class='deep-text'>{valasz}</div>", unsafe_allow_html=True)
+    feltoltott_fajl = st.file_uploader("Kattints ide vagy húzd ide a fájlt (TXT formátum):", type=["txt"])
+    
+    if feltoltott_fajl is not None:
+        try:
+            tartalom = feltoltott_fajl.read().decode("utf-8", errors="ignore")
+            st.success(f"Sikeres fájlfeltöltés: **{feltoltott_fajl.name}**")
+            
+            if st.button("🚀 Kérdések generálása a fájlból"):
+                with st.spinner("Az AI elemzi a tételt és generálja a kérdéseket..."):
+                    prompt = f"Készíts 5 darab igaz/hamis kérdést és válaszmagyarázatot az alábbi tananyagból: {tartalom[:5000]}"
+                    valasz = ai_generalas(prompt)
+                    st.markdown(f"<div class='deep-text' style='margin-top: 15px;'>{valasz}</div>", unsafe_allow_html=True)
+        except Exception as e:
+            st.error(f"Hiba történt a fájl olvasása közben: {e}")
+    st.markdown("</div>", unsafe_allow_html=True)
 
 elif menupont == "🎧 Hangoskönyv (Monológ)":
     tetel = st.selectbox("Válassz tételt hangoskönyvhöz:", list(aktiv_adatbazis.keys()))
