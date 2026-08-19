@@ -496,7 +496,7 @@ tetelek_nyelvtan = {
 }
 
 # -------------------------------------------------------------
-# 3. TÖRTÉNELEM TÉTELTÁR (20 Tétel)
+# 3. TÖRTÉNELEM TÉTELTÁR (30 Tétel)
 # -------------------------------------------------------------
 tetelek_tortenelem = {
     "1. Az athéni demokrácia működése a Kr. e. V. században": {
@@ -515,7 +515,15 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Válság okai -> 2. Caesar egyeduralma -> 3. Augustus principátusa -> 4. Pax Romana.",
         "kviz": [{"k": "Augustus megtartotta a köztársasági intézményeket a látszat kedvéért.", "v": True, "m": "Princepsként uralkodott."}]
     },
-    "3. A középkori uradalom és a hűbériség rendszere": {
+    "3. A kereszténység születése és elterjedése az ókorban": {
+        "alcim": "Jézus tanításai, az őskeresztény gyülekezetek és a milánói ediktum (313)",
+        "kulcsszavak": ["Názáreti Jézus", "Szent Pál apostol", "Milánói ediktum (313)", "Nicaea-i zsinat (325)"],
+        "audio_szoveg": "A kereszténység a Római Birodalom keleti tartományában, a zsidóság köréből indult ki, és szeretet-üzenetével hódította meg a világot...",
+        "vazlat": "### I. Gyökerek és tanítások: Názáreti Jézus fellépése, a hegyi beszéd, a szeretet és a megváltás tana.\n### II. Elterjedés: Pál apostol missziós útjai a pogányok között; az őskeresztény gyülekezetek szolidaritása és egyenlősége.\n### III. Legalizálás: Diocletianus utolsó nagy üldözése után 313-ban Constantinus császár a milánói ediktummal engedélyezte; 325 Nicaea-i zsinat.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Jézus tanításai -> 2. Apostolok missziója -> 3. Milánói ediktum (313) -> 4. Államvallccsá válás.",
+        "kviz": [{"k": "313-ban a milánói ediktummal Constantinus császár engedélyezte a keresztény vallást.", "v": True, "m": "Véget vetett a keresztényüldözéseknek."}]
+    },
+    "4. A középkori uradalom és a hűbériség rendszere": {
         "alcim": "Hűbéri lánc (feudalizmus), a jobbágyság és a háromnyomásos gazdálkodás",
         "kulcsszavak": ["Senior és Vazallus", "Feudum", "Majorság és Jobbágytelek", "Háromnyomásos gazdálkodás"],
         "audio_szoveg": "A középkori Európa társadalmi és gazdasági rendszere a hűbériségen alapult...",
@@ -523,7 +531,15 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Feudalizmus piramisa -> 2. Uradalmi felépítés -> 3. Jobbágyok kötelességei -> 4. Háromnyomásos rendszer.",
         "kviz": [{"k": "A háromnyomásos gazdálkodásban a szántóföld egyharmada pihent (ugar).", "v": True, "m": "Őszi, tavaszi gabona és ugar váltotta egymást."}]
     },
-    "4. Szent István államalapítása és az egyházszervezés": {
+    "5. Az Iszlám vallás születése és az arab-iszlám világ expanziója": {
+        "alcim": "Mohamed próféta, a Korán, az iszlám öt oszlopa és a kalifátusok terjeszkedése",
+        "kulcsszavak": ["Mohák", "Hegidzsra (622)", "Korán", "Öt oszlop", "Kalifátus"],
+        "audio_szoveg": "Az iszlám vallás a 7. század elején született meg az Arab-félszigeten Mohamed próféta fellépésével...",
+        "vazlat": "### I. Alapítás: Mohamed próféta; 622-es futás (Hegidzsra) Mekkából Medinába (az iszlám időszámítás kezdete).\n### II. Tantételek: Monoteizmus (Allah az egyetlen isten), Korán, az iszlám 5 oszlopa (hitvallás, ima, adakozás, böjt, zarándoklat).\n### III. Expanzió: Az arab seregek elfoglalják a Közel-Keletet, Észak-Afrikát és Spanyolországot (kalifátusok).",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Mohamed és a hegizsra -> 2. Korán és az 5 oszlop -> 3. Arab hódítások -> 4. Kulturális közvetítő szerep.",
+        "kviz": [{"k": "Az iszlám időszámítás kezdete 622-hez, a hegizsjrához (Mohamed futásához) kötődik.", "v": True, "m": "Mekkából Medinába vonult."}]
+    },
+    "6. Szent István államalapítása és az egyházszervezés": {
         "alcim": "A keresztény királyság megszilárdítása, vármegyerendszer és törvények",
         "kulcsszavak": ["Koppány (997)", "Koronázás (1000)", "10 egyházmegye", "Ispánok", "Tized"],
         "audio_szoveg": "Géza fejedelem után fia, István király 1000 karácsonyán felvette a keresztény királyi koronát...",
@@ -531,7 +547,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Trónra jutás -> 2. Egyházszervezés -> 3. Vármegyerendszer -> 4. Törvények.",
         "kviz": [{"k": "Szent István 10 püspökséget alapított Magyarországon.", "v": True, "m": "Esztergom és Kalocsa érseki rangot kapott."}]
     },
-    "5. Az Aranybulla és a rendi társadalom gyökerei (1222)": {
+    "7. Az Aranybulla és a rendi társadalom gyökerei (1222)": {
         "alcim": "II. András birtokpolitikája, a szerviensek mozgalma és a nemesi jogok rögzítése",
         "kulcsszavak": ["1222 Aranybulla", "Szerviensek", "Adómentesség", "Ellenállási záradék"],
         "audio_szoveg": "II. András birtokadományozásai miatt a szerviensek kikényszerítették az Aranybullát...",
@@ -539,7 +555,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Válság okai -> 2. Szerviensek követelései -> 3. Aranybulla cikkelyei -> 4. Ellenállási záradék.",
         "kviz": [{"k": "Az Aranybulla 31. cikkelye feljogosította a nemeseket a királlyal szembeni ellenállásra a törvényszegés esetén.", "v": True, "m": "Ez az ellenállási záradék."}]
     },
-    "6. Az Anjouk kora Magyarországon": {
+    "8. Az Anjouk kora Magyarországon": {
         "alcim": "Károly Róbert gazdasági reformjai és Nagy Lajos 1351-es törvényei",
         "kulcsszavak": ["Bányabér (Urbura)", "Aranyforint", "Kapuadó", "1351 Ősiség és Kilenced"],
         "audio_szoveg": "Károly Róbert legyőzte a tartományurakat és stabil gazdasági reformokat vezetett be...",
@@ -547,7 +563,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Károly Róbert gazdasági reformjai -> 2. Visegrádi csúcs -> 3. Nagy Lajos 1351-es törvényei -> 4. Lovagkirály kora.",
         "kviz": [{"k": "Az 1351-es ősiség törvénye védte a nemesi birtokot a felaprózódástól és eladástól.", "v": True, "m": "A nemzetségen belül maradt a föld."}]
     },
-    "7. Hunyadi Mátyás uralkodása (1458–1490)": {
+    "9. Hunyadi Mátyás uralkodása (1458–1490)": {
         "alcim": "Központosított monarchia, bevételek, Fekete sereg és a reneszánsz udvar",
         "kulcsszavak": ["Füstpénz", "Rendkívüli hadiadó", "Fekete sereg", "Corvinák", "Bécs bevétele"],
         "audio_szoveg": "Hunyadi Mátyás erős központosított királyi hatalmat épített ki...",
@@ -555,7 +571,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Mátyás trónra lépése -> 2. Gazdasági bevételek -> 3. Fekete sereg és hadjáratok -> 4. Reneszánsz kultúra.",
         "kviz": [{"k": "Mátyás kapuadó helyett vezette be a füstpénzt.", "v": True, "m": "Így minden háztartás külön adózott."}]
     },
-    "8. A mohácsi csata és az ország három részre szakadása (1526–1541)": {
+    "10. A mohácsi csata és az ország három részre szakadása (1526–1541)": {
         "alcim": "A Jagelló-kor gyengesége, Mohács tragédiája, kettős királyválasztás és Buda eleste",
         "kulcsszavak": ["1526 Mohács", "Szapolyai és Ferdinánd", "1541 Buda eleste", "Három országrész"],
         "audio_szoveg": "1526. augusztus 29-én a mohácsi síkon megsemmisült a magyar haderő...",
@@ -563,7 +579,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Mohácsi vereség -> 2. Polgárháború a trónért -> 3. Buda török kézre kerülése -> 4. A 3 országrész.",
         "kviz": [{"k": "Buda 1541-es elfoglalásával szakadt három részre a Magyar Királyság.", "v": True, "m": "Szulejmán szultán csellel vette be a várat."}]
     },
-    "9. A Rákóczi-szabadságharc (1703–1711)": {
+    "11. A Rákóczi-szabadságharc (1703–1711)": {
         "alcim": "A Habsburg abszolutizmus elleni felkelés, az ónodi trónfosztás és a szatmári béke",
         "kulcsszavak": ["Brezáni kiáltvány", "Kurucok", "Ónodi országgyűlés (1707)", "Szatmári béke (1711)"],
         "audio_szoveg": "A török kiűzése utáni Habsburg elnyomás ellen II. Rákóczi Ferenc vezetésével bontakozott ki a függetlenségi háború...",
@@ -571,7 +587,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Szabadságharc okai -> 2. Rákóczi szövetsége -> 3. Ónodi trónfosztás -> 4. Szatmári béke.",
         "kviz": [{"k": "Az 1707-es ónodi országgyűlésen mondták ki a Habsburg-ház trónfosztását.", "v": True, "m": "„Eb ura fakó, József császár nem királyunk!”"}]
     },
-    "10. A felvilágosult abszolutizmus Magyarországon": {
+    "12. A felvilágosult abszolutizmus Magyarországon": {
         "alcim": "Mária Terézia és II. József rendeletei (Védővám, Urbárium, Ratio Educationis, Türelmi rendelet)",
         "kulcsszavak": ["Mária Terézia", "Vámrendelet (1754)", "Urbárium (1767)", "II. József", "Türelmi rendelet (1781)"],
         "audio_szoveg": "A 18. században a Habsburg uralkodók a felvilágosodás eszméit felhasználva modernizálták a birodalmat...",
@@ -579,7 +595,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Felvilágosult abszolutizmus -> 2. Mária Terézia rendeletei -> 3. II. József reformjai -> 4. Hatás.",
         "kviz": [{"k": "II. József a kalapos király nevet kapta, mert nem koronáztatta meg magát a Szent Koronával.", "v": True, "m": "Hogy ne kelljen felesküdnie a rendi alkotmányra."}]
     },
-    "11. A reformkor fő kérdései (1830–1848)": {
+    "13. A reformkor fő kérdései (1830–1848)": {
         "alcim": "Széchenyi István és Kossuth Lajos reformprogramjának összehasonlítása",
         "kulcsszavak": ["Hitel (1830)", "Örökváltság", "Közteherviselés", "Pesti Hírlap", "Érdekegyesítés"],
         "audio_szoveg": "A magyar reformkor 1830-ban Széchenyi Hitel című művével vette kezdetét...",
@@ -587,7 +603,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Reformkor fogalma -> 2. Széchenyi gazdasági programja -> 3. Kossuth érdekegyesítése -> 4. A vita.",
         "kviz": [{"k": "Kossuth a kötelező örökváltságot követelte állami kárpótlással.", "v": True, "m": "A jobbágyság azonnali polgárosodásáért küzdött."}]
     },
-    "12. Az 1848–49-es forradalom és szabadságharc": {
+    "14. Az 1848–49-es forradalom és szabadságharc": {
         "alcim": "Március 15., az Áprilisi törvények és a Tavaszi hadjárat sikerei",
         "kulcsszavak": ["12 pont", "Áprilisi törvények (1848)", "Batthyány Lajos", "Görgei Artúr", "Függetlenségi Nyilatkozat"],
         "audio_szoveg": "1848 tavaszán a pesti forradalom és az Áprilisi törvények szentesítése polgári Magyarországot teremtett...",
@@ -595,7 +611,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Március 15. -> 2. Batthyány kormánya -> 3. Tavaszi hadjárat -> 4. Cári beavatkozás.",
         "kviz": [{"k": "A Batthyány-kormány volt az első független felelős magyar kormány.", "v": True, "m": "1848 áprilisában alakult meg."}]
     },
-    "13. A dualizmus kora Magyarországon (1867–1914)": {
+    "15. A dualizmus kora Magyarországon (1867–1914)": {
         "alcim": "A Kiegyezés rendszere, gazdasági felvirágzás és társadalmi rétegződés",
         "kulcsszavak": ["Kiegyezés (1867)", "Deák Ferenc", "Közös ügyek", "Gazdasági csoda", "Torlódó társadalom"],
         "audio_szoveg": "Az 1867-es kiegyezéssel létrejött az Osztrák-Magyar Monarchia...",
@@ -603,7 +619,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Közös ügyek -> 2. Gazdasági robbanás -> 3. Torlódó társadalom -> 4. Nemzetiségek.",
         "kviz": [{"k": "A dualizmus korában a külügy és hadügy közös minisztériumokhoz tartozott.", "v": True, "m": "A pénzügy finanszírozta őket."}]
     },
-    "14. Az első világháború és következményei (1914–1918)": {
+    "16. Az első világháború és következményei (1914–1918)": {
         "alcim": "A szövetségi rendszerek, az állóháború jellege és a hátország összeomlása",
         "kulcsszavak": ["Szarajevó (1914)", "Antant és Hármasszövetség", "Állóháború", "Verdun és Somme"],
         "audio_szoveg": "Az imperialista nagyhatalmi ellentétek 1914-ben robbantották ki a Nagy Háborút...",
@@ -611,7 +627,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Háború okai -> 2. Állóháború jellege -> 3. Fordulópontok -> 4. Összeomlás.",
         "kviz": [{"k": "Az Egyesült Államok 1917-ben lépett be az Antant oldalán a háborúba.", "v": True, "m": "A tengeralattjáró-háború miatt."}]
     },
-    "15. A Horthy-korszak konszolidációja (1920–1931)": {
+    "17. A Horthy-korszak konszolidációja (1920–1931)": {
         "alcim": "Trianon traumája, a bethleni konszolidáció és Klebelsberg kultúrpolitikája",
         "kulcsszavak": ["Trianon (1920. jún. 4.)", "Bethlen István", "Pengő (1927)", "Klebelsberg Kuno"],
         "audio_szoveg": "Az I. világháború és Trianon után Bethlen István vezetésével stabilizálódott az ország...",
@@ -619,7 +635,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Trianoni sokk -> 2. Bethlen stabilitása (Pengő) -> 3. Klebelsberg iskolafejlesztése -> 4. Külpolitika.",
         "kviz": [{"k": "1927-ben vezették be az új értékálló magyar valutát, a Pengőt.", "v": True, "m": "A korona elértéktelenedése után stabilizálta a piacot."}]
     },
-    "16. A második világháború főbb fordulópontjai (1939–1945)": {
+    "18. A második világháború főbb fordulópontjai (1939–1945)": {
         "alcim": "A náci agresszió, a szövetségesek koalíciója, Sztálingrád, D-nap és a holokauszt",
         "kulcsszavak": ["1939. szept. 1. Lengyelország", "Sztálingrád (1942-43)", "D-nap (1944. jún. 6.)", "Holokauszt"],
         "audio_szoveg": "A náci Németország lengyelországi lerohanásával 1939-ben kitört a világháború...",
@@ -627,7 +643,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Kitörés -> 2. Sztálingrádi fordulat -> 3. D-nap és holokauszt -> 4. Befejezés.",
         "kviz": [{"k": "A sztálingrádi csata jelentette a II. világháború döntő fordulatát.", "v": True, "m": "A német 6. hadsereg megsemmisült."}]
     },
-    "17. Magyarország a második világháborúban (1941–1945)": {
+    "19. Magyarország a második világháborúban (1941–1945)": {
         "alcim": "Revíziós sikerek, belépés a háborúba, a doni katasztrófa, a német megszállás és a nyilas terror",
         "kulcsszavak": ["Bécsi döntések", "Teleki öngyilkossága", "2. magyar hadsereg (Don)", "1944. márc. 19. Német megszállás", "Nyilas terror"],
         "audio_szoveg": "Magyarország a revíziós sikerek áraként sodródott bele a háborúba...",
@@ -635,7 +651,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Revízió és hadbalépés -> 2. Doni tragédia -> 3. Német megszállás és deportálások -> 4. Nyilas terror.",
         "kviz": [{"k": "A 2. magyar hadsereg 1943 januárjában a Don-kanyarban szenvedett tragikus vereséget.", "v": True, "m": "Több mint százezer katona veszett oda."}]
     },
-    "18. A hidegháború kialakulása és korszakai (1945–1991)": {
+    "20. A hidegháború kialakulása és korszakai (1945–1991)": {
         "alcim": "Kétpólusú világ, fegyverkezési verseny, Truman-doktrína, kubai rakétaválság és a szovjet összeomlás",
         "kulcsszavak": ["Vasfüggöny", "Truman-doktrína", "NATO vs. Varsói Szerződés", "Kubai válság (1962)", "Gorbacsov"],
         "audio_szoveg": "A II. világháború után a világ két ellenséges szuperhatalmi blokkra szakadt...",
@@ -643,7 +659,7 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Kétpólusú világ születése -> 2. Katonai tömbök -> 3. Kubai válság -> 4. Szovjetunió csődje.",
         "kviz": [{"k": "A kubai rakétaválság (1962) idején állt a világ legközelebb a közvetlen atomháborúhoz.", "v": True, "m": "Kennedy és Hruscsov végül kompromisszumot kötött."}]
     },
-    "19. Az 1956-os forradalom és szabadságharc": {
+    "21. Az 1956-os forradalom és szabadságharc": {
         "alcim": "A Rákosi-diktatúra válsága, október 23., Nagy Imre kormánya és a szovjet intervenció",
         "kulcsszavak": ["MEFESZ", "16 pont", "Október 23.", "Nagy Imre", "Corvin köz", "November 4. Invázió"],
         "audio_szoveg": "1956. október 23-án a budapesti diákok tüntetésével indult a szabadságharc a szovjet elnyomás ellen...",
@@ -651,13 +667,77 @@ tetelek_tortenelem = {
         "szobeli": "**🎙️ 3 perces felelet:** 1. Rákosi válsága -> 2. Október 23. forradalma -> 3. Nagy Imre reformjai és semlegesség -> 4. Szovjet invázió és megtorlás.",
         "kviz": [{"k": "Magyarország 1956. november 1-jén kikiáltotta semlegességét és kilépését a Varsói Szerződésből.", "v": True, "m": "Nagy Imre jelentette be."}]
     },
-    "20. A rendszerváltás folyamata Magyarországon (1989–1990)": {
+    "22. A Kádár-rendszer korszaka és a „gulyáskommunizmus”": {
+        "alcim": "Az 1956 utáni konszolidáció, a Kádár-féle politika és az életszínvonal-politika",
+        "kulcsszavak": ["Konszolidáció", "„Aki nincs ellenünk, az velünk van”", "Gulyáskommunizmus", "1968-as új gazdasági mechanizmus"],
+        "audio_szoveg": "1956 után Kádár János nevéhez fűződik a konszolidáció és a gulyáskommunizmus korszaka...",
+        "vazlat": "### I. Konszolidáció: „Aki nincs ellenünk, az velünk van” elv; titkos megegyezés a társadalommal (politikai passzivitásért cserébe magánéleti béke és anyagi gyarapodás).\n### II. Gulyáskommunizmus: A blokkon belüli legvidámabb barakk; élelmiszer-bőség, olcsó nyaralások a Balatonnál, nyugati utazási lehetőségek.\n### III. Gazdasági reform: 1968-as új gazdasági mechanizmus (részleges piaci elemek bevezetése).",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1956 utáni terror és konszolidáció -> 2. Kádári alku a néppel -> 3. Gulyáskommunizmus életformája -> 4. Rendszer kifulladása.",
+        "kviz": [{"k": "A Kádár-korszakban a hatalom elve így hangzott: 'Aki nincs ellenünk, az velünk van'.", "v": True, "m": "Enyhítés a Rákosi-korszak 'aki nincs velünk, az ellenünk van' elvéhez képest."}]
+    },
+    "23. A békés rendszerváltás Magyarországon (1989–1990)": {
         "alcim": "A Kádár-rendszer válsága, az Ellenzéki Kerekasztal, Nagy Imre újratemetése és a szabad választások",
         "kulcsszavak": ["Ellenzéki Kerekasztal (EKA)", "1989. jún. 16. Újratemetés", "1989. okt. 23. Köztársaság", "1990 Szabad választások"],
         "audio_szoveg": "1989-1990-ben békés tárgyalások útján alakult át a kommunista diktatúra demokratikus jogállammá...",
         "vazlat": "### I. Kádár-rendszer csődje: Gazdasági eladósodás, ellenzéki pártok születése (MDF, Fidesz, SZDSZ).\n### II. 1989 eseményei: Ellenzéki Kerekasztal (EKA); Nagy Imre újratemetése (jún. 16.); Határnyitás; Köztársaság kikiáltása (okt. 23.).\n### III. 1990: Első szabad választások -> Antall József kormánya.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Kádár-rendszer válsága -> 2. Ellenzéki Kerekasztal -> 3. 1989 kulcsdátumai -> 4. 1990-es választások.",
         "kviz": [{"k": "1989. október 23-án kikiáltották a harmadik Magyar Köztársaságot.", "v": True, "m": "Szűrös Mátyás hirdette ki a Parlament erkélyéről."}]
+    },
+    "24. A nagy földrajzi felfedezések és a kapitalizmus hajnala": {
+        "alcim": "A karavella, iránytű, Kolumbusz, Vasco da Gama és a globális kereskedelem",
+        "kulcsszavak": ["Kolumbusz Kristóf (1492)", "Vasco da Gama", "Magellán", "Világkereskedelem", "Árforradalom"],
+        "audio_szoveg": "A 15. század végén a török terjeszkedés és a fűszeréhség miatt új tengeri utakat kerestek az európaiak...",
+        "vazlat": "### I. Okok és feltételek: Török vámok a szárazföldi úton; új hajók (karavella), hajózási eszközök (iránytű, asztrolábium).\n### II. Felfedezések: 1492 Kolumbusz (Amerika elérése); 1498 Vasco da Gama (Indiai út); 1519-1522 Magellán (Föld körbehajózása).\n### III. Következmények: Árforradalom, új növények (kukorica, burgonya, dohány), gyarmatosítás, rabszolga-kereskedelem.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Felfedezések okai -> 2. Főbb expedíciók -> 3. Gazdasági következmények és árforradalom -> 4. Globális világkereskedelem.",
+        "kviz": [{"k": "Kolumbusz Kristóf 1492-ben indult útnak és érte el az amerikai kontinenst.", "v": True, "m": "India asztrológiai elérését tervezte."}]
+    },
+    "25. A reformáció és a katolikus megújulás (ellenreformáció)": {
+        "alcim": "Luther Márton, Kálvin János, hitviták, új felekezetek és a barokk művészet",
+        "kulcsszavak": ["Luther Márton (1517)", "95 tétel", "Kálvin János", "Jezsuita rend", "Trentói zsinat"],
+        "audio_szoveg": "A 16. században a katolikus egyház bírálatából kiindulva kibontakozott a reformáció...",
+        "vazlat": "### I. Lutheri reformáció: 1517. október 31. Luther 95 tétele Wittenbergben; búcsúcédulák elutasítása, hit általi üdvözülés, Bibliafordítás.\n### II. Kálvini reformáció: Eleve elrendeltetés (*predesztináció*), puritán egyházszervezet (presbiterek).\n### III. Katolikus megújulás: Trentói zsinat (1545-1563) fegyelemfegyelmezés, Jezsuita rend (Loyola Ignác), barokk stílus mint a katolikus hit diadalának kifejezője.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Luther és a 95 tétel -> 2. Kálvini tanok -> 3. Trentói zsinat és jezsuiták -> 4. Kulturális hatások (barokk).",
+        "kviz": [{"k": "Luther Márton 1517-ben tűzte ki 95 tételét a wittenbergi templom ajtajára.", "v": True, "m": "Ez indította el a reformációt."}]
+    },
+    "26. Az angol alkotmányos monarchia kialakulása a XVII. században": {
+        "alcim": "A Stuart-házi absolutizmus kísérlete, polgárháború, Cromwell és az 1689-es Jognyilatkozat",
+        "kulcsszavak": ["Angol polgárháború", "Oliver Cromwell", "Dicsőséges forradalom (1688)", "Jognyilatkozat (1689)"],
+        "audio_szoveg": "A 17. századi Angliában a parlament és a király összecsapásából született meg a modern alkotmányos monarchia...",
+        "vazlat": "### I. Polgárháború: Parlament vs. Stuart királyok (I. Károly kivégzése 1649); Oliver Cromwell köztársasága és protektorátusa.\n### II. Dicsőséges forradalom (1688): II. Jakab elűzése, Orániai Vilmos meghívása.\n### III. Jognyilatkozat (1689): Alkotmányos monarchia alapjai (parlament felelős kormány, sajtószabadság, hatalmi ágak szétválasztásának csírái).",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Konfliktus okai -> 2. Polgárháború és Cromwell -> 3. Dicsőséges forradalom -> 4. 1689-es Jognyilatkozat.",
+        "kviz": [{"k": "Az 1689-es Jognyilatkozat fektette le az angol alkotmányos monarchia alapjait.", "v": True, "m": "A király uralkodik, de nem kormányoz a parlament nélkül."}]
+    },
+    "27. A francia polgári forradalom és Napóleon bukása": {
+        "alcim": "A rendi gyűlés összehívása (1789), Emberi és Polgári Jogok Nyilatkozata, jakobinus diktatúra és Napóleon",
+        "kulcsszavak": ["1789. július 14. Bastille", "Emberi és Polgári Jogok Nyilatkozata", "Jakobinus diktatúra", "Napóleon"],
+        "audio_szoveg": "1789-ben Franciaországban a gazdasági válság és a felvilágosodás eszméi kitermelték a modern európai történelem legnagyobb forradalmát...",
+        "vazlat": "### I. Forradalom kitörése: 1789. július 14. Bastille ostroma; Emberi és Polgári Jogok Nyilatkozata (*Szabadság, Egyenlőség, Testvériség*).\n### II. Radikalizálódás: XVI. Lajos kivégzése, Jakobinus diktatúra (Robespierre - terror).\n### III. Napóleon hatalomátvétele: Polgári törvénykönyv (Code Napoléon), európai hódítások, 1815 Waterlooi vereség és száműzetés.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1789 júliusa és a Jognyilatkozat -> 2. Jakobinus terror -> 3. Napóleon birodalma és törvénykönyve -> 4. Waterloo és bukás.",
+        "kviz": [{"k": "A Bastille ostromával kezdődött meg az 1789-es francia polgári forradalom.", "v": True, "m": "Július 14-én."}]
+    },
+    "28. Az ipari forradalmak hullámai és a munkáskérdés": {
+        "alcim": "Gőzgép, gyári ipar, urbanizáció, vasútépítés és a szocialista eszmék születése",
+        "kulcsszavak": ["Első ipari forradalom (Watt gőzgépe)", "Második ipari forradalom (Elektromosság)", "Urbanizáció", "Marxizmus"],
+        "audio_szoveg": "Az ipari forradalmak átalakították az emberiség termelési módját, társadalmi struktúráját és városait...",
+        "vazlat": "### I. Első ipari forradalom (18. sz. vége, Anglia): James Watt gőzgépe, textilipar, vasútépítés, szén és vas bányászata.\n### II. Második ipari forradalom (19. sz. vége): Elektromosság, belsőégésű motor, vegyipar, tömegtermelés.\n### III. Munkáskérdés: Nyomornegyedek, gyermekmunka, szakszervezeti mozgalmak; Karl Marx és a marxizmus (szocialista eszmék).",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Első ipari forradalom technikai újításai -> 2. Urbanizáció és munkáskérdés -> 3. Második ipari forradalom -> 4. Szocialista eszmék.",
+        "kviz": [{"k": "James Watt nevéhez fűződik a hatékony gőzgép tökéletesítése.", "v": True, "m": "Ez indította el az ipari forradalmat."}]
+    },
+    "29. Az európai integráció és a globalizáció kezdetei": {
+        "alcim": "A Schuman-terv, az EGK, az Európai Unió megalakulása (Maastrichti szerződés) és globalizáció",
+        "kulcsszavak": ["Schuman-terv (1950)", "Római szerződés (1957)", "Maastrichti szerződés (1992)", "Globalizáció"],
+        "audio_szoveg": "A második világháború után Európa államai az egység és a béke megőrzése érdekében elindították az integrációs folyamatot...",
+        "vazlat": "### I. Integráció lépései: 1950 Schuman-terv (szén- és acélunió); 1957 Római szerződés (EGK - Európai Gazdasági Közösség).\n### II. Európai Unió: 1992 Maastrichti szerződés (közös kül-, biztonság- és belpolitika, Euró-zóna előkészítése).\n### III. Globalizáció: Határok átjárhatósága, digitális hálózatok, multinacionális cégek és a világgazdaság összefonódása.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Integráció okai a II. vh után -> 2. EGK és Római szerződés -> 3. Maastrichti szerződés és EU -> 4. Globalizáció kihívásai.",
+        "kviz": [{"k": "Az 1992-es Maastrichti szerződés hozta létre hivatalosan az Európai Uniót.", "v": True, "m": "Új integrációs dimenziókat nyitott."}]
+    },
+    "30. A jelenkori világ globális kihívásai (klímaváltozás, migráció, információs társadalom)": {
+        "alcim": "Környezeti válság, demográfiai folyamatok és a digitális kor kérdései",
+        "kulcsszavak": ["Klímaváltozás", "Fenntartható fejlődés", "Migrációs hullámok", "Információs társadalom"],
+        "audio_szoveg": "A 21. század elején az emberiség példátlan globális kihívásokkal szembesül a környezetvédelem, a demográfia és a technológia terén...",
+        "vazlat": "### I. Környezeti válság: Klímaváltozás, üvegházhatás, biodiverzitás csökkenése, fenntartható fejlődés koncepciója.\n### II. Demográfia és migráció: A fejlett világ elöregedése vs. fejlődő országok népességrobbanása; gazdasági és menekültmigrációs hullámok.\n### III. Információs társadalom: Mesterséges intelligencia, adatbiztonság, álhírek (*fake news*) és a digitális megosztottság.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Klímaváltozás és fenntarthatóság -> 2. Globális migrációs folyamatok -> 3. Információs társadalom áldásai és veszélyei -> 4. Jövőbeli kilátások.",
+        "kviz": [{"k": "A fenntartható fejlődés célja a jelen szükségleteinek kielégítése a jövő generációinak veszélyeztetése nélkül.", "v": True, "m": "A modern ökológia alapelve."}]
     }
 }
 
@@ -687,18 +767,23 @@ timeline_nyelvtan = [
 
 timeline_tortenelem = [
     {"ev": "Kr. e. V. sz.", "cim": "Az athéni demokrácia virágkora", "leiras": "Periklész kora, a népgyűlés és az esküdtbíróságok működése, a napidíjak bevezetése."},
+    {"ev": "Kr. e. 27", "cim": "A Római Principátus születése", "leiras": "Augustus egyeduralma, köztársasági látszat, a Pax Romana békéje."},
+    {"ev": "313", "cim": "Milánói ediktum", "leiras": "Constantinus császár engedélyezi a keresztény vallást a birodalomban."},
+    {"ev": "622", "cim": "A hegizsra (Iszlám időszámítás kezdete)", "leiras": "Mohamed próféta futása Mekkából Medinába."},
     {"ev": "1000", "cim": "Szent István király koronázása", "leiras": "A keresztény magyar állam és a vármegyerendszer megalapítása, egyházmegyék kiépítése."},
     {"ev": "1222", "cim": "Az Aranybulla kiadása", "leiras": "II. András törvénye a szerviensek nemesi jogairól és az ellenállási záradékról."},
     {"ev": "1351", "cim": "Nagy Lajos törvényei", "leiras": "Az ősiség törvénye (aviticitas), a kilenced bevezetése és az egységes nemesi szabadság."},
     {"ev": "1458–1490", "cim": "Hunyadi Mátyás királysága", "leiras": "Központosított királyi hatalom, füstpénz, a Fekete sereg és a reneszánsz kultúra virágkora."},
     {"ev": "1526 / 1541", "cim": "Mohács és az ország 3 részre szakadása", "leiras": "1526 Mohácsi csatavesztés, 1541 Buda török kézre kerülése, Hódoltság és Erdély létrejötte."},
     {"ev": "1703–1711", "cim": "A Rákóczi-szabadságharc", "leiras": "Habsburg-ellenes nemzeti küzdelem, 1707 Ónodi trónfosztás, 1711 Szatmári béke."},
-    {"ev": "1830–1848", "cim": "A magyar reformkor", "leiras": "Széchenyi Hitel című művével indul, Kossuth érdekegyesítési programja, a polgári átalakulás előkészítése."},
-    {"ev": "1848–1849", "cim": "Forradalom és Szabadságharc", "leiras": "Március 15., Áprilisi törvények, függetlenségi háború és az 1849-es tavaszi hadjárat sikerei."},
-    {"ev": "1867", "cim": "A Kiegyezés – Dualizmus kora", "leiras": "Az Osztrák-Magyar Monarchia létrejötte, Deák Ferenc, fél évszázados gazdasági és kulturális aranykor."},
-    {"ev": "1920", "cim": "A Trianoni békediktátum", "leiras": "Az ország területének 2/3 része elcsatolva, 3,3 millió magyar rekedt a határokon túl."},
-    {"ev": "1956. okt. 23.", "cim": "Forradalom és Szabadságharc", "leiras": "A pesti diákok tüntetése, fegyveres harc a szovjet elnyomás ellen, Nagy Imre kormánya, nov. 4-i invázió."},
-    {"ev": "1989–1990", "cim": "A Békés Rendszerváltás", "leiras": "Ellenzéki Kerekasztal, Nagy Imre újratemetése, határnyitás, a Köztársaság kikiáltása és az 1990-es szabad választások."}
+    {"ev": "1789", "cim": "A francia polgári forradalom kitörése", "leiras": "Bastille ostroma, Emberi és Polgári Jogok Nyilatkozata."},
+    {"ev": "1830–1848", "cim": "A magyar reformkor", "leiras": "Széchenyi Hitel című művével indul, Kossuth érdekegyesítési programja."},
+    {"ev": "1848–1849", "cim": "Forradalom és Szabadságharc", "leiras": "Március 15., Áprilisi törvények, függetlenségi háború és a tavaszi hadjárat."},
+    {"ev": "1867", "cim": "A Kiegyezés – Dualizmus kora", "leiras": "Az Osztrák-Magyar Monarchia létrejötte, gazdasági és kulturális aranykor."},
+    {"ev": "1914–1918", "cim": "Az Első Világháború és Trianon", "leiras": "Lövészárok-hadviselés, Monarchia felbomlása, 1920 Trianoni békediktátum."},
+    {"ev": "1939–1945", "cim": "A Második Világháború és Holokauszt", "leiras": "Sztálingrádi fordulat, Don-kanyar, 1944. márc. 19. német megszállás."},
+    {"ev": "1956. okt. 23.", "cim": "Forradalom és Szabadságharc", "leiras": "Fegyveres harc a szovjet elnyomás ellen, Nagy Imre kormánya, nov. 4-i invázió."},
+    {"ev": "1989–1990", "cim": "A Békés Rendszerváltás", "leiras": "Ellenzéki Kerekasztal, határnyitás, Köztársaság kikiáltása és az 1990-es szabad választások."}
 ]
 
 timeline_matek = [
@@ -707,6 +792,55 @@ timeline_matek = [
     {"ev": "1637", "cim": "René Descartes és a Koordinátageometria", "leiras": "A derékszögű koordináta-rendszer megalkotása: geometriai alakzatok leírása algebrai egyenletekkel."},
     {"ev": "1687", "cim": "Newton és Leibniz: Differenciálszámítás", "leiras": "A derivált és a határérték felfedezése: a függvények pillanatnyi változási sebességének kiszámítása."},
     {"ev": "1736", "cim": "Leonhard Euler és a Gráfelmélet", "leiras": "A königsbergi hidak problémájának megoldása: a csúcsok, élek és fokszámok összefüggései."}
+]
+
+# Flashcards
+flashcards_irodalom = [
+    {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra (dalforma), epika (cselekmény) és dráma (konfliktus) sajátosságait."},
+    {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás irodalmi szerkesztője."},
+    {"q": "Mi a központi szállóige Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember morális felelősségvállalása."},
+    {"q": "Hogyan végződik Örkény István 'Tóték' című műve?", "a": "Tót Lajos a dobozvágó margóvágóval négy egyforma darabba vágja az Őrnagyot."}
+]
+
+flashcards_nyelvtan = [
+    {"q": "Mi a magyar helyesírás 4 alapelve?", "a": "1. Kiejtés elve, 2. Szóelemzés elve, 3. Hagyomány elve, 4. Egyszerűsítés elve."},
+    {"q": "Mi a toldalékok szigorú kötött sorrendje a magyar szavakban?", "a": "Szótő + KÉPZŐ + JEL + RAG (pl. ház-as-ság-ok-at)."},
+    {"q": "Mi a különbség a szólás és a közmondás között?", "a": "A szólás képszerű kifejezés mondatérték nélkül (pl. feni a fogát), a közmondás kerek egész mondat tanulsággal (pl. Ki korán kel, aranyat lel)."}
+]
+
+flashcards_tortenelem = [
+    {"q": "Mikor adta ki Nagy Lajos az Ősiség törvényét és mit jelentett az?", "a": "1351-ben. A nemesi birtok nem adható el, nemes kihalásakor a rokonokra, végül a királyra száll vissza."},
+    {"q": "Mikor foglalta el a török csellel Buda várát, amivel 3 részre szakadt az ország?", "a": "1541. augusztus 29-én."},
+    {"q": "Milyen új pénznemet vezetett be Bethlen István 1927-ben a gazdasági stabilitásért?", "a": "A Pengőt."},
+    {"q": "Mikor adta ki II. András az Aranybullát?", "a": "1222-ben Fehérváron, rögzítve a szerviensek nemesi jogait."}
+]
+
+flashcards_matek = [
+    {"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x1,2 = (-b ± √(b² - 4ac)) / (2a)"},
+    {"q": "Mi a számtani és a mértani sorozat n-edik tagjának képlete?", "a": "Számtani: an = a1 + (n - 1)d | Mértani: an = a1 * q^(n - 1)"},
+    {"q": "Mit mond ki a gráfelmélet fokszámtétele?", "a": "A gráf csúcsainak fokszámösszege mindig páros, és egyenlő az élek számának kétszeresével (2e)."},
+    {"q": "Mikor merőleges egymásra két vektor?", "a": "Ha a skaláris szorzatuk pontosan 0 (a1*b1 + a2*b2 = 0)."}
+]
+
+# Detektív játék adatbázis
+detektiv_irodalom = [
+    {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A prófétai és értelmiségi felelősségvállalás alaptétele."},
+    {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Új vizeken járok"], "info": "Petőfi forradalmi felhívó lírájának remeke."}
+]
+
+detektiv_nyelvtan = [
+    {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi részleges hasonulás", "Írásban jelölt teljes hasonulás", "Mássalhangzó-kiesés"], "info": "A t + s hangokból egy harmadik, hosszú [ccs] hang keletkezik."},
+    {"idezet": "„lila dalra kelt az éjcsend”", "helyes": "Szinesztézia (Költői kép)", "opciok": ["Szinesztézia (Költői kép)", "Megszemélyesítés", "Metonímia", "Szinekdoché"], "info": "Látási (lila), hallási (dal) és csend érzékterületek összekapcsolása."}
+]
+
+detektiv_tortenelem = [
+    {"idezet": "„Ius resistendi (A nemesek joga a királlyal szembeni ellenállásra)”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Nagy Lajos 1351-es törvényei", "Szent István I. törvénykönyve", "Kollonics Lipót rendelete"], "info": "A magyar rendi nemesi szabadságjogok sarokköve."},
+    {"idezet": "„Eb ura fakó, József császár nem királyunk!”", "helyes": "1707-es Ónodi országgyűlés (Trónfosztás)", "opciok": ["1707-es Ónodi országgyűlés (Trónfosztás)", "1849-es Debreceni trónfosztás", "1526-os Rákosi gyűlés", "1608-as koronázási cikkelyek"], "info": "A Rákóczi-szabadságharc alatt kimondott Habsburg-trónfosztás jelszava."}
+]
+
+detektiv_matek = [
+    {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel (Általános háromszögekre)", "opciok": ["Koszinusztétel (Általános háromszögekre)", "Szinusztétel", "Pitagorasz-tétel", "Héron-képlet"], "info": "A Pitagorasz-tétel általánosítása tetszőleges háromszögre."},
+    {"idezet": "(x^n)' = n · x^(n-1)", "helyes": "Hatványfüggvény deriválási szabálya", "opciok": ["Hatványfüggvény deriválási szabálya", "Logaritmus azonosság", "Binomiális tétel", "Sorozat összegképlet"], "info": "A differenciálszámítás legalapvetőbb műveleti szabálya."}
 ]
 
 # Állapotkezelés
@@ -821,7 +955,7 @@ kivalasztott_tantargy = st.sidebar.selectbox(
     [
         "📖 Magyar Irodalom (22 tétel)",
         "🔤 Magyar Nyelvtan (16 tétel)",
-        "🏛️ Történelem (20 tétel)",
+        "🏛️ Történelem (30 tétel)",
         "📐 Matematika (16 témakör)"
     ]
 )
