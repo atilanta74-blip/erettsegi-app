@@ -1,6 +1,4 @@
 import io
-import urllib.request
-import os
 import streamlit as st
 from fpdf import FPDF
 from google import genai
@@ -70,15 +68,15 @@ tetelek = {
         "kulcsszavak": ["Tragédia dalban elbeszélve", "Nagykőrös", "Őszikék", "Ágnes asszony"],
         "vazlat": """
 ### 1. A műfaj sajátosságai
-- **Definíció:** „Tragédia dalban elbeszélve” (Greguss Ágost) – egyesíti a líra, epika és dráma sajátosságait.
-- **Szerkezet:** Sűrítés, balladai homály, kihagyásos technika (ellipszis).
+- Definíció: „Tragédia dalban elbeszélve” (Greguss Ágost) – egyesíti a líra, epika és dráma sajátosságait.
+- Szerkezet: Sűrítés, balladai homály, kihagyásos technika (ellipszis).
 
 ### 2. Korszakok és típusok
-- **Nagykőrösi balladák (1850-es évek):**
-  - *Történelmi:* Allegorikus ellenállás a Bach-rendszer ellen (A walesi bárdok, Szondi két apródja).
-  - *Lélektani:* Bűn és bűnhődés, lélektani téboly (Ágnes asszony, Tetemre hívás).
-  - *Népies/románcos:* Tengeri-hántás, Vörös Rébék.
-- **Őszikék korszak (1877, Margitsziget, Kapcsos könyv):**
+- Nagykőrösi balladák (1850-es évek):
+  - Történelmi: Allegorikus ellenállás a Bach-rendszer ellen (A walesi bárdok, Szondi két apródja).
+  - Lélektani: Bűn és bűnhődés, lélektani téboly (Ágnes asszony, Tetemre hívás).
+  - Népies/románcos: Tengeri-hántás, Vörös Rébék.
+- Őszikék korszak (1877, Margitsziget, Kapcsos könyv):
   - Időskori líra, nagyvárosi motívumok (Híd-avatás).
         """,
         "szobeli": """
@@ -103,9 +101,9 @@ tetelek = {
 - Realista elemek: pontos társadalom- és természetrajz, anekdotizmus.
 
 ### 2. Az arany ember (1872)
-- **Timár Mihály belső hasadtsága:** A sikeres nagypolgár vs. a lelkifurdalással küzdő ember.
-- **Kettős térszerkezet:** Komárom/Bécs (hideg polgári világ, Timea) <-> Senki szigete (természeti paradicsom, Noémi).
-- **Megoldás:** A társadalomból való kilépés a valódi boldogság feltétele.
+- Timár Mihály belső hasadtsága: A sikeres nagypolgár vs. a lelkifurdalással küzdő ember.
+- Kettős térszerkezet: Komárom/Bécs (hideg polgári világ, Timea) <-> Senki szigete (természeti paradicsom, Noémi).
+- Megoldás: A társadalomból való kilépés a valódi boldogság feltétele.
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -127,9 +125,9 @@ tetelek = {
 - Drámai költemény (világdráma): Emberiség- és létezésfilozófiai kérdések dialógusos formában.
 
 ### 2. Szerkezet (15 szín)
-- **Keretszínek (1–3., 15.):** Menny, Paradicsom, pálmafás táj.
-- **Történelmi színek (4–14.):** Tézis-antitézis fejlődés; Párizs az egyetlen szín, amiből Ádám nem csalódottan ébred.
-- **Zárszó:** „Mondottam, ember: küzdj és bízva bízzál!”
+- Keretszínek (1–3., 15.): Menny, Paradicsom, pálmafás táj.
+- Történelmi színek (4–14.): Tézis-antitézis fejlődés; Párizs az egyetlen szín, amiből Ádám nem csalódottan ébred.
+- Zárszó: „Mondottam, ember: küzdj és bízva bízzál!”
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -151,9 +149,9 @@ tetelek = {
 - Anekdotizmus, közvetlen mesélői stílus, szelíd irónia, realista megfigyelés romantikus bájjal.
 
 ### 2. Kötetek és regények
-- **A tót atyafiak (1881):** 4 hosszú elbeszélés, monumentális lelkivilágú hegyi emberek (Lapaj).
-- **A jó palócok (1882):** 15 rövid novella, tömörség, balladisztikus kihagyások (Bede Anna tartozása).
-- **Beszterce ostroma:** Pongrácz István anakronisztikus, lovagkorban rekedt alakjának bemutatása.
+- A tót atyafiak (1881): 4 hosszú elbeszélés, monumentális lelkivilágú hegyi emberek (Lapaj).
+- A jó palócok (1882): 15 rövid novella, tömörség, balladisztikus kihagyások (Bede Anna tartozása).
+- Beszterce ostroma: Pongrácz István anakronisztikus, lovagkorban rekedt alakjának bemutatása.
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -175,9 +173,9 @@ tetelek = {
 - Átmenet a romantika és a modernség között; a meg nem értett művész magánya.
 
 ### 2. Főbb lírai témái
-- **Gina-ciklus:** Évtizedes reménytelen szerelem (Húsz év múlva, Harminc év után).
-- **Filozofikus tájlíra:** Panteizmus, természeti csend és megbékélés (A vaáli erdőben).
-- **Közéleti líra:** A kiegyezés korának passzivitását bíráló művek (A virrasztók).
+- Gina-ciklus: Évtizedes reménytelen szerelem (Húsz év múlva, Harminc év után).
+- Filozofikus tájlíra: Panteizmus, természeti csend és megbékélés (A vaáli erdőben).
+- Közéleti líra: A kiegyezés korának passzivitását bíráló művek (A virrasztók).
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -218,16 +216,16 @@ tetelek = {
         "kulcsszavak": ["1908", "Osvát Ernő", "Ignotus", "Három nemzedék"],
         "vazlat": """
 ### 1. Indulás és eszmeiség
-- **1908. január 1-jén** indult; emblémája a Beck Ö. Fülöp-féle Mikes-emlékérem.
+- 1908. január 1-jén indult; emblémája a Beck Ö. Fülöp-féle Mikes-emlékérem.
 - Cél: felzárkózás a nyugat-európai polgári kultúrához és a művészi autonómia megteremtése.
 
 ### 2. Főbb szerkesztők
 - Ignotus (főszerkesztő), Osvát Ernő (irodalmi szerkesztő), Hatvany Lajos (mecénás).
 
 ### 3. A nemzedékek
-- **1. nemzedék:** Ady, Babits, Kosztolányi, Móricz, Juhász Gyula, Tóth Árpád.
-- **2. nemzedék:** Szabó Lőrinc, Illyés Gyula, Németh László.
-- **3. nemzedék:** Radnóti Miklós, Weöres Sándor, Szerb Antal.
+- 1. nemzedék: Ady, Babits, Kosztolányi, Móricz, Juhász Gyula, Tóth Árpád.
+- 2. nemzedék: Szabó Lőrinc, Illyés Gyula, Németh László.
+- 3. nemzedék: Radnóti Miklós, Weöres Sándor, Szerb Antal.
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -250,10 +248,10 @@ tetelek = {
 - Ars poetica: Góg és Magóg fia vagyok én..., Új vizeken járok.
 
 ### 2. Főbb tematikus vonulatok
-- **Magyarság-versek:** A magyar Ugaron (elmaradottság, művészsors).
-- **Pénz és létküzdelem:** Harc a Nagyúrral (disznófejű Nagyúr).
-- **Szerelmi líra:** Léda (küzdelmes párharc: Héja-nász az avaron) vs. Csinszka (védelmező menedék: Őrizem a szemed).
-- **Háborús líra:** Ember az embertelenségben.
+- Magyarság-versek: A magyar Ugaron (elmaradottság, művészsors).
+- Pénz és létküzdelem: Harc a Nagyúrral (disznófejű Nagyúr).
+- Szerelmi líra: Léda (küzdelmes párharc: Héja-nász az avaron) vs. Csinszka (védelmező menedék: Őrizem a szemed).
+- Háborús líra: Ember az embertelenségben.
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -299,9 +297,9 @@ tetelek = {
 - Realizmus és naturalizmus: ösztönök, biológiai kiszolgáltatottság, társadalmi és morális válság.
 
 ### 2. Főbb művek
-- **Tragédia (1909):** Kis János abszurd, evésbe fulladó lázadása.
-- **Barbárok (1931):** Pusztai pásztorok brutális rablógyilkossága balladisztikus formában.
-- **Úri muri (1928):** Szakhmáry Zoltán dzsentri vergődése és önpusztító mulatozása.
+- Tragédia (1909): Kis János abszurd, evésbe fulladó lázadása.
+- Barbárok (1931): Pusztai pásztorok brutális rablógyilkossága balladisztikus formában.
+- Úri muri (1928): Szakhmáry Zoltán dzsentri vergődése és önpusztító mulatozása.
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -327,7 +325,7 @@ tetelek = {
 - Anna mintagépként működik Vizyéknél, de emberi méltóságától megfosztják.
 - Jancsi úrfi elcsábítja, majd cserbenhagyja.
 - A gyilkosság ösztönös reakció az elnyomásra.
-- **Moviszter doktor:** A tiszta humanizmus és empátia képviselője.
+- Moviszter doktor: A tiszta humanizmus és empátia képviselője.
         """,
         "szobeli": """
 **🎙️ 3 perces szóbeli feleletvázlat:**
@@ -345,24 +343,24 @@ tetelek = {
 
 stilusiranyzatok = {
     "Realizmus (19. sz. közepe)": """
-- **Cél:** A valóság tárgyilagos, hiteles ábrázolása.
-- **Módszer:** Tipikus jellemek tipikus körülmények között.
-- **Képviselők:** Mikszáth Kálmán, Tolsztoj, Balzac.
+- Cél: A valóság tárgyilagos, hiteles ábrázolása.
+- Módszer: Tipikus jellemek tipikus körülmények között.
+- Képviselők: Mikszáth Kálmán, Tolsztoj, Balzac.
     """,
     "Naturalizmus (19. sz. vége)": """
-- **Cél:** A valóság szépítés nélküli, nyers leírása.
-- **Emberkép:** Az ember az ösztönök és öröklődés rabja.
-- **Képviselők:** Émile Zola, Móricz Zsigmond (Tragédia, Barbárok).
+- Cél: A valóság szépítés nélküli, nyers leírása.
+- Emberkép: Az ember az ösztönök és öröklődés rabja.
+- Képviselők: Émile Zola, Móricz Zsigmond (Tragédia, Barbárok).
     """,
     "Impresszionizmus (19. sz. vége – 20. sz. eleje)": """
-- **Cél:** A múló pillanatok, benyomások, fények megragadása.
-- **Stílusjegyek:** Névszói stílus, zeneiség, vizuális finomságok.
-- **Képviselők:** Kosztolányi Dezső, Tóth Árpád, Juhász Gyula.
+- Cél: A múló pillanatok, benyomások, fények megragadása.
+- Stílusjegyek: Névszói stílus, zeneiség, vizuális finomságok.
+- Képviselők: Kosztolányi Dezső, Tóth Árpád, Juhász Gyula.
     """,
     "Szimbolizmus (19. sz. vége – 20. sz. eleje)": """
-- **Cél:** A mélyebb valóság kifejezése többértelmű szimbólumokkal.
-- **Stílusjegyek:** Rejtettség, sejtetés, zeneiség.
-- **Képviselők:** Baudelaire, Verlaine, Ady Endre.
+- Cél: A mélyebb valóság kifejezése többértelmű szimbólumokkal.
+- Stílusjegyek: Rejtettség, sejtetés, zeneiség.
+- Képviselők: Baudelaire, Verlaine, Ady Endre.
     """
 }
 
@@ -378,51 +376,52 @@ if 'chat_history' not in st.session_state:
         {"role": "ai", "text": "Szia! Én vagyok az érettségi mentorod. Kérdezz bátran bármelyik tételről, versről vagy szerzőről!"}
     ]
 
-# Hibátlan Unicode PDF generáló böngésző álcával
+# Biztos és elcsúszásmentes szövegformázó a beépített PDF motorhoz
+def tiszta_pdf_szoveg(szoveg):
+    cserel = {
+        'ő': 'o', 'Ő': 'O',
+        'ű': 'u', 'Ű': 'U',
+        'á': 'a', 'Á': 'A',
+        'é': 'e', 'É': 'E',
+        'í': 'i', 'Í': 'I',
+        'ó': 'o', 'Ó': 'O',
+        'ö': 'o', 'Ö': 'O',
+        'ú': 'u', 'Ú': 'U',
+        'ü': 'u', 'Ü': 'U',
+        '„': '"', '”': '"', '’': "'", '–': '-'
+    }
+    for k, v in cserel.items():
+        szoveg = szoveg.replace(k, v)
+    return szoveg.encode('latin-1', 'replace').decode('latin-1')
+
 def letoltheto_pdf_generalas(tetelek_adat):
     pdf = FPDF(orientation="P", unit="mm", format="A4")
     pdf.set_margins(15, 15, 15)
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
     
-    # DejaVuSans Unicode betűtípus letöltése (Böngészőnek álcázva a GitHub blokkolás ellen)
-    font_url = "https://raw.githubusercontent.com/dejavu-fonts/dejavu-fonts/master/ttf/DejaVuSans.ttf"
-    font_bold_url = "https://raw.githubusercontent.com/dejavu-fonts/dejavu-fonts/master/ttf/DejaVuSans-Bold.ttf"
-    
-    if not os.path.exists("DejaVuSans.ttf"):
-        req = urllib.request.Request(font_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req) as response, open("DejaVuSans.ttf", 'wb') as out_file:
-            out_file.write(response.read())
-            
-    if not os.path.exists("DejaVuSans-Bold.ttf"):
-        req = urllib.request.Request(font_bold_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req) as response, open("DejaVuSans-Bold.ttf", 'wb') as out_file:
-            out_file.write(response.read())
-        
-    pdf.add_font("DejaVu", "", "DejaVuSans.ttf")
-    pdf.add_font("DejaVu", "B", "DejaVuSans-Bold.ttf")
-    
-    # Főcím
-    pdf.set_font("DejaVu", "B", 15)
+    # Cím
+    pdf.set_font('Helvetica', 'B', 15)
     pdf.set_x(15)
-    pdf.cell(180, 8, "Magyar Irodalom Érettségi Tételvázlatok", align="C", new_x="LMARGIN", new_y="NEXT")
+    pdf.cell(180, 8, 'Magyar Irodalom Erettsegi Tetelvazlatok', align='C', new_x="LMARGIN", new_y="NEXT")
     pdf.ln(4)
     
     for cim, adat in tetelek_adat.items():
         # Tétel címe
-        pdf.set_font("DejaVu", "B", 11)
+        pdf.set_font('Helvetica', 'B', 10.5)
         pdf.set_x(15)
-        pdf.multi_cell(180, 5.5, f"{cim} – {adat['alcim']}", align="L")
+        fejlec = tiszta_pdf_szoveg(f"{cim} - {adat['alcim']}")
+        pdf.multi_cell(180, 5.5, fejlec, align='L')
         pdf.ln(1)
         
         # Vázlat sorai
-        pdf.set_font("DejaVu", "", 8.5)
+        pdf.set_font('Helvetica', '', 8.5)
         tiszta_vazlat = adat['vazlat'].replace('###', '').replace('**', '').replace('*', '')
         for sor in tiszta_vazlat.strip().split('\n'):
-            sor_tiszta = sor.strip()
+            sor_tiszta = tiszta_pdf_szoveg(sor.strip())
             if sor_tiszta:
                 pdf.set_x(15)
-                pdf.multi_cell(180, 4.2, sor_tiszta, align="L")
+                pdf.multi_cell(180, 4.2, sor_tiszta, align='L')
         pdf.ln(3)
         
     return bytes(pdf.output())
@@ -453,9 +452,8 @@ menupont = st.sidebar.radio(
 # PDF Letöltés
 st.sidebar.markdown("---")
 st.sidebar.subheader("📥 Letölthető anyag")
-if st.sidebar.button("📄 PDF Puska előkészítése"):
-    with st.spinner("PDF generálása hibátlan magyar ékezetekkel..."):
-        pdf_bytes = letoltheto_pdf_generalas(tetelek)
+if st.sidebar.button("📄 PDF Puska elkészítése"):
+    pdf_bytes = letoltheto_pdf_generalas(tetelek)
     st.sidebar.download_button(
         label="⬇️ Letöltés indítása",
         data=pdf_bytes,
