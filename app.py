@@ -18,7 +18,7 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# Astra AI stílusú prémium UI és vizuális elemek
+# Astra AI stílusú prémium sötét téma és gombkontraszt
 st.markdown("""
 <style>
     .stApp { background-color: #0b0f19; color: #f3f4f6; }
@@ -311,233 +311,541 @@ tetelek_irodalom = {
 }
 
 # -------------------------------------------------------------
-# 2. MAGYAR NYELVTAN TÉTELTÁR (8 Teljes Tétel)
+# 2. MAGYAR NYELVTAN TÉTELTÁR (8 Tétel)
 # -------------------------------------------------------------
 tetelek_nyelvtan = {
     "1. A kommunikáció folyamata és tényezői": {
         "alcim": "A kommunikációs modell, nyelvi és nem nyelvi jelek, kommunikációs funkciók",
-        "kulcsszavak": ["Adó és Vevő", "Kód és Csatorna", "Jakobson modellje", "Metakommunikáció", "Zaj"],
-        "audio_szoveg": "A kommunikáció információk, gondolatok és érzelmek átadása valamilyen jelrendszer segítségével. Jakobson klasszikus modellje szerint a folyamat alapvető tényezői az adó, a vevő, az üzenet, a kód, a csatorna és a valóságos kontextus...",
+        "kulcsszavak": ["Adó és Vevő", "Kód és Csatorna", "Jakobson modellje", "Metakommunikáció"],
+        "audio_szoveg": "A kommunikáció információk, gondolatok és érzelmek átadása valamilyen jelrendszer segítségével. Jakobson modellje szerint a folyamat alaptényezői az adó, a vevő, az üzenet, a kód és a csatorna...",
         "vazlat": """
-### I. A kommunikációs folyamat tényezői (Jakobson-modell)
-- **Adó (beszélő/feladó):** Aki az üzenetet kódolja és elindítja.
-- **Vevő (címzett):** Aki az üzenetet felfogja és dekódolja.
-- **Üzenet:** Maga a továbbított információ.
-- **Kód:** A közös jelrendszer (pl. a magyar nyelv).
-- **Csatorna:** A fizikai közeg, amin az információ áramlik (hanghullám, papír, digitális hálózat).
-- **Kontextus (beszédhelyzet):** A valóságnak az a része, amire az üzenet utal.
-- **Zaj:** Minden olyan tényező, ami akadályozza a megértést (pl. háttérzaj, félreértés).
-
-### II. A nyelv funkciói
-- *Tájékoztató (referenciális):* Ismeretátadás.
-- *Érzelemkifejező (emotív):* A beszélő érzéseinek tükrözése.
-- *Felhívó (konatív):* A vevő cselekvésre késztetése.
-- *Kapcsolattartó (fatikus):* Kapcsolat felvétele és fenntartása (*„Halló!”, „Szép napot!”*).
-- *Értelmező (metanyelvi):* Magáról a nyelvről való beszéd (*„Hogy érted ezt?”*).
-- *Gyönyörködtető (poétikai):* Az esztétikai hatás megteremtése.
-
-### III. Nem nyelvi (nonverbális) jelek
-- Testbeszéd (gesztusok, mimika, testtartás), térközszabályozás (*proxemika*), vokális jelek (hangerő, intonáció, beszédtempó).
+### I. A kommunikáció 6 alaptényezője (Jakobson)
+- Adó, Vevő, Üzenet, Kód (közös nyelv), Csatorna (közeg), Kontextus (beszédhelyzet), Zaj.
+### II. Nyelvi funkciók
+- Tájékoztató, Érzelemkifejező, Felhívó, Kapcsolattartó (fatikus), Értelmező (metanyelvi), Esztétikai (poétikai).
+### III. Nem nyelvi jelek: Testbeszéd, mimika, gesztusok, térközszabályozás (proxemika).
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Kommunikáció definíciója -> 2. A modell 6 alaptényezője (Jakobson) -> 3. Nyelvi funkciók bemutatása -> 4. Nonverbális jelek szerepe a mindennapi érintkezésben.",
-        "kviz": [
-            {"k": "A fatikus funkció célja a kapcsolatfelvétel és kapcsolattartás.", "v": True, "m": "Például a köszönések és bejelentkezések tartoznak ide."},
-            {"k": "A nem nyelvi jelekhez tartozik a mimika és a térközszabályozás is.", "v": True, "m": "A nonverbális kommunikáció alapvető részei."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Definíció -> 2. 6 tényező -> 3. Funkciók -> 4. Nem nyelvi kódok.",
+        "kviz": [{"k": "A fatikus funkció célja a kapcsolat felvétele és fenntartása.", "v": True, "m": "Ilyenek a köszönések és bejelentkezések."}]
     },
     "2. A szövegtan alapjai és a szövegtípusok": {
-        "alcim": "A szöveg fogalma, kohéziós erői, szerkezeti egységei és típusai",
+        "alcim": "A szöveg kohéziós erői, szerkezeti egységei és típusai",
         "kulcsszavak": ["Globális kohézió", "Lokális kohézió", "Anafora és Katafora", "Elbeszélő, leíró, érvelő"],
-        "audio_szoveg": "A szöveg a nyelv legmagasabb szintű, lezárt, kerek egysége, amely egy adott kommunikációs helyzetben keletkezik...",
+        "audio_szoveg": "A szöveg a nyelv legmagasabb szintű, lezárt, kerek egysége...",
         "vazlat": """
-### I. A szöveg fogalma és kohéziója
-- **Szöveg:** A nyelv és a beszéd legnagyobb, önálló, lezárt és egész egysége.
-- **Grammatikai kohézió (Lokális):**
-  - Kötőszók, névmási utalások (*anafora* = visszautalás, *katafora* = előreutalás), egyeztetések.
-- **Jelentéstani kohézió (Globális):**
-  - Témamegtartás, kulcsszavak hálózata, szinonimák, hiperonímiák (fölérendelt fogalmak).
-
-### II. A szöveg szerkezete
-- Cím $\rightarrow$ Bevezetés $\rightarrow$ Tárgyalás (bekezdések logikai íve) $\rightarrow$ Befejezés / Konklúzió.
-
-### III. Szövegtípusok felosztása
-- *Funkció szerint:* Elbeszélő, leíró, érvelő, magyarázó.
-- *Kommunikációs színtér szerint:* Hétköznapi, publicisztikai, hivatalos, tudományos, szépirodalmi.
+### I. Szövegkohézió: Lokális (kötőszók, anafora=visszautalás, katafora=előreutalás) vs. Globális (témamegtartás, kulcsszavak).
+### II. Szerkezet: Cím -> Bevezetés -> Tárgyalás -> Befejezés.
+### III. Típusok: Elbeszélő, leíró, érvelő, magyarázó; hétköznapi, hivatalos, tudományos, publicisztikai.
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Szöveg fogalma -> 2. Lokális és globális kohéziós erők -> 3. Szerkezeti hármasság -> 4. Főbb szövegtípusok.",
-        "kviz": [
-            {"k": "Az anafora a szövegben előre mutató névmási utalást jelent.", "v": False, "m": "Az anafora visszautalás, az előreutalás a katafora."},
-            {"k": "A szöveg a nyelv legmagasabb szintű, önálló egysége.", "v": True, "m": "A mondatok feletti strukturált szint."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Szöveg fogalma -> 2. Kohéziós erők -> 3. Hármas szerkezet -> 4. Szövegtípusok.",
+        "kviz": [{"k": "Az anafora a szövegben visszamutató utalást jelent.", "v": True, "m": "A katafora az előreutalás."}]
     },
     "3. A magyar helyesírás alapelvei": {
         "alcim": "A 4 alapelv rendszere és alkalmazásuk a gyakorlatban",
-        "kulcsszavak": ["Kiejtés elve", "Szóelemzés elve", "Hagyomány elve", "Egyszerűsítés elve", "Mássalhangzótörvények"],
-        "audio_szoveg": "A magyar helyesírás rendszere négy alapelvre épül: a kiejtés, a szóelemzés, a hagyomány és az egyszerűsítés elvére...",
+        "kulcsszavak": ["Kiejtés elve", "Szóelemzés elve", "Hagyomány elve", "Egyszerűsítés elve"],
+        "audio_szoveg": "A magyar helyesírás négy alapelvre épül: kiejtés, szóelemzés, hagyomány és egyszerűsítés elve...",
         "vazlat": """
-### I. A 4 helyesírási alapelv
-
-1. **A kiejtés (fonetikus) elve:**
-   - Úgy írjuk a szót, ahogy ejtjük (pl. *asztal, ember, szép*).
-2. **A szóelemzés (etimologikus) elve:**
-   - Összetett és toldalékos szavaknál a szótövet és a toldalékot eredeti alakjukban rögzítjük, figyelmen kívül hagyva a kiejtésbeli mássalhangzótörvényeket (pl. *látja* [láttya], *barátság* [baraccság], *színpad* [szímpad]).
-3. **A hagyomány elve:**
-   - Történelmi családnevek és régies írásmódok megőrzése (pl. *Kossuth, Széchenyi, Weöres, ly betűs szavak: folyó, király*).
-4. **Az egyszerűsítés elve:**
-   - Hosszú kétjegyű mássalhangzók kettőzésekor csak az első jegyet kettőzzük (pl. *asszony, mennyi, loccsan*).
-   - Három azonos mássalhangzó találkozásakor összevonjuk (pl. *tollal*, de összetételnél kötőjelezzük: *sakk-kör*).
+### I. A 4 alapelv:
+1. **Kiejtés elve:** Úgy írjuk, ahogy ejtjük (*ablak, ember*).
+2. **Szóelemzés elve:** Szótő és toldalék eredeti alakban marad (*látja [láttya], barátság*).
+3. **Hagyomány elve:** Történelmi nevek és ly (*Kossuth, Széchenyi, király*).
+4. **Egyszerűsítés elve:** Kettőzött kétjegyűek (*asszony, mennyi*).
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Bevezetés (A helyesírás szerepe) -> 2. Kiejtés és szóelemzés elve -> 3. Hagyomány és egyszerűsítés elve -> 4. Kivételek és példák.",
-        "kviz": [
-            {"k": "A 'látja' szó leírása a szóelemzés elvét követi a kiejtett [láttya] hangzás ellenére.", "v": True, "m": "A szótő (lát) és toldalék (ja) tiszta marad."},
-            {"k": "A családnevek írásakor a kiejtés elve mindig felülírja a hagyomány elvét.", "v": False, "m": "A történelmi családneveknél a hagyomány elve érvényesül (pl. Kossuth)."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Helyesírás célja -> 2. Kiejtés és szóelemzés -> 3. Hagyomány és egyszerűsítés -> 4. Példák.",
+        "kviz": [{"k": "A 'látja' szó leírása a szóelemzés elvét követi.", "v": True, "m": "A szótő és toldalék tisztán marad."}]
     },
     "4. Szófajok és mondatrészek rendszere": {
-        "alcim": "Alapszófajok, viszonyszók, mondatrészi szerepek és mondattani elemzés",
-        "kulcsszavak": ["Ige, Névszó, Igenév", "Névelő, Névutó, Kötőszó", "Alany, Állítmány, Tárgy, Határozó, Jelző"],
-        "audio_szoveg": "A szófajok a szavak alaktani, mondattani és jelentéstani tulajdonságai alapján kialakított kategóriák...",
+        "alcim": "Alapszófajok, viszonyszók, predikatív viszony és mondattani elemzés",
+        "kulcsszavak": ["Ige, Névszó, Igenév", "Viszonyszók", "Alany, Állítmány, Tárgy, Határozó, Jelző"],
+        "audio_szoveg": "A szófajok a szavak alaktani és mondattani kategóriái...",
         "vazlat": """
-### I. A szófaji rendszer felosztása
-- **Alapszófajok:** Önálló jelentéssel bírnak, mondatrészek lehetnek.
-  - *Ige* (cselekvés, történés, létezés).
-  - *Névszók* (főnév, melléknév, számnév, névmás).
-  - *Igenevek* (főnévi, melléknévi, határozói igenév).
-  - *Határozószók* (itt, most, holnap).
-- **Viszonyszók:** Nincs önálló mondatrészi szerepük, viszonyt fejeznek ki (névelő, névutó, kötőszó, igekötő, segédige).
-- **Mondatszók:** Érzelmet, indulatot fejeznek ki (indulatszók, módosítószók: *igen, nem, talán, jaj*).
-
-### II. Mondatrészek rendszere
-- **Predikatív viszony:** Állítmány és Alany kapcsolata (a mondat magja).
-- **Bővítmények:**
-  - *Tárgy* (Kit? Mit?).
-  - *Határozók* (Hely-, idő-, mód-, ok-, cél-, eszközhatározó stb.).
-  - *Jelzők* (Minőség-, mennyiség-, birtokos, értelmező jelző).
+### I. Szófajok: Alapszófajok (ige, főnév, melléknév, számnév, névmás, igenevek), Viszonyszók (névelő, kötőszó, névutó, igekötő), Mondatszók.
+### II. Mondatrészek: Alany + Állítmány (predikatív mag) -> Bővítmények: Tárgy, Határozók, Jelzők.
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Szófajok hármas felosztása -> 2. Alapszófajok és viszonyszók -> 3. Mondatrészek rendszere -> 4. Szintaktikai elemzés.",
-        "kviz": [
-            {"k": "A névelők és kötőszók az alapszófajok csoportjába tartoznak.", "v": False, "m": "A viszonyszókhoz tartoznak, nincs önálló mondatrészi szerepük."}]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Szófaji felosztás -> 2. Alapszófaj vs. viszonyszó -> 3. Mondatrészek hierarchiája.",
+        "kviz": [{"k": "A kötőszók az alapszófajok közé tartoznak.", "v": False, "m": "A viszonyszókhoz tartoznak."}]
     },
     "5. Retorika és érvelési technikák": {
-        "alcim": "A szónoki beszéd szerkezete, érvtípusok és vitatechnikák",
-        "kulcsszavak": ["Érv szerkezete (Tétel, Bizonyíték, Összekötés)", "Szónoki beszéd részei", "Dedukció és Indukció"],
-        "audio_szoveg": "A retorika az ékesszólás és meggyőzés tudománya. Az érvelés legkisebb egysége a hármas felépítésű érv...",
+        "alcim": "Az érv 3 része, érvtípusok és a klasszikus szónoki beszéd 6 lépése",
+        "kulcsszavak": ["Tétel, Bizonyíték, Összekötés", "Szónoki beszéd szerkezete", "Érvtípusok"],
+        "audio_szoveg": "A retorika az ékesszólás és meggyőzés művészete. Az érv három alapeleme a tétel, a bizonyíték és az összekötés...",
         "vazlat": """
-### I. Az érv felépítése (Toulmin-modell)
-1. **Tétel:** Az állítás, amit el akarunk fogadtatni.
-2. **Bizonyíték (Adat):** A tényt alátámasztó példa, statisztika, hivatkozás.
-3. **Összekötő elem:** A tétel és bizonyíték közötti logikai kapocs.
-
-### II. Főbb érvtípusok
-- *Meghatározásból levezetett érv* (definíció).
-- *Ok-okozati érv* (a következmények bemutatása).
-- *Tekintélyre hivatkozó érv* (szakértő, tudós idézése).
-- *Analógián (hasonlóságon) alapuló érv*.
-
-### III. A klasszikus szónoki beszéd szerkezete
-1. Bevezetés (*Exordium*) -> 2. Elbeszélés (*Narratio*) -> 3. Részletezés (*Divisio*) -> 4. Bizonyítás (*Confirmatio*) -> 5. Cáfolás (*Refutatio*) -> 6. Befejezés (*Peroratio*).
+### I. Az érv szerkezete: Tétel -> Bizonyíték (Adat) -> Összekötő elem.
+### II. Érvtípusok: Meghatározásból levezetett, ok-okozati, tekintélyre hivatkozó, analógiás.
+### III. Szónoki beszéd: Bevezetés -> Elbeszélés -> Részletezés -> Bizonyítás -> Cáfolás -> Befejezés.
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Retorika célja -> 2. Érv 3 szerkezeti eleme -> 3. Érvtípusok -> 4. A szónoki beszéd 6 lépése.",
-        "kviz": [{"k": "A szónoki beszéd klasszikus felépítésében a cáfolás (refutatio) megelőzi a befejezést.", "v": True, "m": "A bizonyítás után a cáfolat következik."}]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Retorika célja -> 2. Érv 3 része -> 3. Érvtípusok -> 4. Szónoki beszéd felépítése.",
+        "kviz": [{"k": "A klasszikus szónoki beszédben a cáfolás megelőzi a befejezést.", "v": True, "m": "A bizonyítás után jön a cáfolat."}]
     },
     "6. Stilisztika: Alakzatok és trópusok": {
         "alcim": "Költői képek (metafora, metonímia, szinesztézia) és szövegalakzatok",
-        "kulcsszavak": ["Metafora, Metonímia, Szinekdoché", "Szinesztézia, Hasonlat", "Anafora, Párhuzam, Ellentét"],
-        "audio_szoveg": "A stilisztika a nyelvi kifejezőeszközöket vizsgálja. Két fő csoportra osztjuk őket: a szóképekre és a szövegalakzatokra...",
+        "kulcsszavak": ["Metafora, Metonímia, Szinekdoché", "Szinesztézia", "Anafora, Párhuzam, Ellentét"],
+        "audio_szoveg": "A stilisztika a kifejezőeszközöket vizsgálja. Két fő ága a szóképek és a szövegalakzatok rendszere...",
         "vazlat": """
-### I. Képi kifejezőeszközök (Trópusok / Szóképek)
-- **Metafora:** Két fogalom azonosítása külső vagy belső hasonlóság alapján (pl. *„rabok legyünk vagy szabadok”*).
-- **Metonímia:** Névátvitel térbeli, időbeli vagy anyagbeli érintkezés alapján (pl. *„alszik a ház”*, *„aranyat ér a szava”*).
-- **Szinekdoché:** Rész-egész felcserélése (pl. *„lélek sem járt ott”*).
-- **Szinesztézia:** Különböző érzékelési területek összekapcsolása (pl. *„sötét csend”*, *„lila dal”*).
-- **Megszemélyesítés:** Élettelen dolgok felruházása emberi tulajdonságokkal.
-
-### II. Alakzatok (Szövegformáló eszközök)
-- *Ismétlések:* Anafora (sor eleji ismétlés), refrén.
-- *Gondolati alakzatok:* Párhuzam (*paralelizmus*), ellentét (*antitézis*), túlzás (*hiperbola*), fokozás (*klimax*).
+### I. Trópusok: Metafora (hasonlóság), Metonímia (érintkezés), Szinekdoché (rész-egész), Szinesztézia (érzékkeverés), Megszemélyesítés.
+### II. Alakzatok: Anafora (sor eleji ismétlés), Paralelizmus (párhuzam), Antitézis (ellentét), Hiperbola (túlzás).
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Trópusok fogalma -> 2. Metafora és metonímia különbsége -> 3. Szinesztézia és megszemélyesítés -> 4. Szövegalakzatok.",
-        "kviz": [{"k": "A 'sötét csend' kifejezés a szinesztézia példája.", "v": True, "m": "A látás és hallás érzetét kapcsolja össze."}]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Képek és alakzatok különbsége -> 2. Metafora vs. metonímia -> 3. Szinesztézia -> 4. Alakzatok.",
+        "kviz": [{"k": "A 'sötét csend' szinesztézia.", "v": True, "m": "Látás és hallás összekapcsolása."}]
     },
     "7. A szókészlet rétegződése és változása": {
-        "alcim": "Társadalmi és területi nyelvváltozatok, szleng, argó, neologizmusok és archaizmusok",
-        "kulcsszavak": ["Köznyelv és Irodalmi nyelv", "Nyelvjárások (Dialektusok)", "Szleng és Szaknyelv", "Archaizmus és Neologizmus"],
-        "audio_szoveg": "A magyar szókészlet folyamatosan változó, rétegzett rendszer, amely területi és társadalmi tagolódást mutat...",
+        "alcim": "Nyelvjárások, társadalmi rétegnyelvek, szleng, archaizmusok és neologizmusok",
+        "kulcsszavak": ["Nyelvjárások", "Szaknyelv, Szleng, Argó", "Archaizmus", "Neologizmus"],
+        "audio_szoveg": "A szókészlet területi és társadalmi tagolódást mutat...",
         "vazlat": """
-### I. Vízszintes (Területi) rétegződés: Nyelvjárások
-- Regionális tájnyelvek (palóc, alföldi, dunántúli, északkeleti, székely stb.) tájszavakkal és egyedi hangkészlettel.
-
-### II. Függőleges (Társadalmi) rétegződés: Szociolektusok
-- **Szaknyelvek:** Pontos szakkifejezések (*terminológia*).
-- **Rétegnyelvek:** Diáknyelv, hobbinyelvek.
-- **Szleng és Argó:** Gyorsan változó, közvetlen, csoportkohéziót erősítő kifejezéskészlet.
-
-### III. A szókészlet időbeli változása
-- *Archaizmusok:* Elavult, kikopott szavak (pl. *delej, atyafi*).
-- *Neologizmusok:* Újonnan született szavak (pl. *okostelefon, lájkol*).
+### I. Területi rétegződés: Nyelvjárások (dialektusok) és tájszavak.
+### II. Társadalmi rétegződés: Szaknyelv, rétegnyelvek, szleng és argó.
+### III. Időbeli változás: Archaizmusok (elavult szavak) vs. Neologizmusok (új szavak).
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Területi nyelvjárások -> 2. Társadalmi rétegnyelvek (szleng, szaknyelv) -> 3. Szókincs időbeli mozgása (új és régi szavak).",
-        "kviz": [{"k": "Az archaizmusok az újonnan született szavakat jelentik a nyelvben.", "v": False, "m": "Az archaizmusok a régies, elavult szavak."}]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Vízszintes tagozódás -> 2. Függőleges rétegződés -> 3. Időbeli mozgás.",
+        "kviz": [{"k": "Az archaizmusok új szavakat jelentenek.", "v": False, "m": "Az archaizmusok a régies szavak."}]
     },
     "8. A magyar nyelv története és a nyelvújítás": {
-        "alcim": "A finnugor rokonság, a nyelvújítás korszaka és Kazinczy Ferenc szerepe",
-        "kulcsszavak": ["Uráli / Finnugor nyelvcsalád", "Halotti Beszéd (1195)", "Nyelvújítás (1790-1820)", "Kazinczy Ferenc", "Neológusok és Ortológusok"],
-        "audio_szoveg": "A magyar nyelv az uráli nyelvcsalád finnugor ágába tartozik. Írásbeliségünk legrégebbi emléke a Halotti Beszéd és Könyörgés...",
+        "alcim": "A finnugor rokonság, a korai nyelvemlékek és Kazinczy nyelvújítása",
+        "kulcsszavak": ["Uráli / Finnugor nyelvcsalád", "Halotti Beszéd (1195)", "Nyelvújítás", "Kazinczy Ferenc"],
+        "audio_szoveg": "A magyar nyelv a finnugor nyelvcsalád tagja. Írásbeliségünk legrégebbi emléke a Halotti Beszéd...",
         "vazlat": """
-### I. Eredet és korai nyelvemlékek
-- **Rokonság:** Uráli nyelvcsalád, finnugor ág (alapszókincs és ragozó/*agglutináló* jelleg azonossága).
-- **Legfontosabb nyelvemlékek:**
-  - *Tihanyi apátság alapítólevele (1055):* Szórványemlék.
-  - *Halotti Beszéd és Könyörgés (1195 körül):* Első összefüggő szövegemlék.
-  - *Ómagyar Mária-siralom (1300 körül):* Első magyar nyelvű vers.
-
-### II. A Nyelvújítás korszaka (kb. 1790–1820)
-- **Cél:** A magyar nyelv alkalmassá tétele a tudományok, művészetek és államigazgatás művelésére.
-- **Vezéralakja:** Kazinczy Ferenc (Széphalom).
-- **Viták:** Neológusok (újítók) vs. Ortológusok (hagyományőrzők) $\rightarrow$ *Tövisek és virágok*, *Mondolat*.
-- **Szóalkotási módok:** Szóösszetétel, szóképzés, szóelvonás (*kapál $\rightarrow$ kapa*), szócsonkítás, szóösszerántás (*cső + orr $\rightarrow$ csőr*).
+### I. Eredet és nyelvemlékek: Uráli nyelvcsalád, finnugor ág. Tihanyi alapítólevél (1055, szórvány), Halotti Beszéd (1195, összefüggő).
+### II. Nyelvújítás (1790–1820): Kazinczy Ferenc; Neológusok vs. Ortológusok; új szavak teremtése (képzés, összetétel, elvonás).
         """,
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Finnugor rokonság -> 2. Legkorábbi nyelvemlékek -> 3. Nyelvújítás célja és Kazinczy szerepe -> 4. Szóalkotási módok.",
-        "kviz": [
-            {"k": "A Halotti Beszéd és Könyörgés a legrégebbi fennmaradt összefüggő magyar szövegemlék.", "v": True, "m": "1195 körül keletkezett a Pray-kódexben."},
-            {"k": "A nyelvújítási harcban Kazinczy Ferenc az ortológus hagyományőrzők vezére volt.", "v": False, "m": "Kazinczy a neológus újítók vezéralakja volt."}
-        ]
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Finnugor rokonság -> 2. Korai nyelvemlékek -> 3. Nyelvújítás célja és Kazinczy szerepe.",
+        "kviz": [{"k": "A Halotti Beszéd az első fennmaradt összefüggő magyar szövegemlék.", "v": True, "m": "1195 körül keletkezett."}]
     }
 }
 
 # -------------------------------------------------------------
-# 3. IDÉZET-DETEKTÍV JÁTÉK ADATBÁZISA
+# 3. TÖRTÉNELEM TÉTELTÁR (10 Tétel)
 # -------------------------------------------------------------
-idezet_adatbazis = [
-    {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A morális felelősségvállalás központi parancsa 1938-ból."},
-    {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Góg és Magóg fia vagyok én"], "info": "Petőfi forradalmi költészetének kiemelkedő felhívó verse."},
-    {"idezet": "„Csillagok, csillagok, mondjátok el nekem: / Merre van, hol lakik az én bús szerelmem?”", "helyes": "Vajda János: Gina-versek", "opciok": ["Vajda János: Gina-versek", "Juhász Gyula: Milyen volt...", "Tóth Árpád: Körúti hajnal", "Kosztolányi Dezső: Boldog, szomorú dal"], "info": "Vajda kései szerelmi lírájának magányos hangulatképe."},
-    {"idezet": "„Góg és Magóg fia vagyok én, / Hiába döngetek kaput, falat / S mégis megkérdem tőletek: / Szabad-e sírni a Kárpátok alatt?”", "helyes": "Ady Endre: Góg és Magóg fia vagyok én...", "opciok": ["Ady Endre: Góg és Magóg fia vagyok én...", "Babits Mihály: In Horatium", "Kosztolányi Dezső: A szegény kisgyermek panaszai", "József Attila: A Dunánál"], "info": "Ady 1906-os Új versek kötetének programadó nyitóverse."},
-    {"idezet": "„Mondottam, ember: küzdj és bízva bízzál!”", "helyes": "Madách Imre: Az ember tragédiája", "opciok": ["Madách Imre: Az ember tragédiája", "Arany János: A walesi bárdok", "Vörösmarty Mihály: Csongor és Tünde", "Katona József: Bánk bán"], "info": "A 15. szín zárómondata, az Úr szózata Ádámhoz."}
-]
+tetelek_tortenelem = {
+    "1. Az athéni demokrácia működése a Kr. e. V. században": {
+        "alcim": "Szolón, Kleiszthenész reformjai, Periklész kora és a népgyűlés (ekklészia)",
+        "kulcsszavak": ["Népgyűlés (Ekklészia)", "Cserépszavazás (Oszztrakizmosz)", "Sztratégosz", "Napidíj", "Periklész"],
+        "audio_szoveg": "Az athéni demokrácia az ókori világ legfejlettebb népuralmi rendszere volt. Kialakulása Szolón vagyoni osztályain és Kleiszthenész területi felosztásán keresztül vezetett Periklész virágkoráig...",
+        "vazlat": """
+### I. A demokrácia kialakulásának állomásai
+- **Szolón (Kr. e. 594):** Teherlerázás (*szeiszakhteia*), vagyoni osztályok (*timokrácia*).
+- **Kleiszthenész (Kr. e. 508):** Területi felosztás (10 phülé), Cserépszavazás (*osztrakizmosz*) a zsarnokság ellen.
+
+### II. Intézményrendszer Periklész korában (Kr. e. V. század)
+- **Népgyűlés (Ekklészia):** A legfőbb törvényhozó szerv, minden 20 év feletti szabad athéni férfi polgár tagja.
+- **500-ak Tanácsa (Bulé):** A népgyűlés elé kerülő javaslatok előkészítése (sorsolással választva).
+- **Sztratégoszok:** 10 választott hadvezér (a tényleges végrehajtó hatalom, Periklészt 15 évig újraválasztották).
+- **Napidíjak bevezetése:** Lehetővé tette a szegényebb polgárok részvételét az esküdtbíróságokon (*héliaia*).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Demokrácia fogalma és előzményei -> 2. Főbb intézmények (Ekklészia, Bulé, Héliaia) -> 3. Periklész reformjai (napidíj) -> 4. Korlátok (nők, rabszolgák, betelepültek kizárása).",
+        "kviz": [
+            {"k": "Az athéni népgyűlés tagja lehetett minden szabad athéni férfi állampolgár.", "v": True, "m": "A közvetlen demokrácia alapelve volt."},
+            {"k": "A sztratégoszokat sorsolással választották Athénban.", "v": False, "m": "A sztratégoszokat szakértelmük miatt szavazással választották."}
+        ]
+    },
+    "2. Szent István államalapítása és az egyházszervezés": {
+        "alcim": "A keresztény királyság megszilárdítása, vármegyerendszer és törvények",
+        "kulcsszavak": ["Koppány legyőzése (997)", "Koronázás (1000/1001)", "10 egyházmegye", "Vármegyék és ispánok", "Tized"],
+        "audio_szoveg": "Géza fejedelem nyugati nyitása után fia, István király 1000 karácsonyán felvette a keresztény királyi koronát a pápától...",
+        "vazlat": """
+### I. Hatalomra jutás és belső harcok
+- Senioratus (Koppány) vs. Primogenitura (István) összecsapása (997) $\rightarrow$ István győzelme német lovagok segítségével.
+- Törzsfők legyőzése (Gyula, Ajtony) $\rightarrow$ az ország egyesítése.
+
+### II. Egyházszervezet és törvények
+- 10 püspökség (köztük 2 érsekség: Esztergom és Kalocsa), pannonhalmi bencés apátság.
+- **Törvények:** Minden 10 falu építsen templomot; egyházi tized (*decima*) fizetése; vasárnapi miselátogatás kötelező; magántulajdon védelme.
+
+### III. Világi közigazgatás
+- Királyi vármegyerendszer kiépítése, élükön az *ispán* (*comes*).
+- Királyi jövedelmek: várföldek jövedelme, vámok, pénzverés.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Trónra jutás és koronázás -> 2. Egyházszervezés (Esztergom, tized) -> 3. Vármegyerendszer -> 4. Történelmi jelentőség.",
+        "kviz": [{"k": "Szent István törvényei szerint minden 10 falunak kötelező volt közös templomot építenie.", "v": True, "m": "Ez alapozta meg a falusi keresztény hálózatot."}]
+    },
+    "3. Az Anjouk kora Magyarországon": {
+        "alcim": "Károly Róbert gazdasági reformjai és Nagy Lajos 1351-es törvényei",
+        "kulcsszavak": ["Kiskirályok legyőzése", "Bányabér (Urbura)", "Aranyforint", "Kapuadó", "1351: Ősiség és Kilenced"],
+        "audio_szoveg": "Az Árpád-ház kihalása után Károly Róbert megszilárdította a királyi hatalmat, legyőzte a tartományurakat, és stabil gazdasági reformokat vezetett be...",
+        "vazlat": """
+### I. Károly Róbert (1308–1342) gazdasági reformjai
+- Kiskirályok (Csák Máté, Aba Amadé) felszámolása.
+- **Bányareform:** A bányabér (*urbura*) 1/3-át átengedte a földbirtokosnak $\rightarrow$ Magyarország Európa aranytermelésének élére állt.
+- **Pénzügyi stabilitás:** Értékálló aranyforint firenzei mintára; kamara haszna kiesése miatt *kapuadó* bevezetése; harmincadvám.
+- **1335: Visegrádi királytalálkozó:** Cseh-lengyel-magyar szövetség, Bécset elkerülő kereskedelmi útvonal.
+
+### II. Nagy Lajos (1342–1382) és az 1351-es törvények
+- **Ősiség törvénye (*aviticitas*):** A nemesi birtok nem adható el, nemes halálakor a rokonokra száll (védi a nemesi vagyont).
+- **Kilenced:** Kötelező földesúri adó a jobbágyoktól (megakadályozta az elszegényedést).
+- **Egy és ugyanazon nemesi szabadság elve:** Egységes jogok a kis- és nagynemeseknek.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Károly Róbert gazdasági újításai (urbura, kapuadó) -> 2. 1335 Visegrádi csúcs -> 3. Nagy Lajos 1351-es törvényei (ősiség, kilenced) -> 4. Összegzés.",
+        "kviz": [{"k": "Az 1351-es törvényekben bevezetett ősiség megengedte a nemesi föld szabad eladását.", "v": False, "m": "Pontosan tiltotta az eladást, a birtok a nemzetségen belül öröklődött."}]
+    },
+    "4. Hunyadi Mátyás uralkodása (1458–1490)": {
+        "alcim": "Központosított monarchia, bevételek, Fekete sereg és a reneszánsz udvar",
+        "kulcsszavak": ["Füstpénz (Füstpénz / Családonként)", "Rendkívüli hadiadó", "Fekete sereg", "Királyi kancellária", "Bibliotheca Corviniana"],
+        "audio_szoveg": "Hunyadi Mátyás a magyar történelem egyik legsikeresebb reneszánsz uralkodója volt, aki erős központosított királyi hatalmat épített ki...",
+        "vazlat": """
+### I. A központosított királyi hatalom és gazdaság
+- Hagyományos adók reformja: Kapuadó helyett *füstpénz* (jobbágyportánként helyett háztartásonként szedve).
+- *Rendkívüli hadiadó:* Évente 1 aranyforint portánként (gyakran évente kétszer is beszedve).
+- Mátyás éves bevétele elérte az 500-800 ezer forintot.
+
+### II. Hadsereg és külpolitika
+- **Fekete sereg:** Állandó zsoldoshadsereg (Kinizsi Pál, Haugwitz vezetésével).
+- Déli határvédelem a török ellen (kettős végvári vonal megerősítése).
+- Nyugati hadjáratok: Cseh és osztrák területek elfoglalása (1485: Bécs bevétele), cél a német-római császári cím megszerzése.
+
+### III. Reneszánsz kultúra
+- Beatrix királyné érkezése, humanista tudósok (Bonfini, Galeotto Marzio).
+- *Bibliotheca Corviniana:* Európa egyik legnagyobb könyvtára Budán és Visegrádon.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Mátyás trónra lépése -> 2. Gazdasági bevételek és füstpénz -> 3. Fekete sereg és külpolitika -> 4. Reneszánsz kultúra Budán.",
+        "kviz": [{"k": "Mátyás zsoldoshadseregét Fekete seregnek nevezték.", "v": True, "m": "Európa egyik legütőképesebb állandó zsoldoshadserege volt."}]
+    },
+    "5. A reformkor fő kérdései (1830–1848)": {
+        "alcim": "Széchenyi István és Kossuth Lajos reformprogramjának összehasonlítása",
+        "kulcsszavak": ["1830 Hitel", "Önkéntes és Kötelező örökváltság", "Közteherviselés", "Pesti Hírlap", "Lánchíd"],
+        "audio_szoveg": "A magyar reformkor 1830-ban, Széchenyi Hitel című művének megjelenésével vette kezdetét...",
+        "vazlat": """
+### I. Gróf Széchenyi István programja
+- Kiindulópont: 1830 *Hitel*, *Világ*, *Stádium* (12 pont).
+- Fő célok: Az ősiség eltörlése (hitelképesség megteremtése), lassú, arisztokrácia által vezetett szerves fejlődés a Habsburg Birodalmon belül.
+- Gyakorlati alkotások: Lánchíd, Vaskapu szabályozása, gőzhajózás, Magyar Tudományos Akadémia felajánlása (1825).
+
+### II. Kossuth Lajos és a liberális ellenzék programja
+- *Pesti Hírlap* szerkesztése (1841-től) $\rightarrow$ a nyilvánosság ereje, vezércikkek.
+- Fő követelések: **Kötelező örökváltság állami kárpótlással** (jobbágyfelszabadítás), **Közteherviselés** (nemesi adómentesség eltörlése), **Érdekegyesítés** (nemesség és jobbágyság összefogása), Sajtószabadság.
+
+### III. Ellenzéki Nyilatkozat (1847)
+- Deák Ferenc és Kossuth közös programja: felelős minisztérium, népképviselet, törvény előtti egyenlőség.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Reformkor fogalma (1830-1848) -> 2. Széchenyi arisztokratikus gazdasági programja -> 3. Kossuth társadalmi érdekegyesítése -> 4. A két reformer vitája.",
+        "kviz": [{"k": "Kossuth Lajos az önkéntes örökváltság híve volt állami segítség nélkül.", "v": False, "m": "Kossuth a kötelező örökváltságot követelte állami kárpótlással."}]
+    },
+    "6. Az 1848–49-es forradalom és szabadságharc": {
+        "alcim": "Március 15., az Áprilisi törvények és a Tavaszi hadjárat sikerei",
+        "kulcsszavak": ["12 pont", "Áprilisi törvények (1848. ápr. 11.)", "Batthyány Lajos kormánya", "Görgei Artúr", "Függetlenségi Nyilatkozat (1849. ápr. 14.)"],
+        "audio_szoveg": "1848 tavaszán a pesti forradalom és az Áprilisi törvények szentesítése polgári Magyarországot teremtett...",
+        "vazlat": """
+### I. 1848. március 15. és az Áprilisi törvények (1848. április 11.)
+- Pesti forradalom: Nemzeti dal, 12 pont, Táncsics kiszabadítása.
+- **Áprilisi törvények:** Független, felelős magyar minisztérium (Batthyány-kormány); Népképviseleti országgyűlés Pesten; Jobbágyfelszabadítás; Közteherviselés; Sajtószabadság; Unió Erdéllyel.
+
+### II. Az önvédelmi háború és a Tavaszi hadjárat (1849)
+- Pákozd (1848. szept. 29. – Jellasics megállítása).
+- 1849 tavaszi dicsőséges hadjárat (Görgei Artúr vezetésével: Hatvan, Tápióbicske, Isaszeg, Komárom felmentése, Buda visszavétele május 21-én).
+- **1849. április 14. (Debrecen):** Függetlenségi Nyilatkozat és a Habsburg-ház trónfosztása.
+
+### III. A szabadságharc leverése
+- I. Ferenc József segítséget kér I. Miklós orosz cártól $\rightarrow$ Világosi fegyverletétel (1849. aug. 13.).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Március 15. és Áprilisi törvények -> 2. Batthyány-kormány és önvédelmi harc -> 3. Tavaszi hadjárat és Trónfosztás -> 4. Orosz intervenció és vereség.",
+        "kviz": [{"k": "A Batthyány-kormány volt az első felelős magyar minisztérium.", "v": True, "m": "1848 áprilisában alakult meg."}]
+    },
+    "7. A dualizmus kora Magyarországon (1867–1914)": {
+        "alcim": "A Kiegyezés rendszere, gazdasági felvirágzás és társadalmi rétegződés",
+        "kulcsszavak": ["Kiegyezés (1867)", "Ferenc József és Deák Ferenc", "Közös ügyek", "Gazdasági csoda", "Torlódó társadalom"],
+        "audio_szoveg": "Az 1867-es kiegyezéssel létrejött az Osztrák-Magyar Monarchia, amely fél évszázados békét és példátlan gazdasági fellendülést hozott...",
+        "vazlat": """
+### I. A Kiegyezés államszervezete (1867)
+- Dualista, kétközpontú monarchia (Bécs és Budapest), Ferenc József megkoronázása.
+- **Közös ügyek:** Külügy, Hadügy, és az ezek fedezésére szolgáló Pénzügy (60-60 fős delegációk ellenőrzése mellett).
+- Gazdasági kiegyezés (10 évente megújítandó): Vámunió, közös valuta (korona), kvóta (Magyarország 30%-ot vállal).
+
+### II. Gazdasági és infrastrukturális robbanás
+- Vasúthálózat kiépülése (Baross Gábor), folyószabályozások (Tisza).
+- Malomipar (Budapest a világ malomipari fővárosa), gépgyártás (Ganz, MÁVAG).
+- Millenniumi ünnepségek (1896): Földalatti, Hősök tere, Országház építése.
+
+### III. A „torlódó társadalom”
+- Egymás mellett él a régi feudális réteg (arisztokraták, dzsentrik, parasztság) és az új polgári kapitalista réteg (nagypolgárság, gyári munkásság).
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Kiegyezés létrejötte és közös ügyek -> 2. Gazdasági fellendülés (vasút, malomipar) -> 3. Torlódó társadalom modellje -> 4. Etnikai és nemzetiségi kérdés.",
+        "kviz": [{"k": "A dualizmus korában a külügy és hadügy közös minisztériumok alá tartozott Bécsben.", "v": True, "m": "A pénzügy biztosította ezek költségvetését."}]
+    },
+    "8. A Horthy-korszak konszolidációja (1920–1931)": {
+        "alcim": "Trianon traumája, a bethleni konszolidáció politikai, gazdasági és kulturális eredményei",
+        "kulcsszavak": ["Trianoni béke (1920. jún. 4.)", "Teleki Pál", "Bethlen István", "Népszövetségi kölcsön", "Pengő", "Klebelsberg Kuno"],
+        "audio_szoveg": "Az I. világháború és a Trianoni békediktátum után gróf Bethlen István miniszterelnöksége alatt ment végbe a magyar gazdaság és társadalom talpra állítása...",
+        "vazlat": """
+### I. A Trianoni békeszerződés (1920. június 4.)
+- Területvesztés: Az ország 2/3 részét elcsatolták; 3,3 millió magyar rekedt az új határokon túl.
+- Hadseregkorlátozás (35 ezer fő, nincs nehézfegyverzet), jóvátétel fizetése.
+
+### II. A Bethleni konszolidáció (1921–1931)
+- **Politikai stabilitás:** Bethlen-Peyer paktum (kiegyezés a szociáldemokratákkal); Egységes Párt létrehozása; nyílt szavazás vidéken.
+- **Gazdasági talpra állás:** Népszövetségi kölcsön (1924), Magyar Nemzeti Bank felállítása, új értékálló valuta: a *Pengő* (1927).
+- **Kultúrpolitika (Klebelsberg Kuno):** Népiskolai program (5000 tanterem építése), egyetemek átköltöztetése (Szeged, Debrecen, Pécs), külföldi Collegium Hungaricumok (Bécs, Róma, Berlin) a nemzeti önbecsülés és tehetséggondozás szolgálatában.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Trianoni veszteségek -> 2. Bethlen politikai és gazdasági konszolidációja (Pengő) -> 3. Klebelsberg kulturális reformjai -> 4. Külpolitikai kitörés az elszigeteltségből.",
+        "kviz": [{"k": "1927-ben vezették be az új magyar valutát, a Pengőt.", "v": True, "m": "A korona elértéktelenedése után stabilizálta a piacot."}]
+    },
+    "9. Az 1956-os forradalom és szabadságharc": {
+        "alcim": "A Rákosi-diktatúra válsága, október 23., Nagy Imre kormánya és a szovjet intervenció",
+        "kulcsszavak": ["MEFESZ", "16 pont", "Október 23.", "Nagy Imre", "Corvin köz", "November 4. Szovjet invázió"],
+        "audio_szoveg": "1956. október 23-án a budapesti diákok békés felvonulásával kezdődött a magyar történelem legtisztább forradalma a szovjet megszállás és a kommunista diktatúra ellen...",
+        "vazlat": """
+### I. Előzmények és a forradalom kitörése (1956. október 23.)
+- Rákosi-korszak terrorja (ÁVH, koncepciós perek, padlássöprés). Sztálin halála (1953) utáni erjedés.
+- Szegedi egyetemisták (MEFESZ), Petőfi Kör vitái.
+- Október 23.: Békés tüntetés (Petőfi-szobor, Bem-tér, Parlament) $\rightarrow$ Rádió ostroma a Bródy Sándor utcában (fegyveres harcok kezdete).
+
+### II. A forradalom győzelme (Okt. 28. – Nov. 3.)
+- Nagy Imre miniszterelnök elismeri a felkelést nemzeti demokratikus mozgalomként; ÁVH feloszlatása; többpártrendszer visszaállítása.
+- Fegyveres ellenállók (Corvin köz – Pongrátz Gergely, Széna tér).
+- **November 1.:** Magyarország kikiáltja semlegességét és kilép a Varsói Szerződésből.
+
+### III. A szovjet agresszió és megtorlás
+- **November 4.:** „Forgószél” hadművelet – a szovjet hadsereg lerohanja Budapestet. Kádár János bábkormánya.
+- Megtorlás: Nagy Imre, Maléter Pál kivégzése (1958), több száz kivégzett szabadságharcos, 200 ezer emigráns.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Rákosi-diktatúra válsága -> 2. Október 23. eseményei -> 3. Nagy Imre kormánya és a semlegesség -> 4. November 4. szovjet támadás és a megtorlás.",
+        "kviz": [{"k": "Magyarország 1956. november 1-jén kinyilvánította semlegességét és kilépését a Varsói Szerződésből.", "v": True, "m": "Nagy Imre kormánya hirdette ki."}]
+    },
+    "10. A rendszerváltás folyamata Magyarországon (1989–1990)": {
+        "alcim": "A Kádár-rendszer válsága, az Ellenzéki Kerekasztal, Nagy Imre újratemetése és a szabad választások",
+        "kulcsszavak": ["Kádár János bukása (1988)", "Ellenzéki Kerekasztal (EKA)", "1989. jún. 16. Újratemetés", "1989. okt. 23. Köztársaság", "1990 Szabad választások"],
+        "audio_szoveg": "1989-1990-ben békés, tárgyalásos úton ment végbe a kommunista diktatúrából a többpárti demokráciába és piacgazdaságba való átmenet...",
+        "vazlat": """
+### I. A Kádár-korszak gazdasági csődje és az ellenzék formálódása
+- Eladósodás, gazdasági stagnálás. 1988: Kádár János leváltása.
+- Új ellenzéki szervezetek: MDF (Lakitelek, 1987), Fidesz (1988), SZDSZ (1988), FKgP, KDNP.
+
+### II. A sorsfordító 1989-es év
+- **Ellenzéki Kerekasztal (EKA):** Az ellenzéki erők egységes fellépése az MSZMP-vel szemben.
+- **1989. június 16.:** Nagy Imre és mártírtársainak ünnepélyes újratemetése a Hősök terén (Orbán Viktor beszéde: a szovjet csapatok kivonása).
+- **1989. szeptember:** Határnyitás a keletnémet menekültek előtt (Páneurópai piknik).
+- **1989. október 23.:** Szűrös Mátyás kikiáltja a Magyar Köztársaságot.
+
+### III. 1990: Szabad választások
+- Az első szabad, többpárti választások (MDF győzelem) $\rightarrow$ Antall József kormánya. A demokratikus jogállam és piacgazdaság kiépülése.
+        """,
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Kádár-rendszer válsága -> 2. Ellenzéki Kerekasztal és Nemzeti Kerekasztal tárgyalások -> 3. 1989 kulcsdátumai (újratemetés, határnyitás, Köztársaság) -> 4. 1990-es szabad választások.",
+        "kviz": [{"k": "1989. október 23-án kiáltották ki a harmadik Magyar Köztársaságot.", "v": True, "m": "Szűrös Mátyás ideiglenes köztársasági elnök hirdette ki a Parlament erkélyéről."}]
+    }
+}
 
 # -------------------------------------------------------------
-# 4. IDŐVONAL ADATBÁZIS
+# 4. MATEMATIKA TÉTELTÁR (8 Témakör)
 # -------------------------------------------------------------
-idovonal_adat = [
-    {"ev": "1848–1849", "cim": "Forradalom és Szabadságharc", "leiras": "Petőfi és a márciusi ifjak forradalmi költészete; Arany János korai korszaka és a nemzeti összefogás."},
-    {"ev": "1850-es évek", "cim": "Bach-korszak & Elnyomás", "leiras": "Passzív ellenállás. Arany János nagykőrösi balladái (A walesi bárdok, Szondi két apródja); Madách megírja Az ember tragédiáját (1859-60)."},
-    {"ev": "1867", "cim": "A Kiegyezés kora", "leiras": "Polgárosodás és gazdasági fejlődés. Jókai Mór érett regényei (Az arany ember, 1872), Mikszáth palóc novellái, Vajda János lírai magánya."},
-    {"ev": "1877", "cim": "Arany János Őszikék korszaka", "leiras": "A Margitszigeten írt Kapcsos könyv; a modern nagyvárosi elidegenedés és a Híd-avatás haláltánca."},
-    {"ev": "1908", "cim": "A Nyugat folyóirat indulása", "leiras": "A modern magyar irodalom forradalma. Ady Endre (Új versek), Babits Mihály, Kosztolányi Dezső, Móricz Zsigmond fellépése."},
-    {"ev": "1914–1919", "cim": "I. Világháború és Tanácsköztársaság", "leiras": "Keserű háborús költészet (Ady: Ember az embertelenségben). Kosztolányi Édes Anna című regényének történelmi kezdőpontja (1919 nyara)."},
-    {"ev": "1938–1944", "cim": "Fasizmus árnyéka és II. Világháború", "leiras": "Babits megírja a Jónás könyvét (1938), Radnóti Miklós kései eclogái és bori notesze a humanizmus védelmében."}
-]
+tetelek_matek = {
+    "1. Halmazok, logika és kombinatorika": {
+        "alcim": "Halmazműveletek, De Morgan azonosságok, permutáció, variáció és kombináció",
+        "kulcsszavak": ["Metszet, Unió, Különbség", "Venn-diagram", "Ismétléses és Ismétlés nélküli permutáció", "Kombináció n alatt a k"],
+        "audio_szoveg": "A matematika alapvető nyelve a halmazelmélet és a logika. A kombinatorika a véges halmazok elemeinek elrendezéseit és kiválasztásait vizsgálja...",
+        "vazlat": """
+### I. Halmazműveletek és Logika
+- **Unió ($A \cup B$):** Azon elemek, melyek legalább az egyik halmazban benne vannak.
+- **Metszet ($A \cap B$):** Azon elemek, melyek mindkét halmazban egyszerre benne vannak.
+- **Különbség ($A \setminus B$):** Benne van $A$-ban, de nincs benne $B$-ben.
+- **Komplementer ($\overline{A}$):** Az alaphalmaz azon elemei, melyek nincsenek benne $A$-ban.
 
-# Flashcard lista mindkét tantárgyból
+### II. Kombinatorika alapképletek
+- **Permutáció (Sorrendezés):**
+  - *Ismétlés nélküli:* $P_n = n! = n \cdot (n-1) \cdot ... \cdot 1$
+  - *Ismétléses:* $P_n^{k_1, k_2...} = \frac{n!}{k_1! \cdot k_2!...}$ (pl. betűk sorrendje a 'MISSISSIPPI' szóban).
+- **Variáció (Kiválasztás, ahol A SORREND SZÁMÍT):**
+  - $V_n^k = \frac{n!}{(n-k)!}$ (pl. versenyen 1., 2., 3. helyezett).
+- **Kombináció (Kiválasztás, ahol A SORREND NEM SZÁMÍT):**
+  - $C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!}$ (pl. 90-ből 5 lottószám kihúzása: $\binom{90}{5}$).
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Halmazok és műveletek (Venn-diagram) -> 2. Permutáció (minden elem sorrendje) -> 3. Variáció és Kombináció közötti különbség (számít-e a sorrend?) -> 4. Gyakorlati lottópélda.",
+        "kviz": [
+            {"k": "Az 5-ös lottó összes lehetséges szelvényének száma kombinációval számolható: 90 alatt az 5.", "v": True, "m": "Mert a kihúzás sorrendje nem számít."},
+            {"k": "0 faktoriális (0!) értéke 0-val egyenlő.", "v": False, "m": "0! definíció szerint 1."}
+        ]
+    },
+    "2. Algebra: Egyenletek, egyenlőtlenségek és másodfokú formula": {
+        "alcim": "Másodfokú egyenlet megoldóképlete, diszkrimináns, gyöktényezős alak és Viéte-formulák",
+        "kulcsszavak": ["Diszkrimináns ($b^2 - 4ac$)", "Megoldóképlet", "Gyöktényezős alak", "Kikötések és értelmezési tartomány"],
+        "audio_szoveg": "Az algebrai egyenletek megoldásának legfontosabb lépése a helyes kikötés és az ekvivalens átalakítások alkalmazása...",
+        "vazlat": """
+### I. A másodfokú egyenlet ($ax^2 + bx + c = 0$)
+- **Megoldóképlet:** $x_{1,2} = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$
+- **Diszkrimináns ($D = b^2 - 4ac$):**
+  - Ha $D > 0$: 2 különböző valós gyök van.
+  - Ha $D = 0$: 1 valós gyök van (kétszeres gyök).
+  - Ha $D < 0$: Nincs valós gyök.
+- **Gyöktényezős szorzatalak:** $a(x - x_1)(x - x_2) = 0$
+- **Viéte-formulák:** $x_1 + x_2 = -\frac{b}{a}$, $x_1 \cdot x_2 = \frac{c}{a}$
+
+### II. Egyenletmegoldási alapszabályok
+1. **Értelmezési tartomány (Kikötések):** Nevező $\neq 0$; Négyzetgyök alatt $\ge 0$; Logaritmus belső száma $> 0$, alapja $> 0$ és $\neq 1$.
+2. **Négyzetre emeléskor** hamis gyökök keletkezhetnek $\rightarrow$ **Ellenőrzés kötelező!**
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Értelmezési tartomány és kikötések -> 2. Másodfokú megoldóképlet és a diszkrimináns szerepe -> 3. Gyöktényezős alak -> 4. Miért kötelező az ellenőrzés négyzetre emelés után?",
+        "kviz": [{"k": "Ha a másodfokú egyenlet diszkriminánsa negatív, akkor az egyenletnek nincs valós megoldása.", "v": True, "m": "Mert valós számok körében negatív számból nem vonhatunk páros gyököt."}]
+    },
+    "3. Függvénytan és analízis alapjai": {
+        "alcim": "Lineáris, másodfokú, exponenciális, logaritmikus függvények és jellemzésük",
+        "kulcsszavak": ["Értelmezési tartomány (É.T.)", "Értékkészlet (É.K.)", "Zérushely", "Szélsőérték", "Monotonitás"],
+        "audio_szoveg": "A függvény egy egyértelmű hozzárendelés két halmaz között. Az érettségin alapvető elvárás a függvények szakszerű és teljes jellemzése...",
+        "vazlat": """
+### I. Függvényjellemzési szempontok
+1. **Értelmezési tartomány ($D_f$):** Azon x értékek, ahol a függvény létezik.
+2. **Értékkészlet ($R_f$):** Azon y kimenetek, amiket a függvény felvesz.
+3. **Zérushely:** Ahol a grafikon metszi az x-tengelyt ($f(x) = 0$).
+4. **Szélsőérték:** Minimum és maximum helye ($x$) és értéke ($y$).
+5. **Monotonitás:** Szigorúan monoton növekvő vagy csökkenő intervallumok.
+6. **Paritás:** Páros ($f(-x) = f(x)$, y-tengelyre szimmetrikus) vagy Páratlan ($f(-x) = -f(x)$, origóra szimmetrikus).
+
+### II. Alapfüggvények transzformációi
+- $f(x) + c$: Eltolás y-tengely mentén ($c$-vel fel/le).
+- $f(x - d)$: Eltolás x-tengely mentén ($d$-vel jobbra/balra).
+- $a \cdot f(x)$: Nyújtás/zsugorítás y-tengely mentén.
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Függvény fogalma -> 2. Jellemzés lépései (É.T., É.K., zérushely, szélsőérték) -> 3. Alapfüggvények transzformációs szabályai.",
+        "kviz": [{"k": "Az f(x) = (x - 3)^2 függvény csúcspontja az x = +3 pontban van.", "v": True, "m": "A zárójelen belüli -3 jobbra tolja el a parabolát."}]
+    },
+    "4. Sorozatok és Pénzügyi matematika": {
+        "alcim": "Számtani és mértani sorozat képletei, kamatos kamat és gyűjtőjáradék",
+        "kulcsszavak": ["Differencia ($d$)", "Hányados ($q$)", "$n$-edik tag képlete", "Első $n$ tag összege ($S_n$)", "Kamatos kamat"],
+        "audio_szoveg": "A sorozatok olyan függvények, melyek értelmezési tartománya a pozitív egész számok halmaza. Az érettségin leggyakrabban számtani és mértani sorozatokkal, valamint kamatos kamatszámítással találkozunk...",
+        "vazlat": """
+### I. Számtani sorozat (Differencia: $d$)
+- Két szomszédos tag különbsége állandó ($a_{n+1} - a_n = d$).
+- **$n$-edik tag:** $a_n = a_1 + (n - 1) \cdot d$
+- **Összegképlet:** $S_n = \frac{a_1 + a_n}{2} \cdot n = \frac{2a_1 + (n - 1)d}{2} \cdot n$
+
+### II. Mértani sorozat (Hányados: $q$)
+- Két szomszédos tag hányadosa állandó ($\frac{a_{n+1}}{a_n} = q$).
+- **$n$-edik tag:** $a_n = a_1 \cdot q^{n-1}$
+- **Összegképlet ($q \neq 1$):** $S_n = a_1 \cdot \frac{q^n - 1}{q - 1}$
+
+### III. Kamatos kamatszámítás
+- Kezdőtőke: $C_0$, éves kamatláb: $p\%$, kamattényező: $r = 1 + \frac{p}{100}$.
+- **$n$ év múlva lévő tőke:** $C_n = C_0 \cdot (1 + \frac{p}{100})^n$
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Számtani sorozat definíciója és képletei -> 2. Mértani sorozat definíciója és összege -> 3. Kamatos kamat gyakorlati alkalmazása.",
+        "kviz": [{"k": "Ha egy mértani sorozat első tagja 3, hányadosa q=2, akkor a 4. tag értéke 24.", "v": True, "m": "a4 = 3 * 2^3 = 3 * 8 = 24."}]
+    },
+    "5. Síkgeometria és Trigonometria": {
+        "alcim": "Pitagorasz-tétel, Szinusz- és Koszinusztétel, háromszögek területszámítása",
+        "kulcsszavak": ["Pitagorasz-tétel", "Szögfüggvények (sin, cos, tg)", "Szinusztétel", "Koszinusztétel", "Területképletek"],
+        "audio_szoveg": "A síkgeometria alapja a derékszögű és általános háromszögek metrikus összefüggéseinek pontos ismerete...",
+        "vazlat": """
+### I. Derékszögű háromszögek összefüggései
+- **Pitagorasz-tétel:** $a^2 + b^2 = c^2$
+- **Szögfüggvények:**
+  - $\sin\alpha = \frac{\text{szemközti befogó}}{\text{átfogó}}$
+  - $\cos\alpha = \frac{\text{melletti befogó}}{\text{átfogó}}$
+  - $\text{tg}\alpha = \frac{\text{szemközti befogó}}{\text{melletti befogó}}$
+
+### II. Általános háromszögek tételei
+- **Szinusztétel:** $\frac{a}{\sin\alpha} = \frac{b}{\sin\beta} = \frac{c}{\sin\gamma} = 2R$ (ahol $R$ a körülírt kör sugara).
+- **Koszinusztétel:** $a^2 = b^2 + c^2 - 2bc \cdot \cos\alpha$ (Pitagorasz-tétel általánosítása).
+- **Területképletek:**
+  - $T = \frac{a \cdot m_a}{2} = \frac{a \cdot b \cdot \sin\gamma}{2} = \sqrt{s(s-a)(s-b)(s-c)}$ (Héron-képlet).
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Derékszögű háromszögek szögfüggvényei -> 2. Szinusztétel és Koszinusztétel mikor melyiket használjuk? -> 3. Területképletek összefoglalása.",
+        "kviz": [{"k": "A koszinusztétel bármilyen általános háromszögre érvényes, ha ismerünk két oldalt és a közbezárt szöget.", "v": True, "m": "Ez a tétel leggyakoribb alkalmazása."}]
+    },
+    "6. Koordinátageometria": {
+        "alcim": "Vektorműveletek, egyenes egyenletei (normálvektoros, irányvektoros) és a kör egyenlete",
+        "kulcsszavak": ["Normálvektor $\\vec{n}(A, B)$", "Irányvektor $\\vec{v}(v_1, v_2)$", "Egyenes egyenlete", "Kör egyenlete", "Távolságképlet"],
+        "audio_szoveg": "A koordinátageometriában az algebrai eszközöket hívjuk segítségül geometriai alakzatok vizsgálatához a derékszögű koordináta-rendszerben...",
+        "vazlat": """
+### I. Vektorok és pontok távolsága
+- Két pont távolsága: $d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+- Felezőpont koordinátái: $F\left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)$
+
+### II. Az egyenes egyenlete
+- **Normálvektoros alak ($\vec{n}(A, B)$ merőleges az egyenesre, $P_0(x_0, y_0)$ pont rajta van):**
+  - $Ax + By = Ax_0 + By_0$
+- **Irányvektoros alak ($\vec{v}(v_1, v_2)$ párhuzamos az egyenessel):**
+  - Mivel $\vec{n} = (v_2, -v_1)$, visszaírható a normálvektoros alakra.
+
+### III. A kör egyenlete
+- Középpont: $K(u, v)$, sugár: $r$.
+- **Egyenlet:** $(x - u)^2 + (y - v)^2 = r^2$
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Vektorok fogalma és távolságképlet -> 2. Egyenes felírása normálvektorból és pontból -> 3. Kör egyenlete és középpontja.",
+        "kviz": [{"k": "A (x - 2)^2 + (y + 5)^2 = 16 egyenletű kör sugara 4, középpontja K(2, -5).", "v": True, "m": "Mert r^2 = 16 -> r = 4, és az előjelek u=2, v=-5."}]
+    },
+    "7. Térgeometria (Testek felszíne és térfogata)": {
+        "alcim": "Hasáb, henger, gúla, kúp és gömb felszín- és térfogatszámítása",
+        "kulcsszavak": ["Henger", "Kúp", "Gúla", "Gömb", "Felszín ($A$)", "Térfogat ($V$)"],
+        "audio_szoveg": "A térgeometria a 3 dimenziós geometriai testek felszínével és térfogatával foglalkozik...",
+        "vazlat": """
+### I. Egyenes testek (Hasáb és Henger)
+- **Henger (alapsugár $r$, magasság $M$):**
+  - $V = T_{\text{alap}} \cdot M = r^2 \pi \cdot M$
+  - $A = 2 \cdot T_{\text{alap}} + T_{\text{palást}} = 2r^2\pi + 2r\pi M$
+
+### II. Csúcsos testek (Gúla és Kúp)
+- **Kúp (alapsugár $r$, alkotó $a$, magasság $M$ - ahol $r^2 + M^2 = a^2$):**
+  - $V = \frac{r^2\pi \cdot M}{3}$
+  - $A = r^2\pi + r\pi a$
+- **Gúla:** $V = \frac{T_{\text{alap}} \cdot M}{3}$
+
+### III. Gömb (Sugár: $R$)
+- **Térfogat:** $V = \frac{4}{3} R^3 \pi$
+- **Felszín:** $A = 4 R^2 \pi$
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Hasábok és hengerek térfogata (alapterület * magasság) -> 2. Csúcsos testek harmadoló szabálya -> 3. Gömb képletei.",
+        "kviz": [{"k": "A kúp és gúla térfogata a megfelelő henger/hasáb térfogatának harmadrésze.", "v": True, "m": "A csúcsos testek térfogatképletében ott van az 1/3 szorzó."}]
+    },
+    "8. Valószínűségszámítás és Statisztika": {
+        "alcim": "Klasszikus valószínűségi modell, visszatevéses mintavétel, átlag, medián, módusz és szórás",
+        "kulcsszavak": ["Kedvező / Összes", "Független események", "Medián", "Módusz", "Átlag", "Szórás"],
+        "audio_szoveg": "A valószínűségszámítás a véletlen események törvényszerűségeit kutatja. A klasszikus valószínűség képlete: kedvező esetek osztva az összes esettel...",
+        "vazlat": """
+### I. Valószínűségszámítás
+- **Klasszikus valószínűségi mező:** $P(A) = \frac{\text{Kedvező kimenetelek száma}}{\text{Összes lehetséges kimenetel száma}} = \frac{k}{n}$
+- **Komplementer esemény valószínűsége:** $P(\overline{A}) = 1 - P(A)$
+- **Binomiális eloszlás ($n$ kísérletből $k$ siker, $p$ valószínűséggel):**
+  - $P(X = k) = \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}$
+
+### II. Statisztika
+- **Átlag (Számtani közép):** Az adatok összege osztva az adatok számával ($\overline{x} = \frac{\sum x_i}{n}$).
+- **Módusz:** A mintában leggyakrabban előforduló érték.
+- **Medián:** Növekvő sorba rendezett adatok pontosan középső értéke (páros darabszámnál a két középső átlaga).
+- **Terjedelem:** Legnagyobb és legkisebb adat különbsége ($x_{\max} - x_{\min}$).
+- **Szórás:** Az adatok átlagtól való átlagos négyzetes eltérésének gyöke (az adatok szétterültségét méri).
+        """,
+        "szobeli": "**🎙️ 3 perces elméleti felelet:** 1. Klasszikus valószínűség képlete -> 2. Binomiális eloszlás lényege -> 3. Statisztikai középértékek (Átlag, Módusz, Medián) -> 4. Szórás fogalma.",
+        "kviz": [{"k": "A medián meghatározásához először mindig nagyság szerint növekvő sorba kell rendezni az adatokat.", "v": True, "m": "A medián a rendezett minta középső eleme."}]
+    }
+}
+
+# -------------------------------------------------------------
+# FLASHCARDS ADATBÁZIS MIND A 4 TANTÁRGYBÓL
+# -------------------------------------------------------------
 flashcards_adat = [
+    # Irodalom
     {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra (dalforma), epika (cselekmény) és dráma (konfliktus) sajátosságait."},
     {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás irodalmi szerkesztője."},
+    {"q": "Mi a központi szállóige Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember morális felelősségvállalása."},
+    # Nyelvtan
     {"q": "Mi a magyar helyesírás 4 alapelve?", "a": "1. Kiejtés elve, 2. Szóelemzés elve, 3. Hagyomány elve, 4. Egyszerűsítés elve."},
     {"q": "Mi a különbség az anafora és a katafora között a szövegtanban?", "a": "Az anafora visszautal egy korábbi szövegelemre, míg a katafora előreutal egy későbbi elemre."},
-    {"q": "Mi a szónoki beszéd 6 klasszikus szerkezeti része?", "a": "Bevezetés (Exordium) -> Elbeszélés (Narratio) -> Részletezés -> Bizonyítás -> Cáfolás -> Befejezés (Peroratio)."},
-    {"q": "Mit szimbolizál az Ágnes asszonyban a véres lepedő kényszeres mosása?", "a": "A bűn letörölhetetlenségét és a lelkiismeret-furdalás által kiváltott elmezavart."},
-    {"q": "Melyik a legkorábbi fennmaradt összefüggő magyar szövegemlék?", "a": "A Halotti Beszéd és Könyörgés (1195 körül, a Pray-kódexben)."}
+    # Történelem
+    {"q": "Mikor adta ki Nagy Lajos az Ősiség törvényét és mit jelentett az?", "a": "1351-ben. A nemesi birtok nem adható el, nemes kihalásakor a rokonokra, végül a királyra száll vissza."},
+    {"q": "Mikor és hol kiáltották ki a Függetlenségi Nyilatkozatot 1849-ben?", "a": "1849. április 14-én a debreceni Nagytemplomban, kimondva a Habsburg-ház trónfosztását."},
+    {"q": "Milyen új pénznemet vezetett be Bethlen István 1927-ben a gazdasági stabilitásért?", "a": "A Pengőt."},
+    # Matek
+    {"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x1,2 = (-b ± √(b² - 4ac)) / (2a)"},
+    {"q": "Mi a számtani és a mértani sorozat n-edik tagjának képlete?", "a": "Számtani: an = a1 + (n - 1)d | Mértani: an = a1 * q^(n - 1)"},
+    {"q": "Mi a Pitagorasz-tétel és milyen háromszögre érvényes?", "a": "a² + b² = c² (kizárólag derékszögű háromszögekre érvényes)."}
+]
+
+# Idővonal
+idovonal_adat = [
+    {"ev": "Kr. e. V. sz.", "cim": "Az athéni demokrácia virágkora", "leiras": "Periklész kora, a népgyűlés és az esküdtbíróságok működése, a napidíjak bevezetése."},
+    {"ev": "1000", "cim": "Szent István király koronázása", "leiras": "A keresztény magyar állam és a vármegyerendszer megalapítása, egyházmegyék kiépítése."},
+    {"ev": "1351", "cim": "Nagy Lajos törvényei", "leiras": "Az Aranybulla megújítása, az ősiség törvénye és a kilenced bevezetése."},
+    {"ev": "1458–1490", "cim": "Hunyadi Mátyás királysága", "leiras": "Központosított királyi hatalom, füstpénz, a Fekete sereg és a reneszánsz kultúra virágkora."},
+    {"ev": "1830–1848", "cim": "A magyar reformkor", "leiras": "Széchenyi Hitel című művével indul, Kossuth érdekegyesítési programja, a polgári átalakulás előkészítése."},
+    {"ev": "1848–1849", "cim": "Forradalom és Szabadságharc", "leiras": "Március 15., Áprilisi törvények, függetlenségi háború és az 1849-es tavaszi hadjárat sikerei."},
+    {"ev": "1867", "cim": "A Kiegyezés – Dualizmus kora", "leiras": "Az Osztrák-Magyar Monarchia létrejötte, Deák Ferenc, fél évszázados gazdasági és kulturális aranykor."},
+    {"ev": "1920–1931", "cim": "Trianon és a Bethleni konszolidáció", "leiras": "Trianoni békediktátum (1920), a gazdasági talpra állás (Pengő, 1927), Klebelsberg Kuno iskolaépítési programja."},
+    {"ev": "1956. okt. 23.", "cim": "Forradalom és Szabadságharc", "leiras": "A pesti diákok tüntetése, fegyveres harc a szovjet elnyomás ellen, Nagy Imre kormánya, nov. 4-i invázió."},
+    {"ev": "1989–1990", "cim": "A Békés Rendszerváltás", "leiras": "Ellenzéki Kerekasztal, Nagy Imre újratemetése, határnyitás, a Köztársaság kikiáltása és az 1990-es szabad választások."}
+]
+
+# Idézet és Képlet detektív
+detektiv_adatbazis = [
+    {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A prófétai és értelmiségi felelősségvállalás alaptétele."},
+    {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Új vizeken járok"], "info": "Petőfi forradalmi felhívó lírájának remeke."},
+    {"idezet": "„Mondottam, ember: küzdj és bízva bízzál!”", "helyes": "Madách Imre: Az ember tragédiája", "opciok": ["Madách Imre: Az ember tragédiája", "Arany János: A walesi bárdok", "Vörösmarty: Csongor és Tünde", "Katona József: Bánk bán"], "info": "Az Úr szózata a 15. szín lezárásaként."},
+    {"idezet": "a² + b² - 2bc · cos(α)", "helyes": "Koszinusztétel (Általános háromszögekre)", "opciok": ["Koszinusztétel (Általános háromszögekre)", "Szinusztétel", "Pitagorasz-tétel", "Héron-képlet"], "info": "A Pitagorasz-tétel általánosítása tetszőleges háromszögre."}
 ]
 
 # Állapotkezelés
@@ -555,10 +863,10 @@ if 'oral_history' not in st.session_state:
     st.session_state.oral_history = []
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = [
-        {"role": "ai", "text": "Szia! Én vagyok az érettségi mentorod. Kérdezz bátran irodalomról vagy nyelvtanról!"}
+        {"role": "ai", "text": "Szia! Én vagyok a felkészítő mentorod. Kérdezz bátran Irodalomból, Nyelvtanból, Történelemből vagy Matematikából!"}
     ]
 
-# PDF Generálás
+# PDF Segédfüggvény
 def tiszta_pdf_szoveg(szoveg):
     cserel = {
         'ő': 'o', 'Ő': 'O', 'ű': 'u', 'Ű': 'U', 'á': 'a', 'Á': 'A',
@@ -589,7 +897,7 @@ def letoltheto_pdf_generalas(tetelek_adat, tantargy_nev):
         pdf.ln(1)
         
         pdf.set_font('Helvetica', '', 8.5)
-        tiszta_vazlat = adat['vazlat'].replace('###', '').replace('**', '').replace('*', '')
+        tiszta_vazlat = adat['vazlat'].replace('###', '').replace('**', '').replace('*', '').replace('$', '')
         for sor in tiszta_vazlat.strip().split('\n'):
             sor_tiszta = tiszta_pdf_szoveg(sor.strip())
             if sor_tiszta:
@@ -622,7 +930,7 @@ def ai_generalas(prompt_text):
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
     st.title("✨ Edited by Nagy Attila")
-    st.caption("Astra AI Érettségi Felkészítő Platform")
+    st.caption("Astra AI Érettségi Felkészítő Központ (Irodalom | Nyelvtan | Történelem | Matematika)")
 with col_h2:
     st.markdown(f"""
     <div style='text-align: right; padding-top: 10px;'>
@@ -635,12 +943,17 @@ with col_h2:
 st.markdown("---")
 
 # =============================================================
-# FŐ TANTÁRGY VÁLASZTÓ (Irodalom vs. Nyelvtan vs. Későbbi tantárgyak)
+# FŐ TANTÁRGY VÁLASZTÓ (Irodalom vs. Nyelvtan vs. Történelem vs. Matek)
 # =============================================================
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox(
     "Válassz tantárgyat:",
-    ["📖 Magyar Irodalom (11 tétel)", "🔤 Magyar Nyelvtan (8 tétel)", "🏛️ Történelem (Hamarosan)", "📐 Matematika (Hamarosan)"]
+    [
+        "📖 Magyar Irodalom (11 tétel)",
+        "🔤 Magyar Nyelvtan (8 tétel)",
+        "🏛️ Történelem (10 tétel)",
+        "📐 Matematika (8 témakör)"
+    ]
 )
 
 st.sidebar.markdown("---")
@@ -652,30 +965,32 @@ menupont = st.sidebar.radio(
         "🎧 Hangoskönyv (Monológ)",
         "🎴 Villámkártyák (Flashcards)",
         "🎙️ Szóbeli Szimulátor",
-        "✍️ Esszé & Írásbeli Javító",
-        "🎭 Idézet-Detektív Játék",
+        "✍️ Esszé & Feladatmegoldó Labor",
+        "🎭 Idézet- & Képlet-Detektív",
         "🧭 Történelmi & Irodalmi Idővonal",
         "🏆 Nagy Próbavizsga",
         "🤖 AI Érettségi Mentor"
     ]
 )
 
-# Adatbázis hozzárendelése a kiválasztott tantárgyhoz
+# Adatbázis hozzárendelése a tantárgyhoz
 if "Irodalom" in kivalasztott_tantargy:
     aktiv_adatbazis = tetelek_irodalom
     tantargy_cimke = "Magyar Irodalom"
 elif "Nyelvtan" in kivalasztott_tantargy:
     aktiv_adatbazis = tetelek_nyelvtan
     tantargy_cimke = "Magyar Nyelvtan"
+elif "Történelem" in kivalasztott_tantargy:
+    aktiv_adatbazis = tetelek_tortenelem
+    tantargy_cimke = "Történelem"
 else:
-    st.info("Ez a tantárgyi modul hamarosan elérhető lesz! Addig válaszd a Magyar Irodalom vagy Magyar Nyelvtan tantárgyat.")
-    aktiv_adatbazis = tetelek_irodalom
-    tantargy_cimke = "Magyar Irodalom"
+    aktiv_adatbazis = tetelek_matek
+    tantargy_cimke = "Matematika"
 
 # PDF Letöltés
 st.sidebar.markdown("---")
 st.sidebar.subheader("📥 Letölthető tananyag")
-if st.sidebar.button(f"📄 {tantargy_cimke} PDF Puska"):
+if st.sidebar.button(f"📄 {tantargy_cimke} PDF Letöltése"):
     pdf_bytes = letoltheto_pdf_generalas(aktiv_adatbazis, tantargy_cimke)
     st.sidebar.download_button(
         label="⬇️ Letöltés indítása",
@@ -702,7 +1017,7 @@ if menupont == "📚 Tételek & Vázlatok":
     </div>
     """, unsafe_allow_html=True)
     
-    tab1, tab2, tab3 = st.tabs(["📚 Részletes tankönyvi elemzés", "🎙️ 3 perces szóbeli feleletvázlat", "⚡ Gyors teszt"])
+    tab1, tab2, tab3 = st.tabs(["📚 Részletes tananyag és levezetés", "🎙️ 3 perces feleletvázlat / Képletgyűjtő", "⚡ Gyors teszt"])
     
     with tab1:
         st.markdown("<div class='deep-text'>", unsafe_allow_html=True)
@@ -715,7 +1030,7 @@ if menupont == "📚 Tételek & Vázlatok":
         st.markdown("</div>", unsafe_allow_html=True)
         
     with tab3:
-        st.subheader("Ellenőrizd a tudásod ebből a tételből!")
+        st.subheader("Ellenőrizd a tudásod ebből a témakörből!")
         for i, q in enumerate(adat["kviz"]):
             st.write(f"**{i+1}. {q['k']}**")
             c1, c2 = st.columns([1, 1])
@@ -734,11 +1049,11 @@ if menupont == "📚 Tételek & Vázlatok":
             st.markdown("---")
 
 # -------------------------------------------------------------
-# 2. MENÜPONT: HANGOSKÖNYV (1.5-2 perces monológok)
+# 2. MENÜPONT: HANGOSKÖNYV
 # -------------------------------------------------------------
 elif menupont == "🎧 Hangoskönyv (Monológ)":
     st.title(f"🎧 Hangoskönyv Felkészítő – {tantargy_cimke}")
-    st.caption("Hallgasd meg a tételek teljes, 1.5–2 perces összefüggő szóbeli elemzését!")
+    st.caption("Hallgasd meg a tételek teljes összefüggő szóbeli elemzését!")
     
     kivalasztott_hangos = st.selectbox("Válassz meghallgatandó tételt:", list(aktiv_adatbazis.keys()), key="audio_select")
     adat_hangos = aktiv_adatbazis[kivalasztott_hangos]
@@ -752,7 +1067,7 @@ elif menupont == "🎧 Hangoskönyv (Monológ)":
     
     col_a1, col_a2 = st.columns([2, 1])
     with col_a1:
-        if st.button(f"▶️ Hangos monológ elindítása ({kivalasztott_hangos})"):
+        if st.button(f"▶️ Hangos összefoglaló indítása ({kivalasztott_hangos})"):
             with st.spinner("Hangfájl generálása tiszta magyar kiejtéssel..."):
                 tts = gTTS(text=adat_hangos["audio_szoveg"].strip(), lang='hu', slow=False)
                 audio_buffer = io.BytesIO()
@@ -770,7 +1085,7 @@ elif menupont == "🎧 Hangoskönyv (Monológ)":
 # -------------------------------------------------------------
 elif menupont == "🎴 Villámkártyák (Flashcards)":
     st.title("🎴 Érettségi Villámkártyák (Astra Flashcards)")
-    st.caption("Pörgesd át a legfontosabb fogalmakat, évszámokat és összefüggéseket!")
+    st.caption("Pörgesd át a legfontosabb fogalmakat, évszámokat és képleteket mind a 4 tantárgyból!")
     
     aktualis_kartya = flashcards_adat[st.session_state.card_idx]
     
@@ -806,7 +1121,7 @@ elif menupont == "🎙️ Szóbeli Szimulátor":
     
     if st.button("🏁 Új szóbeli felelet indítása"):
         st.session_state.oral_history = [
-            {"role": "ai", "text": f"Jó napot kívánok! Húzza ki a tételét... Az Ön tétele: **{valasztott_szim_tetel}**. Kérem, kezdje meg a feleletét a bevezetéssel és a legfontosabb fogalmi sajátosságokkal!"}
+            {"role": "ai", "text": f"Jó napot kívánok! Húzza ki a tételét... Az Ön tétele: **{valasztott_szim_tetel}**. Kérem, kezdje meg a feleletét a bevezetéssel és a legfontosabb fogalmi alapokkal!"}
         ]
         st.rerun()
         
@@ -836,28 +1151,30 @@ elif menupont == "🎙️ Szóbeli Szimulátor":
             st.rerun()
 
 # -------------------------------------------------------------
-# 5. MENÜPONT: ESSZÉ & ÍRÁSBELI JAVÍTÓ
+# 5. MENÜPONT: ESSZÉ & FELADATMEGOLDÓ LABOR
 # -------------------------------------------------------------
-elif menupont == "✍️ Esszé & Írásbeli Javító":
-    st.title("✍️ Esszé & Műelemzés Értékelő Labor")
-    st.caption("Másold be az írásbeli fogalmazásodat vagy érvelésedet, és az AI azonnal pontozza az érettségi szempontrendszer szerint!")
+elif menupont == "✍️ Esszé & Feladatmegoldó Labor":
+    st.title("✍️ Esszé & Feladatmegoldó Labor")
+    st.caption("Másold be az irodalmi/történelmi esszédet vagy egy nehéz matekfeladat szövegét – az AI kijavítja vagy levezeti a teljes megoldást!")
     
-    diak_essze = st.text_area("Másold be a fogalmazásodat (műelemzés, összehasonlító elemzés vagy érvelés):", height=220)
+    diak_essze = st.text_area("Másold be a szöveget vagy matematikai feladatot:", height=220)
     
-    if st.button("📊 Esszé automatikus ellenőrzése és pontozása"):
+    if st.button("📊 Automatikus ellenőrzés / Megoldás levezetése"):
         if diak_essze:
-            with st.spinner("Az esszé elemzése érettségi szempontok alapján..."):
+            with st.spinner("Elemzés és számítás folyamatban..."):
                 prompt = f"""
-                Magyar nyelv és irodalom érettségi javító tanár vagy. Értékeld az alábbi diákfogalmazást:
+                Tapasztalt magyar középiskolai tanár és érettségi vizsgáztató vagy ({tantargy_cimke}).
+                Elemezd / oldd meg az alábbi diákmunkát vagy feladatot:
                 ---
                 {diak_essze}
                 ---
-                Kérlek, az alábbi szempontok szerint strukturáld az értékelést:
-                1. **Tartalmi minőség & Szakmai pontosság (max 40 pont):** Tények, fogalmak helyes használata.
-                2. **Szerkezet & Logikai felépítés (max 20 pont):** Bevezetés, tárgyalás, befejezés, bekezdések.
-                3. **Nyelvhelyesség & Stílus (max 20 pont):** Szókincs, helyesírás.
-                4. **Összesített érettségi pontszám & Érdemjegy (1-5)**
-                5. **Konkrét javítási javaslatok:** 2-3 pontban, mit kell hozzátenni a maximális pontszámhoz.
+                Ha esszé (Irodalom, Történelem, Nyelvtan):
+                - Értékeld a tartalmi pontosságot, forráshasználatot, szerkezetet és nyelvhelyességet.
+                - Adj konkrét érettségi pontszámot és érdemjegyet (1-5).
+                - Írj 2-3 javítási javaslatot!
+                Ha Matematika feladat:
+                - Add meg a pontos végeredményt!
+                - Írd le a részletes, lépésről lépésre követhető levezetést és indoklást!
                 """
                 valasz = ai_generalas(prompt)
                 st.markdown("<div class='deep-text'>", unsafe_allow_html=True)
@@ -865,19 +1182,19 @@ elif menupont == "✍️ Esszé & Írásbeli Javító":
                 st.markdown("</div>", unsafe_allow_html=True)
                 st.session_state.xp += 50
         else:
-            st.info("Kérlek előbb másold be a fogalmazás szövegét a fenti mezőbe!")
+            st.info("Kérlek előbb másold be a szöveget a fenti mezőbe!")
 
 # -------------------------------------------------------------
-# 6. MENÜPONT: IDÉZET-DETEKTÍV JÁTÉK
+# 6. MENÜPONT: IDÉZET- ÉS KÉPLET-DETEKTÍV
 # -------------------------------------------------------------
-elif menupont == "🎭 Idézet-Detektív Játék":
-    st.title("🎭 Idézet-Detektív Játék")
-    st.caption("Felismered a legfontosabb kötelező irodalmi idézeteket és szerzőiket?")
+elif menupont == "🎭 Idézet- & Képlet-Detektív":
+    st.title("🎭 Idézet- és Képlet-Detektív Játék")
+    st.caption("Felismered a legfontosabb irodalmi sorokat, történelmi forrásokat és matematikai képleteket?")
     
     if 'game_idx' not in st.session_state:
         st.session_state.game_idx = 0
         
-    feladvany = idezet_adatbazis[st.session_state.game_idx]
+    feladvany = detektiv_adatbazis[st.session_state.game_idx]
     
     st.markdown(f"""
     <div class='topic-card' style='border-color:#ec4899; text-align:center;'>
@@ -885,26 +1202,26 @@ elif menupont == "🎭 Idézet-Detektív Játék":
     </div>
     """, unsafe_allow_html=True)
     
-    valasztott_tipp = st.radio("Válaszd ki a helyes művet és szerzőt:", feladvany['opciok'], key=f"detektiv_{st.session_state.game_idx}")
+    valasztott_tipp = st.radio("Válaszd ki a helyes megfejtést:", feladvany['opciok'], key=f"detektiv_{st.session_state.game_idx}")
     
     if st.button("🔍 Tipp ellenőrzése"):
         if valasztott_tipp == feladvany['helyes']:
             st.balloons()
             st.session_state.xp += 30
-            st.success(f"TÖKÉLETES! 🎉 Helyes válasz! (+30 XP)\n\n📌 Háttér: {feladvany['info']}")
+            st.success(f"TÖKÉLETES! 🎉 Helyes válasz! (+30 XP)\n\n📌 Magyarázat: {feladvany['info']}")
         else:
-            st.error(f"Sajnos nem! ❌ A helyes válasz: **{feladvany['helyes']}**\n\n📌 Háttér: {feladvany['info']}")
+            st.error(f"Sajnos nem! ❌ A helyes válasz: **{feladvany['helyes']}**\n\n📌 Magyarázat: {feladvany['info']}")
             
-    if st.button("➡️ Következő idézet"):
-        st.session_state.game_idx = (st.session_state.game_idx + 1) % len(idezet_adatbazis)
+    if st.button("➡️ Következő feladvány"):
+        st.session_state.game_idx = (st.session_state.game_idx + 1) % len(detektiv_adatbazis)
         st.rerun()
 
 # -------------------------------------------------------------
 # 7. MENÜPONT: TÖRTÉNELMI & IRODALMI IDŐVONAL
 # -------------------------------------------------------------
 elif menupont == "🧭 Történelmi & Irodalmi Idővonal":
-    st.title("🧭 Történelmi & Irodalmi Idővonal (Timeline)")
-    st.caption("Lásd át egyben, melyik szerző és mű melyik történelmi korszakhoz kapcsolódik!")
+    st.title("🧭 Történelmi & Művelődéstörténeti Idővonal (Timeline)")
+    st.caption("Lásd át a magyar és világtörténelem, valamint az irodalom korszakait egyben!")
     
     for item in idovonal_adat:
         st.markdown(f"""
@@ -920,7 +1237,7 @@ elif menupont == "🧭 Történelmi & Irodalmi Idővonal":
 # -------------------------------------------------------------
 elif menupont == "🏆 Nagy Próbavizsga":
     st.title(f"🏆 Teljes Érettségi Próbavizsga – {tantargy_cimke}")
-    st.write("Válaszold meg az összes kérdést a felkészültségi szinted ellenőrzéséhez!")
+    st.write(f"Válaszold meg az összes {tantargy_cimke} kérdést a felkészültségi szinted ellenőrzéséhez!")
     
     osszes_kerdes = []
     for t_nev, t_adat in aktiv_adatbazis.items():
@@ -971,7 +1288,7 @@ elif menupont == "🏆 Nagy Próbavizsga":
 # -------------------------------------------------------------
 elif menupont == "🤖 AI Érettségi Mentor":
     st.title("🤖 AI Érettségi Mentor")
-    st.caption("Kérdezz bármilyen irodalmi vagy nyelvtani tételről, fogalomról, versről vagy szerzőről!")
+    st.caption("Kérdezz bármilyen Irodalmi, Nyelvtani, Történelmi vagy Matematikai témáról, levezetésről, fogalomról!")
 
     for msg in st.session_state.chat_history:
         if msg["role"] == "user":
@@ -985,7 +1302,7 @@ elif menupont == "🤖 AI Érettségi Mentor":
         
         if kuld and felh_kerdes:
             st.session_state.chat_history.append({"role": "user", "text": felh_kerdes})
-            prompt = f"Magyar nyelv és irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
+            prompt = f"Tapasztalt magyar középiskolai érettségi felkészítő tanár vagy. Válaszolj tömören, pontosan és érthetően a diák kérdésére: {felh_kerdes}"
             ai_valasz = ai_generalas(prompt)
             st.session_state.chat_history.append({"role": "ai", "text": ai_valasz})
             st.session_state.xp += 10
