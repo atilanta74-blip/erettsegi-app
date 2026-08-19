@@ -1,5 +1,5 @@
 # -------------------------------------------------------------
-# ADATBÁZISOK FÁJL (data.py)
+# ADATBÁZISOK FÁJL (data.py) - Bővített detektív játékkal
 # -------------------------------------------------------------
 
 tetelek_irodalom = {
