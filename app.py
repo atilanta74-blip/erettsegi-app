@@ -662,187 +662,7 @@ tetelek_tortenelem = {
 }
 
 # -------------------------------------------------------------
-# 4. MATEMATIKA TÉTELTÁR (16 Témakör)
-# -------------------------------------------------------------
-tetelek_matek = {
-    "1. Halmazok, logika és kombinatorika": {
-        "alcim": "Halmazműveletek, De Morgan azonosságok, permutáció, variáció és kombináció",
-        "kulcsszavak": ["Metszet, Unió, Különbség", "Venn-diagram", "Permutáció ($n!$)", "Kombináció ($\binom{n}{k}$)"],
-        "audio_szoveg": "A halmazelmélet és a kombinatorika a modern matematika alapvető eszköztára a kiválasztási feladatokhoz...",
-        "vazlat": "### I. Halmazműveletek: Unió, Metszet, Különbség, Komplementer.\n### II. Kombinatorika:\n- Permutáció: Pn = n!\n- Variáció (sorrend számít): V = n! / (n-k)!\n- Kombináció (sorrend NEM számít): C = n alatt a k = n! / (k!(n-k)!).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Halmazok és műveletek -> 2. Permutáció képlete -> 3. Variáció vs. Kombináció -> 4. Lottópélda.",
-        "kviz": [{"k": "Az 5-ös lottó kihúzásainak száma kombinációval számítható (90 alatt az 5).", "v": True, "m": "A sorrend nem számít."}]
-    },
-    "2. Algebra: Egyenletek, egyenlőtlenségek és másodfokú formula": {
-        "alcim": "Megoldóképlet, diszkrimináns, gyöktényezős szorzat és Viéte-formulák",
-        "kulcsszavak": ["Diszkrimináns ($b^2 - 4ac$)", "Megoldóképlet", "Gyöktényezős alak", "Kikötések"],
-        "audio_szoveg": "A másodfokú egyenletek megoldásának alapeszköze a megoldóképlet és a diszkrimináns vizsgálata...",
-        "vazlat": "### I. Megoldóképlet: x1,2 = (-b +- gyök(b^2 - 4ac)) / (2a).\n### II. Diszkrimináns (D = b^2 - 4ac): D > 0 (2 gyök), D = 0 (1 gyök), D < 0 (nincs valós gyök).\n### III. Gyöktényezős alak: a(x - x1)(x - x2) = 0.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Kikötések -> 2. Másodfokú megoldóképlet és diszkrimináns -> 3. Gyöktényezős alak -> 4. Ellenőrzés.",
-        "kviz": [{"k": "Ha a diszkrimináns negatív, a másodfokú egyenletnek nincs valós gyöke.", "v": True, "m": "Negatívból nincs valós négyzetgyök."}]
-    },
-    "3. Hatványozás, gyökvonás és a logaritmus azonosságai": {
-        "alcim": "Hatványozási azonosságok, törtkitevő, logaritmus fogalma és műveleti szabályai",
-        "kulcsszavak": ["$a^n \cdot a^m = a^{n+m}$", "Törtkitevő", "Logaritmus azonosságok", "Alapáttérés"],
-        "audio_szoveg": "A hatványozás és a logaritmus egymás inverz műveletei...",
-        "vazlat": "### I. Hatványozás: a^n * a^m = a^(n+m), a^n / a^m = a^(n-m), (a^n)^m = a^(n*m), a^-n = 1/a^n, Törtkitevő: a^(m/n) = n-edik gyök(a^m).\n### II. Logaritmus: log_a(x * y) = log_a(x) + log_a(y), log_a(x / y) = log_a(x) - log_a(y), log_a(x^k) = k * log_a(x).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Hatványozás szabályai -> 2. Törtkitevő -> 3. Logaritmus definíciója -> 4. Logaritmus azonosságai.",
-        "kviz": [{"k": "log2(8) értéke pontosan 3.", "v": True, "m": "Mert 2 a 3. hatványon 8."}]
-    },
-    "4. Függvénytan és analízis alapjai": {
-        "alcim": "Lineáris, másodfokú, exponenciális, logaritmikus függvények és jellemzésük",
-        "kulcsszavak": ["Értelmezési tartomány", "Értékkészlet", "Zérushely", "Szélsőérték", "Monotonitás"],
-        "audio_szoveg": "A függvény egy egyértelmű hozzárendelés két halmaz között...",
-        "vazlat": "### I. Jellemzési lépések: Értelmezési tartomány (Df), Értékkészlet (Rf), Zérushely (f(x)=0), Szélsőérték (min/max), Monotonitás, Paritás.\n### II. Transzformációk: f(x)+c (függőleges), f(x-d) (vízszintes), c*f(x) (nyújtás).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Függvény fogalma -> 2. Jellemzési szempontok -> 3. Transzformációk -> 4. Parabola csúcsa.",
-        "kviz": [{"k": "Az f(x) = (x - 4)^2 függvény minimuma az x = +4 pontban van.", "v": True, "m": "A zárójelen belüli -4 jobbra tolja el a csúcsot."}]
-    },
-    "5. Sorozatok és Pénzügyi matematika": {
-        "alcim": "Számtani és mértani sorozat képletei, kamatos kamat és gyűjtőjáradék",
-        "kulcsszavak": ["Differencia ($d$)", "Hányados ($q$)", "$n$-edik tag képlete", "Összegképlet ($S_n$)", "Kamatos kamat"],
-        "audio_szoveg": "A számtani és mértani sorozatok törvényszerűségei alapozzák meg a pénzügyi kamatszámításokat...",
-        "vazlat": "### I. Számtani sorozat (d): an = a1 + (n - 1)d, Sn = ((a1 + an) / 2) * n.\n### II. Mértani sorozat (q): an = a1 * q^(n - 1), Sn = a1 * (q^n - 1) / (q - 1).\n### III. Kamatos kamat: Cn = C0 * (1 + p/100)^n.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Számtani sorozat -> 2. Mértani sorozat -> 3. Kamatos kamat képlete.",
-        "kviz": [{"k": "Ha a1 = 5 és d = 3, akkor a számtani sorozat 10. tagja 32.", "v": True, "m": "a10 = 5 + 9 * 3 = 32."}]
-    },
-    "6. Síkgeometria és Trigonometria": {
-        "alcim": "Pitagorasz-tétel, Szinusz- és Koszinusztétel, háromszögek területszámítása",
-        "kulcsszavak": ["Pitagorasz-tétel", "Szögfüggvények (sin, cos, tg)", "Szinusztétel", "Koszinusztétel", "Területképletek"],
-        "audio_szoveg": "A síkgeometria alapja a derékszögű és általános háromszögek összefüggéseinek ismerete...",
-        "vazlat": "### I. Derékszögű háromszög: a^2 + b^2 = c^2, sin, cos, tg definíciói.\n### II. Általános háromszög: Szinusztétel (a/sinA = b/sinB = 2R), Koszinusztétel (a^2 = b^2 + c^2 - 2bc*cosA).\n### III. Terület: T = (a * ma)/2 = (a*b*sinGamma)/2.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Szögfüggvények -> 2. Szinusz- és Koszinusztétel -> 3. Területképletek.",
-        "kviz": [{"k": "A koszinusztétel bármilyen általános háromszögre alkalmazható két oldal és a közbezárt szög ismeretében.", "v": True, "m": "Pitagorasz általánosítása."}]
-    },
-    "7. Síkgeometria: Sokszögek, kör és négyszögek tulajdonságai": {
-        "alcim": "Szabályos sokszögek belső szögei, deltoid, rombusz, trapéz, kör ívhossza és körcikk területe",
-        "kulcsszavak": ["Belső szögek összege ($(n-2)\cdot 180^\circ$)", "Átlók száma", "Trapéz területe", "Rombusz", "Körcikk területe"],
-        "audio_szoveg": "A sokszögek és négyszögek geometriája az érettségi írásbeli vizsga gyakori feladattípusa...",
-        "vazlat": "### I. Sokszögek: Belső szögek összege: (n - 2) * 180 fok; Átlók száma: n(n - 3) / 2.\n### II. Négyszögek: Trapéz területe: ((a + c)/2) * m; Rombusz/Deltoid területe: (e * f) / 2.\n### III. Kör részei: Ívhossz: i = (2r*pi*alfa)/360; Körcikk területe: T = (r^2*pi*alfa)/360.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Belső szögek és átlók -> 2. Négyszögek területképletei -> 3. Kör és körcikk.",
-        "kviz": [{"k": "Egy konvex ötszög belső szögeinek összege pontosan 540 fok.", "v": True, "m": "(5 - 2) * 180 = 540 fok."}]
-    },
-    "8. Koordinátageometria": {
-        "alcim": "Vektorműveletek, felezőpont, súlypont, az egyenes és a kör egyenlete",
-        "kulcsszavak": ["Normálvektor $\\vec{n}(A, B)$", "Irányvektor $\\vec{v}(v_1, v_2)$", "Egyenes egyenlete", "Kör egyenlete"],
-        "audio_szoveg": "A koordinátageometria segítségével algebrai egyenletekkel írhatunk le geometriai alakzatokat...",
-        "vazlat": "### I. Alapok: Távolság (d = gyök((x2-x1)^2 + (y2-y1)^2)), Felezőpont.\n### II. Egyenes egyenlete: Normálvektoros alak: Ax + By = Ax0 + By0.\n### III. Kör egyenlete: (x - u)^2 + (y - v)^2 = r^2 (Középpont: K(u, v), sugár: r).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Távolság és felezőpont -> 2. Egyenes egyenlete -> 3. Kör egyenlete.",
-        "kviz": [{"k": "A (x - 3)^2 + (y + 1)^2 = 25 egyenletű kör sugara r = 5.", "v": True, "m": "Mert r^2 = 25 -> r = 5."}]
-    },
-    "9. Térgeometria (Testek felszíne és térfogata)": {
-        "alcim": "Hasáb, henger, gúla, kúp és gömb felszín- és térfogatszámítása",
-        "kulcsszavak": ["Henger", "Kúp", "Gúla", "Gömb", "Felszín ($A$)", "Térfogat ($V$)"],
-        "audio_szoveg": "A térgeometria a háromdimenziós testek metrikus tulajdonságaival foglalkozik...",
-        "vazlat": "### I. Henger: V = r^2 * pi * M, A = 2*r^2*pi + 2*r*pi*M.\n### II. Kúp és Gúla: V = (Talap * M) / 3, Kúp palástja: r * pi * a.\n### III. Gömb: V = 4/3 * R^3 * pi, A = 4 * R^2 * pi.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Egyenes testek -> 2. Csúcsos testek harmadoló szabálya -> 3. Gömb képletei.",
-        "kviz": [{"k": "A kúp térfogata a henger térfogatának egyharmada.", "v": True, "m": "Ott van az 1/3 szorzó."}]
-    },
-    "10. Valószínűségszámítás és Statisztika": {
-        "alcim": "Klasszikus valószínűség, binomiális eloszlás, átlag, medián, módusz és szórás",
-        "kulcsszavak": ["Kedvező / Összes", "Binomiális eloszlás", "Medián", "Módusz", "Átlag", "Szórás"],
-        "audio_szoveg": "A valószínűségszámítás a véletlen események modellezését végzi...",
-        "vazlat": "### I. Valószínűség: P = Kedvező / Összes. Binomiális: P(X=k) = (n alatt k) * p^k * (1-p)^(n-k).\n### II. Statisztika: Átlag, Módusz (leggyakoribb), Medián (rendezett sor közepe), Terjedelem, Szórás.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Klasszikus valószínűség -> 2. Binomiális modell -> 3. Statisztikai középértékek -> 4. Szórás.",
-        "kviz": [{"k": "A medián meghatározásához először mindig nagyság szerinti sorba kell rendezni az adatokat.", "v": True, "m": "A rendezett minta középső eleme."}]
-    },
-    "11. Gráfelméleti alapfogalmak és alkalmazások": {
-        "alcim": "Csúcsok, élek, fokszámok összege, összefüggő gráfok, fák és Euler-vonal",
-        "kulcsszavak": ["Fokszámtétel ($\sum d(v) = 2e$)", "Egyszerű gráf", "Összefüggő gráf", "Fa gráf", "Teljes gráf"],
-        "audio_szoveg": "A gráfelmélet csúcsok és az azokat összekötő élek hálózatát vizsgálja...",
-        "vazlat": "### I. Alapok: Csúcsok (V), Élek (E), Csúcs fokszáma (d(v)). Fokszámtétel: Fokszámok összege = 2 * élek száma.\n### II. Típusok: Teljes gráf (Kn = n*(n-1)/2 él), Fa gráf (összefüggő, körmentes, n csúcshoz n-1 él), Euler-vonal.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Gráf fogalma -> 2. Fokszámtétel -> 3. Teljes gráf és Fa gráf -> 4. Euler-vonal.",
-        "kviz": [{"k": "Egy gráfban nem lehet páratlan számú páratlan fokszámú csúcs.", "v": True, "m": "A fokszámösszeg mindig páros."}]
-    },
-    "12. Exponenciális és logaritmikus egyenletek": {
-        "alcim": "Azonos alapra hozás módszere, logaritmálás, új ismeretlen bevezetése",
-        "kulcsszavak": ["Közös alapra hozás", "Szigorú monotonitás", "Új változó", "Értelmezési tartomány"],
-        "audio_szoveg": "Az exponenciális és logaritmusos egyenletek megoldásakor a szigorú monotonitás a kulcs...",
-        "vazlat": "### I. Exponenciális: Azonos alapra hozás (a^f(x) = a^g(x) -> f(x) = g(x)), Új ismeretlen bevezetése (u = a^x).\n### II. Logaritmusos: Kikötés kötelező (belső szám > 0!), logaritmus azonosságok összevonása, ellenőrzés.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Exponenciális azonos alapra hozása -> 2. Új változó -> 3. Logaritmusos kikötések -> 4. Monotonitás.",
-        "kviz": [{"k": "A 2^x = 16 egyenlet megoldása x = 4.", "v": True, "m": "Mert 2 a 4. hatványon 16."}]
-    },
-    "13. Trigonometrikus egyenletek": {
-        "alcim": "Alap szögfüggvényes egyenletek megoldása a periodicitás figyelembevételével",
-        "kulcsszavak": ["Periodicitás", "Két megoldássorozat", "Egységkör", "$\sin^2 x + \cos^2 x = 1$"],
-        "audio_szoveg": "A szögfüggvényes egyenleteknél a megoldások periodikus sorozatokat alkotnak...",
-        "vazlat": "### I. Azonosság: sin^2(x) + cos^2(x) = 1, tg(x) = sin(x)/cos(x).\n### II. Megoldások periodicitással:\n- sin(x) = c -> x1 = alfa + k*360 fok, x2 = 180 - alfa + k*360 fok.\n- cos(x) = c -> x1 = alfa + k*360 fok, x2 = -alfa + k*360 fok.\n- tg(x) = c -> x = alfa + k*180 fok.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Egységkör szimmetriái -> 2. Szinusz két ága -> 3. Koszinusz két ága -> 4. Periodicitás.",
-        "kviz": [{"k": "A tg(x) függvény periódusa 180 fok.", "v": True, "m": "Míg a sin és cos periódusa 360 fok."}]
-    },
-    "14. Vektorműveletek és a skaláris szorzat": {
-        "alcim": "Összeadás, kivonás, számmal szorzás, skaláris szorzat és két vektor hajlásszöge",
-        "kulcsszavak": ["Vektor koordinátái", "Skaláris szorzat", "Hajlásszög", "Merőlegesség"],
-        "audio_szoveg": "Két vektor skaláris szorzata valós számot eredményez...",
-        "vazlat": "### I. Vektorműveletek: a + b = (a1+b1, a2+b2), |a| = gyök(a1^2 + a2^2).\n### II. Skaláris szorzat: a * b = a1*b1 + a2*b2 = |a| * |b| * cos(fi).\n### III. Merőlegesség: Két vektor merőleges, ha skaláris szorzatuk 0.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Vektor koordinátái -> 2. Skaláris szorzat -> 3. Hajlásszög -> 4. Merőlegesség.",
-        "kviz": [{"k": "Ha két vektor skaláris szorzata 0, a két vektor merőleges egymásra.", "v": True, "m": "Mert cos(90 fok) = 0."}]
-    },
-    "15. Számelmélet: Oszthatóság, prímek, LNKO és LKKT": {
-        "alcim": "Oszthatósági szabályok, a számelmélet alaptétele, legnagyobb közös osztó és legkisebb közös többszörös",
-        "kulcsszavak": ["Prímszám", "Számelmélet alaptétele", "LNKO", "LKKT"],
-        "audio_szoveg": "A számelmélet az egész számok oszthatósági tulajdonságait vizsgálja...",
-        "vazlat": "### I. Oszthatóság: 2, 5, 10; 4, 25; 3, 9 szabályai.\n### II. Számelmélet alaptétele: Egyértelmű prímtényezős felbontás.\n### III. LNKO (közös prímek legkisebb hatványon), LKKT (összes prím legnagyobb hatványon).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Oszthatósági szabályok -> 2. Prímtényezős felbontás -> 3. LNKO és LKKT -> 4. Törtek egyszerűsítése.",
-        "kviz": [{"k": "A 12 és 18 legnagyobb közös osztója (LNKO) a 6.", "v": True, "m": "12 = 2^2 * 3 és 18 = 2 * 3^2 -> LNKO = 6."}]
-    },
-    "16. Differenciálszámítás (Deriválás) bevezetése": {
-        "alcim": "A differenciahányados, derivált fogalma, hatványfüggvény deriválása és érintő meredeksége",
-        "kulcsszavak": ["Érintő meredeksége", "Deriválási szabályok", "Szélsőértékkeresés ($f'(x) = 0$)"],
-        "audio_szoveg": "A differenciálszámítás a függvények változási sebességét és az érintő meredekségét vizsgálja...",
-        "vazlat": "### I. Geometriai jelentés: f'(x0) az érintő meredeksége (m).\n### II. Szabályok: (c)' = 0, (x^n)' = n * x^(n-1).\n### III. Szélsőérték: Ahol a függvénynek szélsőértéke van, ott f'(x) = 0.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Derivált geometriai jelentése -> 2. Hatványfüggvény deriválása -> 3. Szélsőérték feltétele.",
-        "kviz": [{"k": "Az f(x) = x^4 függvény deriváltja f'(x) = 4x^3.", "v": True, "m": "A kitevő szorzóvá válik, a hatvány 1-gyel csökken."}]
-    }
-}
-
-# -------------------------------------------------------------
-# TANTÁRGYANKÉNT KÜLÖNVÁLASZTOTT VILLÁMKÁRTYÁK (FLASHCARDS)
-# -------------------------------------------------------------
-flashcards_irodalom = [
-    {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra (dalforma), epika (cselekmény) és dráma (konfliktus) sajátosságait."},
-    {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás irodalmi szerkesztője."},
-    {"q": "Mi a központi szállóige Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember morális felelősségvállalása."},
-    {"q": "Hogyan végződik Örkény István 'Tóték' című műve?", "a": "Tót Lajos a dobozvágó margóvágóval négy egyforma darabba vágja az Őrnagyot."},
-    {"q": "Mit szimbolizál az Ágnes asszonyban a véres lepedő kényszeres mosása?", "a": "A bűn letörölhetetlenségét és a lelkiismeret-furdalás által kiváltott elmezavart."},
-    {"q": "Miért különleges a párizsi szín 'Az ember tragédiájában'?", "a": "Ez az egyetlen olyan történelmi szín, amelyből Ádám nem csalódottan, hanem hittel és tettre készen ébred fel."},
-    {"q": "Ki képviseli a tiszta humanizmus hangját Kosztolányi 'Édes Anna' című regényében?", "a": "Moviszter doktor, aki egyedüliként tekinti Annát érző emberi lénynek."},
-    {"q": "Melyik kötet nyitotta meg Ady Endre szimbolista költői forradalmát?", "a": "Az 1906-ban megjelent Új versek című kötet."}
-]
-
-flashcards_nyelvtan = [
-    {"q": "Mi a magyar helyesírás 4 alapelve?", "a": "1. Kiejtés elve, 2. Szóelemzés elve, 3. Hagyomány elve, 4. Egyszerűsítés elve."},
-    {"q": "Mi a toldalékok szigorú kötött sorrendje a magyar szavakban?", "a": "Szótő + KÉPZŐ + JEL + RAG (pl. ház-as-ság-ok-at)."},
-    {"q": "Mi a különbség a szólás és a közmondás között?", "a": "A szólás képszerű kifejezés mondatérték nélkül (pl. feni a fogát), a közmondás kerek egész mondat tanulsággal (pl. Ki korán kel, aranyat lel)."},
-    {"q": "Mi a különbség az anafora és a katafora között a szövegtanban?", "a": "Az anafora visszautal egy korábbi szövegelemre, míg a katafora előreutal egy későbbi elemre."},
-    {"q": "Melyik a legkorábbi fennmaradt összefüggő magyar szövegemlék?", "a": "A Halotti Beszéd és Könyörgés (1195 körül, a Pray-kódexben)."},
-    {"q": "Mi a szónoki beszéd 6 klasszikus szerkezeti része?", "a": "Bevezetés (Exordium) -> Elbeszélés (Narratio) -> Részletezés -> Bizonyítás -> Cáfolás -> Befejezés (Peroratio)."},
-    {"q": "Milyen mássalhangzótörvény érvényesül a 'barátság' szóban?", "a": "Összeolvadás: a t + s hangokból hosszú [ccs] hang keletkezik [baraccság]."}
-]
-
-flashcards_tortenelem = [
-    {"q": "Mikor adta ki Nagy Lajos az Ősiség törvényét és mit jelentett az?", "a": "1351-ben. A nemesi birtok nem adható el, nemes kihalásakor a rokonokra, végül a királyra száll vissza."},
-    {"q": "Mikor foglalta el a török csellel Buda várát, amivel 3 részre szakadt az ország?", "a": "1541. augusztus 29-én."},
-    {"q": "Milyen új pénznemet vezetett be Bethlen István 1927-ben a gazdasági stabilitásért?", "a": "A Pengőt."},
-    {"q": "Mikor és hol adta ki II. András az Aranybullát?", "a": "1222-ben Fehérváron, rögzítve a szerviensek nemesi szabadságjogait és az ellenállási záradékot."},
-    {"q": "Mikor és hol kiáltották ki a Függetlenségi Nyilatkozatot 1849-ben?", "a": "1849. április 14-én a debreceni Nagytemplomban, kimondva a Habsburg-ház trónfosztását."},
-    {"q": "Melyek voltak az Osztrák-Magyar Monarchia közös ügyei az 1867-es Kiegyezés után?", "a": "A külügy, a hadügy és az ezek fedezésére szolgáló pénzügy."},
-    {"q": "Mikor robbant ki az 1956-os forradalom és mi volt a szovjet megtorlás kezdőnapja?", "a": "1956. október 23-án robbant ki, és 1956. november 4-én indult meg a szovjet invázió."}
-]
-
-flashcards_matek = [
-    {"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x1,2 = (-b ± √(b² - 4ac)) / (2a)"},
-    {"q": "Mi a számtani és a mértani sorozat n-edik tagjának képlete?", "a": "Számtani: an = a1 + (n - 1)d | Mértani: an = a1 * q^(n - 1)"},
-    {"q": "Mit mond ki a gráfelmélet fokszámtétele?", "a": "A gráf csúcsainak fokszámösszege mindig páros, és egyenlő az élek számának kétszeresével (2e)."},
-    {"q": "Mikor merőleges egymásra két vektor?", "a": "Ha a skaláris szorzatuk pontosan 0 (a1*b1 + a2*b2 = 0)."},
-    {"q": "Mennyi a konvex n-szög belső szögeinek összege?", "a": "Sn = (n - 2) * 180°"},
-    {"q": "Mi a koszinusztétel képlete általános háromszögre?", "a": "a² = b² + c² - 2bc · cos(α)"},
-    {"q": "Mi a henger és a kúp térfogatképlete?", "a": "Henger: V = r²π · M | Kúp: V = (r²π · M) / 3"},
-    {"q": "Hogyan deriváljuk a hatványfüggvényt (x^n)?", "a": "(x^n)' = n · x^(n - 1)"},
-    {"q": "Mi a klasszikus valószínűség kiszámítási képlete?", "a": "P(A) = Kedvező esetek száma / Összes lehetséges eset száma (k / n)"}
-]
-
-# -------------------------------------------------------------
-# TANTÁRGYANKÉNT KÜLÖNVÁLASZTOTT IDŐVONAL / KÉPLET-TÉRKÉP
+# TANTÁRGYANKÉNT KÜLÖNVÁLASZTOTT IDŐVONALAK
 # -------------------------------------------------------------
 timeline_irodalom = [
     {"ev": "1848–1849", "cim": "A forradalom és szabadságharc lírája", "leiras": "Petőfi forradalmi látomásköltészete (A XIX. század költői, Nemzeti dal); Arany János korai korszaka."},
@@ -867,7 +687,6 @@ timeline_nyelvtan = [
 
 timeline_tortenelem = [
     {"ev": "Kr. e. V. sz.", "cim": "Az athéni demokrácia virágkora", "leiras": "Periklész kora, a népgyűlés és az esküdtbíróságok működése, a napidíjak bevezetése."},
-    {"ev": "Kr. e. 27", "cim": "A Római Principátus születése", "leiras": "Augustus egyeduralma, köztársasági látszat, a Pax Romana békéje."},
     {"ev": "1000", "cim": "Szent István király koronázása", "leiras": "A keresztény magyar állam és a vármegyerendszer megalapítása, egyházmegyék kiépítése."},
     {"ev": "1222", "cim": "Az Aranybulla kiadása", "leiras": "II. András törvénye a szerviensek nemesi jogairól és az ellenállási záradékról."},
     {"ev": "1351", "cim": "Nagy Lajos törvényei", "leiras": "Az ősiség törvénye (aviticitas), a kilenced bevezetése és az egységes nemesi szabadság."},
@@ -877,53 +696,17 @@ timeline_tortenelem = [
     {"ev": "1830–1848", "cim": "A magyar reformkor", "leiras": "Széchenyi Hitel című művével indul, Kossuth érdekegyesítési programja, a polgári átalakulás előkészítése."},
     {"ev": "1848–1849", "cim": "Forradalom és Szabadságharc", "leiras": "Március 15., Áprilisi törvények, függetlenségi háború és az 1849-es tavaszi hadjárat sikerei."},
     {"ev": "1867", "cim": "A Kiegyezés – Dualizmus kora", "leiras": "Az Osztrák-Magyar Monarchia létrejötte, Deák Ferenc, fél évszázados gazdasági és kulturális aranykor."},
-    {"ev": "1914–1918", "cim": "Az Első Világháború", "leiras": "Lövészárok-hadviselés, Osztrák-Magyar Monarchia és a történelmi Magyarország felbomlása."},
-    {"ev": "1920–1931", "cim": "Trianon és a Bethleni konszolidáció", "leiras": "Trianoni békediktátum (1920), a gazdasági talpra állás (Pengő, 1927), Klebelsberg Kuno iskolaépítési programja."},
-    {"ev": "1939–1945", "cim": "A Második Világháború és Holokauszt", "leiras": "Sztálingrádi fordulat, Don-kanyar katasztrófája, 1944. márc. 19. német megszállás, nyilas terror."},
+    {"ev": "1920", "cim": "A Trianoni békediktátum", "leiras": "Az ország területének 2/3 része elcsatolva, 3,3 millió magyar rekedt a határokon túl."},
     {"ev": "1956. okt. 23.", "cim": "Forradalom és Szabadságharc", "leiras": "A pesti diákok tüntetése, fegyveres harc a szovjet elnyomás ellen, Nagy Imre kormánya, nov. 4-i invázió."},
     {"ev": "1989–1990", "cim": "A Békés Rendszerváltás", "leiras": "Ellenzéki Kerekasztal, Nagy Imre újratemetése, határnyitás, a Köztársaság kikiáltása és az 1990-es szabad választások."}
 ]
 
 timeline_matek = [
     {"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz és a derékszögű háromszögek", "leiras": "A Pitagorasz-tétel (a² + b² = c²) felfedezése és a geometriai bizonyítások kezdete."},
-    {"ev": "Kr. e. III. sz.", "cim": "Euklidész és a geometriai axiómák", "leiras": "Az 'Elemek' című mű: a síkgeometria, a párhuzamossági axióma és a prímek végtelenségének bizonyítása."},
     {"ev": "IX. század", "cim": "Al-Hvárizmi és az Algebra születése", "leiras": "A másodfokú egyenletek szisztematikus megoldási módszere és az algoritmus fogalmának alapjai."},
-    {"ev": "1637", "cim": "René Descartes és a Koordinátageometria", "leiras": "A derékszögű koordináta-rendszer megalkotása: geometriai alakzatok leírása algebrai egyenletekkel (egyenesek, körök)."},
-    {"ev": "1687", "cim": "Newton és Leibniz: Differenciálszámítás", "leiras": "A derivált és a határérték felfedezése: a függvények pillanatnyi változási sebességének és érintőjének kiszámítása."},
-    {"ev": "1736", "cim": "Leonhard Euler és a Gráfelmélet", "leiras": "A königsbergi hidak problémájának megoldása: a csúcsok, élek és fokszámok összefüggései."},
-    {"ev": "XIX. század", "cim": "Bolyai János és a nemeuklideszi geometria", "leiras": "„A semmiből egy új, más világot teremtettem”: a hiperbolikus geometria felfedezése."},
-    {"ev": "XX. század", "cim": "Kolmogorov és a modern Valószínűségszámítás", "leiras": "A valószínűségszámítás és matematikai statisztika egzakt axiomatikus felépítése."}
-]
-
-# -------------------------------------------------------------
-# TANTÁRGYANKÉNT KÜLÖNVÁLASZTOTT DETEKTÍV JÁTÉK
-# -------------------------------------------------------------
-detektiv_irodalom = [
-    {"idezet": "„Mert vétkesek közt cinkos, aki néma. / Fölkeltem én hát; megbánva a rest / lapulást...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre: Ember az embertelenségben", "Arany János: Szondi két apródja", "Radnóti Miklós: Nem tudhatom"], "info": "A prófétai és értelmiségi felelősségvállalás alaptétele."},
-    {"idezet": "„Ha férfi vagy, légy férfi, / S ne hitvány, lomha báb, / Mit kény és kedv szerint lök / A sors előbb-tovább.”", "helyes": "Petőfi Sándor: Ha férfi vagy, légy férfi", "opciok": ["Petőfi Sándor: Ha férfi vagy, légy férfi", "Vörösmarty Mihály: Szózat", "Arany János: Toldi", "Ady Endre: Új vizeken járok"], "info": "Petőfi forradalmi felhívó lírájának remeke."},
-    {"idezet": "„Mondottam, ember: küzdj és bízva bízzál!”", "helyes": "Madách Imre: Az ember tragédiája", "opciok": ["Madách Imre: Az ember tragédiája", "Arany János: A walesi bárdok", "Vörösmarty: Csongor és Tünde", "Katona József: Bánk bán"], "info": "Az Úr szózata a 15. szín lezárásaként."},
-    {"idezet": "„Góg és Magóg fia vagyok én, / Hiába döngetek kaput, falat...”", "helyes": "Ady Endre: Góg és Magóg fia vagyok én...", "opciok": ["Ady Endre: Góg és Magóg fia vagyok én...", "Babits Mihály: In Horatium", "József Attila: A Dunánál", "Kosztolányi: Boldog, szomorú dal"], "info": "Ady 1906-os Új versek kötetének nyitóverse."}
-]
-
-detektiv_nyelvtan = [
-    {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi részleges hasonulás", "Írásban jelölt teljes hasonulás", "Mássalhangzó-kiesés"], "info": "A t + s hangokból egy harmadik, hosszú [ccs] hang keletkezik."},
-    {"idezet": "„lila dalra kelt az éjcsend”", "helyes": "Szinesztézia (Költői kép)", "opciok": ["Szinesztézia (Költői kép)", "Megszemélyesítés", "Metonímia", "Szinekdoché"], "info": "Látási (lila), hallási (dal) és csend érzékterületek összekapcsolása."},
-    {"idezet": "„vasgolyó [kiejtve: vazsgolyó]”", "helyes": "Zöngésség szerinti részleges hasonulás", "opciok": ["Zöngésség szerinti részleges hasonulás", "Képzés helye szerinti hasonulás", "Teljes hasonulás", "Összeolvadás"], "info": "A zöngés 'g' zöngéssé teszi az előtte álló 's' hangot [zs]."},
-    {"idezet": "„ház-as-ság-ok-at”", "helyes": "Szótő + Képző + Képző + Jel + Rag", "opciok": ["Szótő + Képző + Képző + Jel + Rag", "Szótő + Jel + Rag + Képző", "Szótő + Rag + Jel + Képző", "Szótő + Képző + Rag + Jel"], "info": "A magyar toldalékolás szabályos kötött hierarchiája."}
-]
-
-detektiv_tortenelem = [
-    {"idezet": "„Ius resistendi (A nemesek joga a királlyal szembeni ellenállásra)”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Nagy Lajos 1351-es törvényei", "Szent István I. törvénykönyve", "Kollonics Lipót rendelete"], "info": "A magyar rendi nemesi szabadságjogok sarokköve."},
-    {"idezet": "„Eb ura fakó, József császár nem királyunk!”", "helyes": "1707-es Ónodi országgyűlés (Trónfosztás)", "opciok": ["1707-es Ónodi országgyűlés (Trónfosztás)", "1849-es Debreceni trónfosztás", "1526-os Rákosi gyűlés", "1608-as koronázási cikkelyek"], "info": "A Rákóczi-szabadságharc alatt kimondott Habsburg-trónfosztás jelszava."},
-    {"idezet": "„A Dunánál... A harcot, amelyet őseink vívtak, békévé oldja az emlékezés.”", "helyes": "1848-as érdekegyesítés történelmi eszméje", "opciok": ["1848-as érdekegyesítés történelmi eszméje", "1867-es Kiegyezés politikai kompromisszuma", "1920-as Trianoni revízió", "1956-os Nemzeti Bizottság kiáltványa"], "info": "A nemzeti és közép-európai megbékélés filozófiája."},
-    {"idezet": "„Minden tíz falu építsen egy templomot...”", "helyes": "Szent István király törvényei", "opciok": ["Szent István király törvényei", "Szent László törvényei", "Könyves Kálmán dekrétumai", "IV. Béla rendeletei"], "info": "A keresztény egyházszervezet falusi megalapozásának alaptörvénye."}
-]
-
-detektiv_matek = [
-    {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel (Általános háromszögekre)", "opciok": ["Koszinusztétel (Általános háromszögekre)", "Szinusztétel", "Pitagorasz-tétel", "Héron-képlet"], "info": "A Pitagorasz-tétel általánosítása tetszőleges háromszögre."},
-    {"idezet": "(x^n)' = n · x^(n-1)", "helyes": "Hatványfüggvény deriválási szabálya", "opciok": ["Hatványfüggvény deriválási szabálya", "Logaritmus azonosság", "Binomiális tétel", "Sorozat összegképlet"], "info": "A differenciálszámítás legalapvetőbb műveleti szabálya."},
-    {"idezet": "V = (r²π · M) / 3", "helyes": "Egyenes körkúp térfogatképlete", "opciok": ["Egyenes körkúp térfogatképlete", "Henger térfogatképlete", "Gömb térfogatképlete", "Gúla felszínképlete"], "info": "A csúcsos körtestek térfogatszámítási képlete."},
-    {"idezet": "∑ d(v) = 2 · e", "helyes": "Gráfelméleti fokszámtétel (Kézfogási lemma)", "opciok": ["Gráfelméleti fokszámtétel (Kézfogási lemma)", "Euler-féle poliédertétel", "De Morgan azonosság", "Binomiális eloszlás"], "info": "A csúcsok fokszámösszege mindig az élek számának kétszerese."}
+    {"ev": "1637", "cim": "René Descartes és a Koordinátageometria", "leiras": "A derékszögű koordináta-rendszer megalkotása: geometriai alakzatok leírása algebrai egyenletekkel."},
+    {"ev": "1687", "cim": "Newton és Leibniz: Differenciálszámítás", "leiras": "A derivált és a határérték felfedezése: a függvények pillanatnyi változási sebességének kiszámítása."},
+    {"ev": "1736", "cim": "Leonhard Euler és a Gráfelmélet", "leiras": "A königsbergi hidak problémájának megoldása: a csúcsok, élek és fokszámok összefüggései."}
 ]
 
 # Állapotkezelés
