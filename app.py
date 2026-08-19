@@ -44,7 +44,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# ADATBÁZISOK
+# ADATBÁZISOK (Irodalom, Nyelvtan, Történelem, Matek)
 # -------------------------------------------------------------
 tetelek_irodalom = {
     "1. Arany János balladái": {
@@ -54,6 +54,14 @@ tetelek_irodalom = {
         "vazlat": "### I. Műfajelmélet: Líra, epika és dráma szintézise.\n### II. Nagykőrösi korszak: Történelmi ellenállás és lélektan.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Definíció -> 2. Nagykőrösi balladák.",
         "kviz": [{"k": "A balladát Greguss Ágost 'tragédia dalban elbeszélve' névvel illette.", "v": True, "m": "A három műnem találkozása."}]
+    },
+    "2. Jókai Mór: Az arany ember": {
+        "alcim": "Romantika és realizmus szintézise, polgári meghasonlás és a Senki szigete",
+        "kulcsszavak": ["Timár Mihály", "Senki szigete", "Timea és Noémi"],
+        "audio_szoveg": "Jókai Mór 1872-es Az arany ember című regénye...",
+        "vazlat": "### I. Műfaj: Romantikus mesei fordulatok és realista társadalomrajz.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. 1872 kontextusa -> 2. Timár jelleme.",
+        "kviz": [{"k": "A Senki szigete pénzmentes természeti utópia a regényben.", "v": True, "m": "A társadalmi konvenciókon kívül áll."}]
     }
 }
 
@@ -181,10 +189,16 @@ st.sidebar.markdown("<h2 style='color:#818cf8;'>Funkciók</h2>", unsafe_allow_ht
 menupont = st.sidebar.radio(
     "Válassz menüpontot:",
     [
-        "📚 Tételek & Vázlatok", "🎧 Hangoskönyv (Monológ)", "🎴 Villámkártyák (Flashcards)",
-        "🎙️ Szóbeli Szimulátor (Beszéd / Írás)", "✍️ Esszé & Feladatmegoldó Labor",
-        "🎭 Tantárgyi Detektív Játék", "🧭 Tantárgyi Idővonal & Térkép",
-        "🏆 Nagy Próbavizsga", "🤖 AI Érettségi Mentor"
+        "📚 Tételek & Vázlatok", 
+        "📂 Saját Tételek Feltöltése",
+        "🎧 Hangoskönyv (Monológ)", 
+        "🎴 Villámkártyák (Flashcards)",
+        "🎙️ Szóbeli Szimulátor (Beszéd / Írás)", 
+        "✍️ Esszé & Feladatmegoldó Labor",
+        "🎭 Tantárgyi Detektív Játék", 
+        "🧭 Tantárgyi Idővonal & Térkép",
+        "🏆 Nagy Próbavizsga", 
+        "🤖 AI Érettségi Mentor"
     ]
 )
 
@@ -227,6 +241,20 @@ if menupont == "📚 Tételek & Vázlatok":
             c1, c2 = st.columns(2)
             if c1.button("✅ Igaz", key=f"t_{i}"): st.success(f"Helyes! {q['m']}")
             if c2.button("❌ Hamis", key=f"f_{i}"): st.error(f"Nem jó. {q['m']}")
+
+elif menupont == "📂 Saját Tételek Feltöltése":
+    st.subheader("Saját tételek alapú kvízgenerálás")
+    feltoltott_fajl = st.file_uploader("Töltsd fel a kidolgozott tételodat (txt):", type=["txt"])
+    
+    if feltoltott_fajl:
+        tartalom = feltoltott_fajl.read().decode("utf-8", errors="ignore")
+        st.success("Fájl sikeresen feldolgozva!")
+        
+        if st.button("Kérdések generálása a fájlból"):
+            with st.spinner("AI generálja a kérdéseket..."):
+                prompt = f"Készíts 5 darab igaz/hamis kérdést az alábbi tananyagból: {tartalom[:5000]}"
+                valasz = ai_generalas(prompt)
+                st.markdown(f"<div class='deep-text'>{valasz}</div>", unsafe_allow_html=True)
 
 elif menupont == "🎧 Hangoskönyv (Monológ)":
     tetel = st.selectbox("Válassz tételt hangoskönyvhöz:", list(aktiv_adatbazis.keys()))
