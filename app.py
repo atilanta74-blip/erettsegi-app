@@ -132,7 +132,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 11 Mély, tankönyvi szintű érettségi tétel
+# 11 Mély, tankönyvi szintű érettségi tétel adatbázisa
 tetelek = {
     "1. Arany János balladái": {
         "alcim": "A ballada műfajelmélete, a nagykőrösi és margitszigeti balladaköltészet mélyelemzése",
@@ -241,6 +241,259 @@ A dráma egyetlen olyan színe, amelyből Ádám hittel és elszántsággal ébr
             {"k": "Az ember tragédiája 15 színből áll.", "v": True, "m": "4 keretszín és 11 történelmi szín alkotja."},
             {"k": "Ádám a párizsi színből kiábrándultan ébred fel.", "v": False, "m": "Párizs az egyetlen szín, amiből Ádám hittel tér magához."}
         ]
+    },
+    "4. Mikszáth Kálmán prózája": {
+        "alcim": "Anekdotizmus, a felvidéki novellisztika és a dzsentri társadalombírálat a Beszterce ostromában",
+        "kulcsszavak": ["Anekdota", "A tót atyafiak", "A jó palócok", "Beszterce ostroma", "Pongrácz István"],
+        "audio_szoveg": """
+Mikszáth Kálmán a 19. és 20. század fordulójának legkiválóbb magyar epikusa. Pályája összeköti a romantika mesemondó báját a modern kritikai realizmussal. Művészetének legfőbb építőeleme az anekdota: a csattanóra végződő, élőbeszédszerűen előadott történet. 
+Hírnevét az 1880-as évek elején megjelent novelláskötetei alapozták meg. Az 1881-es A tót atyafiak négy hosszabb elbeszélésben a zord felvidéki hegyek tiszta lelkű, hallgatag embereit ábrázolja. Az 1882-es A jó palócok tizenöt rövid, tömör novellában a lankás falvak babonás, érzelmes világát és balladisztikus bűnbánatát mutatja be. 
+Nagyregénye, a Beszterce ostroma a Don Quijote-i Pongrácz István gróf tragikomikus sorsán keresztül leplezi le a modern világtól elszakadt magyar nemesi réteg, a dzsentrik illúziókba menekülő válságát.
+        """,
+        "vazlat": """
+### I. Mikszáth stílusa és az anekdotizmus
+- Élőbeszédszerű előadásmód, szelíd irónia, empátia a kisemberek iránt.
+- Az anekdota mint a regényépítés alapegysége.
+
+### II. A két klasszikus novelláskötet párhuzama
+- **A tót atyafiak (1881):** 4 hosszú elbeszélés; magas hegyek, magányos, monumentális erkölcsű alakok (*Lapaj a híres dudás*, *Az a fekete folt*).
+- **A jó palócok (1882):** 15 rövid novella; lenti falu, balladisztikus kihagyások, tiszta népi etika (*Bede Anna tartozása*).
+
+### III. Beszterce ostroma (1895)
+- **Pongrácz István gróf:** A 19. század végén középkori várúrként viselkedő anakronisztikus nemes.
+- **Társadalomkritika:** A magyar dzsentri képtelen szembenézni a polgárosodó valósággal.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** Átmenet a romantika és realizmus között, az élőbeszédszerű anekdota.
+2. **Novelláskötetek (1 perc):** *A tót atyafiak* zord hegyei vs. *A jó palócok* érzelmes faluja.
+3. **Beszterce ostroma (1 perc):** Pongrácz István Don Quijote-i figurája és a dzsentri világ kritikája.
+4. **Befejezés (30 mp):** Mikszáth öröksége a modern magyar próza megalapozásában.
+        """,
+        "kviz": [
+            {"k": "A tót atyafiak kötetben 15 rövid novella kapott helyet.", "v": False, "m": "A tót atyafiakban 4 hosszabb elbeszélés, míg A jó palócokban 15 rövid novella van."},
+            {"k": "Pongrácz István a Beszterce ostromában középkori lovagként rendezi be életét Nedec várában.", "v": True, "m": "Anakronisztikus Don Quijote-i alakként küzd a modern világ ellen."}
+        ]
+    },
+    "5. Vajda János költészete": {
+        "alcim": "A lírai magány mítosza, a Gina-szerelem és a szimbolizmus előfutára",
+        "kulcsszavak": ["Gina-versek", "Montblanc", "A vaáli erdőben", "A virrasztók"],
+        "audio_szoveg": """
+Vajda János a 19. század második felének legmagányosabb magyar költője. Pályája a kiegyezés utáni Magyarország légüres terében bontakozott ki, ahol a meg nem értettség, a politikai passzivitás miatti keserűség és az egyéni elszigeteltség vált lírájának fő témájává. 
+Költészetének legfontosabb vonulata a végzetes Gina-szerelem, amely évtizedeken át ihlette legnagyobb verseit. A Húsz év múlva című költeményében a híres Montblanc-metafora segítségével fejezi ki érzelmeit: a külvilág felé fagyos, elérhetetlen hegycsúcs képében mutatja meg a lélek mélyén örökké égő, el nem múló szerelmi tüzet. 
+Filozofikus tájlírájának csúcsa A vaáli erdőben, ahol a gyermekkori táj békéje és a panteista természeti csend révén jut el a halállal való megbékélésig. Vajda új szimbólumalkotása már közvetlenül az Ady-féle modern szimbolizmust készíti elő.
+        """,
+        "vazlat": """
+### I. A meg nem értett művész magánya
+- A kiegyezés utáni társadalmi közöny elutasítása (*A virrasztók*).
+- Átmeneti szerep: a romantika pátoszától a modern szimbolista látomásig.
+
+### II. A Gina-líra (Kratochwill Zsuzsanna)
+- **Húsz év múlva (1876):** A Montblanc-metafora – a külső jég és a belső vulkanikus tűz kontrasztja mint az örök szerelem kifejezője.
+- **Harminc év után (1892):** Kései megfáradás, a vágyak kihűlése.
+
+### III. Filozofikus csend-líra
+- **A vaáli erdőben:** Panteisztikus természetélmény; a halálfélelem feloldása az erdő örök csendjében.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** A magány költője a kiegyezés utáni korban; a modernitás előfutára.
+2. **Gina-szerelem (1 perc):** A *Húsz év múlva* Montblanc-hasonlatának elemzése.
+3. **Panteizmus és halál (1 perc):** *A vaáli erdőben* csend-motívuma és a természeti harmónia.
+4. **Befejezés (30 mp):** Vajda közvetlen hatása Ady Endre szimbolizmusára.
+        """,
+        "kviz": [
+            {"k": "A Montblanc-metafora a Húsz év múlva című költemény központi képe.", "v": True, "m": "A fagyos hegycsúcs és a mélyben égő tűz a viszonzatlan szerelem jelképe."},
+            {"k": "A vaáli erdőben a harcias politikai ellenállás verse.", "v": False, "m": "A panteista természeti csend és a megnyugvás költeménye."}
+        ]
+    },
+    "6. XIX. századi dráma: Ibsen és Csehov": {
+        "alcim": "Az analitikus dramaturgia (Nóra) és a csehovi hangulatdráma (Sirály, Cseresznyéskert) megújítása",
+        "kulcsszavak": ["Henrik Ibsen", "Analitikus dráma", "Nóra", "Anton Csehov", "Sirály", "Cseresznyéskert"],
+        "audio_szoveg": """
+A 19. század végén a polgári színház gyökeres formai és tartalmi átalakuláson ment keresztül. Két új irányzat határozta meg a modern európai drámafejlődést: a Henrik Ibsen által tökéletesített analitikus dráma és az Anton Csehov nevéhez fűződő hangulatdráma. 
+Ibsen a Nóra vagy Babaszoba című művében az antik sorstragédiák szerkesztésmódját ülteti át a modern polgári otthonba. A drámai feszültséget nem a jelen eseményei, hanem a múltban elkövetett tettek fokozatos napvilágra kerülése adja. Nóra felismeri, hogy házasságában csupán játékszer volt, és az egyéni autonómia megteremtéséért elhagyja a családját. 
+Ezzel szemben Csehov darabjaiban, mint a Sirály vagy a Cseresznyéskert, nincsenek látványos tettek és nyílt konfliktusok. Hősei cselekvésképtelenek, egymás mellett elbeszélő monológokban élnek. A drámát a belső hangulat, a líraiság és az elmúlás atmoszférája uralja.
+        """,
+        "vazlat": """
+### I. Henrik Ibsen és az analitikus dráma
+- **Módszer:** A cselekmény mozgatórugója a múltbeli titkok lépésről lépésre történő lelepleződése.
+- **Nóra (Babaszoba, 1879):** A polgári házasság babaház-illúziójának szétesése; a női autonómia és önálló emberi méltóság kivívása.
+
+### II. Anton Csehov és a hangulatdráma
+- **Módszer:** Cselekményszegénység, párhuzamos monológok, ki nem mondott belső feszültségek (*szubtextus*).
+- **Művek:** *Sirály*, *Cseresznyéskert*, *Három nővér* – az orosz nemesi réteg tehetetlensége és céltalan vágyakozása.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** A hagyományos színpadi formák válsága a 19. század végén.
+2. **Ibsen analitikája (1 perc):** A múlt feltárása mint drámai motor a *Nóra* példáján.
+3. **Csehov atmoszférateremtése (1 perc):** Párhuzamos monológok és cselekvésképtelenség.
+4. **Befejezés (30 mp):** A kétféle drámatípus hatása a 20. századi színházművészetre.
+        """,
+        "kviz": [
+            {"k": "Ibsen analitikus darabjaiban a múltban rejtőző titkok robbantják ki a válságot.", "v": True, "m": "Ez az analitikus technika alapelve."},
+            {"k": "Nóra a darab végén engedelmesen megbékél a férjével.", "v": False, "m": "Nóra elhagyja otthonát, hogy megtalálja önálló személyiségét."}
+        ]
+    },
+    "7. A Nyugat folyóirat": {
+        "alcim": "A modern magyar irodalom zászlóbontása, esztétikai célok, szerkesztők és a 3 nemzedék",
+        "kulcsszavak": ["1908", "Osvát Ernő", "Ignotus", "Mikes-emlékérem", "Három nemzedék"],
+        "audio_szoveg": """
+A huszadik századi magyar kultúra legfontosabb szellemi műhelye a Nyugat folyóirat volt, amely 1908. január elsején indult útjára és Babits Mihály 1941-es haláláig létezett. A lap emblémája Beck Ödön Fülöp Mikes Kelemen-emlékérme lett, amely a hűséget és a művészi elhivatottságot szimbolizálta. 
+A lap célja a magyar irodalom felzárkóztatása volt a fejlett nyugat-európai művészeti szintre, megteremtve a teljes esztétikai függetlenséget. A szerkesztőség meghatározó alakja Ignotus főszerkesztő és a zseniális ízlésű szerkesztő, Osvát Ernő volt. 
+A folyóirat három egymást követő nemzedék tehetségeit tömörítette. Az első nagy generációhoz tartozott Ady Endre, Babits Mihály, Kosztolányi Dezső és Móricz Zsigmond. A második nemzedéket Szabó Lőrinc és Illyés Gyula fémjelezte, míg a harmadik hullámban tűnt fel Radnóti Miklós, Weöres Sándor és Szerb Antal.
+        """,
+        "vazlat": """
+### I. A folyóirat indulása és missziója
+- **1908. január 1. – 1941:** Beck Ö. Fülöp Mikes-emlékérme (hűség és művészi autonómia).
+- **Célkitűzés:** Csatlakozás a modern európai kultúrához, a művészi szabadság védelme a konzervatív akadémizmussal szemben.
+- **Vezetői:** Ignotus (főszerkesztő), Osvát Ernő (irodalmi szerkesztő), Hatvany Lajos (mecénás).
+
+### II. A három nemzedék
+- **1. nemzedék:** Ady Endre, Babits Mihály, Kosztolányi Dezső, Móricz Zsigmond, Tóth Árpád, Juhász Gyula.
+- **2. nemzedék (1920-as évek):** Szabó Lőrinc, Illyés Gyula, Németh László.
+- **3. nemzedék (1930-as évek):** Radnóti Miklós, Weöres Sándor, Szerb Antal.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** 1908: a Nyugat indulása mint korszakhatár a magyar kultúrában.
+2. **Szerkesztőség és esztétika (1 perc):** Osvát Ernő szigora és a művészi függetlenség elve.
+3. **Nemzedékek bemutatása (1 perc):** Az 1. nemzedék lírai forradalma és a későbbi nemzedékek kibontakozása.
+4. **Befejezés (30 mp):** A lap kánonképző öröksége a mai napig.
+        """,
+        "kviz": [
+            {"k": "A Nyugat folyóirat 1908 és 1941 között működött.", "v": True, "m": "Babits haláláig létezett a folyóirat."},
+            {"k": "Radnóti Miklós a Nyugat első nemzedékéhez tartozott.", "v": False, "m": "Radnóti a harmadik nemzedék tagja volt."}
+        ]
+    },
+    "8. Ady Endre költészete": {
+        "alcim": "Szimbolizmus, magyarságtudat, lírai párharc és háborús apokalipszis",
+        "kulcsszavak": ["Új versek 1906", "A magyar Ugaron", "Léda vs. Csinszka", "Harc a Nagyúrral"],
+        "audio_szoveg": """
+Ady Endre 1906-ban megjelent Új versek című kötetével gyökeresen megújította a magyar költészet nyelvét és szemléletét. Művészetének gerincét a modern szimbolizmus alkotja: egyéni, többrétegű szimbólumrendszert épített fel, amelyben az Ugar, a Bakony, a Hortobágy és a Pénz mitikus jelentést kapnak. 
+Költészete több nagy tematikus pillérre támaszkodik. Magyarság-verseiben, mint A magyar Ugaron című szonettben, a nemzeti elmaradottságot és a kultúra pusztulását fájlalja ostorozó hazaszeretettel. Pénz-verseiben a Disznófejű Nagyúrral vív megalázó harcot az alkotói létért és szabadságért. Szerelmi lírája kettős arculatú: a Léda-verseket a gyötrelmes párharc és a pusztulásvágy uralja, míg a Boncza Bertával kötött házassága alatt a Csinszka-versek a menedéket és védelmet jelentik a világháború tombolása idején.
+        """,
+        "vazlat": """
+### I. Az 1906-os költői forradalom (Új versek)
+- Új költői szerep, prófétai magatartás, kötetkompozíciós tudatosság.
+- **Ars poetica:** *Góg és Magóg fia vagyok én...*, *Új vizeken járok*.
+
+### II. Főbb tematikus vonulatok
+- **Magyarság-versek:** *A magyar Ugaron* (az elmaradott, parlagon heverő táj mint a szellemi pusztulás metaforája).
+- **Létharc és pénz:** *Harc a Nagyúrral* (a disznófejű aranybálvány és az emberi méltóság).
+- **Szerelmi líra:**
+  - *Léda-szerelem:* Gyötrelmes párharc, halálhangulat (*Héja-nász az avaron*, *Elbocsátó, szép üzenet*).
+  - *Csinszka-szerelem:* Békés menedék a világháborúban (*Őrizem a szemed*).
+- **Háborús versek:** *Ember az embertelenségben*.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** 1906: az *Új versek* robbanása és az egyéni szimbólumrendszer.
+2. **Magyarság és létküzdelem (1 perc):** Az Ugar toposza és a Disznófejű Nagyúr elleni küzdelem.
+3. **Szerelmi líra pólusai (1 perc):** Léda pusztító héjanásza vs. Csinszka menedéke.
+4. **Befejezés (30 mp):** A humánum védelme a világháborúban (*Ember az embertelenségben*).
+        """,
+        "kviz": [
+            {"k": "Ady korszakalkotó kötete, az Új versek 1906-ban jelent meg.", "v": True, "m": "Ez a mű nyitotta meg a modern magyar líra korszakát."},
+            {"k": "A Harc a Nagyúrral költeményben a disznófejű lény a nemzeti dicsőséget jelképezi.", "v": False, "m": "A pénz és az anyagi kiszolgáltatottság bálványa."}
+        ]
+    },
+    "9. Babits Mihály: Jónás könyve": {
+        "alcim": "A prófétai szerep, a morális felelősségvállalás és a Jónás imája",
+        "kulcsszavak": ["Jónás könyve", "Jónás imája", "Ninive", "Cinkos, aki néma", "1938"],
+        "audio_szoveg": """
+Babits Mihály életművének összefoglaló csúcsa az 1938-ban megjelent Jónás könyve és annak lírai függeléke, a Jónás imája. A mű keletkezésekor a költő a gégeműtétje után a halálos kórral küzdött, miközben Európában feltartóztathatatlanul terjedt a fasizmus fenyegetése. 
+A mű egy ószövetségi parafrázis, ám Babits a prófétát emberi esendőségekkel ruházza fel. Jónás el akar menekülni az elhívás elől, kényelmes életre vágyik, ám a cethal gyomrában megtisztulva belátja, hogy nem bújhat ki a kötelessége alól. Elmegy a bűnös Ninivébe, hogy hirdesse az igét. A mű legfontosabb etikai imperatívusza így szól: mert vétkesek közt cinkos, aki néma. 
+A záró Jónás imája alázatos fohász a tiszta, halálig kitartó költői beszédért.
+        """,
+        "vazlat": """
+### I. Keletkezési háttér és műfaj
+- 1938: Babits gégerákja és a fasizmus előretörése.
+- Műfaj: Epikus költemény, bibliai parafrázis öniróniával és groteszk elemekkel.
+
+### II. A mű szerkezeti íve
+- Menekülés a küldetés elől $\rightarrow$ Cethal gyomra (megtisztulás és ima) $\rightarrow$ Ninive bűneinek ostorozása $\rightarrow$ A tök példázata (az isteni kegyelem diadala).
+- **Fő tétel:** *„Mert vétkesek közt cinkos, aki néma.”*
+
+### III. Jónás imája (1939)
+- Lírai ars poetica: Alázatos fohász a tiszta kifejezésért a halál küszöbén.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** 1938 válsága, a prófétai sors újraértelmezése Babitsnál.
+2. **Jónás figurája (1 perc):** A menekülő esendő próféta és a cethal általi beavatás.
+3. **Ninive és a morális parancs (1 perc):** A némaság bűnrészessége és az isteni irgalom.
+4. **Befejezés (30 mp):** A *Jónás imája* mint a halállal szembenéző alkotó hitvallása.
+        """,
+        "kviz": [
+            {"k": "A Jónás könyve 1938-ban íródott Babits gégeműtétje után.", "v": True, "m": "A betegség és a fasizmus fenyegetése ihlette."},
+            {"k": "Az Úr végül azonnal elpusztítja Ninivét Jónás dühös kérésére.", "v": False, "m": "Az Úr megkegyelmez Ninivének, hirdetve a teremtés védelmét."}
+        ]
+    },
+    "10. Móricz Zsigmond prózája": {
+        "alcim": "A paraszti világ és dzsentri réteg naturalista és kritikai ábrázolása (Tragédia, Barbárok, Úri muri)",
+        "kulcsszavak": ["Naturalizmus", "Tragédia", "Barbárok", "Úri muri", "Szakhmáry Zoltán"],
+        "audio_szoveg": """
+Móricz Zsigmond a magyar kritikai realizmus és naturalizmus legnagyobb elbeszélője. Művészete gyökeres szakítást jelentett a 19. századi idillikus, népieskedő parasztábrázolással. A magyar valóságot a maga kíméletlen, biológiai és társadalmi meztelenségében mutatta be. 
+Az 1909-es Tragédia című novellájában Kis János zsellér alakján keresztül a biológiai ösztönökbe és nyomorba szorult ember sorsát ábrázolja, akinek egyetlen lázadása a gazda lakodalmán való mértéktelen evésbe torkollik. Az 1931-es Barbárok balladisztikus tömörséggel mutatja be a pusztai pásztorok nyers, civilizációtól elzárt ösztönvilágát és a kapzsiságból elkövetett gyilkosságot. 
+Későbbi nagyregényében, az Úri muriban a magyar dzsentri pusztulásra ítélt világát vizsgálja Szakhmáry Zoltán önsorsrontó mulatozásán keresztül.
+        """,
+        "vazlat": """
+### I. A naturalista-realista stílusreform
+- Szakítás a hamis népi idillel; ösztönök, éhség, biológiai kiszolgáltatottság.
+
+### II. Főbb novellák
+- **Tragédia (1909):** Kis János karaktere; az ember mint biológiai lény; az evésbe fulladó lázadás abszurditása.
+- **Barbárok (1931):** Háromrészes balladisztikus felépítés; a rézkilincses szíjért elkövetett gyilkosság; a pusztai ösztönvilág.
+
+### III. A dzsentri társadalmi csődje
+- **Úri muri (1928):** Szakhmáry Zoltán nemesi vergődése; pusztító dorbézolás a tettek helyett.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** Móricz fellépése a Nyugatban, a hamis népiesség lebontása.
+2. **A szegénység ösztönei (1 perc):** *Tragédia* (Kis János) és a *Barbárok* naturalista világa.
+3. **A nemesség válsága (1 perc):** Az *Úri muri* dorbézolása és Szakhmáry Zoltán bukása.
+4. **Befejezés (30 mp):** A kritikai realizmus jelentősége.
+        """,
+        "kviz": [
+            {"k": "A Tragédia című novellában Kis János a túlzott evés miatt veszíti életét.", "v": True, "m": "A zsíros húsba fullad bele a lakodalmon."},
+            {"k": "Szakhmáry Zoltán sikeres nagybirtokot hoz létre az Úri muri végén.", "v": False, "m": "Felgyújtja saját tanyáját a tehetetlenség miatti kétségbeesésében."}
+        ]
+    },
+    "11. Kosztolányi Dezső: Édes Anna": {
+        "alcim": "A lélektani regény, a megalázottság tudattalan robbanása és a humanizmus",
+        "kulcsszavak": ["Édes Anna", "Vizy család", "Moviszter doktor", "1919", "Freudizmus"],
+        "audio_szoveg": """
+Kosztolányi Dezső 1926-ban megjelent Édes Anna című regénye a magyar lélektani próza remekműve. A történet történelmi kerete pontos: 1919 nyarán, a Tanácsköztársaság bukása és a román megszállás napjaiban indul Budapesten. 
+A regény cselekménye a tiszta lelkű cselédlány, Édes Anna és a méltóságos Vizy család kapcsolatát mutatja be. Vizyné büszkén mintagépként kezeli Annát, teljesen megfosztva őt emberi személyiségétől. Amikor a ház úrfi rokona, Jancsi elcsábítja, majd terhesen magára hagyja, a hosszú ideje elfojtott sérelmek és megaláztatások a tudattalan mélyén felhalmozódnak. Egy éjszaka a feszültség ösztönös kettős gyilkosságban robban ki. 
+A bírósági tárgyaláson egyedül a halálos beteg Moviszter doktor áll ki Anna mellett, képviselve a tiszta irgalmat és az emberi méltóság sérthetetlenségét.
+        """,
+        "vazlat": """
+### I. Történelmi keret és pszichoanalízis
+- Keret: 1919 nyara (Tanácsköztársaság bukása).
+- Freud lélektani hatása: elfojtott sérelmek a tudatalattiban.
+
+### II. A dehumanizálás és a bűntett
+- Anna tárgyiasítása Vizyné részéről (mintagép).
+- Jancsi úrfi felelőtlen csábítása és eldobása.
+- A gyilkosság nem megfontolt gaztett, hanem az elfojtások tudattalan robbanása.
+
+### III. Moviszter doktor szerepe
+- A keresztény humanizmus és irgalom hangja a rideg bírósági tárgyaláson.
+        """,
+        "szobeli": """
+**🎙️ 3 perces szóbeli feleletvázlat:**
+1. **Bevezetés (30 mp):** 1919-es történelmi keret, freudi pszichoanalízis hatása.
+2. **Anna tárgyiasítása (1 perc):** A cselédsors mechanizálása és Jancsi úrfi árulása.
+3. **A gyilkosság lélektana (1 perc):** Az elfojtott megaláztatások váratlan robbanása.
+4. **Befejezés (30 mp):** Moviszter doktor humánuma mint Kosztolányi végső üzenete.
+        """,
+        "kviz": [
+            {"k": "Édes Anna politikai indíttatásból gyilkol a regényben.", "v": False, "m": "Anna tette az elfojtott megaláztatások tudattalan robbanása."},
+            {"k": "Moviszter doktor az egyetlen, aki emberként és részvéttel tekint Annára.", "v": True, "m": "Ő képviseli a szerző humanista értékrendjét."}
+        ]
     }
 }
 
@@ -254,7 +507,8 @@ flashcards_adat = [
     {"q": "Miért különleges a párizsi szín 'Az ember tragédiájában'?", "a": "Ez az egyetlen olyan történelmi szín, amelyből Ádám nem csalódottan és kiábrándultan, hanem hittel és cselekvési vággyal ébred fel."},
     {"q": "Melyik évben indult a Nyugat folyóirat és ki volt a legfontosabb irodalmi szerkesztője?", "a": "1908. január 1-jén indult, és Osvát Ernő volt a lap legendás ízlésű irodalmi szerkesztője."},
     {"q": "Mit jelképez a disznófejű Nagyúr Ady Endre költészetében?", "a": "A pénz, az anyagi kiszolgáltatottság és az emberi méltóságot elnyomó tőke kegyetlen bálványát."},
-    {"q": "Mi a központi szállóige és tanulság Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember és a művész morális felelősségvállalása a gonosszal szemben."}
+    {"q": "Mi a központi szállóige és tanulság Babits 'Jónás könyvében'?", "a": "„Mert vétkesek közt cinkos, aki néma.” – Az értelmiségi ember és a művész morális felelősségvállalása a gonosszal szemben."},
+    {"q": "Ki képviseli a tiszta humanizmus hangját Kosztolányi 'Édes Anna' című regényében?", "a": "Moviszter doktor, aki egyedüliként tekinti Annát emberi lénynek és szólal fel mellette a bíróság előtt."}
 ]
 
 stilusiranyzatok = {
