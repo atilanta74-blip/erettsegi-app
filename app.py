@@ -585,11 +585,26 @@ elif menupont == "🤖 AI Érettségi Mentor":
                 try:
                     client = genai.Client(api_key=api_key)
                     prompt = f"Magyar irodalom szakos érettségi felkészítő tanár vagy. Válaszolj tömören, lényegretörően egy 18 éves diák kérdésére: {felh_kerdes}"
-                    response = client.models.generate_content(
-                        model='gemini-2.5-flash',
-                        contents=prompt
-                    )
-                    ai_valasz = response.text
+                    
+                    # Automatikus próbálkozás az elérhető legújabb modellekkel
+                    valasz_szoveg = None
+                    modellek = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-2.5-flash']
+                    
+                    for m in modellek:
+                        try:
+                            response = client.models.generate_content(
+                                model=m,
+                                contents=prompt
+                            )
+                            valasz_szoveg = response.text
+                            break
+                        except:
+                            continue
+                            
+                    if valasz_szoveg:
+                        ai_valasz = valasz_szoveg
+                    else:
+                        ai_valasz = "Sajnos jelenleg nem sikerült kapcsolatot létesíteni az AI modellel. Kérlek ellenőrizd az API kulcsodat!"
                 except Exception as e:
                     ai_valasz = f"Hiba az API hívás közben: {e}"
             else:
