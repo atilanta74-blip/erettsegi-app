@@ -362,140 +362,6 @@ tetelek_irodalom = {
 }
 
 # -------------------------------------------------------------
-# 2. MAGYAR NYELVTAN TÉTELTÁR (16 Tétel)
-# -------------------------------------------------------------
-tetelek_nyelvtan = {
-    "1. A kommunikáció folyamata és tényezői": {
-        "alcim": "A kommunikációs modell, nyelvi és nem nyelvi jelek, kommunikációs funkciók",
-        "kulcsszavak": ["Adó és Vevő", "Kód és Csatorna", "Jakobson modellje", "Metakommunikáció"],
-        "audio_szoveg": "A kommunikáció információk, gondolatok és érzelmek átadása valamilyen jelrendszer segítségével...",
-        "vazlat": "### I. Jakobson-modell: Adó, Vevő, Üzenet, Kód, Csatorna, Kontextus, Zaj.\n### II. Nyelvi funkciók: Tájékoztató, Érzelemkifejező, Felhívó, Fatikus (kapcsolattartó), Metanyelvi, Poétikai.\n### III. Nem nyelvi kódok: Gesztusok, mimika, proxemika (térköz).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Definíció -> 2. A 6 tényező -> 3. Nyelvi funkciók -> 4. Nonverbális jelek.",
-        "kviz": [{"k": "A fatikus funkció célja a kapcsolat felvétele és fenntartása.", "v": True, "m": "Ilyenek a köszönések és bejelentkezések."}]
-    },
-    "2. A szövegtan alapjai és a szövegtípusok": {
-        "alcim": "A szöveg kohéziós erői, szerkezeti egységei és típusai",
-        "kulcsszavak": ["Globális kohézió", "Lokális kohézió", "Anafora és Katafora", "Elbeszélő, leíró, érvelő"],
-        "audio_szoveg": "A szöveg a nyelv legmagasabb szintű, lezárt, kerek egysége...",
-        "vazlat": "### I. Kohézió: Lokális (kötőszók, anafora=visszautalás, katafora=előreutalás) vs. Globális (témamegtartás, kulcsszavak).\n### II. Szerkezet: Cím -> Bevezetés -> Tárgyalás -> Befejezés.\n### III. Típusok: Elbeszélő, leíró, érvelő, magyarázó.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Szöveg fogalma -> 2. Kohéziós erők -> 3. Hármas szerkezet -> 4. Szövegtípusok.",
-        "kviz": [{"k": "Az anafora a szövegben visszamutató utalást jelent.", "v": True, "m": "A katafora az előreutalás."}]
-    },
-    "3. A magyar helyesírás alapelvei": {
-        "alcim": "A 4 alapelv rendszere és alkalmazásuk a gyakorlatban",
-        "kulcsszavak": ["Kiejtés elve", "Szóelemzés elve", "Hagyomány elve", "Egyszerűsítés elve"],
-        "audio_szoveg": "A magyar helyesírás négy alapelvre épül: kiejtés, szóelemzés, hagyomány és egyszerűsítés elve...",
-        "vazlat": "### I. A 4 alapelv:\n1. Kiejtés elve (*asztal*).\n2. Szóelemzés elve (*látja, barátság*).\n3. Hagyomány elve (*Kossuth, király*).\n4. Egyszerűsítés elve (*asszony, tollal*).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Helyesírás szerepe -> 2. Kiejtés és szóelemzés -> 3. Hagyomány és egyszerűsítés -> 4. Példák.",
-        "kviz": [{"k": "A 'látja' szó leírása a szóelemzés elvét követi.", "v": True, "m": "A szótő és toldalék tisztán marad."}]
-    },
-    "4. Szófajok és mondatrészek rendszere": {
-        "alcim": "Alapszófajok, viszonyszók, predikatív viszony és mondattani elemzés",
-        "kulcsszavak": ["Ige, Névszó, Igenév", "Viszonyszók", "Alany, Állítmány, Tárgy, Határozó, Jelző"],
-        "audio_szoveg": "A szófajok a szavak alaktani és mondattani kategóriái...",
-        "vazlat": "### I. Szófajok: Alapszófajok (ige, névszók, igenevek), Viszonyszók (névelő, kötőszó, névutó), Mondatszók.\n### II. Mondatrészek: Alany + Állítmány -> Bővítmények: Tárgy, Határozók, Jelzők.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Szófaji felosztás -> 2. Alapszófaj vs. viszonyszó -> 3. Mondatrészek hierarchiája.",
-        "kviz": [{"k": "A kötőszók az alapszófajok közé tartoznak.", "v": False, "m": "A viszonyszókhoz tartoznak."}]
-    },
-    "5. Retorika és érvelési technikák": {
-        "alcim": "Az érv 3 része, érvtípusok és a klasszikus szónoki beszéd 6 lépése",
-        "kulcsszavak": ["Tétel, Bizonyíték, Összekötés", "Szónoki beszéd szerkezete", "Érvtípusok"],
-        "audio_szoveg": "A retorika az ékesszólás és meggyőzés művészete. Az érv három alapeleme a tétel, a bizonyíték és az összekötés...",
-        "vazlat": "### I. Érv: Tétel -> Bizonyíték -> Összekötő elem.\n### II. Típusok: Meghatározásból levezetett, ok-okozati, tekintélyre hivatkozó, analógiás.\n### III. Szónoki beszéd: Exordium -> Narratio -> Divisio -> Confirmatio -> Refutatio -> Peroratio.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Retorika célja -> 2. Érv 3 része -> 3. Érvtípusok -> 4. Szónoki beszéd lépései.",
-        "kviz": [{"k": "A klasszikus szónoki beszédben a cáfolás megelőzi a befejezést.", "v": True, "m": "A bizonyítás után jön a cáfolat."}]
-    },
-    "6. Stilisztika: Alakzatok és trópusok": {
-        "alcim": "Költői képek (metafora, metonímia, szinesztézia) és szövegalakzatok",
-        "kulcsszavak": ["Metafora, Metonímia, Szinekdoché", "Szinesztézia", "Anafora, Párhuzam, Ellentét"],
-        "audio_szoveg": "A stilisztika a kifejezőeszközöket vizsgálja. Két fő ága a szóképek és a szövegalakzatok rendszere...",
-        "vazlat": "### I. Trópusok: Metafora (hasonlóság), Metonímia (érintkezés), Szinekdoché (rész-egész), Szinesztézia (érzékkeverés).\n### II. Alakzatok: Anafora (sor eleji ismétlés), Paralelizmus, Antitézis, Hiperbola.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Trópusok vs. alakzatok -> 2. Metafora és metonímia -> 3. Szinesztézia -> 4. Alakzatok.",
-        "kviz": [{"k": "A 'sötét csend' szinesztézia.", "v": True, "m": "Látás és hallás összekapcsolása."}]
-    },
-    "7. A szókészlet rétegződése és változása": {
-        "alcim": "Nyelvjárások, társadalmi rétegnyelvek, szleng, archaizmusok és neologizmusok",
-        "kulcsszavak": ["Nyelvjárások", "Szaknyelv, Szleng, Argó", "Archaizmus", "Neologizmus"],
-        "audio_szoveg": "A szókészlet területi és társadalmi tagolódást mutat...",
-        "vazlat": "### I. Területi: Nyelvjárások (dialektusok) és tájszavak.\n### II. Társadalmi: Szaknyelv, szleng, argó.\n### III. Időbeli: Archaizmusok (régies szavak) vs. Neologizmusok (új szavak).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Területi tagolódás -> 2. Társadalmi rétegek -> 3. Időbeli mozgás.",
-        "kviz": [{"k": "Az archaizmusok új szavakat jelentenek.", "v": False, "m": "Az archaizmusok a régies szavak."}]
-    },
-    "8. A magyar nyelv története és a nyelvújítás": {
-        "alcim": "A finnugor rokonság, a korai nyelvemlékek és Kazinczy nyelvújítása",
-        "kulcsszavak": ["Uráli / Finnugor nyelvcsalád", "Halotti Beszéd (1195)", "Nyelvújítás", "Kazinczy Ferenc"],
-        "audio_szoveg": "A magyar nyelv a finnugor nyelvcsalád tagja. Írásbeliségünk legrégebbi emléke a Halotti Beszéd...",
-        "vazlat": "### I. Eredet: Finnugor nyelvcsalád; Tihanyi alapítólevél (1055, szórvány), Halotti Beszéd (1195, összefüggő).\n### II. Nyelvújítás (1790–1820): Kazinczy Ferenc; Neológusok vs. Ortológusok; új szavak alkotása.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Finnugor rokonság -> 2. Korai nyelvemlékek -> 3. Nyelvújítás célja és Kazinczy szerepe.",
-        "kviz": [{"k": "A Halotti Beszéd az első fennmaradt összefüggő magyar szövegemlék.", "v": True, "m": "1195 körül keletkezett."}]
-    },
-    "9. Fonetika: A hangok képzése és a mássalhangzótörvények": {
-        "alcim": "Magánhangzók és mássalhangzók rendszere, hasonulás, összeolvadás, kiesés és rövidülés",
-        "kulcsszavak": ["Zöngés és Zöngétlen", "Részleges és Teljes hasonulás", "Írásban jelölt és jelöletlen", "Összeolvadás"],
-        "audio_szoveg": "A fonetika a beszédhangok képzését és egymásra hatását vizsgálja...",
-        "vazlat": "### I. Hangrendszer: Magánhangzók (hangrendi illeszkedés); Mássalhangzók (zöngés-zöngétlen párok).\n### II. Mássalhangzótörvények: Részleges hasonulás (vasgolyó [vazsgolyó], színpad [szímpad]), Teljes hasonulás (kézzel, anyja [annya]), Összeolvadás (barátság [baraccság]), Kiesés (mondta [monta]), Rövidülés (otthon [othon]).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Hangok képzése -> 2. Zöngésségi hasonulás -> 3. Teljes hasonulás és összeolvadás -> 4. Helyesírás.",
-        "kviz": [{"k": "A 'színpad' szóban a képzés helye szerinti részleges hasonulás érvényesül.", "v": True, "m": "Kiejtve [szímpad]."}]
-    },
-    "10. Morfológia: A szóelemek (morfémák) rendszere": {
-        "alcim": "Tőmorfémák, toldalékmorfémák (képző, jel, rag) és a szóelemző helyesírás",
-        "kulcsszavak": ["Szótő", "Képző (új szó)", "Jel (módosít)", "Rag (mondatba illeszt)", "Toldalékolási sorrend"],
-        "audio_szoveg": "A morfológia a nyelv legkisebb jelentéssel bíró egységeit, a morfémákat vizsgálja...",
-        "vazlat": "### I. Morfématípusok: Tőmorféma és Toldalékmorféma.\n### II. Toldalékolási sorrend: Szótő + KÉPZŐ + JEL + RAG (pl. *ház-as-ság-ok-at*).\n### III. Funkciók: Képző (új szó/szófaj), Jel (viszony, többesszám, idő), Rag (mondatrészi szerep, lezárja a szót).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Morféma fogalma -> 2. Képző, jel, rag szerepe -> 3. Kötött sorrend -> 4. Példaelemzés.",
-        "kviz": [{"k": "A rag után még kapcsolódhat képző a szóhoz.", "v": False, "m": "A rag mindig lezárja a szót."}]
-    },
-    "11. Szóalkotási módok a magyar nyelvben": {
-        "alcim": "Szóösszetétel, szóképzés, mozaikszók, szóelvonás, szóvegyülés és rövidülés",
-        "kulcsszavak": ["Szóösszetétel", "Szóképzés", "Mozaikszók (Betűszó és Szóösszevonás)", "Szóhasadás"],
-        "audio_szoveg": "A magyar nyelv gazdag belső szóalkotási módokkal rendelkezik...",
-        "vazlat": "### I. Fő módok: Szóképzés, Szóösszetétel (alárendelő és mellérendelő).\n### II. Ritkább módok: Mozaikszók (Betűszó: *MÁV*, Szóösszevonás: *Főgáz*), Szóelvonás (*kapa <- kapál*), Szóvegyülés (*csokor+bokréta=csokréta*), Szócsonkítás (*mozi*).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Szóteremtés fontossága -> 2. Képzés és összetétel -> 3. Mozaikszók -> 4. Ritkább módok.",
-        "kviz": [{"k": "A 'MÁV' betűszó, a 'Főgáz' szóösszevonás.", "v": True, "m": "A betűszó kezdőbetűkből, a szóösszevonás szótagokból áll."}]
-    },
-    "12. Mondattan: Az összetett mondatok típusai": {
-        "alcim": "Mellérendelő (kapcsolatos, ellentétes, választó, következtető, magyarázó) és alárendelő mondatok",
-        "kulcsszavak": ["Mellérendelés", "Alárendelés", "Utalószó és Kötőszó", "Sajátos jelentéstartalom"],
-        "audio_szoveg": "Az összetett mondatok két vagy több tagmondat kapcsolatából állnak...",
-        "vazlat": "### I. Mellérendelő típusok: Kapcsolatos (*és*), Ellentétes (*de*), Választó (*vagy*), Következtető (*ezért*), Magyarázó (*hiszen*).\n### II. Alárendelő típusok: Főmondat + hiányzó mondatrészt kifejtő mellékmondat (alanyi, állítmányi, tárgyi, határozói, jelzői).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Összetett mondat fogalma -> 2. 5 mellérendelő típus -> 3. Alárendelés rendszere -> 4. Elemzés.",
-        "kviz": [{"k": "A 'Szakad az eső, ezért nem megyünk el' következtető mellérendelés.", "v": True, "m": "Az 'ezért' következtetést fejez ki."}]
-    },
-    "13. Stílusrétegek és a stílusérték": {
-        "alcim": "Hivatalos, tudományos, publicisztikai, társalgási és szépirodalmi stílus",
-        "kulcsszavak": ["Stílusrétegek", "Denotatív és Konnotatív", "Közhely", "Terminológia"],
-        "audio_szoveg": "A stílus a nyelvi eszközök céltudatos kiválasztása a beszédhelyzetnek megfelelően...",
-        "vazlat": "### I. Stílusrétegek: Hivatalos (száraz, sablonos), Tudományos (szakszavak, pontos), Publicisztikai (meggyőző, figyelemfelkeltő), Társalgási (közvetlen), Szépirodalmi (egyéni, esztétikus).\n### II. Jelentés: Denotáció (alapjelentés) vs. Konnotáció (másodlagos hangulat).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Stílus fogalma -> 2. Stílusrétegek bemutatása -> 3. Denotatív vs. konnotatív jelentés -> 4. Helyes használat.",
-        "kviz": [{"k": "A hivatalos stílust a szárazság és a sablonosság jellemzi.", "v": True, "m": "Pontosságra és személytelenségre törekszik."}]
-    },
-    "14. Névtan (Onomasztika)": {
-        "alcim": "Személynevek és földrajzi nevek rendszere, eredete",
-        "kulcsszavak": ["Családnevek típusai", "Földrajzi nevek helyesírása", "Keresztnevek", "Etimológia"],
-        "audio_szoveg": "A névtan a tulajdonnevek eredetét és típusait kutató nyelvtudomány...",
-        "vazlat": "### I. Családnevek 5 fő eredete: Apai név (*Péterfi*), Származási hely (*Budai*), Foglalkozás (*Kovács*), Tulajdonság (*Nagy, Kis*), Etnikum (*Tóth, Horváth*).\n### II. Földrajzi nevek: Egyelemű (*Duna*), Kételemű egybeírt (*Margitsziget*), Különírt típusok (*Fekete-tenger*).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Névtan célja -> 2. Családnevek 5 típusa -> 3. Keresztnevek -> 4. Földrajzi nevek.",
-        "kviz": [{"k": "A 'Kovács' családnév foglalkozásra utal.", "v": True, "m": "Mesterségről elnevezett név."}]
-    },
-    "15. Frazeológia: Szólások, közmondások és szállóigék": {
-        "alcim": "Állandósult szókapcsolatok fajtái és metaforikus jelentése",
-        "kulcsszavak": ["Szólás", "Közmondás", "Szállóige", "Közhely"],
-        "audio_szoveg": "A frazeológia a nyelv állandósult, kötött szókapcsolatait tanulmányozza...",
-        "vazlat": "### I. Szólás: Képszerű kifejezés mondatérték nélkül (*feni a fogát*).\n### II. Közmondás: Kerek egész mondat népi tanulsággal (*Nem mind arany, ami fénylik*).\n### III. Szállóige: Ismert szerzőhöz/műhöz köthető aranyköpés (*A kocka el van vetve*).",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Kötött szókapcsolatok -> 2. Szólás vs. közmondás -> 3. Szállóigék -> 4. Kulturális kincs.",
-        "kviz": [{"k": "A 'Nem mind arany, ami fénylik' közmondás.", "v": True, "m": "Kerek mondat tanulsággal."}]
-    },
-    "16. Digitális kommunikáció és az infokommunikációs nyelv": {
-        "alcim": "Az online nyelvhasználat, emotikonok, hipertext és a közösségi média hatása",
-        "kulcsszavak": ["Netnyelv", "Hipertext", "Multimodalitás", "Emoji", "Írott beszéltség"],
-        "audio_szoveg": "A digitális forradalom gyökeresen átalakította mindennapi nyelvhasználatunkat...",
-        "vazlat": "### I. Netnyelv: Írott beszéltség (írásbeli és szóbeli lazaság fúziója), rövidítések.\n### II. Multimodalitás és Emojik: Képi jelek mint a hiányzó metakommunikáció és intonáció pótlói.\n### III. Nyelvművelés: Elszegényedés vs. új kreatív kifejezési forma.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Digitális nyelvhasználat -> 2. Írott beszéltség -> 3. Emojik szerepe -> 4. Nyelvi hatások.",
-        "kviz": [{"k": "A digitális kommunikációban az írott beszéltség jelensége figyelhető meg.", "v": True, "m": "Az írás és szóbeliség keveréke."}]
-    }
-}
-
-# -------------------------------------------------------------
 # 3. TÖRTÉNELEM TÉTELTÁR (20 Tétel)
 # -------------------------------------------------------------
 tetelek_tortenelem = {
@@ -902,17 +768,26 @@ def letoltheto_pdf_generalas(tetelek_adat, tantargy_nev):
         
     return bytes(pdf.output())
 
-# AI hívás segédfüggvény
-def ai_generalas(prompt_text):
+# AI hívás szöveges és hang bemenethez
+def ai_generalas(prompt_text, audio_bytes=None, mime_type=None):
     api_k = get_api_key()
     if not api_k:
         return "⚠️ Nincs beállítva a Secrets-ben a GEMINI_API_KEY kulcs!"
     try:
         client = genai.Client(api_key=api_k)
+        contents_input = [prompt_text]
+        if audio_bytes and mime_type:
+            contents_input.append({
+                "inline_data": {
+                    "mime_type": mime_type,
+                    "data": audio_bytes
+                }
+            })
+            
         modellek = ['gemini-3.7-flash', 'gemini-3.6-flash', 'gemini-2.0-flash', 'gemini-1.5-flash']
         for m in modellek:
             try:
-                res = client.models.generate_content(model=m, contents=prompt_text)
+                res = client.models.generate_content(model=m, contents=contents_input)
                 if res and res.text:
                     return res.text
             except Exception:
@@ -959,7 +834,7 @@ menupont = st.sidebar.radio(
         "📚 Tételek & Vázlatok",
         "🎧 Hangoskönyv (Monológ)",
         "🎴 Villámkártyák (Flashcards)",
-        "🎙️ Szóbeli Szimulátor",
+        "🎙️ Szóbeli Szimulátor (Beszéd / Írás)",
         "✍️ Esszé & Feladatmegoldó Labor",
         "🎭 Idézet- & Képlet-Detektív",
         "🧭 Történelmi & Irodalmi Idővonal",
@@ -1106,17 +981,17 @@ elif menupont == "🎴 Villámkártyák (Flashcards)":
             st.rerun()
 
 # -------------------------------------------------------------
-# 4. MENÜPONT: SZÓBELI SZIMULÁTOR
+# 4. MENÜPONT: SZÓBELI SZIMULÁTOR (MIKROFONOS HANGFELVÉTEL + ÍRÁS)
 # -------------------------------------------------------------
-elif menupont == "🎙️ Szóbeli Szimulátor":
+elif menupont == "🎙️ Szóbeli Szimulátor (Beszéd / Írás)":
     st.title("🎙️ Szóbeli Érettségi Szimulátor (Mock Exam)")
-    st.caption("Gyakorold a szóbeli feleletet! Az AI vizsgaelnökként automatikusan meghallgat, belekérdez és leosztályoz.")
+    st.caption("Gyakorold a feleletet szóban vagy írásban! Nyomd meg a mikrofont és mondd el a feleletedet, az AI meghallgatja és értékeli.")
     
     valasztott_szim_tetel = st.selectbox(f"Válassz {tantargy_cimke} tételt a próbavizsgához:", list(aktiv_adatbazis.keys()))
     
     if st.button("🏁 Új szóbeli felelet indítása"):
         st.session_state.oral_history = [
-            {"role": "ai", "text": f"Jó napot kívánok! Húzza ki a tételét... Az Ön tétele: **{valasztott_szim_tetel}**. Kérem, kezdje meg a feleletét a bevezetéssel és a legfontosabb fogalmi alapokkal!"}
+            {"role": "ai", "text": f"Jó napot kívánok! Húzza ki a tételét... Az Ön tétele: **{valasztott_szim_tetel}**. Kérem, mondja el vagy írja le a feleletének bevezetését és a legfontosabb alapfogalmakat!"}
         ]
         st.rerun()
         
@@ -1126,19 +1001,42 @@ elif menupont == "🎙️ Szóbeli Szimulátor":
         else:
             st.markdown(f"<div class='chat-ai'>👨‍🏫 <strong>Vizsgaelnök (AI):</strong><br>{msg['text']}</div>", unsafe_allow_html=True)
             
+    st.markdown("---")
+    st.subheader("🎤 1. Lehetőség: Szóbeli válaszadás mikrofonnal")
+    audio_valasz = st.audio_input("Mondd el a feleletedet (kattints a mikrofonra a felvételhez):")
+    
+    if audio_valasz is not None:
+        if st.button("🚀 Hangfelvétel beküldése és értékelése"):
+            with st.spinner("A hangfelvétel meghallgatása és szakmai értékelése..."):
+                hang_bytes = audio_valasz.read()
+                prompt_audio = f"""
+                {tantargy_cimke} szóbeli érettségi elnök vagy. A diák a(z) '{valasztott_szim_tetel}' tételből felel szóban a csatolt hangfelvételen.
+                Feladatod:
+                1. Röviden írd le, mit mondott a diák (1-2 mondatos összefoglaló).
+                2. Szakmailag értékeld a választ (pontosság, szakszavak használata).
+                3. Tegyél fel egy célzott, érettségi szintű kérdést a tétel egy másik fontos részletére, vagy adj konkrét érdemjegyet (1-5) és záróértékelést.
+                Legyél támogató és precíz tanár!
+                """
+                ai_valasz = ai_generalas(prompt_audio, audio_bytes=hang_bytes, mime_type="audio/wav")
+                st.session_state.oral_history.append({"role": "user", "text": "🎙️ *(Szóbeli hangfelvétel beküldve)*"})
+                st.session_state.oral_history.append({"role": "ai", "text": ai_valasz})
+                st.session_state.xp += 40
+                st.rerun()
+
+    st.markdown("---")
+    st.subheader("⌨️ 2. Lehetőség: Írásbeli válaszadás")
     with st.form("oral_form", clear_on_submit=True):
-        felelet_reszlet = st.text_area("Mondd el / írd be a feleleted következő részét:")
-        kuld_felelet = st.form_submit_button("Felelet beküldése")
+        felelet_reszlet = st.text_area("Vagy gépeld be a feleleted részletét:")
+        kuld_felelet = st.form_submit_button("Írott felelet beküldése")
         
         if kuld_felelet and felelet_reszlet:
             st.session_state.oral_history.append({"role": "user", "text": felelet_reszlet})
             prompt = f"""
             {tantargy_cimke} szóbeli érettségi elnök vagy. A diák a(z) '{valasztott_szim_tetel}' tételből felel.
-            A diák eddigi válasza: '{felelet_reszlet}'.
+            A diák válasza: '{felelet_reszlet}'.
             Feladatod:
-            1. Röviden értékeld az elmondottakat (pontosság, szakszavak).
-            2. Tegyél fel egy célzott, érettségi szintű kérdést a tétel egy másik fontos részletére vonatkozóan, vagy ha a felelet végére ért, adj egy konkrét érdemjegyet (1-5) és szöveges záróértékelést.
-            Legyél támogató, de szakmailag precíz tanár!
+            1. Röviden értékeld az elmondottakat.
+            2. Tegyél fel egy célzott kérdést vagy adj konkrét érdemjegyet (1-5).
             """
             ai_valasz = ai_generalas(prompt)
             st.session_state.oral_history.append({"role": "ai", "text": ai_valasz})
