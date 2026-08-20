@@ -21,7 +21,7 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# --- PROFESSZIONÁLIS SÖTÉT DIZÁJN ---
+# --- STÍLUSOK ---
 st.markdown("""
 <style>
     .stApp { background-color: #050505; color: #f3f4f6; }
@@ -49,29 +49,24 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- KÜLSŐ ADATBÁZIS (TANANYAG.JSON) BETÖLTÉSE ---
+# --- BIZTONSÁGOS JSON BETÖLTÉS ---
 @st.cache_data
 def load_tananyag():
     if os.path.exists("tananyag.json"):
-        with open("tananyag.json", "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {
-        "Magyar Irodalom": {
-            "tetelek": {
-                "1. Ókori eposzok és a Biblia": {
-                    "alcim": "Homérosz és az európai kultúra alapkövei",
-                    "vazlat": "### I. Eposzi kellékek\n- Invokáció, propozíció, in medias res, csodás elemek.\n### II. Iliász és Odüsszeia\n- Trójai háború, emberi sorsok és istenek.",
-                    "szobeli": "**🎙️ 3 perces felelet:** 1. Műfaj jellemzői -> 2. Hősök ábrázolása.",
-                    "kviz": [{"k": "Az eposz nagy terjedelmű verses epikai mű.", "v": True, "m": "Igen, a klasszikus ókori műfajok egyike."}]
-                }
-            },
-            "flashcards": [{"q": "Mit jelent az in medias res?", "a": "A dolgok sűrűjébe vágó évszázados eposzi kezdés."}],
-            "timeline": [{"ev": "Kr. e. VIII. sz.", "cim": "Homéroszi eposzok", "leiras": "Az Iliász és az Odüsszeia megszületése."}],
-            "detektiv": [{"idezet": "„Férfiat zengj nekem, múzsa, ki sokfelé bolyongott...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius", "Dante"], "info": "Az Odüsszeia híres kezdősorai."}]
-        }
-    }
+        try:
+            with open("tananyag.json", "r", encoding="utf-8") as f:
+                content = json.load(f)
+                if isinstance(content, dict):
+                    return content
+        except Exception:
+            pass
+    return {}
 
 db = load_tananyag()
+
+if not db:
+    st.error("⚠️ Hiba: A tananyag.json fájl nem található vagy hibás formátumú!")
+    st.stop()
 
 # Állapotkezelők
 if 'xp' not in st.session_state: st.session_state.xp = 250
@@ -105,10 +100,10 @@ menupont = st.sidebar.radio(
 )
 
 tantargy_adat = db.get(kivalasztott_tantargy, {})
-aktiv_tetelek = tantargy_adat.get("tetelek", {})
-aktiv_flash = tantargy_adat.get("flashcards", [])
-aktiv_time = tantargy_adat.get("timeline", [])
-aktiv_det = tantargy_adat.get("detektiv", [])
+aktiv_tetelek = tantargy_adat.get("tetelek", {}) if isinstance(tantargy_adat, dict) else {}
+aktiv_flash = tantargy_adat.get("flashcards", []) if isinstance(tantargy_adat, dict) else []
+aktiv_time = tantargy_adat.get("timeline", []) if isinstance(tantargy_adat, dict) else []
+aktiv_det = tantargy_adat.get("detektiv", []) if isinstance(tantargy_adat, dict) else []
 
 # Fejléc
 col_h1, col_h2 = st.columns([3, 2])
@@ -120,7 +115,7 @@ with col_h2:
 
 st.markdown("---")
 
-# --- MODULOK LOGIKÁJA ---
+# --- AI FUNKCIÓ ---
 def ai_generalas(prompt, file_bytes=None, mime_type=None):
     api_k = get_api_key()
     if not api_k: return "⚠️ Hiányzik a GEMINI_API_KEY a Secretsből!"
@@ -132,6 +127,7 @@ def ai_generalas(prompt, file_bytes=None, mime_type=None):
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
+# --- MODULOK LOGIKÁJA ---
 if menupont == "📚 Tételek & Vázlatok":
     if aktiv_tetelek:
         tetel_nev = st.selectbox("Válassz tételt a hivatalos listából:", list(aktiv_tetelek.keys()))
@@ -180,7 +176,7 @@ elif menupont == "🎧 Hangoskönyv":
     if aktiv_tetelek:
         t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
         if st.button("▶️ Hangoskönyv Indítása"):
-            szoveg = f"{t_nev}. {aktiv_tetelek[t_nev]['alcim']}. {aktiv_tetelek[t_nev]['vazlat']}"
+            szoveg = f"{t_nev}. {aktiv_tetelek[t_nev].get('alcim','')}. {aktiv_tetelek[t_nev].get('vazlat','')}"
             tts = gTTS(text=szoveg[:1000], lang='hu', slow=False)
             f = io.BytesIO(); tts.write_to_fp(f); f.seek(0); st.audio(f, format="audio/mp3")
 
@@ -203,7 +199,6 @@ elif menupont == "🎴 Villámkártyák":
 
 elif menupont == "🎙️ Szóbeli Szimulátor":
     st.subheader("🎙️ Szóbeli Felelet Hangalapú Értékelése")
-    st.write("Mondd fel a telefonod vagy mikrofonod segítségével a feleleted, az AI pedig jegyet és részletes értékelést ad rá.")
     audio = st.audio_input("Felelet rögzítése:")
     if audio and st.button("Felelet Értékelése"):
         with st.spinner("AI értékel tanárként..."):
@@ -280,7 +275,7 @@ elif menupont == "🤖 AI Érettségi Mentor":
     for msg in st.session_state.chat_history:
         st.markdown(f"<div class='chat-{msg['role']}'>{msg['text']}</div>", unsafe_allow_html=True)
     
-    kerdes = st.text_input("Kérdezz bármit a tananyagtól:");
+    kerdes = st.text_input("Kérdezz bármit a tananyagtól:")
     if st.button("Küldés") and kerdes:
         st.session_state.chat_history.append({"role": "user", "text": kerdes})
         valasz = ai_generalas(f"Te egy segítőkész érettségi tanár vagy. Válaszolj a diák kérdésére: {kerdes}")
