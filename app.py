@@ -48,35 +48,82 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# ADATBÁZIS GENERÁTOR (Minden tétel automatikusan betöltődik)
+# VALÓDI, EGYEDI TÉTELEK LISTÁJA
 # -------------------------------------------------------------
-def gener_tetelek(tantargy, db):
-    return {f"{i}. {tantargy} Tétel": {
-        "alcim": f"Hivatalos érettségi követelmény a(z) {i}. témakörhöz",
-        "vazlat": f"### I. Részletes vázlat\n- A {tantargy} vizsgaanyag alapvető fogalmai és összefüggései a(z) {i}. tételnél.",
-        "szobeli": f"**🎙️ 3 perces felelet:** 1. Bevezetés és definíció -> 2. Részletes kifejtés a(z) {i}. tételben.",
-        "kviz": [{"k": f"Ehhez a tétethez kapcsolódó alapvető állítás?", "v": True, "m": "Helyes válasz és magyarázat."}]
-    } for i in range(1, db + 1)}
+def keszit_tetelek(temak):
+    return {tema: {
+        "alcim": f"Részletes vizsgakövetelmény: {tema}",
+        "vazlat": f"### {tema}\n- Alapfogalmak és definíciók.\n- Történelmi vagy irodalmi kontextus és összefüggések.",
+        "szobeli": f"**🎙️ 3 perces felelet:** 1. Bevezetés -> 2. Fő tézisek kifejtése ({tema}) -> 3. Összegzés.",
+        "kviz": [{"k": f"Kapcsolódik-e ez az állítás a(z) '{tema}' témakörhöz?", "v": True, "m": "Igen, alapvető vizsgaanyag."}]
+    } for tema in temak}
 
-tetelek_irodalom = gener_tetelek("Irodalom", 22)
-tetelek_nyelvtan = gener_tetelek("Nyelvtan", 16)
-tetelek_tortenelem = gener_tetelek("Történelem", 30)
-tetelek_matek = gener_tetelek("Matek", 16)
+tetelek_irodalom = keszit_tetelek([
+    "1. Ókori eposzok és a Biblia", "2. Shakespeare drámái", "3. Balassi Bálint költészete", 
+    "4. Zrínyi Miklós eposza", "5. Mikes Kelemen levelei", "6. Csokonai Vitéz Mihály", 
+    "7. Katona József: Bánk bán", "8. Kölcsey és Vörösmarty", "9. Petőfi Sándor költészete", 
+    "10. Arany János balladái", "11. Jókai Mór regényei", "12. Madách: Az ember tragédiája", 
+    "13. Mikszáth Kálmán prózája", "14. Ady Endre költészete", "15. Móricz Zsigmond realizmusa", 
+    "16. Babits Mihály lírája", "17. Kosztolányi Dezső", "18. József Attila költészete", 
+    "19. Radnóti Miklós versei", "20. Örkény István egypercesei", "21. Pilinszky és Nagy László", "22. Kortárs irodalom"
+])
 
-flashcards_irodalom = [{"q": f"Irodalmi kérdés {i}", "a": f"Irodalmi válasz {i}"} for i in range(1, 10)]
-flashcards_nyelvtan = [{"q": f"Nyelvtani kérdés {i}", "a": f"Nyelvtani válasz {i}"} for i in range(1, 10)]
-flashcards_tortenelem = [{"q": f"Történelmi esemény {i}", "a": f"Történelmi válasz {i}"} for i in range(1, 10)]
-flashcards_matek = [{"q": f"Matematikai feladat {i}", "a": f"Matematikai válasz {i}"} for i in range(1, 10)]
+tetelek_nyelvtan = keszit_tetelek([
+    "1. Kommunikáció folyamata", "2. Helyesírási alapelvek", "3. Szófajok rendszere", 
+    "4. Mondattan alapjai", "5. Összetett mondatok", "6. Jelentéstan", "7. Stilisztika", 
+    "8. Nyelv és társadalom", "9. Nyelvtörténet", "10. Szövegtan", "11. Retorika", 
+    "12. Érvelés technikája", "13. Vitakultúra", "14. Hivatalos dokumentumok", "15. Sajtónyelv", "16. Szaknyelvek"
+])
 
-timeline_irodalom = [{"ev": "1848", "cim": "Forradalom", "leiras": "Irodalmi és történelmi események."}]
-timeline_nyelvtan = [{"ev": "1055", "cim": "Tihany", "leiras": "Első nyelvemlék."}]
+tetelek_tortenelem = keszit_tetelek([
+    "1. Athéni demokrácia", "2. Kereszténység és az egyház", "3. A magyarság honfoglalása", 
+    "4. Szent István államalapítása", "5. Az Aranybulla kora", "6. Az Anjou-kor reformjai", 
+    "7. Hunyadi Mátyás birodalma", "8. A török hódítás kora", "9. Reformáció Magyarországon", 
+    "10. Rákóczi-szabadságharc", "11. Felvilágosult abszolutizmus", "12. A reformkor kibontakozása", 
+    "13. Az 1848-as forradalom és szabadságharc", "14. A kiegyezés és a dualizmus", 
+    "15. Az I. világháború és Trianon", "16. Horthy-korszak", "17. A II. világháború", 
+    "18. Rákosi-korszak", "19. Az 1956-os forradalom", "20. Kádár-korszak", 
+    "21. Rendszerváltás Magyarországon", "22. Európai Unió", "23. Hidegháború", 
+    "24. Ipari forradalmak", "25. Nacionalizmus és liberalizmus", "26. Totalitárius rendszerek", 
+    "27. Globális problémák", "28. Gyarmatrendszer felbomlása", "29. Az ENSZ és a nemzetközi szervezetek", "30. A két világháború közötti gazdaság"
+])
+
+tetelek_matek = keszit_tetelek([
+    "1. Halmazok, logika", "2. Másodfokú egyenletek", "3. Függvények tulajdonságai", 
+    "4. Trigonometria", "5. Planimetria (Sígeometria)", "6. Sztereometria (Térgeometria)", 
+    "7. Koordináta-geometria", "8. Kombinatorika", "9. Valószínűségszámítás", 
+    "10. Sorozatok (Aritmetikai, mértani)", "11. Hatványok, gyökök, logaritmus", 
+    "12. Polinomok, egyenletrendszerek", "13. Differenciálszámítás alapjai", 
+    "14. Integrálszámítás", "15. Statisztika", "16. Pénzügyi matematika"
+])
+
+flashcards_irodalom = [
+    {"q": "Mit jelent a ballada Greguss Ágost szerint?", "a": "„Tragédia dalban elbeszélve” – líra, epika és dráma szintézise."},
+    {"q": "Melyik évben indult a Nyugat folyóirat?", "a": "1908-ban, Osvát Ernő szerkesztette."},
+    {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."}
+]
+flashcards_nyelvtan = [
+    {"q": "Mik a magyar helyesírás fő alapelvei?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."},
+    {"q": "Mi a morféma?", "a": "A nyelv legkisebb önálló jelentéssel bíró alapegysége."}
+]
+flashcards_tortenelem = [
+    {"q": "Mikor kezdődött a honfoglalás?", "a": "895-ben."},
+    {"q": "Mikor adta ki II. András az Aranybullát?", "a": "1222-ben."}
+]
+flashcards_matek = [
+    {"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x1,2 = (-b ± √(b² - 4ac)) / (2a)"},
+    {"q": "Mennyi a derékszögű háromszög területe?", "a": "A befogók szorzatának fele: (a · b) / 2"}
+]
+
+timeline_irodalom = [{"ev": "1848", "cim": "Forradalom lírája", "leiras": "Petőfi és Arany munkássága."}]
+timeline_nyelvtan = [{"ev": "1055", "cim": "Tihanyi alapítólevél", "leiras": "Az első magyar nyelvemlék."}]
 timeline_tortenelem = [{"ev": "1000", "cim": "Államalapítás", "leiras": "Szent István koronázása."}]
-timeline_matek = [{"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz", "leiras": "Geometriai tétel."}]
+timeline_matek = [{"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz", "leiras": "Geometriai alapvetés."}]
 
-detektiv_irodalom = [{"idezet": "„Példa idézet irodalom”", "helyes": "Szerző", "opciok": ["Szerző", "Másik"], "info": "Magyarázat"}]
-detektiv_nyelvtan = [{"idezet": "„Példa nyelvtani jelenség”", "helyes": "Szabály", "opciok": ["Szabály", "Másik"], "info": "Magyarázat"}]
-detektiv_tortenelem = [{"idezet": "„Példa történelmi forrás”", "helyes": "Esemény", "opciok": ["Esemény", "Másik"], "info": "Magyarázat"}]
-detektiv_matek = [{"idezet": "„Példa képlet”", "helyes": "Tétel", "opciok": ["Tétel", "Másik"], "info": "Magyarázat"}]
+detektiv_irodalom = [{"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János"], "info": "A felelősségvállalás parancsa."}]
+detektiv_nyelvtan = [{"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Zöngésségi részleges hasonulás"], "info": "t + s -> [ccs]."}]
+detektiv_tortenelem = [{"idezet": "„Ius resistendi”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Szent István"], "info": "Rendi jog."}]
+detektiv_matek = [{"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel", "opciok": ["Koszinusztétel", "Pitagorasz"], "info": "Általános háromszög."}]
 
 # -------------------------------------------------------------
 # SEGÉDFÜGGVÉNYEK
@@ -212,7 +259,7 @@ elif menupont == "🧭 Idővonal":
 
 elif menupont == "🏆 Próbavizsga":
     st.subheader(f"Próbavizsga ({tantargy_cimke})")
-    st.write("Kattints a vizsga indításához a bal oldali menüben vagy válassz tesztet.")
+    st.write("Válassz tesztet vagy induljon a próba.")
 
 elif menupont == "🤖 AI Mentor":
     k = st.text_input("Kérdés a mentornak:")
