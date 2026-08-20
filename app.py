@@ -197,7 +197,10 @@ def ai_generalas(prompt):
         client = genai.Client(api_key=api_k)
         res = client.models.generate_content(model='gemini-3.6-flash', contents=[prompt])
         return res.text if res else "Nincs válasz."
-    except Exception as e: return f"Hiba: {e}"
+    except Exception as e:
+        if "503" in str(e):
+            return "⚠️ A szerver jelenleg túlterhelt (503-as hiba). Kérlek, kattints újra az Elemzés gombra néhány másodperc múlva!"
+        return f"Hiba: {e}"
 
 def read_file(uploaded_file):
     text = ""
@@ -304,7 +307,7 @@ elif menupont == "✍️ Esszé & Feladat Labor":
     if st.button("Javítás") and sz: st.markdown(ai_generalas(f"Javítsd ki: {sz}"))
 
 elif menupont == "🎭 Detektív Játék (20 db)":
-    st.subheader(f> f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
+    st.subheader(f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
     st.session_state.detektiv_index = st.session_state.detektiv_index % len(aktiv_det)
     idx = st.session_state.detektiv_index
     f = aktiv_det[idx]
