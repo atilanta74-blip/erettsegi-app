@@ -52,7 +52,6 @@ st.markdown("""
         color: #ffffff !important;
     }
 
-    .stat-badge { background: linear-gradient(135deg, #6366f1, #a855f7); padding: 8px 18px; border-radius: 24px; font-weight: 700; display: inline-block; box-shadow: 0 2px 10px rgba(99,102,241,0.3); }
     .topic-card { background-color: #111827; border: 1px solid #374151; border-radius: 18px; padding: 28px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
     .oral-box { background-color: #1e1b4b; border-left: 5px solid #818cf8; padding: 20px; border-radius: 10px; margin-top: 18px; color: #ffffff !important; }
     
@@ -148,8 +147,6 @@ db = {
     "📐 Matematika": {"tetelek": generalo_tetelek(matek_temak), "flashcards": matek_flashcards, "timeline": [{"ev": "Kr.e. 6. sz.", "cim": "Pitagorasz", "leiras": "Tétel."}], "detektiv": detektiv_db["📐 Matematika"]}
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 1350
-if 'streak' not in st.session_state: st.session_state.streak = 29
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
@@ -182,12 +179,8 @@ aktiv_flash = tantargy_adat["flashcards"]
 aktiv_time = tantargy_adat["timeline"]
 aktiv_det = tantargy_adat["detektiv"]
 
-col_h1, col_h2 = st.columns([3, 2])
-with col_h1:
-    st.title("🎓 VizsgaMester")
-    st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
-with col_h2:
-    st.markdown(f"<div style='text-align: right;'><span class='stat-badge'>🔥 {st.session_state.streak} nap széria</span><span class='stat-badge'>⚡ {st.session_state.xp} XP</span></div>", unsafe_allow_html=True)
+st.title("🎓 VizsgaMester")
+st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
 
 st.markdown("---")
 
