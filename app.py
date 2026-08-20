@@ -212,7 +212,9 @@ if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'chat_history' not in st.session_state: st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek!"}]
 
-st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
+st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 VizsgaMester</h2>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='color: #9ca3af; font-size: 0.85rem; margin-top: -10px; margin-bottom: 20px;'>powered by Nagy Attila</p>", unsafe_allow_html=True)
+
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
 
 st.sidebar.markdown("---")
@@ -239,7 +241,9 @@ aktiv_flash = tantargy_adat["flashcards"]
 aktiv_time = tantargy_adat["timeline"]
 aktiv_det = tantargy_adat["detektiv"]
 
+# Külön sorba tettük a neved, hogy garantáltan látszódjon a címsor alatt
 st.title("🎓 VizsgaMester")
+st.markdown("<p style='font-size: 1.2rem; color: #818cf8; font-weight: 600; margin-top: -15px; margin-bottom: 15px;'>powered by Nagy Attila</p>", unsafe_allow_html=True)
 st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
 st.markdown("---")
 
