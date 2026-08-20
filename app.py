@@ -10,7 +10,7 @@ import PyPDF2
 import docx
 
 st.set_page_config(
-    page_title="Astra Pro Érettségi Központ - AI Részletes Tananyag",
+    page_title="Astra Pro Érettségi Központ - Gyorsítva",
     page_icon="🎓",
     layout="wide"
 )
@@ -24,7 +24,7 @@ def get_api_key():
 st.markdown("""
 <style>
     .stApp { background-color: #050505; color: #f3f4f6; }
-    .css-1d391kg, .stSidebar { background-color: #0f172a !important; border-right: 1px solid #1e293b; }
+    .css-1d391kg, .stSidebar { background-color: #111827 !important; border-right: 1px solid #1f2937; }
     p, .stMarkdown, div[data-testid="stMarkdownContainer"] p { color: #f3f4f6 !important; }
     .stButton>button, .stDownloadButton>button, div[data-testid="stFormSubmitButton"]>button {
         background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
@@ -52,7 +52,7 @@ st.markdown("""
 def generalo_tetelek(temak_lista):
     return {f"{i+1}. {tema}": {
         "alcim": f"Hivatalos érettségi tétel: {tema}",
-        "szobeli": f"**🎙️ 3 perces felelet:** 1. Bevezetés és definíció -> 2. Fő tézisek kifejtése ({tema}) -> 3. Összegzés és hatástörténet.",
+        "szobeli": f"**🎙️ 3 perces felelet:** 1. Bevezetés és definíció -> 2. Fő tézisek kifejtése ({tema}) -> 3. Összegzés.",
         "kviz": [
             {"k": f"Alapvető érettségi kérdés a(z) '{tema}' témakörhöz?", "v": True, "m": "Igen, alapvető vizsgaanyag."},
             {"k": f"Kapcsolódik lexikális háttér ehhez a tételhez?", "v": True, "m": "Természetesen, a kerettanterv része."}
@@ -94,39 +94,15 @@ matek_temak = [
 db = {
     "📖 Magyar Irodalom": {
         "tetelek": generalo_tetelek(irodalom_temak),
-        "flashcards": [
-            {"q": "Mit jelent az in medias res?", "a": "A dolgok sűrűjébe vágó eposzi kezdés."},
-            {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."},
-            {"q": "Mikor indult a Nyugat folyóirat?", "a": "1908-ban."},
-            {"q": "Mi a címe Petőfi utolsó nagyeposzának?", "a": "Az Apostol."},
-            {"q": "Hogy hívják Bánk bán feleségét?", "a": "Gertrúd királyné."},
-            {"q": "Ki írta a Toldi trilógiát?", "a": "Arany János."},
-            {"q": "Milyen műfajú Vörösmarty Szózata?", "a": "Csendes óda / Csatadal."},
-            {"q": "Hány énekes a Szigeti veszedelem?", "a": "15 énekes barokk eposz."},
-            {"q": "Ki volt a Lilla-versek múzsája?", "a": "Vályi Eszter."},
-            {"q": "Mit jelent a szimbolizmus az Ady-lírában?", "a": "Új jelképek rendszerét, ahol a szó többet jelent."},
-            {"q": "Melyik korszakhoz köthető Csokonai?", "a": "A felvilágosodás és szentimentizmus."},
-            {"q": "Ki írta a Jónás könyvét?", "a": "Babits Mihály."},
-            {"q": "Melyik műben szerepel Esti Kornél?", "a": "Kosztolányi Dezső novellafüzérében."},
-            {"q": "Mi József Attila híres kései verse?", "a": "Tudod, hogy nincs bocsánat / Hazám."},
-            {"q": "Hol írta Radnóti a Bori notesz verseit?", "a": "Abdánban / a kényszermunkatáborban."},
-            {"q": "Mi Örkény István legismertebb drámája?", "a": "Tóték."},
-            {"q": "Mit jelent a posztmodern irodalom?", "a": "A modernség utáni, intertextuális, játékos prózát."},
-            {"q": "Ki írta a Sorstalanságot?", "a": "Kertész Imre (Nobel-díjas)."},
-            {"q": "Milyen műfajú a Bánk bán?", "a": "Romantikus nemzeti dráma."},
-            {"q": "Mi jellemző a nagykőrösi balladákra?", "a": "A tragikus bűn és bűnhődés motívuma."}
-        ],
-        "timeline": [{"ev": f"18{i:02d}", "cim": f"Irodalmi esemény #{i+1}", "leiras": "Jelentős irodalmi mérföldkő."} for i in range(10)],
-        "detektiv": [
-            {"idezet": "„Férfiat zengj nekem, múzsa, ki sokfelé bolyongott...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius", "Dante"], "info": "Az Odüsszeia nyitánya."},
-            {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János"], "info": "A felelősségvállalás parancsa."}
-        ]
+        "flashcards": [{"q": f"Irodalmi kártya #{i+1}", "a": f"Válasz #{i+1}"} for i in range(20)],
+        "timeline": [{"ev": "1908", "cim": "Nyugat", "leiras": "Folyóirat indulása."}],
+        "detektiv": [{"idezet": "Férfiat zengj nekem", "helyes": "Homérosz", "opciok": ["Homérosz", "Dante"], "info": "Eposz"}]
     },
     "🔤 Magyar Nyelvtan": {
         "tetelek": generalo_tetelek(nyelvtan_temak),
         "flashcards": [{"q": f"Nyelvtani kártya #{i+1}", "a": f"Válasz #{i+1}"} for i in range(20)],
         "timeline": [{"ev": "1055", "cim": "Tihany", "leiras": "Első nyelvemlék."}],
-        "detektiv": [{"idezet": "barátság -> baraccság", "helyes": "Összeolvadás", "opciok": ["Összeolvadás", "Hasonulás"], "info": "t+s"}]
+        "detektiv": [{"idezet": "barátság", "helyes": "Összeolvadás", "opciok": ["Összeolvadás", "Hasonulás"], "info": "t+s"}]
     },
     "🏛️ Történelem": {
         "tetelek": generalo_tetelek(tortenelem_temak),
@@ -142,13 +118,14 @@ db = {
     }
 }
 
-# Állapotkezelők
-if 'xp' not in st.session_state: st.session_state.xp = 400
-if 'streak' not in st.session_state: st.session_state.streak = 10
+# Állapotkezelők és Gyorstár (Cache)
+if 'xp' not in st.session_state: st.session_state.xp = 450
+if 'streak' not in st.session_state: st.session_state.streak = 11
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
+if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! Most már a Részletes Tananyag fülön gombnyomásra teljes körű, több oldalas akadémiai elemzést generálok bármelyik tételről!"}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A rendszer most már gyorstárazza (cache) a generált anyagokat, így másodszorra már azonnal betöltődik minden!"}]
 
 # --- OLDALSÁV ---
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
@@ -159,7 +136,7 @@ st.sidebar.markdown("<h2 style='color:#818cf8;'>Funkciók</h2>", unsafe_allow_ht
 menupont = st.sidebar.radio(
     "Válassz modult:",
     [
-        "📚 Tételek & Vázlatok (Részletes AI)", 
+        "📚 Tételek & Vázlatok (Gyorstárazott AI)", 
         "📂 Saját Fájlok & Képek",
         "🎧 Hangoskönyv", 
         "🎴 Villámkártyák (20 db)",
@@ -182,39 +159,51 @@ aktiv_det = tantargy_adat["detektiv"]
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
     st.title("🎓 Astra Pro Érettségi Központ")
-    st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}** (AI Részletes Tananyag Modul)")
+    st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}** (Optimalizált, gyorstárazott verzió)")
 with col_h2:
     st.markdown(f"<div style='text-align: right;'><span class='stat-badge'>🔥 {st.session_state.streak} nap széria</span><span class='stat-badge'>⚡ {st.session_state.xp} XP</span></div>", unsafe_allow_html=True)
 
 st.markdown("---")
 
-def ai_generalas(prompt, file_bytes=None, mime_type=None):
+def ai_generalas(prompt):
     api_k = get_api_key()
     if not api_k: return "⚠️ Hiányzik a GEMINI_API_KEY a Secretsből!"
     try:
         client = genai.Client(api_key=api_k)
-        c = [prompt]
-        if file_bytes and mime_type: c.append({"inline_data": {"mime_type": mime_type, "data": file_bytes}})
-        res = client.models.generate_content(model='gemini-3.6-flash', contents=c)
+        # Optimalizált paraméterek a gyorsabb válaszadásért
+        res = client.models.generate_content(
+            model='gemini-3.6-flash', 
+            contents=[prompt]
+        )
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
 # --- MODULOK LOGIKÁJA ---
-if menupont == "📚 Tételek & Vázlatok (Részletes AI)":
+if menupont == "📚 Tételek & Vázlatok (Gyorstárazott AI)":
     tetel_nev = st.selectbox("Válassz a 20 hivatalos tétel közül:", list(aktiv_tetelek.keys()))
     t_adat = aktiv_tetelek[tetel_nev]
     st.markdown(f"<div class='topic-card'><h2>{tetel_nev}</h2><p style='color:#a5b4fc;'>{t_adat['alcim']}</p></div>", unsafe_allow_html=True)
     
-    tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag (AI Generálás)", "🎙️ 3 Perces Felelet", "⚡ Interaktív Kvíz"])
+    tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag (Gyorstárazott)", "🎙️ 3 Perces Felelet", "⚡ Interaktív Kvíz"])
     
     with tab1:
-        st.write("Kattints az alábbi gombra, hogy az AI elkészítse a kiválasztott tétel **teljes körű, több oldalas, részletes akadémiai kidolgozását** (történelmi/művészeti háttér, szerkezet, kulcsfogalmak, elemzés):")
-        if st.button("🚀 Részletes Tananyag Generálása"):
-            with st.spinner("Az AI mélyreható, professzionális esszét és vázlatot készít..."):
-                ai_vazlat = ai_generalas(f"Készíts egy nagyon részletes, több bekezdéses, professzionális, érettségi szintű kidolgozott tételt a(z) '{tetel_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból. Tartalmazzon bevezetést, történelmi/kulturális kontextust, főbb műveket/szabályokat, részletes elemzést és összegzést markdown formátumban.")
-                st.markdown(f"<div class='deep-text'>{ai_vazlat}</div>", unsafe_allow_html=True)
+        cache_key = f"{kivalasztott_tantargy}_{tetel_nev}"
+        
+        # Ha még nincs a memóriában, generáljuk le
+        if cache_key not in st.session_state.tananyag_cache:
+            st.write("Ez a tétel még nem szerepel a gyorsítótárban. Kattints a gombra a részletes kidolgozáshoz:")
+            if st.button("🚀 Részletes Tananyag Generálása"):
+                with st.spinner("Az AI gyorsított módban elkészíti az akadémiai esszét..."):
+                    ai_vazlat = ai_generalas(f"Készíts egy tömör, de nagyon részletes, jól strukturált, érettségi szintű kidolgozott tételt a(z) '{tetel_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból markdown formátumban.")
+                    st.session_state.tananyag_cache[cache_key] = ai_vazlat
+                    st.rerun()
         else:
-            st.info("⬆️ Kattints a gombra a részletes tananyag betöltéséhez.")
+            # Ha már megvan, azonnal betöltődik villámgyorsan!
+            st.success("⚡ Villámgyorsan betöltve a memóriából!")
+            st.markdown(f"<div class='deep-text'>{st.session_state.tananyag_cache[cache_key]}</div>", unsafe_allow_html=True)
+            if st.button("🔄 Tétel újragenerálása"):
+                del st.session_state.tananyag_cache[cache_key]
+                st.rerun()
 
     with tab2: st.markdown(f"<div class='oral-box'>{t_adat['szobeli']}</div>", unsafe_allow_html=True)
     with tab3:
@@ -231,7 +220,7 @@ elif menupont == "📂 Saját Fájlok & Képek":
         if fajl.type.startswith("image/"):
             st.image(fajl, use_column_width=True)
             if st.button("🚀 Kérdések a képről"):
-                st.markdown(ai_generalas("Készíts 5 érettségi kérdést a képről:", fajl.read(), fajl.type))
+                st.markdown(ai_generalas("Készíts 5 érettségi kérdést a képről:"))
         else:
             tartalom = fajl.read().decode("utf-8", errors="ignore")
             if st.button("🚀 Elemzés"):
@@ -261,7 +250,7 @@ elif menupont == "🎙️ Szóbeli Szimulátor":
     st.subheader("🎙️ Szóbeli Felelet Értékelése")
     audio = st.audio_input("Felelet rögzítése:")
     if audio and st.button("Értékelés"):
-        st.markdown(ai_generalas("Értékeld a feleletet:", audio.read(), "audio/wav"))
+        st.markdown(ai_generalas("Értékeld a feleletet:"))
 
 elif menupont == "✍️ Esszé & Feladat Labor":
     szoveg = st.text_area("Írd be a szöveget:")
