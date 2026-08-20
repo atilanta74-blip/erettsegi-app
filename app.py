@@ -8,6 +8,7 @@ from google import genai
 from gtts import gTTS
 import PyPDF2
 import docx
+from PIL import Image
 
 st.set_page_config(
     page_title="VizsgaMester - Érettségi Központ",
@@ -184,33 +185,17 @@ st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
 
 st.markdown("---")
 
-def ai_generalas(prompt):
+def ai_generalas_tartalom(contents_list):
     api_k = get_api_key()
     if not api_k: return "⚠️ Hiányzik a GEMINI_API_KEY a Secretsből!"
     try:
         client = genai.Client(api_key=api_k)
-        res = client.models.generate_content(model='gemini-3.6-flash', contents=[prompt])
+        res = client.models.generate_content(model='gemini-3.6-flash', contents=contents_list)
         return res.text if res else "Nincs válasz."
     except Exception as e:
         if "503" in str(e):
             return "⚠️ A szerver jelenleg túlterhelt (503-as hiba). Kérlek, kattints újra néhány másodperc múlva!"
         return f"Hiba: {e}"
-
-def read_file(uploaded_file):
-    text = ""
-    try:
-        if uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-            doc = docx.Document(uploaded_file)
-            text = "\n".join([para.text for para in doc.paragraphs])
-        elif uploaded_file.type == "application/pdf":
-            reader = PyPDF2.PdfReader(uploaded_file)
-            for page in reader.pages:
-                text += page.extract_text() + "\n"
-        else:
-            text = uploaded_file.getvalue().decode("utf-8")
-    except Exception as e:
-        text = f"Hiba a fájl olvasásakor: {e}"
-    return text
 
 def get_tetel_specifikus_szkript(tantargy, tetel_neve):
     alap_szoveg = aktiv_tetelek[tetel_neve]["tartalom"].replace("###", "").replace("- **", "").replace("**", "")
@@ -235,39 +220,59 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
             if c2.button("❌ Hamis", key=f"f_{i}"): st.error(f"Nem helyes. {q['m']}")
 
 elif menupont == "📂 Saját Fájlok & Képek":
-    st.subheader("📂 Dokumentum AI Elemzés & Interaktív Kvíz")
-    fajl = st.file_uploader("Fájl feltöltése (.docx, .pdf, .txt)", type=["txt", "pdf", "docx"])
+    st.subheader("📂 Dokumentum és Kép AI Elemzés & Interaktív Kvíz")
+    fajl = st.file_uploader("Fájl feltöltése (.docx, .pdf, .txt, .jpg, .png)", type=["txt", "pdf", "docx", "jpg", "jpeg", "png"])
     
     if fajl:
+        # Ha kép, jelenítsük meg előnézetben is
+        if fajl.type.startswith("image/"):
+            img_obj = Image.open(fajl)
+            st.image(img_obj, caption="Feltöltött kép előnézete", use_column_width=True)
+            fajl.seek(0) # Visszaállítjuk a mutatót
+
         if st.button("🚀 Elemzés és Összefoglalás"):
-            with st.spinner("Fájl olvasása és elemzése folyamatban..."):
-                szoveg = read_file(fajl)
-                if szoveg and not szoveg.startswith("Hiba"):
-                    st.session_state.aktiv_fajl_szoveg = szoveg
-                    st.write("### 📌 Elemzés eredménye:")
-                    eredmeny = ai_generalas(f"Elemezd az alábbi feltöltött tananyagot és készíts belőle részletes, érettségire felkészítő összefoglalót: {szoveg[:10000]}")
-                    st.markdown(f"<div class='deep-text'>{eredmeny}</div>", unsafe_allow_html=True)
-                    st.session_state.ai_quiz_data = None
+            with st.spinner("Fájl / Kép olvasása és elemzése folyamatban..."):
+                content_payload = []
+                if fajl.type.startswith("image/"):
+                    img_data = Image.open(fajl)
+                    content_payload = [img_data, "Elemezd az alábbi képen látható tananyagot, tételt vagy feladatot, és készíts belőle részletes, érettségire felkészítő összefoglalót:"]
                 else:
-                    st.error("Nem sikerült szöveget kivonatolni a fájlból.")
-        
-        if "aktiv_fajl_szoveg" in st.session_state and st.session_state.aktiv_fajl_szoveg:
+                    szoveg = ""
+                    try:
+                        if fajl.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+                            doc = docx.Document(fajl)
+                            szoveg = "\n".join([para.text for para in doc.paragraphs])
+                        elif fajl.type == "application/pdf":
+                            reader = PyPDF2.PdfReader(fajl)
+                            for page in reader.pages:
+                                szoveg += page.extract_text() + "\n"
+                        else:
+                            szoveg = fajl.getvalue().decode("utf-8")
+                    except Exception as e:
+                        szoveg = f"Hiba a fájl olvasásakor: {e}"
+                    
+                    st.session_state.aktiv_fajl_szoveg = szoveg
+                    content_payload = [f"Elemezd az alábbi feltöltött tananyagot és készíts belőle részletes, érettségire felkészítő összefoglalót: {szoveg[:10000]}"]
+
+                eredmeny = ai_generalas_tartalom(content_payload)
+                st.session_state.aktiv_elemzes_eredmeny = eredmeny
+                st.session_state.ai_quiz_data = None
+
+        if "aktiv_elemzes_eredmeny" in st.session_state and st.session_state.aktiv_elemzes_eredmeny:
+            st.write("### 📌 Elemzés eredménye:")
+            st.markdown(f"<div class='deep-text'>{st.session_state.aktiv_elemzes_eredmeny}</div>", unsafe_allow_html=True)
+            
             st.markdown("---")
             if st.button("🎯 Interaktív Kérdéssorozat Generálása"):
                 with st.spinner("Kérdéssorozat generálása az AI segítségével..."):
-                    prompt = f"""Készíts 5 db feleletválasztós vizsgakérdést a következő dokumentum alapján. 
-                    Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:
-                    [
-                      {{
-                        "question": "A kérdés szövege?",
-                        "options": ["A) opció 1", "B) opció 2", "C) opció 3", "D) opció 4"],
-                        "answer": "A) opció 1",
-                        "explanation": "A helyes válasz magyarázata..."
-                      }}
-                    ]
-                    Dokumentum: {st.session_state.aktiv_fajl_szoveg[:8000]}"""
-                    
-                    raw_res = ai_generalas(prompt)
+                    if fajl.type.startswith("image/"):
+                        fajl.seek(0)
+                        img_data = Image.open(fajl)
+                        q_payload = [img_data, "Készíts 5 db feleletválasztós vizsgakérdést a képen látható tartalom alapján. Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n[\n  {\n    \"question\": \"A kérdés szövege?\",\n    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n    \"answer\": \"A) opció 1\",\n    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]"]
+                    else:
+                        q_payload = [f"Készíts 5 db feleletválasztós vizsgakérdést a következő dokumentum alapján. Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n[\n  {\n    \"question\": \"A kérdés szövege?\",\n    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n    \"answer\": \"A) opció 1\",\n    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]\nDokumentum: {st.session_state.get('aktiv_fajl_szoveg', '')[:8000]}"]
+
+                    raw_res = ai_generalas_tartalom(q_payload)
                     try:
                         cleaned = raw_res.strip()
                         if cleaned.startswith("```"):
@@ -346,11 +351,11 @@ elif menupont == "🎴 Villámkártyák (20 db)":
 elif menupont == "🎙️ Szóbeli Szimulátor":
     audio = st.audio_input("Felelet rögzítése:")
     if audio and st.button("Értékelés"):
-        st.markdown(ai_generalas("Értékeld a feleletet:"))
+        st.markdown(ai_generalas_tartalom(["Értékeld a feleletet:"]))
 
 elif menupont == "✍️ Esszé & Feladat Labor":
     sz = st.text_area("Írd be a szöveget:")
-    if st.button("Javítás") and sz: st.markdown(ai_generalas(f"Javítsd ki: {sz}"))
+    if st.button("Javítás") and sz: st.markdown(ai_generalas_tartalom([f"Javítsd ki: {sz}"]))
 
 elif menupont == "🎭 Detektív Játék (20 db)":
     st.subheader(f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
@@ -401,5 +406,5 @@ elif menupont == "🤖 AI Érettségi Mentor":
     k = st.text_input("Kérdezz a mentortól:")
     if st.button("Küldés") and k:
         st.session_state.chat_history.append({"role": "user", "text": k})
-        st.session_state.chat_history.append({"role": "ai", "text": ai_generalas(k)})
+        st.session_state.chat_history.append({"role": "ai", "text": ai_generalas_tartalom([k])})
         st.rerun()
