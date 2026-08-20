@@ -34,7 +34,9 @@ st.markdown("""
         border: none; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
     }
     
-    div[data-testid="stExpander"] { background-color: #111827 !important; border: 1px solid #374151 !important; border-radius: 12px !important; }
+    div[data-testid="stExpander"] { background-color: #111827 !important; border: 1px solid #374151 !important; border-radius: 14px !important; margin-bottom: 12px; }
+    div[data-testid="stExpander"] summary p { color: #818cf8 !important; font-weight: 700 !important; font-size: 1.15rem !important; }
+    
     .stTextInput>div>div>input, .stTextArea>div>div>textarea { background-color: #111827 !important; color: #ffffff !important; border: 1px solid #374151 !important; border-radius: 10px !important; }
     
     [data-testid="stFileUploader"] { background-color: #111827 !important; padding: 20px; border-radius: 16px; border: 1px solid #374151; }
@@ -61,18 +63,6 @@ st.markdown("""
     .topic-card { background-color: #111827; border: 1px solid #374151; border-radius: 18px; padding: 28px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
     .oral-box { background-color: #1e1b4b; border-left: 5px solid #818cf8; padding: 20px; border-radius: 10px; margin-top: 18px; color: #ffffff !important; }
     
-    .deep-text { 
-        background-color: #111827; 
-        color: #ffffff !important; 
-        border: 1px solid #374151; 
-        padding: 40px; 
-        border-radius: 14px; 
-        line-height: 2.0; 
-        font-size: 1.15rem;
-    }
-    .deep-text h3 { color: #818cf8 !important; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #374151; padding-bottom: 8px; }
-    .deep-text h4 { color: #a5b4fc !important; margin-top: 20px; }
-    
     .flashcard { background: linear-gradient(135deg, #1e1b4b, #31104b); border: 2px solid #818cf8; border-radius: 20px; padding: 40px; text-align: center; min-height: 200px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); color: white; }
     .timeline-item { background-color: #111827; border-left: 5px solid #a855f7; padding: 18px 22px; margin-bottom: 16px; border-radius: 0 14px 14px 0; }
     .chat-user { background-color: #4f46e5; color: white; padding: 14px 20px; border-radius: 16px 16px 4px 16px; margin-bottom: 12px; max-width: 80%; margin-left: auto; }
@@ -81,89 +71,90 @@ st.markdown("""
 <div class="menu-label">Menü</div>
 """, unsafe_allow_html=True)
 
-# --- KÖNYV SZINTŰ, RÉSZLETES TANANYAG GENERÁTOR ---
+# --- RÉSZLETES, KIBONTHATÓ TANANYAG ADATBÁZIS GENERÁTOR ---
 def generalo_tetelek(temak_lista, tipus):
     tetelek_dict = {}
     for i, tema in enumerate(temak_lista):
         if tipus == "matek":
-            tartalom = f"""
-### I. Bevezetés, Alapfogalmak és Elméleti Rendszer
-* **A témakör pontos definíciója:** A(z) **{tema}** alapegységei, jelölései, halmazelméleti és logikai keretei. Részletesen tisztázni kell a használt fogalmakat, mivel a matematika szigorú logikai láncmegoldásokra épül.
-* **Értelmezési tartomány és feltételek:** Milyen halmazon értelmezzük a kifejezéseket, milyen kikötések (pl. nevező nem lehet nulla, gyök alatt nem lehet negatív szám) vonódnak be automatikusan a vizsgálatba?
-* **Történeti és módszertani kitekintés:** Hogyan alakult ki ez a matematikai eszköz, miért van rá szükség a gyakorlati problémák modellezésében?
-
-### II. Főbb Tételek, Szabályok, Levezetések és Algoritmusok
-* **Központi tételek:** A(z) {tema} legfontosabb összefüggéseinek szigorú matematikai levezetése és bizonyítási menete. 
-* **Algoritmusok lépésről lépésre:** 
-  1. Első lépés: A feltételek ellenőrzése és az adatok rögzítése.
-  2. Második lépés: A megfelelő képlet, azonosság vagy függvénytranszformáció kiválasztása.
-  3. Harmadik lépés: A számítás elvégzése, egyenletrendszerek rendezése vagy geometriai szerkesztés.
-  4. Negyedik lépés: Ellenőrzés visszahelyettesítéssel vagy nagyságrendi becsléssel.
-* **Gyakori hibaleforrások:** Előjel-tévesztések, zárójelezési hibák, a definíciós tartomány figyelmen kívül hagyása és a hamis gyökök kiszűrése.
-
-### III. Részletesen Kidolgozott Mintafeladatok és Alkalmazások
-* **1. Alapszintű feladat:** Közvetlen képletalkalmazás, rutinművelet a(z) {tema} köréből, részletes numerikus megoldással.
-* **2. Emelt szintű / Összetett feladat:** Szöveges modell, paraméteres egyenlet vagy kombinált geometriai probléma, ahol a(z) {tema} más matematikai ágakkal (pl. trigonometria, koordináta-geometria) kapcsolódik össze.
-* **Gyakorlati jelentőség:** Hogyan alkalmazzák ezt a mérnökök, a pénzügyi szakemberek vagy a természettudósok a mindennapi modellezésben?
-            """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Definíció és keretek:** A(z) {tema} alapfogalmainak tisztázása.\n2. **Főbb képletek és tételek:** A központi összefüggések felírása és magyarázata.\n3. **Alkalmazási példa:** Egy tipikus érettséges feladattípus rövid bemutatása."
+            reszletek = {
+                "Szakasz 1": ("I. Alapfogalmak, Definíciók és Elméleti Rendszer", [
+                    ("A témakör pontos definíciója és jelölésrendszere", f"A(z) **{tema}** alapegységei, halmazelméleti és logikai keretei. A matematikában minden állítás pontos definíciókra épül, így elengedhetetlen a használt szimbólumok és alaphalmazok pontos ismerete."),
+                    ("Értelmezési tartományok és kikötések", "Milyen megszorítások vonatkoznak a kifejezésekre? (Pl. nevező nem lehet nulla, logaritmus alapja pozitív és 1-től különböző kell legyen, gyök alatt nem állhat negatív szám). Ezen feltételek ellenőrzése minden számítás első lépése."),
+                    ("Módszertani célkitűzés", "Miért alkalmazzuk ezt a matematikai eszközt? Hogyan segít ez valós idejű problémák, egyenletrendszerek vagy térbeli alakzatok leírásában?")
+                ]),
+                "Szakasz 2": ("II. Főbb Tételek, Szabályok és Levezetések", [
+                    ("Központi tételek és logikai összefüggések", f"A(z) {tema} területéhez tartozó legfontosabb tételek. Itt tekintjük át a képletek érvényességi feltételeit és egymásból való levezetésüket."),
+                    ("Algoritmusok lépésről lépésre", "1. Adatok rögzítése és feltételek vizsgálata.\n2. A megfelelő képlet vagy azonosság kiválasztása.\n3. Az algebrai vagy numerikus műveletek elvégzése.\n4. Ellenőrzés visszahelyettesítéssel."),
+                    ("Gyakori hibaleforrások és buktatók", "Előjelek tévesztése zárójelbontáskor, hamis gyökök beemelése a négyzetre emelés miatt, valamint a mértékegységek elhanyagolása.")
+                ]),
+                "Szakasz 3": ("III. Részletesen Kidolgozott Példák és Alkalmazások", [
+                    ("Alapszintű rutinfeladat részletes megoldása", f"Gyakorlati példa a(z) {tema} közvetlen alkalmazására, lépésről lépésre követhető numerikus menettel."),
+                    ("Emelt szintű, összetett feladattípus", "Komplex, több témakört (pl. függvényvizsgálat és trigonometria) összekapcsoló érettségi feladat elemzése."),
+                    ("Gyakorlati modellalkotás", "Hogyan hasznosul ez a tudás a fizikai mozgások leírásában, a pénzügyi kalkulációkban vagy a statisztikai elemzésekben?")
+                ])
+            }
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Definíciók:** A(z) {tema} alapfogalmai.\n2. **Főbb képletek:** A központi összefüggések felírása.\n3. **Alkalmazás:** Egy tipikus feladat bemutatása."
         elif tipus == "tori":
-            tartalom = f"""
-### I. Gazdasági, Társadalmi és Politikai Előzmények
-* **A korszak háttere:** Milyen folyamatok, struktúrák, válságok vagy gazdasági tényezők készítették elő a(z) **{tema}** kialakulását?
-* **Okozati összefüggések:** A kortárs nagyhatalmi törekvések, érdekek, társadalmi feszültségek (pl. elszegényedés, polgárosodás, vallási ellentétek) rendszere.
-* **Kiváltó okok (casus belli):** Az a konkrét esemény vagy pillanat, amely a folyamatot nyílt konfliktusba vagy rendszerszintű változásba torkollatta.
-
-### II. Fő Események, Kulcsszereplők és Intézményi Keretek
-* **Kronológiai ív és fordulópontok:** A(z) {tema} legfontosabb dátumai, csatái, békekötései, törvényei vagy reformintézkedései.
-* **Meghatározó történelmi személyek:** Az uralkodók, hadvezérek, politikusok, reformátorok vagy népi hősök tettei, motivációi, stratégiai döntéseik és azok következményei.
-* **Intézményi és katonai háttér:** Hogyan működtek a korabeli államapparátusok, parlamentek, egyházak, hadseregek vagy gazdasági intézmények?
-
-### III. Következmények, Mérleg és Hatástörténet
-* **Rövid távú következmények:** Területveszteségek vagy -nyereségek, hatalmi átrendeződések, vérveszteségek, politikai konszolidáció vagy forradalmi terror.
-* **Hosszú távú hatások:** Hogyan formálta át a(z) {tema} az érintett ország (vagy Európa) társadalmi szerkezetét, határait, gazdaságát a következő évtizedekben vagy évszázadokban?
-* **Történeti értékelés:** Hogyan ítéli meg a modern történettudomány ezt a korszakot, milyen historiográfiai viták övezik?
-            """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Előzmények:** Mi vezetett ide?\n2. **Fő események és személyek:** A(z) {tema} legfontosabb fordulópontjai.\n3. **Következmények:** Milyen hatást gyakorolt a történelem folyamatára?"
+            reszletek = {
+                "Szakasz 1": ("I. Történelmi Előzmények és Okok", [
+                    ("Gazdasági és társadalmi háttér", f"Milyen folyamatok, struktúrák vagy válságok hívták életre a(z) **{tema}** eseményeit? A korabeli népesség helyzete, vagyoni viszonyok és rétegződés."),
+                    ("Okozati összefüggések és érdekek", "A kortárs nagyhatalmi törekvések, geopolitikai érdekek, vallási ellentétek vagy gazdasági függőségi viszonyok rendszere."),
+                    ("A kiváltó ok (casus belli)", "Az a konkrét, sokszor váratlan esemény vagy provokáció, amely a lappangó feszültséget nyílt konfliktusba vagy rendszerváltásba torkollatta.")
+                ]),
+                "Szakasz 2": ("II. Fő Események, Személyek és Intézmények", [
+                    ("Kronológiai ív és legfontosabb fordulópontok", f"A(z) {tema} kulcsfontosságú dátumai, csatái, békekötései, törvényhozási határozatai vagy reformhullámai."),
+                    ("Meghatározó történelmi személyek", "Az uralkodók, hadvezérek, politikusok, forradalmárok tettei, egyéni motivációi, politikai stratégiáik és azok történelmi súlya."),
+                    ("Intézményi és katonai háttér", "Hogyan működtek a korabeli állami szervek, parlamentek, egyházak, vagy milyen fegyvernemek, harcmodorok határozták meg az eseményeket?")
+                ]),
+                "Szakasz 3": ("III. Következmények, Mérleg és Hatástörténet", [
+                    ("Rövid távú következmények", f"Területi változások, hatalmi átrendeződések, vérveszteségek, politikai konszolidáció vagy éppen radikális fordulatok a(z) {tema} után."),
+                    ("Hosszú távú hatások a társadalomra", "Hogyan formálta át ez a korszak az ország határait, gazdaságát, törvényeit és a mindennapi ember életét a következő évszázadokban?"),
+                    ("Történeti értékelés és viták", "Hogyan ítéli meg a modern történettudomány ezt a korszakot, milyen különböző szempontokból elemezik a történészek?")
+                ])
+            }
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Előzmények:** Mi vezetett ide?\n2. **Fő események és személyek:** A(z) {tema} fordulópontjai.\n3. **Következmények:** Milyen hatást gyakorolt a történelemre?"
         elif tipus == "nyelvtan":
-            tartalom = f"""
-### I. Elméleti Rendszer és Fogalomkör
-* **A nyelvi jelenség helye:** A(z) **{tema}** pontos elhelyezése a magyar nyelv hang-, szó-, mondat- vagy szövegtani rendszerében.
-* **Alapfogalmak és terminológia:** A szakszerű nyelvészeti fogalmak pontos meghatározása.
-* **A rendszerszintű működés elve:** Hogyan tagozódik be ez a jelenség a magyar nyelv egységébe?
-
-### II. Szabályszerűségek, Paradigmák és Kivételek
-* **A szabályok kifejtése:** A(z) {tema} strukturális törvényszerűségei, ragozási sorai, képzési módjai vagy mondattani kapcsolatai.
-* **Kivételek és különleges esetek:** Melyek azok a nyelvi formák vagy kivételek, amelyeket a vizsgán különösen figyelembe kell venni?
-* **Helyesírási és nyelvhelyességi normák:** Gyakorlati helyesírási szabályok, gyakran elkövetett hibák és az MTA által elvárt helyes formák.
-
-### III. Gyakorlati Elemzés és Stilisztikai Érték
-* **Elemzési mintaelemzés:** Hogyan kell felbontani, ábrázolni vagy elemezni egy erre vonatkozó nyelvi példát?
-* **Stilisztikai funkció:** Milyen kifejezőerőt, hangulatot vagy pragmatikai célt szolgál a(z) {tema} alkalmazása a szövegben?
-            """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Fogalom és elmélet:** A(z) {tema} definíciója.\n2. **Szabályok és kivételek:** A legfontosabb nyelvtani/helyesírási törvények.\n3. **Gyakorlati példa:** Elemzési bemutató."
+            reszletek = {
+                "Szakasz 1": ("I. Elméleti Rendszer és Alapfogalmak", [
+                    ("A nyelvi jelenség elhelyezése", f"A(z) **{tema}** pontos helye a magyar nyelv hang-, szó-, mondat- vagy szövegtani rendszerében. A szakszerű terminológia tisztázása."),
+                    ("Alaptételek és szerkezeti egységek", "Milyen alapegységekből épül fel ez a nyelvi jelenség, mik a főbb kategóriái és paradigmái?"),
+                    ("A rendszer működési elve", "Hogyan illeszkedik be ez a szabály a magyar nyelv logikai és kifejezési struktúrájába?")
+                ]),
+                "Szakasz 2": ("II. Szabályok, Paradigmák és Kivételek", [
+                    ("A részletes szabályrendszer", f"A(z) {tema} törvényszerűségei, képzési szabályai, toldalékolási menete vagy mondattani kapcsolódásai."),
+                    ("Kivételek és különleges esetek", "Melyek azok a rendhagyó alakok vagy kivételek, amelyeket a vizsgán szigorúan számon kérnek?"),
+                    ("Helyesírási és nyelvhelyességi normák", "Az MTA által elvárt helyesírási szabályok, gyakori hibák elkerülése és a normatív nyelvhasználat.")
+                ]),
+                "Szakasz 3": ("III. Gyakorlati Elemzés és Stilisztikai Érték", [
+                    ("Szakszerű elemzési minták", f"Hogyan kell felbontani, ábrázolni vagy elemezni a(z) {tema} körébe tartozó nyelvi példákat?"),
+                    ("Stilisztikai és pragmatikai funkció", "Milyen kifejezőerőt, hangulatot vagy szövegszervező erőt biztosít ezen nyelvi elem alkalmazása?"),
+                    ("Gyakorlati kommunikációs példák", "Mondatpéldák, szövegrészletek elemzése és magyarázata.")
+                ])
+            }
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Fogalom:** A(z) {tema} elmélete.\n2. **Szabályok:** A legfontosabb törvények.\n3. **Példa:** Elemzési bemutató."
         else: # irodalom
-            tartalom = f"""
-### I. Történeti, Eszmei és Művészettörténeti Kontextus
-* **Irodalomtörténeti korszak:** A(z) **{tema}** születésének korszaka (pl. ókor, reneszánsz, romantika, modernség) és annak szellemi, művészeti vonulatai.
-* **Filozófiai és eszmei háttér:** Milyen világkép, emberkép, morális vagy egzisztenciális kérdések (pl. felvilágosodás, determinizmus, egzisztencializmus) hívták életre a művet/műveket?
-* **Szerzői életmű beágyazottsága:** Hol helyezkedik el ez a mű az alkotó pályájában, milyen belső fejlődési ívet mutat?
-
-### II. Részletes Műelemzés (Tematika, Szerkezet, Poétika)
-* **Központi téma és motívumrendszer:** A(z) {tema} alapkonfliktusa, vezérmotívumai (pl. bűn és bűnhődés, halhatatlanság, magány, nemzeti sors).
-* **Szerkezeti felépítés és kompozíció:** Hogyan épül fel a mű? (Expozíció, kibontakozás, tetőpont, fordulat, megoldás; vagy a lírai kompozíció belső íve).
-* **Poétikai és stilisztikai eszközök:** Verselés, ritmus, rímelés, nyelvi alakzatok, szimbólumok, metaforarendszer, narratív technikák vagy drámai formanyelv részletes vizsgálata.
-* **Karakterek és viszonyrendszerek:** A szereplők lelkiállapota, fejlődése, motivációi és drámai összecsapásai.
-
-### III. Egyetemes Üzenet és Hatástörténet
-* **Eszmei üzenet:** Mit üzen a mű az emberi létezésről, a morálról vagy a társadalomról a keletkezés sakor és ma?
-* **Kulturális utóélet:** Hogyan hatott a(z) {tema} a későbbi magyar és európai irodalomra, színházra, zenére vagy a vizuális művészetekre?
-            """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Kontextus:** Kor, eszmék és életmű.\n2. **Műelemzés:** A(z) {tema} főbb motívumai, szerkezete és poétikája.\n3. **Üzenet és utóélet:** Mi a mű jelentősége?"
+            reszletek = {
+                "Szakasz 1": ("I. Történeti, Eszmei és Művészettörténeti Kontextus", [
+                    ("Irodalomtörténeti korszak és eszmék", f"A(z) **{tema}** születésének korszaka (pl. reneszánsz, romantika, modernség) és annak meghatározó szellemi áramlatai."),
+                    ("Filozófiai és morális háttér", "Milyen világkép, emberkép vagy egzisztenciális kérdések hívták életre a művet/műveket?"),
+                    ("Szerzői életműbe ágyazottság", "Hol helyezkedik el ez az alkotás a szerző életpályájában, milyen művészi fejlődést mutat?")
+                ]),
+                "Szakasz 2": ("II. Részletes Műelemzés (Tematika, Szerkezet, Poétika)", [
+                    ("Központi téma és motívumrendszer", f"A(z) {tema} alapkonfliktusa, vezérmotívumai (pl. bűn és bűnhődés, halhatatlanság, magány, nemzeti sors)."),
+                    ("Szerkezeti felépítés és kompozíció", "Hogyan épül fel a mű? Expozíció, kibontakozás, tetőpont, fordulat, megoldás részletes elemzése."),
+                    ("Poétikai és stilisztikai eszközök", "Verselés, ritmus, rímelés, nyelvi alakzatok, szimbólumok, metaforarendszer vagy drámai formanyelv vizsgálata.")
+                ]),
+                "Szakasz 3": ("III. Egyetemes Üzenet és Hatástörténet", [
+                    ("Eszmei üzenet és morális tanulság", f"Mit üzen a(z) {tema} az emberi létezésről, a morálról vagy a társadalomról a keletkezésekor és napjainkban?"),
+                    ("Kulturális utóélet és recepció", "Hogyan hatott ez a mű a későbbi irodalmi generációkra, színházra, zenére vagy a vizuális művészetekre?"),
+                    ("Gyakorlati vizsgaszempontok", "Milyen kulcsmondatokat, idézeteket vagy szempontokat érdemes feltétlenül megemlíteni a felelet során?")
+                ])
+            }
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Kontextus:** Kor és eszmék.\n2. **Műelemzés:** A(z) {tema} főbb motívumai és poétikája.\n3. **Üzenet:** Mi a jelentősége?"
 
         tetelek_dict[f"{i+1}. {tema}"] = {
-            "alcim": f"Hivatalos érettségi tétel – Részletes, könyv szintű kidolgozás: {tema}",
-            "tartalom": tartalom.strip(),
+            "alcim": f"Hivatalos érettségi tétel – Részletes, kibontható tananyag: {tema}",
+            "reszletek": reszletek,
             "szobeli": szobeli,
             "kviz": [
                 {"k": f"Alapvető vizsgakérdés a(z) '{tema}' tétel lexikális anyagából?", "v": True, "m": "Igen, a vizsgakövetelmények szigorú alapját képezi."},
@@ -225,7 +216,6 @@ db = {
 
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
-if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state: st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek!"}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
@@ -257,7 +247,6 @@ aktiv_det = tantargy_adat["detektiv"]
 
 st.title("🎓 VizsgaMester")
 st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
-
 st.markdown("---")
 
 def ai_generalas_tartalom(contents_list):
@@ -268,8 +257,6 @@ def ai_generalas_tartalom(contents_list):
         res = client.models.generate_content(model='gemini-3.6-flash', contents=contents_list)
         return res.text if res else "Nincs válasz."
     except Exception as e:
-        if "503" in str(e):
-            return "⚠️ A szerver jelenleg túlterhelt (503-as hiba)."
         return f"Hiba: {e}"
 
 def read_file(uploaded_file):
@@ -288,10 +275,6 @@ def read_file(uploaded_file):
         text = f"Hiba a fájl olvasásakor: {e}"
     return text
 
-def get_tetel_specifikus_szkript(tantargy, tetel_neve):
-    alap_szoveg = aktiv_tetelek[tetel_neve]["tartalom"].replace("###", "").replace("- **", "").replace("**", "")
-    return f"{alap_szoveg}\n\n{alap_szoveg}"
-
 # --- MODULOK ---
 if menupont == "📚 Tételek & Vázlatok (20 db)":
     tetel_nev = st.selectbox("Válassz a 20 hivatalos tétel közül:", list(aktiv_tetelek.keys()))
@@ -300,8 +283,15 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
     
     tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag", "🎙️ 3 Perces Felelet", "⚡ Interaktív Kvíz"])
     with tab1:
-        st.markdown(f"<div class='deep-text'>{t_adat['tartalom']}</div>", unsafe_allow_html=True)
-    with tab2: st.markdown(f"<div class='oral-box'>{t_adat['szobeli']}</div>", unsafe_allow_html=True)
+        st.info("💡 Kattints az egyes alfejezetekre a részletes kifejtés és magyarázat kibontásához!")
+        for szakasz_kod, (cim_nev, alfejezetek) in t_adat["reszletek"].items():
+            with st.expander(cim_nev):
+                for alcim, leiras in alfejezetek:
+                    st.markdown(f"#### 🔹 {alcim}")
+                    st.markdown(leiras)
+                    st.markdown("---")
+    with tab2: 
+        st.markdown(f"<div class='oral-box'>{t_adat['szobeli']}</div>", unsafe_allow_html=True)
     with tab3:
         for i, q in enumerate(t_adat["kviz"]):
             st.write(f"**{i+1}. {q['k']}**")
@@ -312,73 +302,28 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
 elif menupont == "📂 Saját Fájlok & Képek":
     st.subheader("📂 Dokumentum és Kép AI Elemzés & Interaktív Kvíz")
     fajl = st.file_uploader("Fájl feltöltése (.docx, .pdf, .txt, .jpg, .png)", type=["txt", "pdf", "docx", "jpg", "jpeg", "png"])
-    
     if fajl:
         if fajl.type.startswith("image/"):
-            img_obj = Image.open(fajl)
-            st.image(img_obj, caption="Feltöltött kép előnézete")
+            st.image(Image.open(fajl), caption="Feltöltött kép előnézete")
             fajl.seek(0)
-
         if st.button("🚀 Elemzés és Összefoglalás"):
-            with st.spinner("Fájl / Kép olvasása és elemzése folyamatban..."):
-                content_payload = []
-                if fajl.type.startswith("image/"):
-                    img_data = Image.open(fajl)
-                    content_payload = [img_data, "Elemezd az alábbi képen látható tananyagot, tételt vagy feladatot, és készíts belőle részletes, érettségire felkészítő összefoglalót:"]
-                else:
-                    szoveg = read_file(fajl)
-                    st.session_state.aktiv_fajl_szoveg = szoveg
-                    content_payload = [f"Elemezd az alábbi feltöltött tananyagot és készíts belőle részletes, érettségire felkészítő összefoglalót: {szoveg[:10000]}"]
-
-                eredmeny = ai_generalas_tartalom(content_payload)
-                st.session_state.aktiv_elemzes_eredmeny = eredmeny
-                st.session_state.ai_quiz_data = None
-
-        if "aktiv_elemzes_eredmeny" in st.session_state and st.session_state.aktiv_elemzes_eredmeny:
-            st.write("### 📌 Elemzés eredménye:")
-            st.markdown(f"<div class='deep-text'>{st.session_state.aktiv_elemzes_eredmeny}</div>", unsafe_allow_html=True)
-            
-            st.markdown("---")
-            if st.button("🎯 Interaktív Kérdéssorozat Generálása"):
-                with st.spinner("Kérdéssorozat generálása az AI segítségével..."):
-                    if fajl.type.startswith("image/"):
-                        fajl.seek(0)
-                        img_data = Image.open(fajl)
-                        q_payload = [img_data, "Készíts 5 db feleletválasztós vizsgakérdést a képen látható tartalom alapján. Add vissza KIZÁRÓLAG érvényes JSON formátumban: [{\"question\": \"...\", \"options\": [\"A) ...\", \"B) ...\", \"C) ...\", \"D) ...\"], \"answer\": \"A) ...\", \"explanation\": \"...\"}]"]
-                    else:
-                        doc_text = st.session_state.get('aktiv_fajl_szoveg', '')[:8000]
-                        q_payload = [f"Készíts 5 db feleletválasztós vizsgakérdést a dokumentum alapján JSON-ban: {doc_text}"]
-
-                    raw_res = ai_generalas_tartalom(q_payload)
-                    try:
-                        cleaned = raw_res.replace("```json", "").replace("```", "").strip()
-                        st.session_state.ai_quiz_data = json.loads(cleaned)
-                    except Exception as e:
-                        st.error(f"Hiba történt a kvíz feldolgozásakor. ({e})")
-                        st.session_state.ai_quiz_data = None
-
-            if "ai_quiz_data" in st.session_state and st.session_state.ai_quiz_data:
-                st.markdown("### 🎯 Interaktív Teszt")
-                with st.form("ai_document_quiz_form"):
-                    user_answers = {}
-                    for idx, q_item in enumerate(st.session_state.ai_quiz_data):
-                        st.markdown(f"**{idx+1}. {q_item['question']}**")
-                        user_answers[idx] = st.radio("Válassz:", q_item['options'], key=f"doc_q_{idx}", index=None)
-                        st.markdown("---")
-                    
-                    submitted = st.form_submit_button("🏁 Válaszok Értékelése")
-                    if submitted:
-                        score = sum(1 for idx, q in enumerate(st.session_state.ai_quiz_data) if user_answers.get(idx) == q['answer'])
-                        total = len(st.session_state.ai_quiz_data)
-                        st.metric("Elért eredmény", f"{score} / {total} pont", f"{int((score/total)*100)}%")
+            with st.spinner("Elemzés folyamatban..."):
+                payload = [Image.open(fajl), "Elemezd részletesen:"] if fajl.type.startswith("image/") else [f"Elemezd részletesen: {read_file(fajl)[:10000]}"]
+                st.session_state.aktiv_elemzes_eredmeny = ai_generalas_tartalom(payload)
+        if "aktiv_elemzes_eredmeny" in st.session_state:
+            st.markdown(f"<div class='topic-card'>{st.session_state.aktiv_elemzes_eredmeny}</div>", unsafe_allow_html=True)
 
 elif menupont == "🎧 Hangoskönyv (Tétel-specifikus)":
     st.subheader("🎧 Tétel-specifikus Hangoskönyv")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
-    felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)[:4000]
+    t_adat = aktiv_tetelek[t_nev]
+    hang_szoveg = ""
+    for _, (_, alfejezetek) in t_adat["reszletek"].items():
+        for alcim, leiras in alfejezetek:
+            hang_szoveg += f"{alcim}. {leiras} "
     
     st.info(f"⚡ A(z) **{t_nev}** tétel hanganyaga elkészült:")
-    tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
+    tts = gTTS(text=hang_szoveg[:4000], lang='hu', slow=False)
     f = io.BytesIO()
     tts.write_to_fp(f)
     f.seek(0)
@@ -406,7 +351,7 @@ elif menupont == "🎙️ Szóbeli Szimulátor":
 elif menupont == "✍️ Esszé & Feladat Labor":
     sz = st.text_area("Írd be a szöveget:")
     if st.button("Javítás") and sz:
-        st.markdown(ai_generalas_tartalom([f"Javítsd ki ezt az esszét: {sz}"]))
+        st.markdown(ai_generalas_tartalom([f"Javítsd ki: {sz}"]))
 
 elif menupont == "🎭 Detektív Játék (20 db)":
     st.subheader("🎭 Detektív Feladványok")
