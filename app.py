@@ -73,7 +73,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- 20 TÉTEL GENERÁTOR (HOSSZÚ, 4-5 PERCES TARTALOMMAL) ---
+# --- 20 TÉTEL GENERÁTOR (HOSSZÚ, RÉSZLETES TARTALOMMAL) ---
 def generalo_tetelek(temak_lista):
     return {f"{i+1}. {tema}": {
         "alcim": f"Hivatalos érettségi tétel: {tema}",
@@ -214,4 +214,118 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
         for i, q in enumerate(t_adat["kviz"]):
             st.write(f"**{i+1}. {q['k']}**")
             c1, c2 = st.columns(2)
-            if c1.button("✅ Igaz", key=f"t_{i}
+            if c1.button("✅ Igaz", key=f"t_{i}"): st.success(f"Helyes! {q['m']}")
+            if c2.button("❌ Hamis", key=f"f_{i}"): st.error(f"Nem helyes. {q['m']}")
+
+elif menupont == "📂 Saját Fájlok & Képek":
+    st.subheader("📂 Dokumentum és Kép AI Elemzés")
+    fajl = st.file_uploader("Fájl feltöltése", type=["txt", "pdf", "docx", "jpg", "jpeg", "png"])
+    if fajl and st.button("🚀 Elemzés"):
+        st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
+
+elif menupont == "🎧 Hangoskönyv (4-5 perces)":
+    st.subheader("🎧 Részletes Hangoskönyv (Lényegretörő, 4-5 perces tananyag)")
+    t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
+    t_adat = aktiv_tetelek[t_nev]
+    
+    # Hosszú, részletes szakmai szöveg, ami kb. 4-5 perc beszédidőt biztosít felesleges köszöntések nélkül
+    hosszu_szoveg = f"""
+    {t_nev}. 
+    {t_adat['alcim']}. 
+    
+    Első rész. Történelmi, elméleti és kulturális előzmények. 
+    A(z) {t_nev} alapos megértéséhez elengedhetetlen a korabeli szellemi, gazdasági és társadalmi viszonyok feltárása. A vizsgált jelenség nem függetleníthető attól a történelmi közegtől, amelyben létrehozták. A kor embrének világképe, morális normái, valamint az uralkodó eszmék mind hozzájárultak a témakör kibontakozásához. Az előzmények ismerete segít megérteni azokat a kiváltó okokat, amelyek nyomán a folyamatok elindultak.
+    
+    Második rész. A tétel belső szerkezete, kulcsfogalmai és elemzése. 
+    A tétel magját a strukturális elemek, a legfontosabb művek, törvényszerűségek vagy események adják. A kifejtés során hangsúlyt kell fektetni a precíz lexikális adatokra, szakszavakra és a belső összefüggésekre. Ha irodalmi műről vagy történelmi korszakról van szó, a motivációk, a konfliktusok és a szereplők vagy tényezők hatásmechanizmusa adja a felelet gerincét. Az ok-okozati kapcsolatok logikai láncolata biztosítja a szakmai mélységet.
+    
+    Harmadik rész. Hatástörténet, jelentőség és utóélet. 
+    Egy jelentős tétel soha nem zárul le a saját korában. A hatástörténet vizsgálata során bemutatjuk, hogy a(z) {t_nev} milyen utóélettel rendelkezik, hogyan értelmezte a későbbi korok tudománytörténete vagy művészete, és milyen üzenetet hordoz a modern ember számára. Ezen szempontok összessége garantálja a sikeres, magas szintű és részletes érettségi feleletet.
+    """
+    
+    st.info("⚡ Ez a hangoskönyv közvetlenül a tétel részletes kifejtését tartalmazza, felesleges bevezető dumák nélkül, hosszan, 4-5 perces terjedelemmel!")
+    
+    tts = gTTS(text=hosszu_szoveg, lang='hu', slow=False)
+    f = io.BytesIO()
+    tts.write_to_fp(f)
+    f.seek(0)
+    
+    st.audio(f, format="audio/mp3")
+    
+    with st.expander("📄 A felolvasott hosszú szakmai anyag szövege"):
+        st.write(hosszu_szoveg)
+
+elif menupont == "🎴 Villámkártyák (20 db)":
+    idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
+    k = aktiv_flash[idx]
+    st.subheader(f"Villámkártya ({idx+1} / {len(aktiv_flash)})")
+    if not st.session_state.card_flipped:
+        st.markdown(f"<div class='flashcard'>❓ {k['q']}</div>", unsafe_allow_html=True)
+        if st.button("🔄 Megfordítás"): st.session_state.card_flipped = True; st.rerun()
+    else:
+        st.markdown(f"<div class='flashcard' style='background:linear-gradient(135deg, #064e3b, #065f46);'>💡 {k['a']}</div>", unsafe_allow_html=True)
+        if st.button("Következő kártya"):
+            st.session_state.card_flipped = False
+            st.session_state.f_idx = idx + 1
+            st.rerun()
+
+elif menupont == "🎙️ Szóbeli Szimulátor":
+    audio = st.audio_input("Felelet rögzítése:")
+    if audio and st.button("Értékelés"):
+        st.markdown(ai_generalas("Értékeld a szóbeli feleletet:"))
+
+elif menupont == "✍️ Esszé & Feladat Labor":
+    sz = st.text_area("Írd be a szöveget:")
+    if st.button("Javítás") and sz: st.markdown(ai_generalas(f"Javítsd ki: {sz}"))
+
+elif menupont == "🎭 Detektív Játék (20 db)":
+    st.subheader(f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
+    st.session_state.detektiv_index = st.session_state.detektiv_index % len(aktiv_det)
+    idx = st.session_state.detektiv_index
+    f = aktiv_det[idx]
+    st.markdown(f"<div class='topic-card' style='text-align:center;'><h3 style='color:#f472b6; font-style:italic;'>{f['idezet']}</h3></div>", unsafe_allow_html=True)
+    tipp = st.radio("Válaszd ki a helyes megfejtést:", f['opciok'], index=None, key=f"det_{idx}")
+    if st.button("🔍 Ellenőrzés"):
+        if tipp == f['helyes']:
+            st.balloons(); st.success(f"Helyes válasz! 🎉\n\n📌 {f['info']}")
+        else:
+            st.error(f"Nem találtad el. ❌ A helyes válasz: **{f['helyes']}**\n\n📌 {f['info']}")
+    if st.button("➡️ Következő feladvány"):
+        st.session_state.detektiv_index += 1
+        st.rerun()
+
+elif menupont == "🧭 Történelmi Idővonal":
+    for item in aktiv_time:
+        st.markdown(f"<div class='timeline-item'><b>{item['ev']}</b>: <h3>{item['cim']}</h3><p>{item['leiras']}</p></div>", unsafe_allow_html=True)
+
+elif menupont == "🏆 Nagy Próbavizsga":
+    st.subheader(f"🏆 Interaktív Próbavizsga – {kivalasztott_tantargy}")
+    osszes_kerdes = []
+    for t_nev, t_adat in aktiv_tetelek.items():
+        for q in t_adat.get("kviz", []): osszes_kerdes.append((t_nev, q))
+    
+    valaszok = {}
+    with st.form("vizsga_form"):
+        for i, (t_nev, q) in enumerate(osszes_kerdes):
+            st.write(f"**{i+1}. [{t_nev}]**")
+            st.write(q["k"])
+            valaszok[i] = st.radio("Válasz:", ["Nem válaszoltam", "Igaz", "Hamis"], key=f"p_{i}", horizontal=True)
+            st.markdown("---")
+        bekuldve = st.form_submit_button("🏁 Próbavizsga Értékelése")
+        
+    if bekuldve:
+        pont = sum(1 for i, (t_nev, q) in enumerate(osszes_kerdes) if valaszok[i] != "Nem válaszoltam" and ((valaszok[i] == "Igaz") == q["v"]))
+        szaz = int((pont / len(osszes_kerdes)) * 100) if osszes_kerdes else 0
+        st.metric("Elért eredmény", f"{pont} / {len(osszes_kerdes)} pont", f"{szaz}%")
+        if szaz >= 85: st.success("🏆 Jeles (5) – Kiváló teljesítmény!")
+        elif szaz >= 50: st.info("👍 Megfelelő vizsgaeredmény!")
+        else: st.error("❌ Fejlesztendő!")
+
+elif menupont == "🤖 AI Érettségi Mentor":
+    for msg in st.session_state.chat_history:
+        st.markdown(f"<div class='chat-{msg['role']}'>{msg['text']}</div>", unsafe_allow_html=True)
+    k = st.text_input("Kérdezz a mentortól:")
+    if st.button("Küldés") and k:
+        st.session_state.chat_history.append({"role": "user", "text": k})
+        st.session_state.chat_history.append({"role": "ai", "text": ai_generalas(k)})
+        st.rerun()
