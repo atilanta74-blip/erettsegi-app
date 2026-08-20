@@ -53,7 +53,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------------------
-# ADATBÁZISOK
+# TELJES ADATBÁZISOK (Irodalom, Nyelvtan, Történelem, Matek)
 # -------------------------------------------------------------
 tetelek_irodalom = {
     "1. Arany János balladái": {
@@ -67,6 +67,18 @@ tetelek_irodalom = {
         "vazlat": "### I. Műfaj: Romantikus mesei fordulatok és realista társadalomrajz.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. 1872 kontextusa -> 2. Timár Mihály kettős élete és a Senki szigete.",
         "kviz": [{"k": "A Senki szigete pénzmentes természeti utópia a regényben.", "v": True, "m": "A társadalmi konvenciókon kívül áll."}]
+    },
+    "3. Petőfi Sándor költészete": {
+        "alcim": "A népies helyzetdalok, tájleíró versek és a látomásköltészet",
+        "vazlat": "### I. Népies lakodalom és tájköltészet.\n### II. Az Apostol és a látomásversek.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Petőfi költészetének fordulatai -> 2. A szabadság és szerelem harmóniája.",
+        "kviz": [{"k": "A Tisza című vers tájleírás és életkép egyszerre.", "v": True, "m": "A folyó és az Alföld egysége."}]
+    },
+    "4. Madách Imre: Az ember tragédiája": {
+        "alcim": "Filozófiai dráma, emberiségdráma, történelmi színhelyek",
+        "vazlat": "### I. Keretszín: Lucifer és az Úr vitája.\n### II. Történelmi színek: Egyiptom, Athén, Róma, London, stb.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Ádám és Éva szerepe -> 2. 'Küzdj és bízva bízzál!' üzenet.",
+        "kviz": [{"k": "A falanszter színben a művészet és az egyéniség teljes eltörlése jelenik meg.", "v": True, "m": "A tudomány uralma."}]
     }
 }
 
@@ -76,6 +88,18 @@ tetelek_nyelvtan = {
         "vazlat": "### I. A Jakobson-féle modell: Adó, Vevő, Üzenet, Kód, Csatorna, Referens.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. A kommunikáció definíciója -> 2. Nyelvi funkciók bemutatása példákkal.",
         "kviz": [{"k": "A fatikus funkció célja a kapcsolat felvétele és fenntartása.", "v": True, "m": "Ilyenek a köszönések vagy a telefonos 'halló'."}]
+    },
+    "2. A magyar helyesírás alapelvei": {
+        "alcim": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés elve",
+        "vazlat": "### I. A négy fő helyesírási alapelv részletes kifejtése példákkal.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Alapelvek ismertetése -> 2. Kivételek a kiejtés elve alól.",
+        "kviz": [{"k": "A 'zsiráf' szó j-vel írása a hagyomány elvére példa.", "v": True, "m": "Történeti írásmód."}]
+    },
+    "3. Szófajok rendszere a magyar nyelvben": {
+        "alcim": "Alaptagok, viszonyszók, igék, főnevek, melléknevek",
+        "vazlat": "### I. Alaptagok (ige, főnév, melléknév, számnév, névmás, határozószó).\n### II. Viszonyszók (névelő, névutó, kötőszó, segédige, igekötő, mondatszó).",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Szófaji csoportosítás szempontjai -> 2. Alaptagok és viszonyszók különbsége.",
+        "kviz": [{"k": "A segédige viszonyszó, mert önmagában nem megnevező elem.", "v": True, "m": "Nyelvtani viszonyt fejez ki."}]
     }
 }
 
@@ -85,6 +109,18 @@ tetelek_tortenelem = {
         "vazlat": "### I. Intézményrendszer: Népgyűlés, Boule, Héliaia, sztratégoszok.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Kialakulás -> 2. Cserépszavazás és a démosz jogai.",
         "kviz": [{"k": "Az athéni népgyűlés tagja lehetett minden szabad férfi polgár.", "v": True, "m": "Közvetlen demokrácia volt."}]
+    },
+    "2. A magyarság honfoglalása és kalandozásai": {
+        "alcim": "Etelköz, Vereckei-hágó, kalandozó hadjáratok irányai",
+        "vazlat": "### I. A magyarság vándorlása és őshazái.\n### II. A Kárpát-medence elfoglalása és a kalandozások kora.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Honfoglalás okai -> 2. Kalandozások európai hatásai.",
+        "kviz": [{"k": "A kalandozások az augsburgi csatában (955) szenvedett vereséggel zárultak nyugat felé.", "v": True, "m": I. Ottó megállította a magyarokat."}]
+    },
+    "3. Szent István államalapítása és egyházszervezése": {
+        "alcim": "Géza politikája, koronázás, vármegyerendszer, tized",
+        "vazlat": "### I. Géza fejedelem előkészítő munkája.\n### II. István király egyházmegyéi és törvényei.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Kereszténység felvétele -> 2. Vármegyék és püspökségek.",
+        "kviz": [{"k": "Szent István tíz falu után egy templom építését rendelte el.", "v": True, "m": "Ez volt a tizedik falu templomépítési kötelezettsége."}]
     }
 }
 
@@ -94,12 +130,25 @@ tetelek_matek = {
         "vazlat": "### I. Halmazműveletek és kombinatorikai képletek.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Halmazok, metszet, unió -> 2. Ismétlés nélküli és ismétléses permutáció.",
         "kviz": [{"k": "Az 5-ös lottó kihúzásainak száma kombinációval számítható.", "v": True, "m": "A sorrend nem számít."}]
+    },
+    "2. Másodfokú egyenletek, egyenlőtlenségek és függvények": {
+        "alcim": "Megoldóképlet, Viète-formulák, másodfokú függvény tulajdonságai",
+        "vazlat": "### I. Diszkrimináns szerepe.\n### II. Parabola csúcspontja, zérushelyei.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Megoldóképlet levezetése -> 2. Függvény transzformációi.",
+        "kviz": [{"k": "Ha a diszkrimináns negatív, akkor a másodfokú egyenletnek nincs valós gyöke.", "v": True, "m": "A gyökjel alatt negatív szám áll."}]
+    },
+    "3. Trigonometria és geometria": {
+        "alcim": "Szinusztétel, koszinusztétel, derékszögű háromszög összefüggései",
+        "vazlat": "### I. Szögfüggvények értelmezése.\n### II. Háromszögek megoldása.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Pitagorasz tétel alkalmazásai -> 2. Koszinusztétel bizonyítása.",
+        "kviz": [{"k": "A szinusztétel minden háromszögre érvényes.", "v": True, "m": "A oldal és szemközti szög szinuszának aránya állandó."}]
     }
 }
 
 flashcards_irodalom = [
     {"q": "Mit jelent a ballada Greguss Ágost-féle meghatározása?", "a": "„Tragédia dalban elbeszélve” – egyesíti a líra, epika és dráma sajátosságait."},
-    {"q": "Melyik évben indult a Nyugat folyóirat?", "a": "1908-ban indult, Osvát Ernő szerkesztette."}
+    {"q": "Melyik évben indult a Nyugat folyóirat?", "a": "1908-ban indult, Osvát Ernő szerkesztette."},
+    {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre (1861-ben jelent meg)."}
 ]
 flashcards_nyelvtan = [
     {"q": "Mi a 4 helyesírási alapelv?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."},
@@ -114,10 +163,22 @@ flashcards_matek = [
     {"q": "Melyik tétel általánosítja Pitagoraszt?", "a": "Koszinusztétel."}
 ]
 
-timeline_irodalom = [{"ev": "1848–1849", "cim": "Forradalom lírája", "leiras": "Petőfi Sándor és Arany János munkássága."}]
-timeline_nyelvtan = [{"ev": "1055", "cim": "Tihanyi apátság alapítólevele", "leiras": "Az első magyar nyelvemlék (szórványemlék)."}]
-timeline_tortenelem = [{"ev": "1000 / 1001", "cim": "Magyar államalapítás", "leiras": "Szent István király koronázása."}]
-timeline_matek = [{"ev": "Kr. e. VI. század", "cim": "Pitagorasz tétele", "leiras": "A derékszögű háromszög oldalainak összefüggése."}]
+timeline_irodalom = [
+    {"ev": "1848–1849", "cim": "Forradalom lírája", "leiras": "Petőfi Sándor és Arany János munkássága."},
+    {"ev": "1908", "cim": "A Nyugat indulása", "leiras": "A modern magyar irodalom mérföldköve."}
+]
+timeline_nyelvtan = [
+    {"ev": "1055", "cim": "Tihanyi apátság alapítólevele", "leiras": "Az első magyar nyelvemlék."},
+    {"ev": "1533", "cim": "Komjáti Benedek", "leiras": "Az első magyar nyomtatott könyv."}
+]
+timeline_tortenelem = [
+    {"ev": "1000 / 1001", "cim": "Magyar államalapítás", "leiras": "Szent István király koronázása."},
+    {"ev": "1222", "cim": "Aranybulla", "leiras": "II. András kiadja Székesfehérváron."}
+]
+timeline_matek = [
+    {"ev": "Kr. e. VI. század", "cim": "Pitagorasz tétele", "leiras": "Geometriai alapvetés."},
+    {"ev": "1637", "cim": "Descartes analitikus geometria", "leiras": "Koordináta-rendszer bevezetése."}
+]
 
 detektiv_irodalom = [
     {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János", "Radnóti Miklós"], "info": "A felelősségvállalás parancsa a költő művében."},
