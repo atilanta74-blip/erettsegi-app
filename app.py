@@ -19,7 +19,7 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# --- JAVÍTOTT, TELJES KÖRŰ STÍLUSOK (FÁJLFELTÖLTŐ JAVÍTVA) ---
+# --- VÉGLEGES KONTRASTOS STÍLUSOK (FÁJLFELTÖLTŐ TELJES JAVÍTÁSA) ---
 st.markdown("""
 <style>
     .stApp { background-color: #050505; color: #f3f4f6; }
@@ -33,10 +33,13 @@ st.markdown("""
     div[data-testid="stExpander"] { background-color: #111827 !important; border: 1px solid #374151 !important; border-radius: 12px !important; }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea { background-color: #111827 !important; color: #ffffff !important; border: 1px solid #374151 !important; border-radius: 10px !important; }
     
-    /* Fájlfeltöltő doboz teljes körű szövegszín javítása (minden belső elem fehér) */
+    /* Fájlfeltöltő doboz totális szövegszín kényszerítése */
     [data-testid="stFileUploader"] { background-color: #111827 !important; padding: 20px; border-radius: 16px; border: 1px solid #374151; }
     [data-testid="stFileUploader"] section { background-color: #1f2937 !important; border: 2px dashed #6366f1 !important; }
-    [data-testid="stFileUploader"] section * { color: #ffffff !important; }
+    [data-testid="stFileUploader"] section div, 
+    [data-testid="stFileUploader"] section span, 
+    [data-testid="stFileUploader"] section small, 
+    [data-testid="stFileUploader"] section p { color: #ffffff !important; }
     [data-testid="stFileUploader"] label { color: #ffffff !important; font-size: 1.1rem !important; font-weight: 600 !important; }
 
     .stat-badge { background: linear-gradient(135deg, #6366f1, #a855f7); padding: 8px 18px; border-radius: 24px; font-weight: 700; display: inline-block; box-shadow: 0 2px 10px rgba(99,102,241,0.3); }
@@ -181,13 +184,13 @@ db = {
     }
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 750
-if 'streak' not in st.session_state: st.session_state.streak = 17
+if 'xp' not in st.session_state: st.session_state.xp = 800
+if 'streak' not in st.session_state: st.session_state.streak = 18
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! Most már a fájlfeltöltő doboz szövege is tiszta fehér és tökéletesen olvasható."}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A fájlfeltöltő doboz szövegei most már fixen, mindig látszódnak."}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
