@@ -1,10 +1,54 @@
-
 {
-  "Irodalom": [
-    {"cim": "1. Ókori eposzok", "alcim": "Homérosz", "vazlat": "Eposzi kellékek...", "kviz": "Az Iliász trójai?"},
-    {"cim": "2. Shakespeare", "alcim": "Hamlet", "vazlat": "Lenni vagy nem lenni...", "kviz": "Hamlet dán?"}
-  ],
-  "Tortenelem": [
-    {"cim": "1. Athéni demokrácia", "alcim": "Periklész", "vazlat": "Népgyűlés...", "kviz": "Démosz?"}
-  ]
+  "Magyar Irodalom": {
+    "tetelek": {
+      "1. Ókori eposzok és a Biblia": {
+        "alcim": "Homérosz és az európai kultúra alapkövei",
+        "vazlat": "### I. Eposzi kellékek\n- Invokáció, propozíció, in medias res, csodás elemek.\n### II. Iliász és Odüsszeia\n- Trójai háború, emberi sorsok és istenek.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Műfaj jellemzői -> 2. Hősök ábrázolása.",
+        "kviz": [
+          {"k": "Az eposz nagy terjedelmű verses epikai mű.", "v": true, "m": "Igen, a klasszikus ókori műfajok egyike."},
+          {"k": "Az in medias res azt jelenti, hogy a dolgok végén kezdődik a mű.", "v": false, "m": "Nem, a történet sűrűjébe vágó kezdést jelent."}
+        ]
+      },
+      "2. Shakespeare drámái": {
+        "alcim": "A reneszánsz színház és a Hamlet",
+        "vazlat": "### I. Globe Színház\n- Erzsébet-kori dráma, jellemfejlődés.\n### II. Hamlet\n- A tettek halasztása, morális válság.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Drámatörténeti kontextus -> 2. A Hamlet dilemmája.",
+        "kviz": [
+          {"k": "A Hamlet dráma főhőse dán királyfi.", "v": true, "m": "Igen."}
+        ]
+      }
+    },
+    "flashcards": [
+      {"q": "Mit jelent az in medias res?", "a": "A dolgok sűrűjébe vágó eposzi kezdés."},
+      {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."}
+    ],
+    "timeline": [
+      {"ev": "Kr. e. VIII. sz.", "cim": "Homéroszi eposzok", "leiras": "Az Iliász és az Odüsszeia keletkezése."}
+    ],
+    "detektiv": [
+      {"idezet": "„Férfiat zengj nekem, múzsa...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius", "Dante"], "info": "Az Odüsszeia nyitánya."}
+    ]
+  },
+  "Történelem": {
+    "tetelek": {
+      "1. Az athéni demokrácia": {
+        "alcim": "Szolón, Kleiszthenész és Periklész reformjai",
+        "vazlat": "### I. Intézmények\n- Népgyűlés, Boule, Héliaia.\n### II. Démosz jogai\n- Cserépszavazás, napidíj.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Kialakulás -> 2. Működés.",
+        "kviz": [
+          {"k": "Az athéni demokrácia közvetlen demokrácia volt.", "v": true, "m": "Igen."}
+        ]
+      }
+    },
+    "flashcards": [
+      {"q": "Mikor volt a honfoglalás?", "a": "895-ben."}
+    ],
+    "timeline": [
+      {"ev": "1000", "cim": "Államalapítás", "leiras": "Szent István koronázása."}
+    ],
+    "detektiv": [
+      {"idezet": "„Ius resistendi”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Szent István"], "info": "A nemesek ellenállási joga."}
+    ]
+  }
 }
