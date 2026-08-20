@@ -73,7 +73,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- 20 TÉTEL GENERÁTOR (TÉTELRE SZABOTT TARTALOMMAL) ---
+# --- 20 TÉTEL GENERÁTOR ---
 def generalo_tetelek(temak_lista):
     return {f"{i+1}. {tema}": {
         "alcim": f"Hivatalos érettségi tétel: {tema}",
@@ -199,14 +199,11 @@ def ai_generalas(prompt):
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
-# --- TÉTEL-SPECIFIKUS ÉS BŐVÍTETT HANGOSKÖNYV SZKRIPT ---
+# --- TÉTEL-SPECIFIKUS SZKRIPT FEJLÉC NÉLKÜL ---
 def get_tetel_specifikus_szkript(tantargy, tetel_neve):
-    # Lekérjük az adott tételhez generált egyedi tartalmat, és azt bővítjük ki többszörösen, hogy meglegyen a hossza
+    # Kivesszük a jelöléseket, és kétszer összefűzzük, hogy hosszan, fejlécek nélkül szóljon a tétel saját tartalma
     alap_szoveg = aktiv_tetelek[tetel_neve]["tartalom"].replace("###", "").replace("- **", "").replace("**", "")
-    specifikus_fejlec = f"Hivatalos érettségi tétel: {tetel_neve}. Tantárgy: {tantargy}."
-    
-    # A tétel saját tartalmát ismételjük és fűzzük össze, hogy az adott tétel saját szövege szóljon hosszan
-    teljes_anyag = f"{specifikus_fejlec}\n\n{alap_szoveg}\n\nRészletes kifejtés és elemzés:\n{alap_szoveg}\n\nÖsszegzés és hatástörténet:\n{alap_szoveg}"
+    teljes_anyag = f"{alap_szoveg}\n\n{alap_szoveg}"
     return teljes_anyag
 
 # --- MODULOK ---
@@ -233,10 +230,9 @@ elif menupont == "📂 Saját Fájlok & Képek":
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
 elif menupont == "🎧 Hangoskönyv (Tétel-specifikus)":
-    st.subheader("🎧 Tétel-specifikus Hangoskönyv (Részletes felolvasás)")
+    st.subheader("🎧 Tétel-specifikus Hangoskönyv")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
     
-    # Itt most már pont a kiválasztott tétel saját tartalmát kapja meg a gTTS
     felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)
     
     st.info(f"⚡ A(z) **{t_nev}** tétel saját, részletes szakmaianyaga azonnal lejátszható:")
