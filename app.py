@@ -71,45 +71,45 @@ st.markdown("""
 <div class="menu-label">Menü</div>
 """, unsafe_allow_html=True)
 
-# --- RÉSZLETES, KIBONTHATÓ TANANYAG ADATBÁZIS GENERÁTOR ---
+# --- RÉSZLETES, VÁLASZOKAT TARTALMAZÓ ADATBÁZIS GENERÁTOR ---
 def generalo_tetelek(temak_lista, tipus):
     tetelek_dict = {}
     for i, tema in enumerate(temak_lista):
         if tipus == "matek":
             reszletek = {
                 "Szakasz 1": ("I. Alapfogalmak, Definíciók és Elméleti Rendszer", [
-                    ("A témakör pontos definíciója és jelölésrendszere", f"A(z) **{tema}** alapegységei, halmazelméleti és logikai keretei. A matematikában minden állítás pontos definíciókra épül, így elengedhetetlen a használt szimbólumok és alaphalmazok pontos ismerete."),
-                    ("Értelmezési tartományok és kikötések", "Milyen megszorítások vonatkoznak a kifejezésekre? (Pl. nevező nem lehet nulla, logaritmus alapja pozitív és 1-től különböző kell legyen, gyök alatt nem állhat negatív szám). Ezen feltételek ellenőrzése minden számítás első lépése."),
-                    ("Módszertani célkitűzés", "Miért alkalmazzuk ezt a matematikai eszközt? Hogyan segít ez valós idejű problémák, egyenletrendszerek vagy térbeli alakzatok leírásában?")
+                    ("Pontos definíciók és jelölésrendszer", f"A(z) **{tema}** témakörhöz kapcsolódó alapvető matematikai objektumok és halmazok bemutatása. Megadjuk a szabványos jelöléseket és az értelmezési tartományokat."),
+                    ("Kikötések és feltételek", "A számítások megkezdése előtt szigorúan ellenőrizni kell a kikötéseket (pl. nevező != 0, logaritmus argumentuma > 0), mivel ezek nélkül az egyenletmegoldás hibás eredményhez vezethet."),
+                    ("Gyakorlati modell", "Bemutatjuk, hogy a(z) {tema} milyen valós problémák (pl. pénzügyi számítások, területmérések) matematikai leírására szolgál.")
                 ]),
-                "Szakasz 2": ("II. Főbb Tételek, Szabályok és Levezetések", [
-                    ("Központi tételek és logikai összefüggések", f"A(z) {tema} területéhez tartozó legfontosabb tételek. Itt tekintjük át a képletek érvényességi feltételeit és egymásból való levezetésüket."),
-                    ("Algoritmusok lépésről lépésre", "1. Adatok rögzítése és feltételek vizsgálata.\n2. A megfelelő képlet vagy azonosság kiválasztása.\n3. Az algebrai vagy numerikus műveletek elvégzése.\n4. Ellenőrzés visszahelyettesítéssel."),
-                    ("Gyakori hibaleforrások és buktatók", "Előjelek tévesztése zárójelbontáskor, hamis gyökök beemelése a négyzetre emelés miatt, valamint a mértékegységek elhanyagolása.")
+                "Szakasz 2": ("II. Főbb Tételek, Szabályok és Számítási Menet", [
+                    ("Központi tételek és képletek", f"A(z) {tema} legfontosabb összefüggéseinek felírása, magyarázata és alkalmazási feltételei. Lépésről lépésre bemutatjuk a képletek használatát."),
+                    ("Számítási algoritmus", "1. Feltételek tisztázása és adatok rögzítése.\n2. A megfelelő azonosság vagy képlet kiválasztása.\n3. Az átalakítások és műveletek pontos elvégzése.\n4. Ellenőrzés és válasz megadása."),
+                    ("Tipikus hibaleforrások", "A leggyakoribb hibák közé tartozik az előjelek elrontása a zárójelbontáskor, a négyzetre emeléskor keletkező hamis gyökök beemelése, valamint a mértékegységek átváltásának elmulasztása.")
                 ]),
-                "Szakasz 3": ("III. Részletesen Kidolgozott Példák és Alkalmazások", [
-                    ("Alapszintű rutinfeladat részletes megoldása", f"Gyakorlati példa a(z) {tema} közvetlen alkalmazására, lépésről lépésre követhető numerikus menettel."),
-                    ("Emelt szintű, összetett feladattípus", "Komplex, több témakört (pl. függvényvizsgálat és trigonometria) összekapcsoló érettségi feladat elemzése."),
-                    ("Gyakorlati modellalkotás", "Hogyan hasznosul ez a tudás a fizikai mozgások leírásában, a pénzügyi kalkulációkban vagy a statisztikai elemzésekben?")
+                "Szakasz 3": ("III. Részletesen Kidolgozott Példák és Feladattípusok", [
+                    ("1. Alapszintű mintafeladat", f"Közvetlen számítási feladat a(z) {tema} témaköréből, ahol a képletet rutinműveletként kell alkalmazni. Részletes numerikus levezetés."),
+                    ("2. Emelt szintű összetett feladat", "Olyan vizsgafeladat, amely a(z) {tema} területét összekapcsolja egy másik matematikai ággal (pl. függvényvizsgálat vagy geometriai szerkesztés)."),
+                    ("Ellenőrzési technikák", "Hogyan győződhetünk meg a vizsgán arról, hogy a kapott eredmény helyes? Visszahelyettesítés és nagyságrendi becslés.")
                 ])
             }
-            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Definíciók:** A(z) {tema} alapfogalmai.\n2. **Főbb képletek:** A központi összefüggések felírása.\n3. **Alkalmazás:** Egy tipikus feladat bemutatása."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Definíciók:** A(z) {tema} alapfogalmai.\n2. **Képletek:** A központi összefüggések bemutatása.\n3. **Példa:** Egy tipikus feladattípus rövid ismertetése."
         elif tipus == "tori":
             reszletek = {
-                "Szakasz 1": ("I. Történelmi Előzmények és Okok", [
-                    ("Gazdasági és társadalmi háttér", f"Milyen folyamatok, struktúrák vagy válságok hívták életre a(z) **{tema}** eseményeit? A korabeli népesség helyzete, vagyoni viszonyok és rétegződés."),
-                    ("Okozati összefüggések és érdekek", "A kortárs nagyhatalmi törekvések, geopolitikai érdekek, vallási ellentétek vagy gazdasági függőségi viszonyok rendszere."),
-                    ("A kiváltó ok (casus belli)", "Az a konkrét, sokszor váratlan esemény vagy provokáció, amely a lappangó feszültséget nyílt konfliktusba vagy rendszerváltásba torkollatta.")
+                "Szakasz 1": ("I. Történelmi Előzmények, Okok és Háttér", [
+                    ("Gazdasági és társadalmi előzmények", f"A(z) **{tema}** kialakulását megelőző évtizedek társadalmi feszültségei, gazdasági válságai vagy népességi változásai."),
+                    ("Okozati összefüggések és érdekek", "A kortárs nagyhatalmi törekvések, politikai ellentétek, vallási vagy gazdasági érdekütközések hálója."),
+                    ("A kiváltó ok (casus belli)", "Az a konkrét, sokszor váratlan esemény, amely az addig lappangó ellentéteket nyílt háborúvá vagy rendszerváltó forradalommá lobbantotta.")
                 ]),
                 "Szakasz 2": ("II. Fő Események, Személyek és Intézmények", [
-                    ("Kronológiai ív és legfontosabb fordulópontok", f"A(z) {tema} kulcsfontosságú dátumai, csatái, békekötései, törvényhozási határozatai vagy reformhullámai."),
-                    ("Meghatározó történelmi személyek", "Az uralkodók, hadvezérek, politikusok, forradalmárok tettei, egyéni motivációi, politikai stratégiáik és azok történelmi súlya."),
-                    ("Intézményi és katonai háttér", "Hogyan működtek a korabeli állami szervek, parlamentek, egyházak, vagy milyen fegyvernemek, harcmodorok határozták meg az eseményeket?")
+                    ("Kronológiai ív és legfontosabb fordulópontok", f"A(z) {tema} legfontosabb dátumai, csatái, békekötései, törvényhozási határozatai kronologikus sorrendben."),
+                    ("Meghatározó történelmi személyek és tetteik", "A korszak kiemelt uralkodói, hadvezérei, politikusai (pl. Periklész, Julius Caesar, Szent István, Hunyadi Mátyás, Kossuth Lajos). Az ő egyéni döntéseik, stratégiáik és azok történelmi következményei."),
+                    ("Intézményi és katonai háttér", "A korabeli államszervezet, parlamenti intézmények, egyházak működése, valamint a harcmodor, fegyvernemek és logisztikai feladatok.")
                 ]),
                 "Szakasz 3": ("III. Következmények, Mérleg és Hatástörténet", [
-                    ("Rövid távú következmények", f"Területi változások, hatalmi átrendeződések, vérveszteségek, politikai konszolidáció vagy éppen radikális fordulatok a(z) {tema} után."),
-                    ("Hosszú távú hatások a társadalomra", "Hogyan formálta át ez a korszak az ország határait, gazdaságát, törvényeit és a mindennapi ember életét a következő évszázadokban?"),
-                    ("Történeti értékelés és viták", "Hogyan ítéli meg a modern történettudomány ezt a korszakot, milyen különböző szempontokból elemezik a történészek?")
+                    ("Rövid távú következmények", f"Területi változások, hatalmi átrendeződések, vérveszteségek, politikai konszolidáció vagy ellenforradalmi terrorsorozatok a(z) {tema} után."),
+                    ("Hosszú távú hatások a társadalomra", "Hogyan formálta át ez a folyamat az ország határait, jogrendszerét, gazdaságát és a lakosság mindennapjait a következő évszázadokban?"),
+                    ("Történeti értékelés és viták", "Hogyan ítéli meg a modern történettudomány ezt a korszakot, milyen különböző szempontokból elemezik a történészek napjainkban?")
                 ])
             }
             szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Előzmények:** Mi vezetett ide?\n2. **Fő események és személyek:** A(z) {tema} fordulópontjai.\n3. **Következmények:** Milyen hatást gyakorolt a történelemre?"
@@ -283,7 +283,7 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
     
     tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag", "🎙️ 3 Perces Felelet", "⚡ Interaktív Kvíz"])
     with tab1:
-        st.info("💡 Kattints az egyes alfejezetekre a részletes kifejtés és magyarázat kibontásához!")
+        st.info("💡 Kattints az egyes alfejezetekre (pl. I., II., III.) a részletes magyarázatok és válaszok kibontásához!")
         for szakasz_kod, (cim_nev, alfejezetek) in t_adat["reszletek"].items():
             with st.expander(cim_nev):
                 for alcim, leiras in alfejezetek:
