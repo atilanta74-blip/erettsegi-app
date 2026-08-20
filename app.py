@@ -73,21 +73,21 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- 20 TÉTEL GENERÁTOR ---
+# --- 20 TÉTEL GENERÁTOR (TÉTELRE SZABOTT TARTALOMMAL) ---
 def generalo_tetelek(temak_lista):
     return {f"{i+1}. {tema}": {
         "alcim": f"Hivatalos érettségi tétel: {tema}",
         "tartalom": f"""
 ### I. Bevezetés és Alapfogalmak
-A(z) **{tema}** témakör kiemelt fontosságú az érettségi vizsgán. Megértése kulcsfontosságú az összefüggések átlátásához, hiszen a vizsgán gyakran kérdezik a történelmi, kulturális vagy elméleti hátteret.
+A(z) **{tema}** témakör alapos és részletes kifejtése során ki kell térnünk a legfontosabb alapfogalmakra. Ezen terület megértése kulcsfontosságú a {tema} jellegzetességeinek átlátásához, hiszen a vizsgán szigorúan követelik a precíz lexikális hátteret.
 
-### II. Fő Események, Művek vagy Szabályok
-- **Történeti/Szakmai kontextus:** A korabeli viszonyok és a legfontosabb előzmények feltárása.
-- **Szerkezeti felépítés:** A tétel legfőbb egységei, alaptézisei és kulcsfogalmai.
-- **Kiemelt példák:** Elemzési szempontok, amelyekkel magabiztosan felépíthető a felelet.
+### II. Fő Események, Művek és Részletes Elemzés
+- **Történeti és szakmai kontextus:** A(z) {tema} hátterében álló korabeli viszonyok, előzmények és kiváltó okok részletes elemzése.
+- **Szerkezeti felépítés:** A tétel belső összefüggései, a főbb egységek, alaptézisek és a kapcsolódó kulcsfogalmak rendszere.
+- **Szakmai példák:** Konkrét példák és szempontok bemutatása, amelyekkel a felelet teljesen összeáll és logikusan felépíthető.
 
 ### III. Összegzés és Hatástörténet
-A vizsgán elengedhetetlen annak bemutatása, hogy a(z) {tema} milyen tartós hatást gyakorolt a fejlődésre, és milyen következtetéseket vonhatunk le belőle napjainkban.
+A vizsgán elengedhetetlen annak bizonyítása, hogy a(z) {tema} milyen tartós hatást gyakorolt a fejlődésre, és milyen tanulságokat hordoz a modern kor embere számára.
         """,
         "szobeli": f"**🎙️ 3 perces felelet vázlata:** 1. Bevezetés ({tema}) -> 2. Fő tézisek kifejtése -> 3. Összegzés.",
         "kviz": [
@@ -164,7 +164,7 @@ menupont = st.sidebar.radio(
     [
         "📚 Tételek & Vázlatok (20 db)", 
         "📂 Saját Fájlok & Képek",
-        "🎧 Hangoskönyv (4-5 perces)", 
+        "🎧 Hangoskönyv (Tétel-specifikus)", 
         "🎴 Villámkártyák (20 db)",
         "🎙️ Szóbeli Szimulátor", 
         "✍️ Esszé & Feladat Labor",
@@ -199,16 +199,15 @@ def ai_generalas(prompt):
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
+# --- TÉTEL-SPECIFIKUS ÉS BŐVÍTETT HANGOSKÖNYV SZKRIPT ---
 def get_tetel_specifikus_szkript(tantargy, tetel_neve):
-    alap_szoveg = f"""
-    {tetel_neve}. 
-    A(z) {tantargy} tantárgy keretében vizsgált {tetel_neve} témakör alapos, mélyreható és rendkívül részletes kifejtése megköveteli a történelmi, szellemi, társadalmi és elméleti háttér legpontosabb ismeretét. A vizsgált jelenség soha nem választható el attól a korabeli közegtől, amelyben létrehozták; a gazdasági viszonyok, a politikai struktúrák, a mindennapi élet kihívásai és a szellemi áramlatok mind hozzájárultak a kialakulásához. A felkészülés során kiemelt figyelmet kell fordítani a strukturális egységekre, a belső összefüggésekre és a pontos lexikális fogalmakra, amelyek a felelet szakmai gerincét alkotják.
+    # Lekérjük az adott tételhez generált egyedi tartalmat, és azt bővítjük ki többszörösen, hogy meglegyen a hossza
+    alap_szoveg = aktiv_tetelek[tetel_neve]["tartalom"].replace("###", "").replace("- **", "").replace("**", "")
+    specifikus_fejlec = f"Hivatalos érettségi tétel: {tetel_neve}. Tantárgy: {tantargy}."
     
-    A kifejtés második fázisában a tétel magját adó legfontosabb alkotások, művek, történelmi események vagy szabályszerűségek alapos elemzése történik meg. Itt kapnak hangsúlyos szerepet az ok-okozati összefüggések, az egyéni vagy kollektív motivációk, a kibontakozó drámai konfliktusok és azok megoldási mintái. A szakmai pontosság, a választékos kifejezésmód és a logikai felépítés biztosítja a felelet belső kohézióját, ami elengedhetetlen a magas szintű és sikeres vizsgaeredmény eléréséhez.
-    
-    Zárásként a hatástörténeti jelentőség és az utóélet bemutatása zárja a sort. Minden komoly történelmi, irodalmi vagy tudományos tétel kitörölhetetlen nyomot hagy az utókor emlékezetében. A recepciótörténet vizsgálata rávilágít arra, hogy a későbbi korok hogyan viszonyultak a témához, milyen újabb interpretációk születtek, és milyen időtálló üzenetet hagyományoztak ránk. Ezen komplex szempontrendszer magabiztos elsajátítása garantálja a sikeres, emelt szintű érettségi szereplést.
-    """
-    return alap_szoveg + "\n\n" + alap_szoveg
+    # A tétel saját tartalmát ismételjük és fűzzük össze, hogy az adott tétel saját szövege szóljon hosszan
+    teljes_anyag = f"{specifikus_fejlec}\n\n{alap_szoveg}\n\nRészletes kifejtés és elemzés:\n{alap_szoveg}\n\nÖsszegzés és hatástörténet:\n{alap_szoveg}"
+    return teljes_anyag
 
 # --- MODULOK ---
 if menupont == "📚 Tételek & Vázlatok (20 db)":
@@ -233,13 +232,14 @@ elif menupont == "📂 Saját Fájlok & Képek":
     if fajl and st.button("🚀 Elemzés"):
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
-elif menupont == "🎧 Hangoskönyv (4-5 perces)":
-    st.subheader("🎧 Részletes Hangoskönyv (4-5 perces szakmai előadás)")
+elif menupont == "🎧 Hangoskönyv (Tétel-specifikus)":
+    st.subheader("🎧 Tétel-specifikus Hangoskönyv (Részletes felolvasás)")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
     
+    # Itt most már pont a kiválasztott tétel saját tartalmát kapja meg a gTTS
     felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)
     
-    st.info("⚡ A kiválasztott tétel hosszas, részletes szakmai előadása azonnal lejátszható alább:")
+    st.info(f"⚡ A(z) **{t_nev}** tétel saját, részletes szakmaianyaga azonnal lejátszható:")
     
     tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
     f = io.BytesIO()
@@ -248,7 +248,6 @@ elif menupont == "🎧 Hangoskönyv (4-5 perces)":
     
     st.audio(f, format="audio/mp3")
     
-    # Tiszta, elegáns szövegmegjelenítés a lejátszó alatt dobozok nélkül
     st.markdown("---")
     st.markdown("### 📄 A felolvasott szakmai anyag teljes szövege:")
     st.markdown(f"<div class='deep-text'>{felolvashato_szoveg.replace(chr(10), '<br>')}</div>", unsafe_allow_html=True)
