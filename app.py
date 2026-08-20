@@ -147,8 +147,8 @@ db = {
     "📐 Matematika": {"tetelek": generalo_tetelek(matek_temak), "flashcards": matek_flashcards, "timeline": [{"ev": "Kr.e. 6. sz.", "cim": "Pitagorasz", "leiras": "Tétel."}], "detektiv": detektiv_db["📐 Matematika"]}
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 1300
-if 'streak' not in st.session_state: st.session_state.streak = 28
+if 'xp' not in st.session_state: st.session_state.xp = 1350
+if 'streak' not in st.session_state: st.session_state.streak = 29
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
@@ -164,7 +164,7 @@ menupont = st.sidebar.radio(
     [
         "📚 Tételek & Vázlatok (20 db)", 
         "📂 Saját Fájlok & Képek",
-        "🎧 Hangoskönyv", 
+        "🎧 Hangoskönyv (4-5 perces)", 
         "🎴 Villámkártyák (20 db)",
         "🎙️ Szóbeli Szimulátor", 
         "✍️ Esszé & Feladat Labor",
@@ -199,17 +199,44 @@ def ai_generalas(prompt):
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
-# --- OKOS, TÉTEL-SPECIFIKUS HANGOSKÖNYV SZKRIPTT GENERÁTOR ---
+# --- OKOS, RÉSZLETES, HOSSZÚ HANGOSKÖNYV GENERÁTOR (4-5 PERC) ---
 def get_tetel_specifikus_szkript(tantargy, tetel_neve):
-    # Egyedi, tételre szabott szakmai bevezető és kifejtés generálása
     if "Jókai Mór" in tetel_neve:
-        return f"Tétel: {tetel_neve}. Jókai Mór a tizenkilencedik századi magyar romantika legnagyobb hatású alakja, a nemzet mesemondója. Művészetében a leírhatatlan képzeletgazdagság, a nemzeti múlt eszményítése és a reformkor eszméi fonódnak össze. Regényei, mint az Arany ember vagy A kőszívű ember fiai, felejthetetlen karaktereket, fordulatos cselekményt és morális példázatokat közvetítenek, alapvetően formálva a magyarságtudatot."
+        return f"""
+        {tetel_neve}. 
+        Jókai Mór a tizenkilencedik századi magyar romantika legnagyobb hatású alakja, a nemzet utolsó nagy mesemondója. Művészetében a leírhatatlan képzeletgazdagság, a nemzeti múlt eszményítése és a reformkor polgárosuló eszméi fonódnak össze. Jókai nem csupán történeteket mesélt, hanem egy olyan ideális magyar világot teremtett meg az olvasók számára, amely vigaszt nyújtott a szabadságharc utáni elnyomatás időszakában. Regényei, mint az Arany ember, A kőszívű ember fiai vagy A gazdag szegények, felejthetetlen karaktereket, fordulatos cselekményt és morális példázatokat közvetítenek, alapvetően formálva a magyarságtudatot.
+        
+        A szerző életművének legfőbb sajátossága a romantikus hőskultusz és a festői természetábrázolás. Hősei gyakran rendkívüli tulajdonságokkal rendelkeznek, morálisan kiemelkednek a környezetükből, és a történet végén elnyerik méltó jutalmukat vagy bűnhődésüket. Jókai stílusára jellemző a humornak, a líraiságnak és a monumentalitásnak az elegyítése. Nem riadt vissza a fantasztikus elemek használatától sem, miközben regényein keresztül hiteles korrajzot adott a török hódoltság koráról, a szabadságharc eseményeiről vagy a dualizmus korának gazdasági átalakulásáról.
+        
+        A recepciótörténet szempontjából Jókai megítélése a huszadik században többször változott. Miközben a nép körében töretlen népszerűségnek örvendett, a Nyugat nemzedéke, különösen Babits Mihály vagy Szerb Antal, kritikusan szemlélte naiv mesehőseit és túlzó romantikáját. Ugyanakkor ma már tisztán látszik, hogy Jókai Mór nélkül a magyar irodalom szegényebb lenne. Művei nemcsak irodalmi értékek, hanem a nemzeti identitás megőrzésének alapkövei is, amelyek a mai napig kötelezően hozzátartoznak az érettségi vizsga anyagához.
+        """
     elif "Shakespeare" in tetel_neve:
-        return f"Tétel: {tetel_neve}. William Shakespeare az angol reneszánsz drámaírás zseniális alakja. Műveiben az emberi lélek legmélyebb rétegeit, az univerzális szenvedélyeket, a hatalomvágyat, a féltékenységet és a tragikus dilemmákat tárja fel. A Hamlet, a Macbeth vagy a Lear király olyan örök érvényű kérdéseket vetnek fel, amelyek a mai napig meghatározzák a színházművészetet."
-    elif "Ókori eposzok" in tetel_neve:
-        return f"Tétel: {tetel_neve}. Az ókori eposzok az európai kultúra fundamentumát jelentik. Homérosz Iliásza a trójai háború tragikus küzdelmeit és Akhilleusz haragját örökíti meg, míg az Odüsszeia a hazatérés motívumát és az emberi lelkierőt mutatja be hexameteres formában, az istenek és hősök állandó kölcsönhatásában."
+        return f"""
+        {tetel_neve}. 
+        William Shakespeare az angol reneszánsz drámaírás zseniális alakja, akinek munkássága alapvetően határozta meg az egyetemes drámairodalom fejlődését. Műveiben az emberi lélek legmélyebb rétegeit, az univerzális szenvedélyeket, a hatalomvágyat, a féltékenységet, a becsvágyat és a tragikus dilemmákat tárja fel. Shakespeare nem sablonos karaktereket mozgatott, hanem hús-vér embereket, akiknek tetteit belső konfliktusok és morális válságok motiválják.
+        
+        A drámák szerkezeti felépítése rendkívül tudatos. A Hamlet a cselekvésképtelenség, az értelmiségi szemlélődés és a bosszú drámája; a dán királyfi monológjai a mai napig az emberi létezés alapkérdéseit feszegetik. A Macbeth a féktelen becsvágy és a bűntudat pusztító hatását mutatja be, míg a Lear király a vak apai szeretet és a hála nélkülözésének kozmikus méretű tragédiája. A komédiák, mint a Szentivánéji álom, a reneszánsz életörömöt, a tévedések vígjátéka pedig a helyzetkomikum mesteri fokát képviselik.
+        
+        Shakespeare jelentősége abban is áll, hogy nyelvi újítóként több ezer új szót és kifejezést honosított meg az angol nyelvben. Drámái időtlenek és térben is univerzálisak, hiszen a benne szereplő konfliktusok bármely korban és kultúrában érvényesek. Az érettségi vizsgán a Shakespeare-i drámák elemzése során kiemelt figyelmet kell fordítani a drámai szerkezetre, a jellemfejlődésre, a szimbólumrendszerre, valamint arra, hogy a reneszánsz ember hogyan viszonyul a középkori dogmákhoz és a sorsszerűséghez.
+        """
+    elif "Ókori eposzok és a Biblia" in tetel_neve:
+        return f"""
+        {tetel_neve}. 
+        Az ókori eposzok és a Biblia az európai kultúra, irodalom és gondolkodásmód fundamentumát jelentik. Homérosz Iliásza a trójai háború tizedik évének egy rövid, de intenzív szakaszát, Akhilleusz gyilkos haragját és annak következményeit állítja a középpontba. Az eposz isteni és emberi síkon mozog; a halandók sorsát az Olümposz istenei irányítják, akik maguk is emberi gyarlóságokkal bírnak. Az Odüsszeia ezzel szemben a hazatérés, a leleményesség, a vándorlás és a próbatételek műve, amelyben a hős nem a harcmezőn, hanem az akadályok legyőzésével bizonyítja rátermettségét.
+        
+        A Biblia, mint egyetemes kulturális kód, a zsidó-keresztény civilizáció alapköve. Az Ószövetség a teremtésmítoszokat, a pátriárkák történeteit, a törvényeket és a prófétai jövendöléseket tartalmazza, amelyek a morális törvények és a kollektív emlékezet alapegységei. Az Újszövetség az evangéliumokon keresztül Jézus Krisztus életét, tanításait, halálát és feltámadását beszéli el, ami a keresztény etika, a megbocsátás és a megváltás eszméjét ülteti át az európai kultúrába.
+        
+        A Biblia irodalmi hatása felmérhetetlen: nincs olyan korszak a magyar és az egyetemes irodalomban, ne merítene ihletet a bibliai motívumokból, parabolákból vagy nyelvi formákból. Az érettségi vizsgán ezen szövegek elemzése során ki kell térni a műfaji sajátosságokra, a hexameteres ritmusra, az in medias res kezdésre, a tipikus eposzi kellékekre, valamint arra, hogy a bibliográfiai utalások hogyan szövik át a későbbi évszázadok művészetét.
+        """
     else:
-        return f"Hivatalos érettségi tétel: {tetel_neve}. A {tantargy} tantárgy keretében vizsgált témakör alapos feldolgozása magában foglalja a történeti és szellemi előzmények feltárását, a legfontosabb szerkezeti egységek és fogalmak elemzését, valamint a hatástörténeti jelentőséget. A pontos lexikális adatok és az ok-okozati összefüggések ismerete biztosítja a sikeres és megalapozott érettségi feleletet."
+        return f"""
+        {tetel_neve}. 
+        A(z) {tantargy} tantárgy keretében vizsgált {tetel_neve} témakör alapos és részletes kifejtése megköveteli a történelmi, szellemi és elméleti háttér pontos ismeretét. A vizsgált jelenség nem választható el attól a korabeli közegtől, amelyben létrehozták; a társadalmi viszonyok, a gazdasági tényezők és a szellemi áramlatok mind hozzájárultak a kialakulásához. A felkészülés során kiemelt figyelmet kell fordítani a strukturális egységekre, a belső összefüggésekre és a pontos lexikális fogalmakra.
+        
+        A kifejtés második fázisában a tétel magját adó legfontosabb alkotások, események vagy szabályszerűségek elemzése történik meg. Itt kapnak szerepet az ok-okozati összefüggések, a motivációk, a konfliktusok és azok megoldási mintái. A szakmai pontosság és a logikai felépítés biztosítja a felelet kohézióját, ami elengedhetetlen a magas szintű vizsgaeredmény eléréséhez.
+        
+        Zárásként a hatástörténeti jelentőség bemutatása zárja a sort. Minden komoly történelmi vagy kulturális tétel nyomot hagy az utókor emlékezetében. A recepciótörténet vizsgálata rávilágít arra, hogy a későbbi korok hogyan viszonyultak a témához, milyen interpretációk születtek, és milyen örökséget hagyományoztak ránk. Ezen komplex szempontrendszer elsajátítása garantálja a magabiztos, emelt szintű érettségi szereplést.
+        """
 
 # --- MODULOK ---
 if menupont == "📚 Tételek & Vázlatok (20 db)":
@@ -234,14 +261,13 @@ elif menupont == "📂 Saját Fájlok & Képek":
     if fajl and st.button("🚀 Elemzés"):
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
-elif menupont == "🎧 Hangoskönyv":
-    st.subheader("🎧 Tétel-specifikus Hangoskönyv")
+elif menupont == "🎧 Hangoskönyv (4-5 perces)":
+    st.subheader("🎧 Részletes Hangoskönyv (4-5 perces szakmai előadás)")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
     
-    # Lekérjük az adott tételhez tartozó egyedi szakmai szöveget
     felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)
     
-    st.info("⚡ A kiválasztott tétel **egyedi, szakmai összefoglalója** azonnal lejátszható!")
+    st.info("⚡ A kiválasztott tétel **hosszú, részletes szakmai előadása** (4-5 perc beszédidő) azonnal lejátszható!")
     
     tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
     f = io.BytesIO()
@@ -250,7 +276,7 @@ elif menupont == "🎧 Hangoskönyv":
     
     st.audio(f, format="audio/mp3")
     
-    with st.expander("📄 A felolvasott szakmai anyag szövege"):
+    with st.expander("📄 A felolvasott hosszú szakmai anyag teljes szövege"):
         st.write(felolvashato_szoveg)
 
 elif menupont == "🎴 Villámkártyák (20 db)":
@@ -270,7 +296,7 @@ elif menupont == "🎴 Villámkártyák (20 db)":
 elif menupont == "🎙️ Szóbeli Szimulátor":
     audio = st.audio_input("Felelet rögzítése:")
     if audio and st.button("Értékelés"):
-        st.markdown(ai_generalas("Értékeld a szóbeli feleletet:"))
+        st.markdown(ai_generalas("Értékeld a feleletet:"))
 
 elif menupont == "✍️ Esszé & Feladat Labor":
     sz = st.text_area("Írd be a szöveget:")
