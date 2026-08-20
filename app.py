@@ -35,7 +35,6 @@ st.markdown("""
     div[data-testid="stExpander"] { background-color: #111827 !important; border: 1px solid #374151 !important; border-radius: 12px !important; }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea { background-color: #111827 !important; color: #ffffff !important; border: 1px solid #374151 !important; border-radius: 10px !important; }
     
-    /* Fájlfeltöltő gomb és doboz fixálás */
     [data-testid="stFileUploader"] { background-color: #111827 !important; padding: 20px; border-radius: 16px; border: 1px solid #374151; }
     [data-testid="stFileUploader"] section { background-color: #1f2937 !important; border: 2px dashed #6366f1 !important; }
     [data-testid="stFileUploader"] section div, 
@@ -194,13 +193,13 @@ db = {
     }
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 950
-if 'streak' not in st.session_state: st.session_state.streak = 21
+if 'xp' not in st.session_state: st.session_state.xp = 1000
+if 'streak' not in st.session_state: st.session_state.streak = 22
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv most már hibátlanul generálja és olvassa fel a teljes tételt!"}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv mostantól egy teljes, részletes tanári beszámolót generál és mond el."}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
@@ -278,23 +277,27 @@ elif menupont == "📂 Saját Fájlok & Képek":
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
 elif menupont == "🎧 Hangoskönyv":
-    st.subheader("🎧 Tétel Hangoskönyv")
+    st.subheader("🎧 Tétel Hangoskönyv (Részletes Tanári Beszámoló)")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
-    t_adat = aktiv_tetelek[t_nev]
     
-    tisztitott_szoveg = t_adat['tartalom'].replace("###", "").replace("- **", "").replace("**", "")
-    felolvashato_szoveg = f"Figyelem. {t_nev}. {t_adat['alcim']}. {tisztitott_szoveg}"
+    st.info("A gomb megnyomására a Gemini AI ír egy **részletes, összefüggő, szóbeli feleletnek megfelelő tanári beszámolót** a tételről, amit a rendszer azonnal átalakít hanggá.")
     
-    st.info("Kattints a gombra a hangfájl generálásához. Ez eltarthat néhány másodpercig, amíg a tétel teljes szövegét átalakítja a rendszer hanggá.")
-    
-    if st.button("▶️ Teljes Tétel Hangoskönyv Generálása"):
-        with st.spinner("Hangoskönyv generálása folyamatban..."):
-            tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
+    if st.button("▶️ Részletes Hangoskönyv Beszámoló Generálása"):
+        with st.spinner("Az AI megírja a részletes beszámolót és elkészíti a hangfájlt..."):
+            # Megkérjük az AI-t, hogy írjon egy folyószöveges, részletes beszámolót a tételről
+            ai_szoveg = ai_generalas(f"Írj egy részletes, folyószöveges, szóbeli érettségi feleletnek megfelelő tanári beszámolót a(z) '{t_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból. Legyen benne bevezetés, részletes kifejtés és összefoglalás, mindenféle formázás (markdown, hashtagek) nélkül, hogy tisztán felolvasható legyen.")
+            
+            # Átalakítjuk hanggá
+            tts = gTTS(text=ai_szoveg, lang='hu', slow=False)
             f = io.BytesIO()
             tts.write_to_fp(f)
             f.seek(0)
+            
+            st.success("A részletes hangoskönyv beszámoló elkészült!")
             st.audio(f, format="audio/mp3")
-            st.success("A hangoskönyv elkészült! Most már lejátszhatod vagy letöltheted.")
+            
+            with st.expander("📄 A felolvasott szöveg megtekintése"):
+                st.write(ai_szoveg)
 
 elif menupont == "🎴 Villámkártyák (20 db)":
     idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
