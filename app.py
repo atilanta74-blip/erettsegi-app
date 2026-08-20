@@ -41,7 +41,6 @@ st.markdown("""
     .topic-card { background-color: #111827; border: 1px solid #374151; border-radius: 18px; padding: 28px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
     .oral-box { background-color: #1e1b4b; border-left: 5px solid #818cf8; padding: 20px; border-radius: 10px; margin-top: 18px; color: #ffffff !important; }
     
-    /* Jól olvasható, tiszta fehér szöveg a részletes tananyagnál */
     .deep-text { 
         background-color: #111827; 
         color: #ffffff !important; 
@@ -60,7 +59,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# --- 20 TÉTEL GENERÁTOR ÉS ADATBÁZIS ---
+# --- 20 TÉTEL GENERÁTOR ---
 def generalo_tetelek(temak_lista):
     return {f"{i+1}. {tema}": {
         "alcim": f"Hivatalos érettségi tétel: {tema}",
@@ -115,41 +114,134 @@ matek_temak = [
     "Koordináta-geometria", "Kombinatorika", "Valószínűségszámítás", "Statisztika alapjai"
 ]
 
+# --- VALÓDI, TARTALMAS VILLÁMKÁRTYÁK (20-20 DARAB TANTÁRGYANKÉNT) ---
+irodalom_flashcards = [
+    {"q": "Mit jelent az in medias res?", "a": "A dolgok sűrűjébe vágó eposzi kezdés."},
+    {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."},
+    {"q": "Mikor indult a Nyugat folyóirat?", "a": "1908-ban."},
+    {"q": "Mi a címe Petőfi utolsó nagyeposzának?", "a": "Az Apostol."},
+    {"q": "Hogy hívják Bánk bán feleségét?", "a": "Gertrúd királyné."},
+    {"q": "Ki írta a Toldi trilógiát?", "a": "Arany János."},
+    {"q": "Milyen műfajú Vörösmarty Szózata?", "a": "Csendes óda / Csatadal."},
+    {"q": "Hány énekes a Szigeti veszedelem?", "a": "15 énekes barokk eposz."},
+    {"q": "Ki volt a Lilla-versek múzsája?", "a": "Vályi Eszter."},
+    {"q": "Mit jelent a szimbolizmus az Ady-lírában?", "a": "Új jelképek rendszerét, ahol a szó többet jelent."},
+    {"q": "Melyik korszakhoz köthető Csokonai?", "a": "A felvilágosodás és szentimentizmus."},
+    {"q": "Ki írta a Jónás könyvét?", "a": "Babits Mihály."},
+    {"q": "Melyik műben szerepel Esti Kornél?", "a": "Kosztolányi Dezső novellafüzérében."},
+    {"q": "Mi József Attila híres kései verse?", "a": "Tudod, hogy nincs bocsánat / Hazám."},
+    {"q": "Hol írta Radnóti a Bori notesz verseit?", "a": "Abdánban / a kényszermunkatáborban."},
+    {"q": "Mi Örkény István legismertebb drámája?", "a": "Tóték."},
+    {"q": "Mit jelent a posztmodern irodalom?", "a": "A modernség utáni, intertextuális, játékos prózát."},
+    {"q": "Ki írta a Sorstalanságot?", "a": "Kertész Imre (Nobel-díjas)."},
+    {"q": "Milyen műfajú a Bánk bán?", "a": "Romantikus nemzeti dráma."},
+    {"q": "Mi jellemző a nagykőrösi balladákra?", "a": "A tragikus bűn és bűnhődés motívuma."}
+]
+
+nyelvtan_flashcards = [
+    {"q": "Mik a magyar helyesírás 4 fő alapelve?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."},
+    {"q": "Mi a morféma?", "a": "A nyelv legkisebb önálló jelentéssel bíró egysége."},
+    {"q": "Hogyan csoportosítjuk a hangokat?", "a": "Magánhangzókra és mássalhangzókra."},
+    {"q": "Milyen mássalhangzó-törvények léteznek?", "a": "Hasonulás, összeolvadás, kiesés, rövidülés, nyúlás."},
+    {"q": "Mi a különbség az alaptag és a viszonyszó között?", "a": "Az alaptag önálló fogalmat jelöl, a viszonyszó nem."},
+    {"q": "Mik a mondatfajták a beszélő szándéka szerint?", "a": "Kijelentő, kérdő, felkiáltó, felszólító, óhajtó."},
+    {"q": "Mi a szöveg legfőbb ismérve?", "a": "A kohézió és a koherencia."},
+    {"q": "Mi a retorika fő célja?", "a": "A meggyőzés."},
+    {"q": "Mi a különbség a tézis és az argumentum között?", "a": "A tézis az állítás, az argumentum az érvek összessége."},
+    {"q": "Mi a stilisztika?", "a": "A kifejezésmódok és stíluseszközök tudománya."},
+    {"q": "Mik a trópusok?", "a": "Névátvítelén alapuló képek (pl. metafora, metonímia)."},
+    {"q": "Hogyan épül fel a hivatalos kérvény?", "a": "Fejléc, megszólítás, tárgy, indoklás, aláírás."},
+    {"q": "Mi a szleng?", "a": "Nem hivatalos, rétegnyelvi, kifejező szókincs."},
+    {"q": "Melyik nyelvcsaládba tartozik a magyar?", "a": "Uráli nyelvcsalád, finnugor ág."},
+    {"q": "Mik a mondatrészek alaptípusai?", "a": "Alany, állítmány, tárgy, határozó, jelző."},
+    {"q": "Mi az alárendelő összetett mondat?", "a": "Ahol az egyik mondat alá van rendelve a másiknak."},
+    {"q": "Mi a mellérendelő összetett mondat?", "a": "Egyenrangú tagmondatok (kapcsolatos, ellentétes stb.)."},
+    {"q": "Mi a lexéma?", "a": "A szótári szóalak, mint nyelvi egység."},
+    {"q": "Mik a frazeologizmusok?", "a": "Állandósult szókapcsolatok (szólások, közmondások)."},
+    {"q": "Mi a bilingvizmus?", "a": "Kétnyelvűség."}
+]
+
+tortenelem_flashcards = [
+    {"q": "Mikor kezdődött a honfoglalás?", "a": "895-ben."},
+    {"q": "Mikor adta ki II. András az Aranybullát?", "a": "1222-ben."},
+    {"q": "Mikor volt az államalapítás?", "a": "1000-ben / 1001-ben."},
+    {"q": "Mikor esett el Buda a török kezére?", "a": "1541. augusztus 29-én."},
+    {"q": "Mikor volt a mohácsi vész?", "a": "1526. augusztus 29-én."},
+    {"q": "Mikor zajlott a Rákóczi-szabadságharc?", "a": "1703–1711 között."},
+    {"q": "Mikor indult az 1848-as forradalom Pesten?", "a": "Március 15-én."},
+    {"q": "Mikor köttetett meg a kiegyezés?", "a": "1867-ben."},
+    {"q": "Mikor írták alá a trianoni békét?", "a": "1920. június 4-én."},
+    {"q": "Mikor tört ki az 1956-os forradalom?", "a": "Október 23-án."},
+    {"q": "Mikor csatlakozott Magyarország az EU-hoz?", "a": "2004. május 1-jén."},
+    {"q": "Ki volt Athén vezetője a demokrácia virágkorában?", "a": "Periklész."},
+    {"q": "Ki volt Hunyadi Mátyás apja?", "a": "Hunyadi János."},
+    {"q": "Mi volt a nácizmus ideológiájának alapja?", "a": "A faji elmélet és antiszemitizmus."},
+    {"q": "Mi volt a vasfüggöny?", "a": "A hidegháborús európai megosztottság jelképes határa."},
+    {"q": "Melyik évben kezdődött az I. világháború?", "a": "1914-ben."},
+    {"q": "Melyik évben ért véget a II. világháború?", "a": "1945-ben."},
+    {"q": "Ki vezette a reformkort Magyarországon?", "a": "Széchenyi István és Kossuth Lajos."},
+    {"q": "Mi volt a reformáció célja?", "a": "Az egyház megújulása, a bibliai tanokhoz való visszatérés."},
+    {"q": "Mi volt az 1989-es rendszerváltás egyik legfontosabb eseménye?", "a": "A határnyitás és a szabad választások."}
+]
+
+matek_flashcards = [
+    {"q": "Mi a másodfokú egyenlet megoldóképlete?", "a": "x = (-b ± √(b² - 4ac)) / (2a)"},
+    {"q": "Mennyi a derékszögű háromszög területe?", "a": "(a · b) / 2"},
+    {"q": "Mondd ki a Pitagorasz-tételt!", "a": "a² + b² = c² (ahol c az átfogó)."},
+    {"q": "Mi a kör területe?", "a": "T = r² · π"},
+    {"q": "Mi a kör kerülete?", "a": "K = 2 · r · π"},
+    {"q": "Hogyan számoljuk ki az aritmetikai sorozat n-edik tagját?", "a": "an = a1 + (n - 1) · d"},
+    {"q": "Hogyan számoljuk ki a mértani sorozat n-edik tagját?", "a": "an = a1 · q^(n - 1)"},
+    {"q": "Mennyi a háromszög belső szögeinek összege?", "a": "180°"},
+    {"q": "Mennyi a konvex n-szög belső szögeinek összege?", "a": "(n - 2) · 180°"},
+    {"q": "Mi a koszinusztétel képlete?", "a": "c² = a² + b² - 2ab · cos(γ)"},
+    {"q": "Mi a szinusztétel?", "a": "a / sin(α) = b / sin(β) = c / sin(γ) = 2R"},
+    {"q": "Hogyan néz ki az exponenciális függvény?", "a": "f(x) = a^x (ahol a > 0 és a ≠ 1)"},
+    {"q": "Mi a logaritmus definíciója?", "a": "Azt az exponenciális hatványkitevőt jelöli, amire az alapot emelve a számot kapjuk."},
+    {"q": "Mi a kombinatorikus permutáció képlete?", "a": "P(n) = n!"},
+    {"q": "Mi a kombináció képlete?", "a": "C(n, k) = n! / (k! · (n - k)!)"},
+    {"q": "Hogyan határozzuk meg a valószínűséget a klasszikus modellben?", "a": "Kedvező esetek / Összes lehetséges eset."},
+    {"q": "Mi a vektorok skaláris szorzata?", "a": "a · b = |a| · |b| · cos(α)"},
+    {"q": "Mi a pont és az egyenes távolságának képlete?", "a": "A pont koordinátáinak behelyettesítése az egyenes egyenletébe osztva a normálvektor hosszával."},
+    {"q": "Mi a gömb térfogata?", "a": "V = (4 · r³ · π) / 3"},
+    {"q": "Mi a henger felszíne?", "a": "F = 2 · r · π · (r + h)"}
+]
+
 db = {
     "📖 Magyar Irodalom": {
         "tetelek": generalo_tetelek(irodalom_temak),
-        "flashcards": [{"q": f"Irodalmi villámkártya #{i+1}", "a": f"Válasz a(z) {i+1}. kártyára."} for i in range(20)],
+        "flashcards": irodalom_flashcards,
         "timeline": [{"ev": "1908", "cim": "Nyugat", "leiras": "Folyóirat indulása."}],
         "detektiv": [{"idezet": "Férfiat zengj nekem, múzsa...", "helyes": "Homérosz", "opciok": ["Homérosz", "Dante"], "info": "Eposz"}]
     },
     "🔤 Magyar Nyelvtan": {
         "tetelek": generalo_tetelek(nyelvtan_temak),
-        "flashcards": [{"q": f"Nyelvtani villámkártya #{i+1}", "a": f"Válasz a(z) {i+1}. kártyára."} for i in range(20)],
+        "flashcards": nyelvtan_flashcards,
         "timeline": [{"ev": "1055", "cim": "Tihany", "leiras": "Első nyelvemlék."}],
         "detektiv": [{"idezet": "barátság -> baraccság", "helyes": "Összeolvadás", "opciok": ["Összeolvadás", "Hasonulás"], "info": "t+s"}]
     },
     "🏛️ Történelem": {
         "tetelek": generalo_tetelek(tortenelem_temak),
-        "flashcards": [{"q": f"Történelmi villámkártya #{i+1}", "a": f"Válasz a(z) {i+1}. kártyára."} for i in range(20)],
+        "flashcards": tortenelem_flashcards,
         "timeline": [{"ev": "1000", "cim": "Koronázás", "leiras": "Szent István."}],
         "detektiv": [{"idezet": "Ius resistendi", "helyes": "Aranybulla", "opciok": ["Aranybulla", "István"], "info": "Rendi jog."}]
     },
     "📐 Matematika": {
         "tetelek": generalo_tetelek(matek_temak),
-        "flashcards": [{"q": f"Matek villámkártya #{i+1}", "a": f"Képlet #{i+1}"} for i in range(20)],
+        "flashcards": matek_flashcards,
         "timeline": [{"ev": "Kr.e. 6. sz.", "cim": "Pitagorasz", "leiras": "Tétel."}],
         "detektiv": [{"idezet": "a^2 + b^2 = c^2", "helyes": "Pitagorasz", "opciok": ["Pitagorasz", "Koszinusz"], "info": "Derékszög."}]
     }
 }
 
 # Állapotkezelők és Gyorstár
-if 'xp' not in st.session_state: st.session_state.xp = 500
-if 'streak' not in st.session_state: st.session_state.streak = 12
+if 'xp' not in st.session_state: st.session_state.xp = 550
+if 'streak' not in st.session_state: st.session_state.streak = 13
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A vázlatok azonnal betöltődnek, de ha szeretnéd, az AI gombbal teljesen egyedi esszét is generáltathatsz!"}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! Most már minden villámkártya valódi, hasznos érettségi kérdést és választ tartalmaz!"}]
 
 # --- OLDALSÁV ---
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
@@ -183,7 +275,7 @@ aktiv_det = tantargy_adat["detektiv"]
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
     st.title("🎓 Astra Pro Érettségi Központ")
-    st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}** (20 hivatalos tétel)")
+    st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}** (Valódi kérdések és tananyagok)")
 with col_h2:
     st.markdown(f"<div style='text-align: right;'><span class='stat-badge'>🔥 {st.session_state.streak} nap széria</span><span class='stat-badge'>⚡ {st.session_state.xp} XP</span></div>", unsafe_allow_html=True)
 
@@ -207,9 +299,7 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
     tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag", "🎙️ 3 Perces Felelet", "⚡ Interaktív Kvíz"])
     
     with tab1:
-        # Azonnali beépített, jól olvasható vázlat
         st.markdown(f"<div class='deep-text'>{t_adat['tartalom']}</div>", unsafe_allow_html=True)
-        
         st.markdown("---")
         st.write("💡 **Szeretnél még részletesebb, egyedi AI esszét ehhez a tételhez?**")
         cache_key = f"{kivalasztott_tantargy}_{tetel_nev}"
