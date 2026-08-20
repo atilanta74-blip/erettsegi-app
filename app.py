@@ -193,13 +193,14 @@ db = {
     }
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 1000
-if 'streak' not in st.session_state: st.session_state.streak = 22
+if 'xp' not in st.session_state: st.session_state.xp = 1050
+if 'streak' not in st.session_state: st.session_state.streak = 23
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
+if 'audio_cache' not in st.session_state: st.session_state.audio_cache = {} # Hangoskönyv gyorstár
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv mostantól egy teljes, részletes tanári beszámolót generál és mond el."}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv mostantól gyorstárazva van, így másodszorra azonnal betöltődik!"}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
@@ -277,27 +278,28 @@ elif menupont == "📂 Saját Fájlok & Képek":
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
 elif menupont == "🎧 Hangoskönyv":
-    st.subheader("🎧 Tétel Hangoskönyv (Részletes Tanári Beszámoló)")
+    st.subheader("🎧 Tétel Hangoskönyv (Gyorstárazott Részletes Beszámoló)")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
     
-    st.info("A gomb megnyomására a Gemini AI ír egy **részletes, összefüggő, szóbeli feleletnek megfelelő tanári beszámolót** a tételről, amit a rendszer azonnal átalakít hanggá.")
+    audio_cache_key = f"audio_{kivalasztott_tantargy}_{t_nev}"
     
-    if st.button("▶️ Részletes Hangoskönyv Beszámoló Generálása"):
-        with st.spinner("Az AI megírja a részletes beszámolót és elkészíti a hangfájlt..."):
-            # Megkérjük az AI-t, hogy írjon egy folyószöveges, részletes beszámolót a tételről
-            ai_szoveg = ai_generalas(f"Írj egy részletes, folyószöveges, szóbeli érettségi feleletnek megfelelő tanári beszámolót a(z) '{t_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból. Legyen benne bevezetés, részletes kifejtés és összefoglalás, mindenféle formázás (markdown, hashtagek) nélkül, hogy tisztán felolvasható legyen.")
-            
-            # Átalakítjuk hanggá
-            tts = gTTS(text=ai_szoveg, lang='hu', slow=False)
-            f = io.BytesIO()
-            tts.write_to_fp(f)
-            f.seek(0)
-            
-            st.success("A részletes hangoskönyv beszámoló elkészült!")
-            st.audio(f, format="audio/mp3")
-            
-            with st.expander("📄 A felolvasott szöveg megtekintése"):
-                st.write(ai_szoveg)
+    if audio_cache_key in st.session_state.audio_cache:
+        st.success("⚡ A hangoskönyv betöltve a memóriából (villámgyors)!")
+        st.audio(st.session_state.audio_cache[audio_cache_key], format="audio/mp3")
+    else:
+        st.info("Ehhez a tételhez még nincs generált hangfájl a memóriában. Kattints a gombra az első generáláshoz (ezután már azonnal betöltődik):")
+        if st.button("▶️ Hangoskönyv Beszámoló Generálása"):
+            with st.spinner("Az AI megírja a részletes beszámolót és elkészíti a hangfájlt..."):
+                ai_szoveg = ai_generalas(f"Írj egy részletes, folyószöveges, szóbeli érettségi feleletnek megfelelő tanári beszámolót a(z) '{t_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból. Legyen benne bevezetés, részletes kifejtés és összefoglalás, mindenféle formázás nélkül.")
+                
+                tts = gTTS(text=ai_szoveg, lang='hu', slow=False)
+                f = io.BytesIO()
+                tts.write_to_fp(f)
+                f.seek(0)
+                
+                # Eltároljuk a memóriában, hogy többet ne kelljen generálni
+                st.session_state.audio_cache[audio_cache_key] = f.read()
+                st.rerun()
 
 elif menupont == "🎴 Villámkártyák (20 db)":
     idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
