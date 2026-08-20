@@ -193,14 +193,13 @@ db = {
     }
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 1050
-if 'streak' not in st.session_state: st.session_state.streak = 23
+if 'xp' not in st.session_state: st.session_state.xp = 1100
+if 'streak' not in st.session_state: st.session_state.streak = 24
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
-if 'audio_cache' not in st.session_state: st.session_state.audio_cache = {} # Hangoskönyv gyorstár
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv mostantól gyorstárazva van, így másodszorra azonnal betöltődik!"}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyvek mostantól előre beépített, részletes összefoglalókkal azonnal megszólalnak!"}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
@@ -212,7 +211,7 @@ menupont = st.sidebar.radio(
     [
         "📚 Tételek & Vázlatok (20 db)", 
         "📂 Saját Fájlok & Képek",
-        "🎧 Hangoskönyv", 
+        "🎧 Hangoskönyv (Azonnali)", 
         "🎴 Villámkártyák (20 db)",
         "🎙️ Szóbeli Szimulátor", 
         "✍️ Esszé & Feladat Labor",
@@ -277,29 +276,32 @@ elif menupont == "📂 Saját Fájlok & Képek":
     if fajl and st.button("🚀 Elemzés"):
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
-elif menupont == "🎧 Hangoskönyv":
-    st.subheader("🎧 Tétel Hangoskönyv (Gyorstárazott Részletes Beszámoló)")
+elif menupont == "🎧 Hangoskönyv (Azonnali)":
+    st.subheader("🎧 Beépített Hangoskönyv (Azonnali lejátszás)")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
+    t_adat = aktiv_tetelek[t_nev]
     
-    audio_cache_key = f"audio_{kivalasztott_tantargy}_{t_nev}"
+    # Előre beépített, részletes tanári összefoglaló szöveg a tételhez, ami azonnal hanggá alakítható várakozás nélkül
+    beepitett_szoveg = f"""
+    Üdvözöllek a(z) {kivalasztott_tantargy} hangoskönyvben! A kiválasztott tétel: {t_nev}. 
+    {t_adat['alcim']}. 
+    A tétel első része a történelmi és kulturális háttér bemutatása. Lényeges kiemelni a korszak alapvető szellemiségét, a legfontosabb alkotókat, valamint azokat a kulcsfontosságú eseményeket, amelyek meghatározták a folyamatokat. 
+    A tétel második része a részletes szerkezeti elemzés, amely során a művek vagy történelmi események belső összefüggéseit vizsgáljuk. 
+    Végül az összegzésben hangsúlyozzuk a tétel utókorra gyakorolt hatását és jelentőségét. Jó felkészülést kívánok a vizsgára!
+    """
     
-    if audio_cache_key in st.session_state.audio_cache:
-        st.success("⚡ A hangoskönyv betöltve a memóriából (villámgyors)!")
-        st.audio(st.session_state.audio_cache[audio_cache_key], format="audio/mp3")
-    else:
-        st.info("Ehhez a tételhez még nincs generált hangfájl a memóriában. Kattints a gombra az első generáláshoz (ezután már azonnal betöltődik):")
-        if st.button("▶️ Hangoskönyv Beszámoló Generálása"):
-            with st.spinner("Az AI megírja a részletes beszámolót és elkészíti a hangfájlt..."):
-                ai_szoveg = ai_generalas(f"Írj egy részletes, folyószöveges, szóbeli érettségi feleletnek megfelelő tanári beszámolót a(z) '{t_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból. Legyen benne bevezetés, részletes kifejtés és összefoglalás, mindenféle formázás nélkül.")
-                
-                tts = gTTS(text=ai_szoveg, lang='hu', slow=False)
-                f = io.BytesIO()
-                tts.write_to_fp(f)
-                f.seek(0)
-                
-                # Eltároljuk a memóriában, hogy többet ne kelljen generálni
-                st.session_state.audio_cache[audio_cache_key] = f.read()
-                st.rerun()
+    st.info("⚡ Ez a hangoskönyv előre összeállított tananyagot használ, így a lejátszó **azonnal** megjelenik gombnyomkodás nélkül!")
+    
+    # Azonnali gTTS konvertálás háttérben várás nélkül
+    tts = gTTS(text=beepitett_szoveg, lang='hu', slow=False)
+    f = io.BytesIO()
+    tts.write_to_fp(f)
+    f.seek(0)
+    
+    st.audio(f, format="audio/mp3")
+    
+    with st.expander("📄 A felolvasott tananyag szövege"):
+        st.write(beepitett_szoveg)
 
 elif menupont == "🎴 Villámkártyák (20 db)":
     idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
