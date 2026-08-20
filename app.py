@@ -194,13 +194,13 @@ db = {
     }
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 900
-if 'streak' not in st.session_state: st.session_state.streak = 20
+if 'xp' not in st.session_state: st.session_state.xp = 950
+if 'streak' not in st.session_state: st.session_state.streak = 21
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv mostantól a tétel teljes tartalmát felolvassa!"}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv most már hibátlanul generálja és olvassa fel a teljes tételt!"}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
@@ -282,9 +282,8 @@ elif menupont == "🎧 Hangoskönyv":
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
     t_adat = aktiv_tetelek[t_nev]
     
-    # Kivesszük a jelöléseket (### stb.), hogy sima, természetesen olvasható szöveg legyen
     tisztitott_szoveg = t_adat['tartalom'].replace("###", "").replace("- **", "").replace("**", "")
-    felolvashato_szoveg = f"Figyelem. {t_nev}. {t_adat['alcim']}. {t_szoveg := tisztitott_szoveg}"
+    felolvashato_szoveg = f"Figyelem. {t_nev}. {t_adat['alcim']}. {tisztitott_szoveg}"
     
     st.info("Kattints a gombra a hangfájl generálásához. Ez eltarthat néhány másodpercig, amíg a tétel teljes szövegét átalakítja a rendszer hanggá.")
     
