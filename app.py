@@ -247,6 +247,11 @@ elif menupont == "🎧 Hangoskönyv (4-5 perces)":
     f.seek(0)
     
     st.audio(f, format="audio/mp3")
+    
+    # Tiszta, elegáns szövegmegjelenítés a lejátszó alatt dobozok nélkül
+    st.markdown("---")
+    st.markdown("### 📄 A felolvasott szakmai anyag teljes szövege:")
+    st.markdown(f"<div class='deep-text'>{felolvashato_szoveg.replace(chr(10), '<br>')}</div>", unsafe_allow_html=True)
 
 elif menupont == "🎴 Villámkártyák (20 db)":
     idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
@@ -297,17 +302,17 @@ elif menupont == "🏆 Nagy Próbavizsga":
     for t_nev, t_adat in aktiv_tetelek.items():
         for q in t_adat.get("kviz", []): osszes_kerdes.append((t_nev, q))
     
-    valaszok = {}
+    data_valaszok = {}
     with st.form("vizsga_form"):
         for i, (t_nev, q) in enumerate(osszes_kerdes):
             st.write(f"**{i+1}. [{t_nev}]**")
             st.write(q["k"])
-            valaszok[i] = st.radio("Válasz:", ["Nem válaszoltam", "Igaz", "Hamis"], key=f"p_{i}", horizontal=True)
+            data_valaszok[i] = st.radio("Válasz:", ["Nem válaszoltam", "Igaz", "Hamis"], key=f"p_{i}", horizontal=True)
             st.markdown("---")
         bekuldve = st.form_submit_button("🏁 Próbavizsga Értékelése")
         
     if bekuldve:
-        pont = sum(1 for i, (t_nev, q) in enumerate(osszes_kerdes) if valaszok[i] != "Nem válaszoltam" and ((valaszok[i] == "Igaz") == q["v"]))
+        pont = sum(1 for i, (t_nev, q) in enumerate(osszes_kerdes) if data_valaszok[i] != "Nem válaszoltam" and ((data_valaszok[i] == "Igaz") == q["v"]))
         szaz = int((pont / len(osszes_kerdes)) * 100) if osszes_kerdes else 0
         st.metric("Elért eredmény", f"{pont} / {len(osszes_kerdes)} pont", f"{szaz}%")
         if szaz >= 85: st.success("🏆 Jeles (5) – Kiváló teljesítmény!")
