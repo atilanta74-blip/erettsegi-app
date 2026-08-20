@@ -224,11 +224,10 @@ elif menupont == "📂 Saját Fájlok & Képek":
     fajl = st.file_uploader("Fájl feltöltése (.docx, .pdf, .txt, .jpg, .png)", type=["txt", "pdf", "docx", "jpg", "jpeg", "png"])
     
     if fajl:
-        # Ha kép, jelenítsük meg előnézetben is
         if fajl.type.startswith("image/"):
             img_obj = Image.open(fajl)
             st.image(img_obj, caption="Feltöltött kép előnézete", use_column_width=True)
-            fajl.seek(0) # Visszaállítjuk a mutatót
+            fajl.seek(0)
 
         if st.button("🚀 Elemzés és Összefoglalás"):
             with st.spinner("Fájl / Kép olvasása és elemzése folyamatban..."):
@@ -270,141 +269,21 @@ elif menupont == "📂 Saját Fájlok & Képek":
                         img_data = Image.open(fajl)
                         q_payload = [img_data, "Készíts 5 db feleletválasztós vizsgakérdést a képen látható tartalom alapján. Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n[\n  {\n    \"question\": \"A kérdés szövege?\",\n    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n    \"answer\": \"A) opció 1\",\n    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]"]
                     else:
-                        q_payload = [f"Készíts 5 db feleletválasztós vizsgakérdést a következő dokumentum alapján. Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n[\n  {\n    \"question\": \"A kérdés szövege?\",\n    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n    \"answer\": \"A) opció 1\",\n    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]\nDokumentum: {st.session_state.get('aktiv_fajl_szoveg', '')[:8000]}"]
+                        doc_text = st.session_state.get('aktiv_fajl_szoveg', '')[:8000]
+                        prompt_text = (
+                            "Készíts 5 db feleletválasztós vizsgakérdést a következő dokumentum alapján. "
+                            "Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy "
+                            "markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n"
+                            "[\n  {\n    \"question\": \"A kérdés szövege?\",\n"
+                            "    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n"
+                            "    \"answer\": \"A) opció 1\",\n"
+                            "    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]\n"
+                            f"Dokumentum: {doc_text}"
+                        )
+                        q_payload = [prompt_text]
 
                     raw_res = ai_generalas_tartalom(q_payload)
                     try:
                         cleaned = raw_res.strip()
                         if cleaned.startswith("```"):
-                            parts = cleaned.split("```")
-                            if len(parts) > 1:
-                                cleaned = parts[1]
-                                if cleaned.startswith("json"):
-                                    cleaned = cleaned[4:]
-                        cleaned = cleaned.strip()
-                        st.session_state.ai_quiz_data = json.loads(cleaned)
-                    except Exception as e:
-                        st.error(f"Hiba történt a kvíz feldolgozásakor. Kattints újra a gombra. ({e})")
-                        st.session_state.ai_quiz_data = None
-
-            # Interaktív teszt kitöltő felület
-            if "ai_quiz_data" in st.session_state and st.session_state.ai_quiz_data:
-                st.markdown("### 🎯 Interaktív Teszt")
-                with st.form("ai_document_quiz_form"):
-                    user_answers = {}
-                    for idx, q_item in enumerate(st.session_state.ai_quiz_data):
-                        st.markdown(f"**{idx+1}. {q_item['question']}**")
-                        user_answers[idx] = st.radio("Válassz:", q_item['options'], key=f"doc_q_{idx}", index=None)
-                        st.markdown("---")
-                    
-                    submitted = st.form_submit_button("🏁 Válaszok Értékelése")
-                    
-                    if submitted:
-                        score = 0
-                        total = len(st.session_state.ai_quiz_data)
-                        for idx, q_item in enumerate(st.session_state.ai_quiz_data):
-                            chosen = user_answers.get(idx)
-                            correct = q_item['answer']
-                            if chosen == correct:
-                                score += 1
-                                st.success(f"**{idx+1}. kérdés:** Helyes! 🎉\n\n📌 {q_item['explanation']}")
-                            elif chosen is None:
-                                st.warning(f"**{idx+1}. kérdés:** Nem választottál semmit. ⚠️ A helyes válasz: **{correct}**\n\n📌 {q_item['explanation']}")
-                            else:
-                                st.error(f"**{idx+1}. kérdés:** Nem találtad el. ❌ A helyes válasz: **{correct}**\n\n📌 {q_item['explanation']}")
-                        
-                        st.metric("Elért eredmény", f"{score} / {total} pont", f"{int((score/total)*100)}%")
-
-elif menupont == "🎧 Hangoskönyv (Tétel-specifikus)":
-    st.subheader("🎧 Tétel-specifikus Hangoskönyv")
-    t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
-    
-    felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)
-    
-    st.info(f"⚡ A(z) **{t_nev}** tétel saját szakmaianyaga azonnal lejátszható:")
-    
-    tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
-    f = io.BytesIO()
-    tts.write_to_fp(f)
-    f.seek(0)
-    
-    st.audio(f, format="audio/mp3")
-    
-    st.markdown("---")
-    st.markdown("### 📄 A felolvasott szakmai anyag teljes szövege:")
-    st.markdown(f"<div class='deep-text'>{felolvashato_szoveg.replace(chr(10), '<br>')}</div>", unsafe_allow_html=True)
-
-elif menupont == "🎴 Villámkártyák (20 db)":
-    idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
-    k = aktiv_flash[idx]
-    st.subheader(f"Villámkártya ({idx+1} / {len(aktiv_flash)})")
-    if not st.session_state.card_flipped:
-        st.markdown(f"<div class='flashcard'>❓ {k['q']}</div>", unsafe_allow_html=True)
-        if st.button("🔄 Megfordítás"): st.session_state.card_flipped = True; st.rerun()
-    else:
-        st.markdown(f"<div class='flashcard' style='background:linear-gradient(135deg, #064e3b, #065f46);'>💡 {k['a']}</div>", unsafe_allow_html=True)
-        if st.button("Következő kártya"):
-            st.session_state.card_flipped = False
-            st.session_state.f_idx = idx + 1
-            st.rerun()
-
-elif menupont == "🎙️ Szóbeli Szimulátor":
-    audio = st.audio_input("Felelet rögzítése:")
-    if audio and st.button("Értékelés"):
-        st.markdown(ai_generalas_tartalom(["Értékeld a feleletet:"]))
-
-elif menupont == "✍️ Esszé & Feladat Labor":
-    sz = st.text_area("Írd be a szöveget:")
-    if st.button("Javítás") and sz: st.markdown(ai_generalas_tartalom([f"Javítsd ki: {sz}"]))
-
-elif menupont == "🎭 Detektív Játék (20 db)":
-    st.subheader(f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
-    st.session_state.detektiv_index = st.session_state.detektiv_index % len(aktiv_det)
-    idx = st.session_state.detektiv_index
-    f = aktiv_det[idx]
-    st.markdown(f"<div class='topic-card' style='text-align:center;'><h3 style='color:#f472b6; font-style:italic;'>{f['idezet']}</h3></div>", unsafe_allow_html=True)
-    tipp = st.radio("Válaszd ki a helyes megfejtést:", f['opciok'], index=None, key=f"det_{idx}")
-    if st.button("🔍 Ellenőrzés"):
-        if tipp == f['helyes']:
-            st.balloons(); st.success(f"Helyes válasz! 🎉\n\n📌 {f['info']}")
-        else:
-            st.error(f"Nem találtad el. ❌ A helyes válasz: **{f['helyes']}**\n\n📌 {f['info']}")
-    if st.button("➡️ Következő feladvány"):
-        st.session_state.detektiv_index += 1
-        st.rerun()
-
-elif menupont == "🧭 Történelmi Idővonal":
-    for item in aktiv_time:
-        st.markdown(f"<div class='timeline-item'><b>{item['ev']}</b>: <h3>{item['cim']}</h3><p>{item['leiras']}</p></div>", unsafe_allow_html=True)
-
-elif menupont == "🏆 Nagy Próbavizsga":
-    st.subheader(f"🏆 Interaktív Próbavizsga – {kivalasztott_tantargy}")
-    osszes_kerdes = []
-    for t_nev, t_adat in aktiv_tetelek.items():
-        for q in t_adat.get("kviz", []): osszes_kerdes.append((t_nev, q))
-    
-    data_valaszok = {}
-    with st.form("vizsga_form"):
-        for i, (t_nev, q) in enumerate(osszes_kerdes):
-            st.write(f"**{i+1}. [{t_nev}]**")
-            st.write(q["k"])
-            data_valaszok[i] = st.radio("Válasz:", ["Nem válaszoltam", "Igaz", "Hamis"], key=f"p_{i}", horizontal=True)
-            st.markdown("---")
-        bekuldve = st.form_submit_button("🏁 Próbavizsga Értékelése")
-        
-    if bekuldve:
-        pont = sum(1 for i, (t_nev, q) in enumerate(osszes_kerdes) if data_valaszok[i] != "Nem válaszoltam" and ((data_valaszok[i] == "Igaz") == q["v"]))
-        szaz = int((pont / len(osszes_kerdes)) * 100) if osszes_kerdes else 0
-        st.metric("Elért eredmény", f"{pont} / {len(osszes_kerdes)} pont", f"{szaz}%")
-        if szaz >= 85: st.success("🏆 Jeles (5) – Kiváló teljesítmény!")
-        elif szaz >= 50: st.info("👍 Megfelelő vizsgaeredmény!")
-        else: st.error("❌ Fejlesztendő!")
-
-elif menupont == "🤖 AI Érettségi Mentor":
-    for msg in st.session_state.chat_history:
-        st.markdown(f"<div class='chat-{msg['role']}'>{msg['text']}</div>", unsafe_allow_html=True)
-    k = st.text_input("Kérdezz a mentortól:")
-    if st.button("Küldés") and k:
-        st.session_state.chat_history.append({"role": "user", "text": k})
-        st.session_state.chat_history.append({"role": "ai", "text": ai_generalas_tartalom([k])})
-        st.rerun()
+                            parts = cleaned.split("
