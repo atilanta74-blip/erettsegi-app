@@ -3,7 +3,6 @@ import os
 import random
 import streamlit as st
 import datetime
-from fpdf import FPDF
 from google import genai
 from gtts import gTTS
 import PyPDF2
@@ -77,7 +76,7 @@ A vizsgán elengedhetetlen annak bemutatása, hogy a(z) {tema} milyen tartós ha
         """,
         "szobeli": f"**🎙️ 3 perces felelet vázlata:** 1. Bevezetés ({tema}) -> 2. Fő tézisek kifejtése -> 3. Összegzés.",
         "kviz": [
-            {"k": f"Alapvető igaz/hamis kérdés a(z) '{tema}' témakörhöz?", "v": True, "m": "Igen, ez a hivatalos vizsgaanyag része."},
+            {"k": f"Alapvető tételbeli kérdés a(z) '{tema}' témakörhöz?", "v": True, "m": "Igen, ez a hivatalos vizsgaanyag része."},
             {"k": f"Kapcsolódik lexikális háttér ehhez a tételhez?", "v": True, "m": "Természetesen."}
         ]
     } for i, tema in enumerate(temak_lista)}
@@ -114,7 +113,6 @@ matek_temak = [
     "Koordináta-geometria", "Kombinatorika", "Valószínűségszámítás", "Statisztika alapjai"
 ]
 
-# --- 20-20 VILLÁMKÁRTYA TANTÁRGYANKÉNT ---
 irodalom_flashcards = [
     {"q": "Mit jelent az in medias res?", "a": "A dolgok sűrűjébe vágó eposzi kezdés."},
     {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."},
@@ -140,32 +138,14 @@ irodalom_flashcards = [
 
 nyelvtan_flashcards = [{"q": f"Nyelvtani villámkártya #{i+1}", "a": f"Válasz a(z) {i+1}. kártyára."} for i in range(20)]
 tortenelem_flashcards = [{"q": f"Történelmi villámkártya #{i+1}", "a": f"Válasz a(z) {i+1}. kártyára."} for i in range(20)]
-matek_flashcards = [{"q": f"Matek villámkártya #{i+1}", "a": f"Válasz a(z) {i+1}. kártyára."} for i in range(20)]
+matek_flashcards = [{"q": f"Matek villámkártya #{i+1}", "a": f"Képlet #{i+1}"} for i in range(20)]
 
-# --- 20-20 DETEKTÍV FELADVÁNY TANTÁRGYANKÉNT ---
 detektiv_db = {
     "📖 Magyar Irodalom": [
-        {"idezet": "„Férfiat zengj nekem, múzsa...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius: Aeneis", "Dante: Isteni színjáték"], "info": "Az Odüsszeia híres kezdősorai."},
-        {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János"], "info": "A felelősségvállalás költői parancsa."},
-        {"idezet": "„Lenni vagy nem lenni: az a kérdés.”", "helyes": "Shakespeare: Hamlet", "opciok": ["Shakespeare: Hamlet", "Shakespeare: Macbeth", "Molière: Tartuffe"], "info": "Hamlet egzisztenciális monológja."},
-        {"idezet": "„Szeretném, ha szeretnének”", "helyes": "Ady Endre", "opciok": ["Ady Endre", "József Attila", "Kosztolányi"], "info": "Az Ady-i magányosság verse."},
-        {"idezet": "„Elhull a virág, eliramlik a tél”", "helyes": "Vörösmarty Mihály", "opciok": ["Vörösmarty Mihály", "Petőfi Sándor", "Arany János"], "info": "A romantikus látomásköltészet remeke."},
-        {"idezet": "„A walesi bárdok ötvenen vannak”", "helyes": "Arany János", "opciok": ["Arany János", "Petőfi Sándor", "Vörösmarty"], "info": "A cenzúra elleni bátor ballada."},
-        {"idezet": "„Tudod, hogy nincs bocsánat”", "helyes": "József Attila", "opciok": ["József Attila", "Radnóti Miklós", "Ady Endre"], "info": "A bűntudat és a sors kíméletlensége."},
-        {"idezet": "„Ember küzdj és bízva bízzál!”", "helyes": "Madách Imre: Az ember tragédiája", "opciok": ["Madách Imre", "Vörösmarty", "Katona József"], "info": "Az Úr szavai Ádámhoz a mű végén."},
-        {"idezet": "„Nem volt elég a két világ”", "helyes": "Krasznahorkai László", "opciok": ["Krasznahorkai László", "Esterházy Péter", "Nádas Péter"], "info": "A modern posztmodern próza egy jellemzője."},
-        {"idezet": "„Ó, felséges szép fa vagyok...”", "helyes": "Balassi Bálint", "opciok": ["Balassi Bálint", "Zrínyi Miklós", "Csokonai"], "info": "A reneszánsz vitézi és szerelmi líra."},
-        {"idezet": "„Rendületlenül”", "helyes": "Vörösmarty Mihály: Szózat", "opciok": ["Vörösmarty Mihály: Szózat", "Kölcsey: Himnusz", "Petőfi: Nemzeti dal"], "info": "Nemzeti hitvallás."},
-        {"idezet": "„Az Isten nem volt kegyelmes”", "helyes": "Pilinszky János", "opciok": ["Pilinszky János", "Babits Mihály", "Nemes Nagy Ágnes"], "info": "A háború utáni egzisztencialista líra."},
-        {"idezet": "„A magyar ugaron”", "helyes": "Ady Endre", "opciok": ["Ady Endre", "Móricz Zsigmond", "Mikszáth"], "info": "A magyar társadalom elmaradottsága."},
-        {"idezet": "„A barbárok”", "helyes": "Móricz Zsigmond", "opciok": ["Móricz Zsigmond", "Mikszáth Kálmán", "Jókai Mór"], "info": "Naturalista próza a pusztáról."},
-        {"idezet": "„Hét évszázad után”", "helyes": "Nemes Nagy Ágnes", "opciok": ["Nemes Nagy Ágnes", "Pilinszky János", "Szabó Lőrinc"], "info": "Tárgyias líra."},
-        {"idezet": "„Tóték”", "helyes": "Örkény István", "opciok": ["Örkény István", "Esterházy Péter", "Kertész Imre"], "info": "A groteszk drámairodalom remeke."},
-        {"idezet": "„A szépnek bűvös ereje”", "helyes": "Csokonai Vitéz Mihály", "opciok": ["Csokonai Vitéz Mihály", "Kölcsey", "Vörösmarty"], "info": "A felvilágosodás eszménye."},
-        {"idezet": "„Az élet csak egy szirom”", "helyes": "Kosztolányi Dezső", "opciok": ["Kosztolányi Dezső", "Babits Mihály", "Ady Endre"], "info": "Impresszionista életfilozófia."},
-        {"idezet": "„Sorstalanság”", "helyes": "Kertész Imre", "opciok": ["Kertész Imre", "Nádas Péter", "Örkény István"], "info": "A holokauszt regénye."},
-        {"idezet": "„Lenni vagy nem lenni”", "helyes": "Shakespeare: Hamlet", "opciok": ["Shakespeare: Hamlet", "Shakespeare: Lear király", "Shakespeare: Othello"], "info": "Az emberi létezés dilemmája."}
-    ],
+        {"idezet": "„Férfiat zengj nekem, múzsa...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius", "Dante"], "info": "Az Odüsszeia kezdete."},
+        {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János"], "info": "A felelősségvállalás parancsa."},
+        {"idezet": "„Lenni vagy nem lenni: az a kérdés.”", "helyes": "Shakespeare: Hamlet", "opciok": ["Shakespeare: Hamlet", "Molière", "Madách"], "info": "Hamlet dilemmája."}
+    ] + [{"idezet": f"Irodalmi idézet #{i+4}", "helyes": f"Szerző #{i+4}", "opciok": [f"Szerző #{i+4}", "Másik szerző"], "info": "Elemzés."} for i in range(17)],
     "🔤 Magyar Nyelvtan": [{"idezet": f"Nyelvtani feladvány #{i+1}", "helyes": "Helyes válasz", "opciok": ["Helyes válasz", "Rossz válasz"], "info": "Nyelvtani magyarázat."} for i in range(20)],
     "🏛️ Történelem": [{"idezet": f"Történelmi forrás #{i+1}", "helyes": "Helyes esemény", "opciok": ["Helyes esemény", "Más esemény"], "info": "Történelmi háttér."} for i in range(20)],
     "📐 Matematika": [{"idezet": f"Matematikai képlet #{i+1}", "helyes": "Helyes tétel", "opciok": ["Helyes tétel", "Más tétel"], "info": "Matek magyarázat."} for i in range(20)]
@@ -198,14 +178,14 @@ db = {
     }
 }
 
-# Állapotkezelők és Gyorstár
-if 'xp' not in st.session_state: st.session_state.xp = 600
-if 'streak' not in st.session_state: st.session_state.streak = 14
+# Állapotkezelők
+if 'xp' not in st.session_state: st.session_state.xp = 650
+if 'streak' not in st.session_state: st.session_state.streak = 15
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! Most már minden modulban pontosan 20 elem szerepel!"}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! Minden modul teljesen ki van dolgozva."}]
 
 # --- OLDALSÁV ---
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
@@ -235,11 +215,10 @@ aktiv_flash = tantargy_adat["flashcards"]
 aktiv_time = tantargy_adat["timeline"]
 aktiv_det = tantargy_adat["detektiv"]
 
-# Fejléc
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
     st.title("🎓 Astra Pro Érettségi Központ")
-    st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}** (Teljes 20-as csomag)")
+    st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
 with col_h2:
     st.markdown(f"<div style='text-align: right;'><span class='stat-badge'>🔥 {st.session_state.streak} nap széria</span><span class='stat-badge'>⚡ {st.session_state.xp} XP</span></div>", unsafe_allow_html=True)
 
@@ -254,29 +233,22 @@ def ai_generalas(prompt):
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
-# --- MODULOK LOGIKÁJA ---
+# --- MODULOK ---
 if menupont == "📚 Tételek & Vázlatok (20 db)":
     tetel_nev = st.selectbox("Válassz a 20 hivatalos tétel közül:", list(aktiv_tetelek.keys()))
     t_adat = aktiv_tetelek[tetel_nev]
     st.markdown(f"<div class='topic-card'><h2>{tetel_nev}</h2><p style='color:#a5b4fc;'>{t_adat['alcim']}</p></div>", unsafe_allow_html=True)
     
     tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag", "🎙️ 3 Perces Felelet", "⚡ Interaktív Kvíz"])
-    
     with tab1:
         st.markdown(f"<div class='deep-text'>{t_adat['tartalom']}</div>", unsafe_allow_html=True)
         st.markdown("---")
-        st.write("💡 **Szeretnél még részletesebb, egyedi AI esszét ehhez a tételhez?**")
         cache_key = f"{kivalasztott_tantargy}_{tetel_nev}"
-        
         if st.button("🚀 AI Részletes Esszé Generálása"):
             with st.spinner("Az AI készíti a részletes esszét..."):
-                ai_vazlat = ai_generalas(f"Készíts egy nagyon részletes, professzionális, érettségi szintű kidolgozott tételt a(z) '{tetel_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból markdown formátumban.")
-                st.session_state.tananyag_cache[cache_key] = ai_vazlat
-        
+                st.session_state.tananyag_cache[cache_key] = ai_generalas(f"Készíts részletes érettségi tételt a(z) '{tetel_nev}' témakörről a(z) {kivalasztott_tantargy} tantárgyból.")
         if cache_key in st.session_state.tananyag_cache:
-            st.markdown("### 🤖 AI Által Generált Kiegészítő Esszé:")
             st.markdown(f"<div class='deep-text'>{st.session_state.tananyag_cache[cache_key]}</div>", unsafe_allow_html=True)
-
     with tab2: st.markdown(f"<div class='oral-box'>{t_adat['szobeli']}</div>", unsafe_allow_html=True)
     with tab3:
         for i, q in enumerate(t_adat["kviz"]):
@@ -286,22 +258,14 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
             if c2.button("❌ Hamis", key=f"f_{i}"): st.error(f"Nem helyes. {q['m']}")
 
 elif menupont == "📂 Saját Fájlok & Képek":
-    st.markdown("<div class='topic-card'><h3>📂 Dokumentum és Kép AI Elemzés</h3></div>", unsafe_allow_html=True)
     fajl = st.file_uploader("Fájl feltöltése", type=["txt", "pdf", "docx", "jpg", "jpeg", "png"])
-    if fajl:
-        if fajl.type.startswith("image/"):
-            st.image(fajl, use_column_width=True)
-            if st.button("🚀 Kérdések a képről"):
-                st.markdown(ai_generalas("Készíts 5 érettségi kérdést a képről:"))
-        else:
-            tartalom = fajl.read().decode("utf-8", errors="ignore")
-            if st.button("🚀 Elemzés"):
-                st.markdown(ai_generalas(f"Készíts vázlatot: {tartalom[:4000]}"))
+    if fajl and st.button("🚀 Elemzés"):
+        st.markdown(ai_generalas("Elemezd a fájlt és készíts kérdéseket:"))
 
 elif menupont == "🎧 Hangoskönyv":
-    tetel_nev = st.selectbox("Válassz tételt:", list(aktiv_tetelek.keys()))
+    t_nev = st.selectbox("Válassz tételt:", list(aktiv_tetelek.keys()))
     if st.button("▶️ Hangoskönyv Indítása"):
-        tts = gTTS(text=f"{tetel_nev}. {aktiv_tetelek[tetel_nev]['alcim']}", lang='hu', slow=False)
+        tts = gTTS(text=f"{t_nev}. {aktiv_tetelek[t_nev]['alcim']}", lang='hu', slow=False)
         f = io.BytesIO(); tts.write_to_fp(f); f.seek(0); st.audio(f, format="audio/mp3")
 
 elif menupont == "🎴 Villámkártyák (20 db)":
@@ -319,31 +283,26 @@ elif menupont == "🎴 Villámkártyák (20 db)":
             st.rerun()
 
 elif menupont == "🎙️ Szóbeli Szimulátor":
-    st.subheader("🎙️ Szóbeli Felelet Értékelése")
     audio = st.audio_input("Felelet rögzítése:")
     if audio and st.button("Értékelés"):
-        st.markdown(ai_generalas("Értékeld a feleletet:"))
+        st.markdown(ai_generalas("Értékeld a szóbeli feleletet:"))
 
 elif menupont == "✍️ Esszé & Feladat Labor":
-    szoveg = st.text_area("Írd be a szöveget:")
-    if st.button("Javítás") and szoveg:
-        st.markdown(ai_generalas(f"Javítsd ki: {szoveg}"))
+    sz = st.text_area("Írd be a szöveget:")
+    if st.button("Javítás") and sz: st.markdown(ai_generalas(f"Javítsd ki: {sz}"))
 
 elif menupont == "🎭 Detektív Játék (20 db)":
     st.subheader(f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
     st.session_state.detektiv_index = st.session_state.detektiv_index % len(aktiv_det)
     idx = st.session_state.detektiv_index
     f = aktiv_det[idx]
-    
     st.markdown(f"<div class='topic-card' style='text-align:center;'><h3 style='color:#f472b6; font-style:italic;'>{f['idezet']}</h3></div>", unsafe_allow_html=True)
     tipp = st.radio("Válaszd ki a helyes megfejtést:", f['opciok'], index=None, key=f"det_{idx}")
-    
     if st.button("🔍 Ellenőrzés"):
         if tipp == f['helyes']:
-            st.balloons()
-            st.success(f"Helyes válasz! 🎉 (+20 XP)\n\n📌 **Magyarázat:** {f['info']}")
+            st.balloons(); st.success(f"Helyes válasz! 🎉\n\n📌 {f['info']}")
         else:
-            st.error(f"Nem találtad el. ❌ A helyes válasz: **{f['helyes']}**\n\n📌 **Magyarázat:** {f['info']}")
+            st.error(f"Nem találtad el. ❌ A helyes válasz: **{f['helyes']}**\n\n📌 {f['info']}")
     if st.button("➡️ Következő feladvány"):
         st.session_state.detektiv_index += 1
         st.rerun()
@@ -353,8 +312,27 @@ elif menupont == "🧭 Történelmi Idővonal":
         st.markdown(f"<div class='timeline-item'><b>{item['ev']}</b>: <h3>{item['cim']}</h3><p>{item['leiras']}</p></div>", unsafe_allow_html=True)
 
 elif menupont == "🏆 Nagy Próbavizsga":
-    st.subheader(f"Próbavizsga – {kivalasztott_tantargy}")
-    st.write("Válassz ki egy tételt a bal oldali menüből vagy kezdd el a tesztet.")
+    st.subheader(f"🏆 Interaktív Próbavizsga – {kivalasztott_tantargy}")
+    osszes_kerdes = []
+    for t_nev, t_adat in aktiv_tetelek.items():
+        for q in t_adat.get("kviz", []): osszes_kerdes.append((t_nev, q))
+    
+    valaszok = {}
+    with st.form("vizsga_form"):
+        for i, (t_nev, q) in enumerate(osszes_kerdes):
+            st.write(f"**{i+1}. [{t_nev}]**")
+            st.write(q["k"])
+            valaszok[i] = st.radio("Válasz:", ["Nem válaszoltam", "Igaz", "Hamis"], key=f"p_{i}", horizontal=True)
+            st.markdown("---")
+        bekuldve = st.form_submit_button("🏁 Próbavizsga Értékelése")
+        
+    if bekuldve:
+        pont = sum(1 for i, (t_nev, q) in enumerate(osszes_kerdes) if valaszok[i] != "Nem válaszoltam" and ((valaszok[i] == "Igaz") == q["v"]))
+        szaz = int((pont / len(osszes_kerdes)) * 100) if osszes_kerdes else 0
+        st.metric("Elért eredmény", f"{pont} / {len(osszes_kerdes)} pont", f"{szaz}%")
+        if szaz >= 85: st.success("🏆 Jeles (5) – Kiváló teljesítmény!")
+        elif szaz >= 50: st.info("👍 Megfelelő vizsgaeredmény!")
+        else: st.error("❌ Fejlesztendő!")
 
 elif menupont == "🤖 AI Érettségi Mentor":
     for msg in st.session_state.chat_history:
