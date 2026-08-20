@@ -1,141 +1,157 @@
 {
   "Magyar Irodalom": {
     "tetelek": {
-      "1. Ókori eposzok és a Biblia": {
-        "alcim": "Homérosz és az európai kultúra alapkövei",
-        "vazlat": "### I. Eposzi kellékek\n- Invokáció, propozíció, in medias res, csodás elemek.\n### II. Iliász és Odüsszeia\n- Trójai háború, emberi sorsok és istenek világa.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Műfaj jellemzői -> 2. Hősök ábrázolása.",
-        "kviz": [
-          {"k": "Az eposz nagy terjedelmű verses epikai mű.", "v": true, "m": "Igen, a klasszikus ókori műfajok egyike."},
-          {"k": "Az in medias res a mű végén történő lezárást jelent.", "v": false, "m": "Nem, a dolgok sűrűjébe vágó kezdést jelenti."}
-        ]
-      },
-      "2. William Shakespeare drámái": {
-        "alcim": "A reneszánsz színház és a Hamlet",
-        "vazlat": "### I. Globe Színház\n- Erzsébet-kori dráma, jellemfejlődés.\n### II. Hamlet\n- A tettek halasztása, morális válság és belső vívódások.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Drámatörténeti kontextus -> 2. A Hamlet dilemmája.",
-        "kviz": [
-          {"k": "A Hamlet dráma főhőse dán királyfi.", "v": true, "m": "Igen, Claudius ellen fordul."}
-        ]
-      },
-      "3. Petőfi Sándor költészete": {
-        "alcim": "Népies helyzetdalok, tájleíró versek és a látomásköltészet",
-        "vazlat": "### I. Népies költészet\n- Helyzetdalok, tájköltészet.\n### II. Látomásversek\n- Az Apostol, XIX. századi költők.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Petőfi szerepe a magyar lírában -> 2. Prófétaság.",
-        "kviz": [
-          {"k": "A Tisza egyszerre tájleírás és életkép.", "v": true, "m": "Igen."}
-        ]
-      },
-      "4. Arany János balladái": {
-        "alcim": "A ballada műfajelmélete, nagykőrösi korszak",
-        "vazlat": "### I. Műfajelmélet\n- Líra, epika és dráma szintézise (Greguss Ágost).\n### II. Nagykőrösi balladák\n- Ágnes asszony, A walesi bárdok.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Arany balladapoétikája -> 2. Bűn és bűnhődés.",
-        "kviz": [
-          {"k": "A walesi bárdok a hatalom kritikája.", "v": true, "m": "Igen, a cenzúra elleni mű."}
-        ]
-      }
+      "1. Ókori eposzok és a Biblia": {"alcim": "Homérosz és a bibliai kultúrkör", "vazlat": "### I. Eposzi kellékek\n- Invokáció, propozíció, in medias res.\n### II. Biblia\n- Ó- és Újszövetség mint kulturális kód.", "szobeli": "🎙️ 3 perces felelet a műfajokról.", "kviz": [{"k": "Az eposz verses epikai mű.", "v": true, "m": "Igen."}]},
+      "2. A középkori és reneszánsz dráma": {"alcim": "Shakespeare: Hamlet, Rómeó és Júlia", "vazlat": "### I. Reneszánsz színház\n- Globe Színház, jellemfejlődés.", "szobeli": "🎙️ 3 perces felelet a drámákról.", "kviz": [{"k": "A Hamlet dán dráma.", "v": true, "m": "Igen."}]},
+      "3. Balassi Bálint költészete": {"alcim": "A reneszánsz magyar líra", "vazlat": "### I. Balassi-strófa\n- Katona-, szerelem- és istenes versek.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Balassi katonáskodott is.", "v": true, "m": "Igen."}]},
+      "4. Zrínyi Miklós: Szigeti veszedelem": {"alcim": "A barokk eposz", "vazlat": "### I. Barokk stílus\n- Zrínyi Ilona dédunokája, törökellenes egység.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Zrínyi bán volt Szigetváron.", "v": true, "m": "Igen."}]},
+      "5. Mikes Kelemen levelei": {"alcim": "Törökországi levelek", "vazlat": "### I. Rodostói száműzetés\n- Emlékirat-irodalom.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Mikes bujdosó volt.", "v": true, "m": "Igen."}]},
+      "6. Csokonai Vitéz Mihály költészete": {"alcim": "Felvilágosodás és szentimentizmus", "vazlat": "### I. Lilla-ciklus\n- A Reményhez.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Csokonai debreceni poéta.", "v": true, "m": "Igen."}]},
+      "7. Katona József: Bánk bán": {"alcim": "A nemzeti dráma", "vazlat": "### I. Drámai konfliktus\n- Magánélet és haza.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Gertrúd a királyné.", "v": true, "m": "Igen."}]},
+      "8. Kölcsey Ferenc és Vörösmarty Mihály": {"alcim": "Himnusz, Szózat, Csongor és Tünde", "vazlat": "### I. Romantikus nemzetfelfogás", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "A Himnusz költemény.", "v": true, "m": "Igen."}]},
+      "9. Petőfi Sándor költészete": {"alcim": "Népies dalok és látomásköltészet", "vazlat": "### I. Az Apostol\n- Forradalmi versek.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Petőfi szabadságharcos volt.", "v": true, "m": "Igen."}]},
+      "10. Arany János balladái és lírája": {"alcim": "Nagykőrösi korszak", "vazlat": "### I. Ágnes asszony\n- Bűn és bűnhődés.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Arany a balladák királya.", "v": true, "m": "Igen."}]},
+      "11. Jókai Mór regényvilága": {"alcim": "Az arany ember", "vazlat": "### I. Romantikus realizmus", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Timár Mihály a főhős.", "v": true, "m": "Igen."}]},
+      "12. Madách Imre: Az ember tragédiája": {"alcim": "Filozófiai dráma", "vazlat": "### I. Történelmi színek\n- Lucifer és Ádám.", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Madách tragédiaíró.", "v": true, "m": "Igen."}]},
+      "13. Mikszáth Kálmán prózája": {"alcim": "A besztercei ostrom", "vazlat": "### I. Anekdotás realizmus", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Mikszáth palóc író.", "v": true, "m": "Igen."}]},
+      "14. Ady Endre költészete": {"alcim": "Új versek, szimbolizmus", "vazlat": "### I. Léda és Hortobágy", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Ady a Nyugat vezéralakja.", "v": true, "m": "Igen."}]},
+      "15. Móricz Zsigmond realizmusa": {"alcim": "Sárarany, Barbárok", "vazlat": "### I. Tiszántúli világ", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Móricz realista prózaíró.", "v": true, "m": "Igen."}]},
+      "16. Babits Mihály lírája": {"alcim": "Jónás könyve", "vazlat": "### I. Antik humánum", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Babits esszéista is volt.", "v": true, "m": "Igen."}]},
+      "17. Kosztolányi Dezső költészete": {"alcim": "Esti Kornél, Pacsirta", "vazlat": "### I. Impresszionizmus", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Kosztolányi Nyugat-szerző.", "v": true, "m": "Igen."}]},
+      "18. József Attila költészete": {"alcim": "Szociális érzékenység", "vazlat": "### I. Késő versek", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "József Attila modern költő.", "v": true, "m": "Igen."}]},
+      "19. Radnóti Miklós költészete": {"alcim": "Eclogák, Bori notesz", "vazlat": "### I. Klasszicizáló modernség", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Radnóti tragikus sorsú.", "v": true, "m": "Igen."}]},
+      "20. Szabó Lőrinc költészete": {"alcim": "Tücsökzene", "vazlat": "### I. Húszadik századi líra", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Szabó Lőrinc műfordító is.", "v": true, "m": "Igen."}]},
+      "21. Kassák Lajos és az avantgárd": {"alcim": "Aktivizmus, szabadvers", "vazlat": "### I. Modern irányzatok", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Kassák szerkesztő volt.", "v": true, "m": "Igen."}]},
+      "22. Örkény István egypercesei": {"alcim": "A groteszk műfaja", "vazlat": "### I. Tóték, Térkép", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Örkény a groteszk mestere.", "v": true, "m": "Igen."}]},
+      "23. Pilinszky János költészete": {"alcim": "Apokrif, metamorfózis", "vazlat": "### I. Keresztény egzisztencializmus", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Pilinszky mély vallásos.", "v": true, "m": "Igen."}]},
+      "24. Nagy László költészete": {"alcim": "Ki vitt át a telhetetlen?", "vazlat": "### I. Népi szürrealizmus", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Nagy László költő.", "v": true, "m": "Igen."}]},
+      "25. Nemes Nagy Ágnes lírája": {"alcim": "Között", "vazlat": "### I. Tárgyias költészet", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Nemes Nagy Ágnes esszéista.", "v": true, "m": "Igen."}]},
+      "26. Esterházy Péter prózája": {"alcim": "Bevezetés a szépirodalomba", "vazlat": "### I. Posztmodern irodalom", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Esterházy posztmodern.", "v": true, "m": "Igen."}]},
+      "27. Nádas Péter prózája": {"alcim": "Emlékiratok könyve", "vazlat": "### I. Pszichológiai próza", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Nádas Kossuth-díjas.", "v": true, "m": "Igen."}]},
+      "28. Kertész Imre: Sorstalanság": {"alcim": "A holokauszt irodalma", "vazlat": "### I. Nobel-díjas regény", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Kertész Imre Nobel-díjas.", "v": true, "m": "Igen."}]},
+      "29. Krasznahorkai László prózája": {"alcim": "Sátántangó", "vazlat": "### I. Apokaliptikus látásmód", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "Krasznahorkai nemzetközi hírű.", "v": true, "m": "Igen."}]},
+      "30. Kortárs magyar irodalom": {"alcim": "Mai szerzők és irányzatok", "vazlat": "### I. Jelenkori irodalom", "szobeli": "🎙️ 3 perces felelet.", "kviz": [{"k": "A kortárs irodalom folyamatosan alakul.", "v": true, "m": "Igen."}]}
     },
     "flashcards": [
       {"q": "Mit jelent az in medias res?", "a": "A dolgok sűrűjébe vágó eposzi kezdés."},
-      {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."},
       {"q": "Mikor indult a Nyugat folyóirat?", "a": "1908-ban."}
     ],
     "timeline": [
-      {"ev": "Kr. e. VIII. sz.", "cim": "Homéroszi eposzok", "leiras": "Az Iliász és az Odüsszeia keletkezése."},
-      {"ev": "1908", "cim": "A Nyugat indulása", "leiras": "Osvát Ernő szerkesztésében elindul a modern magyar irodalom."}
+      {"ev": "1908", "cim": "A Nyugat indulása", "leiras": "Osvát Ernő szerkesztésében."}
     ],
     "detektiv": [
-      {"idezet": "„Férfiat zengj nekem, múzsa...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius", "Dante"], "info": "Az Odüsszeia nyitánya."},
-      {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János"], "info": "A felelősségvállalás parancsa."}
+      {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre"], "info": "A felelősségvállalás parancsa."}
     ]
   },
   "Történelem": {
     "tetelek": {
-      "1. Az athéni demokrácia működése": {
-        "alcim": "Szolón, Kleiszthenész és Periklész reformjai",
-        "vazlat": "### I. Intézmények\n- Népgyűlés, Boule, Héliaia, sztratégoszok.\n### II. Démosz jogai\n- Cserépszavazás, napidíj.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Kialakulás -> 2. Működés.",
-        "kviz": [
-          {"k": "Az athéni demokrácia közvetlen demokrácia volt.", "v": true, "m": "Igen."}
-        ]
-      },
-      "2. Szent István államalapítása": {
-        "alcim": "Géza politikája, koronázás, egyházszervezés",
-        "vazlat": "### I. Koronázás\n- 1000/1001, nyugati kereszténység felvétele.\n### II. Vármegyerendszer\n- Tized, egyházmegyék.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Államalapítás okai -> 2. Törvények.",
-        "kviz": [
-          {"k": "Szent István pápai koronát kapott.", "v": true, "m": "II. Szilveszter pápától."}
-        ]
-      },
-      "3. Az 1848–49-es forradalom": {
-        "alcim": "Március 15., Áprilisi törvények, szabadságharc",
-        "vazlat": "### I. Pesti események\n- 12 pont, Nemzeti Dal.\n### II. Katonai fordulatok\n- Tavaszi hadjárat.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Forradalom menete -> 2. Honvédsereg győzelmei.",
-        "kviz": [
-          {"k": "Az Áprilisi törvényeket V. Ferdinánd szentesítette.", "v": true, "m": "Igen."}
-        ]
-      }
+      "1. Az athéni demokrácia": {"alcim": "Periklész kora", "vazlat": "### I. Intézmények\n- Népgyűlés, Boule.", "szobeli": "Felelet...", "kviz": [{"k": "Athén demokrácia volt.", "v": true, "m": "Igen."}]},
+      "2. A római köztársaság": {"alcim": "Patríciusok és plebejusok", "vazlat": "### I. Szervezet", "szobeli": "Felelet...", "kviz": [{"k": "Róma birodalom lett.", "v": true, "m": "Igen."}]},
+      "3. A kereszténység": {"alcim": "Egyházszervezés", "vazlat": "### I. Új vallás", "szobeli": "Felelet...", "kviz": [{"k": "Jézus a központi alak.", "v": true, "m": "Igen."}]},
+      "4. A feudalizmus": {"alcim": "Hűbériség", "vazlat": "### I. Nagybirtok", "szobeli": "Felelet...", "kviz": [{"k": "Jobbágyrendszer.", "v": true, "m": "Igen."}]},
+      "5. Az Iszlám világa": {"alcim": "Arab kalifátus", "vazlat": "### I. Mohamed", "szobeli": "Felelet...", "kviz": [{"k": "Mekka a szent város.", "v": true, "m": "Igen."}]},
+      "6. A honfoglalás": {"alcim": "895, Kárpát-medence", "vazlat": "### I. Árpád vezér", "szobeli": "Felelet...", "kviz": [{"k": "895 a honfoglalás éve.", "v": true, "m": "Igen."}]},
+      "7. Szent István": {"alcim": "Államalapítás", "vazlat": "### I. Koronázás", "szobeli": "Felelet...", "kviz": [{"k": "1000-ben koronázták.", "v": true, "m": "Igen."}]},
+      "8. Az Aranybulla": {"alcim": "1222, II. András", "vazlat": "### I. Rendi jogok", "szobeli": "Felelet...", "kviz": [{"k": "Van benne ellenállási záradék.", "v": true, "m": "Igen."}]},
+      "9. Az Anjou-kor": {"alcim": "Károly Róbert és Nagy Lajos", "vazlat": "### I. Reformok", "szobeli": "Felelet...", "kviz": [{"k": "Aranyforint bevezetése.", "v": true, "m": "Igen."}]},
+      "10. Hunyadiak kora": {"alcim": "Mátyás király", "vazlat": "### I. Fekete sereg", "szobeli": "Felelet...", "kviz": [{"k": "Mátyás igazságos volt.", "v": true, "m": "Igen."}]},
+      "11. A török hódítás": {"alcim": "1526, Mohács", "vazlat": "### I. Három részre szakadás", "szobeli": "Felelet...", "kviz": [{"k": "Mohácsi vész.", "v": true, "m": "Igen."}]},
+      "12. A reformáció": {"alcim": "Hittérek Magyarországon", "vazlat": "### I. Protestantizmus", "szobeli": "Felelet...", "kviz": [{"k": "Luther Márton lépett fel.", "v": true, "m": "Igen."}]},
+      "13. Rákóczi-szabadságharc": {"alcim": "1703–1711", "vazlat": "### I. Kurucok és labancok", "szobeli": "Felelet...", "kviz": [{"k": "Ónodi országgyűlés.", "v": true, "m": "Igen."}]},
+      "14. Felvilágosult abszolutizmus": {"alcim": "Mária Terézia, II. József", "vazlat": "### I. Ratio Educationis", "szobeli": "Felelet...", "kviz": [{"k": "Kalapos király.", "v": true, "m": "Igen."}]},
+      "15. Polgári forradalmak": {"alcim": "Francia forradalom", "vazlat": "### I. Emberi jogok", "szobeli": "Felelet...", "kviz": [{"k": "1789 a kezdete.", "v": true, "m": "Igen."}]},
+      "16. Ipari forradalom": {"alcim": "Gőzgép, gyárak", "vazlat": "### I. Technika", "szobeli": "Felelet...", "kviz": [{"k": "Watt fejlesztése.", "v": true, "m": "Igen."}]},
+      "17. A reformkor": {"alcim": "Széchenyi és Kossuth", "vazlat": "### I. Modernizáció", "szobeli": "Felelet...", "kviz": [{"k": "Lánchíd építése.", "v": true, "m": "Igen."}]},
+      "18. 1848–49-es forradalom": {"alcim": "Március 15.", "vazlat": "### I. 12 pont", "szobeli": "Felelet...", "kviz": [{"k": "Szabadságharc.", "v": true, "m": "Igen."}]},
+      "19. A kiegyezés": {"alcim": "1867, Dualizmus", "vazlat": "### I. Ferenc József", "szobeli": "Felelet...", "kviz": [{"k": "Deák Ferenc terve.", "v": true, "m": "Igen."}]},
+      "20. Első világháború": {"alcim": "1914–1918", "vazlat": "### I. Békediktátumok", "szobeli": "Felelet...", "kviz": [{"k": "Szarajevói merénylet.", "v": true, "m": "Igen."}]},
+      "21. Trianon és Horthy-korszak": {"alcim": "1920, Bethlen István", "vazlat": "### I. Konszolidáció", "szobeli": "Felelet...", "kviz": [{"k": "Trianoni béke.", "v": true, "m": "Igen."}]},
+      "22. Totalitárius rendszerek": {"alcim": "Fasizmus, nácizmus", "vazlat": "### I. Diktatúrák", "szobeli": "Felelet...", "kviz": [{"k": "Hitler hatalomra jutása.", "v": true, "m": "Igen."}]},
+      "23. Második világháború": {"alcim": "1939–1945", "vazlat": "### I. Világégés", "szobeli": "Felelet...", "kviz": [{"k": "Normandiai partraszállás.", "v": true, "m": "Igen."}]},
+      "24. A hidegháború": {"alcim": "Kétpólusú világ", "vazlat": "### I. Vasfüggöny", "szobeli": "Felelet...", "kviz": [{"k": "NATO és Varsói Szerződés.", "v": true, "m": "Igen."}]},
+      "25. 1956-os forradalom": {"alcim": "Október 23.", "vazlat": "### I. Szabadságharc", "szobeli": "Felelet...", "kviz": [{"k": "Magyar szabadságharc.", "v": true, "m": "Igen."}]},
+      "26. Kádár-korszak": {"alcim": "Gulyáskommunizmus", "vazlat": "### I. Konszolidáció", "szobeli": "Felelet...", "kviz": [{"k": "1968-as új gazdasági mechanizmus.", "v": true, "m": "Igen."}]},
+      "27. Rendszerváltás": {"alcim": "1989–1990", "vazlat": "### I. Köztársaság", "szobeli": "Felelet...", "kviz": [{"k": "Határnyitás.", "v": true, "m": "Igen."}]},
+      "28. Az Európai Unió": {"alcim": "Integráció", "vazlat": "### I. EU csatlakozás 2004", "szobeli": "Felelet...", "kviz": [{"k": "Magyarország uniós tag.", "v": true, "m": "Igen."}]},
+      "29. Globális kihívások": {"alcim": "XXI. század", "vazlat": "### I. Klímaváltozás", "szobeli": "Felelet...", "kviz": [{"k": "Digitális kor.", "v": true, "m": "Igen."}]},
+      "30. Modern gazdaság": {"alcim": "Globalizáció", "vazlat": "### I. Piaci viszonyok", "szobeli": "Felelet...", "kviz": [{"k": "Nemzetközi kereskedelem.", "v": true, "m": "Igen."}]}
     },
-    "flashcards": [
-      {"q": "Mikor kezdődött a honfoglalás?", "a": "895-ben."},
-      {"q": "Mikor adta ki II. András az Aranybullát?", "a": "1222-ben."}
-    ],
-    "timeline": [
-      {"ev": "1000", "cim": "Államalapítás", "leiras": "Szent István koronázása."},
-      {"ev": "1222", "cim": "Aranybulla", "leiras": "II. András oklevele Székesfehérváron."}
-    ],
-    "detektiv": [
-      {"idezet": "„Ius resistendi”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Szent István"], "info": "A nemesek ellenállási joga."}
-    ]
+    "flashcards": [{"q": "Mikor volt a honfoglalás?", "a": "895-ben."}],
+    "timeline": [{"ev": "1000", "cim": "Államalapítás", "leiras": "Szent István koronázása."}],
+    "detektiv": [{"idezet": "„Ius resistendi”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Szent István"], "info": "Ellenállási záradék."}]
   },
   "Magyar Nyelvtan": {
     "tetelek": {
-      "1. A kommunikáció folyamata": {
-        "alcim": "A Jakobson-féle modell és nyelvi funkciók",
-        "vazlat": "### I. Modell elemei\n- Adó, Vevő, Üzenet, Kód, Csatorna, Referens.\n### II. Funkciók\n- Emotív, konatív, fatikus, poétikai.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Kommunikációs tényezők -> 2. Példák.",
-        "kviz": [{"k": "A fatikus funkció a kapcsolat fenntartását szolgálja.", "v": true, "m": "Igen."}]
-      },
-      "2. A magyar helyesírás alapelvei": {
-        "alcim": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés",
-        "vazlat": "### I. Négy fő alapelv\n- Részletes szabályok és kivételek.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Alapelvek ismertetése.",
-        "kviz": [{"k": "A szóelemzés elve szerint látszik a toldalék.", "v": true, "m": "Igen."}]
-      }
+      "1. A kommunikáció": {"alcim": "Modell és funkciók", "vazlat": "### I. Adó, vevő", "szobeli": "Felelet...", "kviz": [{"k": "Fatikus funkció.", "v": true, "m": "Igen."}]},
+      "2. Helyesírási alapelvek": {"alcim": "Kiejtés, szóelemzés", "vazlat": "### I. Szabályok", "szobeli": "Felelet...", "kviz": [{"k": "Négy fő elv van.", "v": true, "m": "Igen."}]},
+      "3. Hangok rendszere": {"alcim": "Mássalhangzó-törvények", "vazlat": "### I. Hasonulás", "szobeli": "Felelet...", "kviz": [{"k": "Összeolvadás létezik.", "v": true, "m": "Igen."}]},
+      "4. Szófajok: alaptagok": {"alcim": "Ige, főnév", "vazlat": "### I. Szófaji csoportok", "szobeli": "Felelet...", "kviz": [{"k": "A főnév alaptag.", "v": true, "m": "Igen."}]},
+      "5. Szófajok: viszonyszók": {"alcim": "Névelő, névutó", "vazlat": "### I. Viszonyok", "szobeli": "Felelet...", "kviz": [{"k": "A névelő viszonyszó.", "v": true, "m": "Igen."}]},
+      "6. Szókészlet": {"alcim": "Szóképzés", "vazlat": "### I. Új szavak", "szobeli": "Felelet...", "kviz": [{"k": "Összetétel is van.", "v": true, "m": "Igen."}]},
+      "7. Frazeológia": {"alcim": "Szólások, közmondások", "vazlat": "### I. Képes beszédek", "szobeli": "Felelet...", "kviz": [{"k": "A közmondás bölcsesség.", "v": true, "m": "Igen."}]},
+      "8. Mondattan": {"alcim": "Mondatrészek", "vazlat": "### I. Alany, állítmány", "szobeli": "Felelet...", "kviz": [{"k": "Az állítmány központi.", "v": true, "m": "Igen."}]},
+      "9. Egyszerű mondat": {"alcim": "Fajták", "vazlat": "### I. Kijelentő", "szobeli": "Felelet...", "kviz": [{"k": "Kérdő mondat is van.", "v": true, "m": "Igen."}]},
+      "10. Mellérendelő összetett": {"alcim": "Kapcsolatos, ellentétes", "vazlat": "### I. Kötőszók", "szobeli": "Felelet...", "kviz": [{"k": "A 'de' ellentétes.", "v": true, "m": "Igen."}]},
+      "11. Alárendelő összetett": {"alcim": "Alanyi, tárgyi", "vazlat": "### I. Utalószó", "szobeli": "Felelet...", "kviz": [{"k": "Van alanyi mondat.", "v": true, "m": "Igen."}]},
+      "12. Szövegtan": {"alcim": "Kohézió", "vazlat": "### I. Egység", "szobeli": "Felelet...", "kviz": [{"k": "A szöveg összefügg.", "v": true, "m": "Igen."}]},
+      "13. Szövegfajták": {"alcim": "Leírás, elbeszélés", "vazlat": "### I. Műfajok", "szobeli": "Felelet...", "kviz": [{"k": "Az elbeszélés eseményt mutat be.", "v": true, "m": "Igen."}]},
+      "14. Retorika": {"alcim": "Meggyőzés", "vazlat": "### I. Beszéd", "szobeli": "Felelet...", "kviz": [{"k": "A retorika ókori művészet.", "v": true, "m": "Igen."}]},
+      "15. Érvelés": {"alcim": "Bizonyítás", "vazlat": "### I. Évek, tézisek", "szobeli": "Felelet...", "kviz": [{"k": "A tézis az állítás.", "v": true, "m": "Igen."}]},
+      "16. Vitakultúra": {"alcim": "Vita szabályai", "vazlat": "### I. Érvek", "szobeli": "Felelet...", "kviz": [{"k": "A vitában tisztelet kell.", "v": true, "m": "Igen."}]},
+      "17. Hivatalos iratok": {"alcim": "Kérvény, önéletrajz", "vazlat": "### I. Dokumentumok", "szobeli": "Felelet...", "kviz": [{"k": "Az önéletrajz fontos.", "v": true, "m": "Igen."}]},
+      "18. Tömegkommunikáció": {"alcim": "Média", "vazlat": "### I. Sajtó", "szobeli": "Felelet...", "kviz": [{"k": "A sajtó a negyedik hatalmi ág.", "v": true, "m": "Igen."}]},
+      "19. Szaknyelvek": {"alcim": "Rétegnyelvek", "vazlat": "### I. Szakszavak", "szobeli": "Felelet...", "kviz": [{"k": "A szleng is rétegnyelv.", "v": true, "m": "Igen."}]},
+      "20. Nyelvtörténet": {"alcim": "Uráli eredet", "vazlat": "### I. Rokonság", "szobeli": "Felelet...", "kviz": [{"k": "Uráli nyelvcsalád.", "v": true, "m": "Igen."}]},
+      "21. Névtan": {"alcim": "Személynevek", "vazlat": "### I. Onomasztika", "szobeli": "Felelet...", "kviz": [{"k": "A családnév is névtan.", "v": true, "m": "Igen."}]},
+      "22. Stilisztika": {"alcim": "Stíluseszközök", "vazlat": "### I. Trópusok", "szobeli": "Felelet...", "kviz": [{"k": "A hasonlat alakzat.", "v": true, "m": "Igen."}]},
+      "23. Alakzatok": {"alcim": "Költői képek", "vazlat": "### I. Metafora", "szobeli": "Felelet...", "kviz": [{"k": "A metafora névadás.", "v": true, "m": "Igen."}]},
+      "24. Nyelvművelés": {"alcim": "Normák", "vazlat": "### I. Helyes beszéd", "szobeli": "Felelet...", "kviz": [{"k": "A nyelv változik.", "v": true, "m": "Igen."}]},
+      "25. Nyelvjárások": {"alcim": "Területi nyelvek", "vazlat": "### I. Palóc nyelvjárás", "szobeli": "Felelet...", "kviz": [{"k": "Léteznek nyelvjárások.", "v": true, "m": "Igen."}]},
+      "26. Multimodális": {"alcim": "Vizuális jelek", "vazlat": "### I. Kép és szöveg", "szobeli": "Felelet...", "kviz": [{"k": "A mém is kommunikáció.", "v": true, "m": "Igen."}]},
+      "27. Netnyelv": {"alcim": "Digitális kor", "vazlat": "### I. Szleng", "szobeli": "Felelet...", "kviz": [{"k": "Az emoji jelez érzelmet.", "v": true, "m": "Igen."}]},
+      "28. Szótárak": {"alcim": "Értelmező szótár", "vazlat": "### I. Lexikográfia", "szobeli": "Felelet...", "kviz": [{"k": "A szótár adatot ad.", "v": true, "m": "Igen."}]},
+      "29. Kétnyelvűség": {"alcim": "Bilingvizmus", "vazlat": "### I. Két nyelv", "szobeli": "Felelet...", "kviz": [{"k": "Előny a kétnyelvűség.", "v": true, "m": "Igen."}]},
+      "30. Nyelvtudomány": {"alcim": "Történet", "vazlat": "### I. Kutatók", "szobeli": "Felelet...", "kviz": [{"k": "A nyelvészet tudomány.", "v": true, "m": "Igen."}]}
     },
-    "flashcards": [
-      {"q": "Mik a helyesírás alapelvei?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."}
-    ],
-    "timeline": [
-      {"ev": "1055", "cim": "Tihanyi alapítólevél", "leiras": "Az első magyar nyelvemlékünk."}
-    ],
-    "detektiv": [
-      {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Hasonulás"], "info": "t + s -> [ccs]."}
-    ]
+    "flashcards": [{"q": "Mi a helyesírás 4 alapelve?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."}],
+    "timeline": [{"ev": "1055", "cim": "Tihanyi alapítólevél", "leiras": "Az első nyelvemlék."}],
+    "detektiv": [{"idezet": "barátság [baraccság]", "helyes": "Összeolvadás", "opciok": ["Összeolvadás", "Hasonulás"], "info": "t+s."}]
   },
   "Matematika": {
     "tetelek": {
-      "1. Másodfokú egyenletek": {
-        "alcim": "Megoldóképlet, diszkrimináns, Viète-formulák",
-        "vazlat": "### I. Képlet\n- x1,2 = (-b ± √(b² - 4ac)) / 2a.\n### II. Diszkrimináns\n- D > 0, D = 0, D < 0 esetek.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Gyökök meghatározása.",
-        "kviz": [{"k": "Ha a diszkrimináns negatív, nincs valós gyök.", "v": true, "m": "Igen."}]
-      },
-      "2. Trigonometria alapjai": {
-        "alcim": "Szögfüggvények, szinusztétel, koszinusztétel",
-        "vazlat": "### I. Derékszögű háromszög\n- Sin, cos, tg, ctg.\n### II. Általános háromszög\n- Koszinusztétel.",
-        "szobeli": "**🎙️ 3 perces felelet:** 1. Tételek alkalmazása.",
-        "kviz": [{"k": "A szinusztétel minden háromszögre érvényes.", "v": true, "m": "Igen."}]
-      }
+      "1. Halmazok": {"alcim": "Metszet, unió", "vazlat": "### I. Műveletek", "szobeli": "Felelet...", "kviz": [{"k": "Unió a V betű.", "v": true, "m": "Igen."}]},
+      "2. Logika": {"alcim": "Ítéletek", "vazlat": "### I. Igazságérték", "szobeli": "Felelet...", "kviz": [{"k": "Az implikáció logikai.", "v": true, "m": "Igen."}]},
+      "3. Számhalmazok": {"alcim": "Valós számok", "vazlat": "### I. Oszthatóság", "szobeli": "Felelet...", "kviz": [{"k": "A zéró egész szám.", "v": true, "m": "Igen."}]},
+      "4. Algebrai kifejezések": {"alcim": "Nevezetes azonosságok", "vazlat": "### I. (a+b)^2", "szobeli": "Felelet...", "kviz": [{"k": "Négyzetösszeg.", "v": true, "m": "Igen."}]},
+      "5. Hatványok és gyökök": {"alcim": "Azonosságok", "vazlat": "### I. Szabályok", "szobeli": "Felelet...", "kviz": [{"k": "A gyökvonás a hatványozás fordítottja.", "v": true, "m": "Igen."}]},
+      "6. Elsőfokú egyenletek": {"alcim": "Egyenlőtlenségek", "vazlat": "### I. Mérlegelv", "szobeli": "Felelet...", "kviz": [{"k": "Az egyenlet mérleg.", "v": true, "m": "Igen."}]},
+      "7. Másodfokú egyenletek": {"alcim": "Megoldóképlet", "vazlat": "### I. Diszkrimináns", "szobeli": "Felelet...", "kviz": [{"k": "Van megoldóképlet.", "v": true, "m": "Igen."}]},
+      "8. Másodfokú függvények": {"alcim": "Parabola", "vazlat": "### I. Csúcspont", "szobeli": "Felelet...", "kviz": [{"k": "A parabola görbe.", "v": true, "m": "Igen."}]},
+      "9. Egyenletrendszerek": {"alcim": "Két ismeretlenes", "vazlat": "### I. Behelyettesítés", "szobeli": "Felelet...", "kviz": [{"k": "Van grafikus megoldás.", "v": true, "m": "Igen."}]},
+      "10. Függvények tulajdonságai": {"alcim": "Zérushely, paritás", "vazlat": "### I. Menet", "szobeli": "Felelet...", "kviz": [{"k": "A páros szimmetrikus az y-tengelyre.", "v": true, "m": "Igen."}]},
+      "11. Exponenciális egyenletek": {"alcim": "Logaritmus", "vazlat": "### I. Alapok", "szobeli": "Felelet...", "kviz": [{"k": "A logaritmus exponenciális.", "v": true, "m": "Igen."}]},
+      "12. Aritmetikai sorozatok": {"alcim": "Különbség (d)", "vazlat": "### I. Összegképlet", "szobeli": "Felelet...", "kviz": [{"k": "Az aritmetikai sorozat állandó különbségű.", "v": true, "m": "Igen."}]},
+      "13. Mértani sorozatok": {"alcim": "Hányados (q)", "vazlat": "### I. Kamatos kamat", "szobeli": "Felelet...", "kviz": [{"k": "A mértani sorozat kvótája q.", "v": true, "m": "Igen."}]},
+      "14. Trigonometria": {"alcim": "Szögfüggvények", "vazlat": "### I. Sin, cos", "szobeli": "Felelet...", "kviz": [{"k": "Sin = szemközti / átfogó.", "v": true, "m": "Igen."}]},
+      "15. Háromszögek": {"alcim": "Szinusztétel", "vazlat": "### I. Koszinusztétel", "szobeli": "Felelet...", "kviz": [{"k": "A koszinusztétel általános.", "v": true, "m": "Igen."}]},
+      "16. Vektorok": {"alcim": "Műveletek", "vazlat": "### I. Koordináták", "szobeli": "Felelet...", "kviz": [{"k": "A vektor irányított szakasz.", "v": true, "m": "Igen."}]},
+      "17. Sígeometria": {"alcim": "Kerület, terület", "vazlat": "### I. Sokszögek", "szobeli": "Felelet...", "kviz": [{"k": "A kör területe r^2*pi.", "v": true, "m": "Igen."}]},
+      "18. A kör": {"alcim": "Érintő, húr", "vazlat": "### I. Szögek", "szobeli": "Felelet...", "kviz": [{"k": "A kör kerülete 2*r*pi.", "v": true, "m": "Igen."}]},
+      "19. Térgeometria": {"alcim": "Felszín, térfogat", "vazlat": "### I. Gúla, kúp", "szobeli": "Felelet...", "kviz": [{"k": "A kúp térfogata harmad.", "v": true, "m": "Igen."}]},
+      "20. Koordináta-geometria": {"alcim": "Egyenes egyenlete", "vazlat": "### I. Pontok", "szobeli": "Felelet...", "kviz": [{"k": "A meredekség az m.", "v": true, "m": "Igen."}]},
+      "21. Kombinatorika": {"alcim": "Permutáció", "vazlat": "### I. Variáció", "szobeli": "Felelet...", "kviz": [{"k": "A faktoriális jelölése !.", "v": true, "m": "Igen."}]},
+      "22. Valószínűségszámítás": {"alcim": "Klasszikus modell", "vazlat": "### I. Kedvező esetek", "szobeli": "Felelet...", "kviz": [{"k": "A valószínűség 0 és 1 közt van.", "v": true, "m": "Igen."}]},
+      "23. Statisztika": {"alcim": "Középértékek", "vazlat": "### I. Átlag, módusz", "szobeli": "Felelet...", "kviz": [{"k": "Az átlag összeg osztva darabbal.", "v": true, "m": "Igen."}]},
+      "24. Határérték": {"alcim": "Végtelen sorozatok", "vazlat": "### I. Konvergencia", "szobeli": "Felelet...", "kviz": [{"k": "A határérték lehet végtelen.", "v": true, "m": "Igen."}]},
+      "25. Differenciálszámítás": {"alcim": "Derivált", "vazlat": "### I. Érintő meredeksége", "szobeli": "Felelet...", "kviz": [{"k": "A derivált a sebesség.", "v": true, "m": "Igen."}]},
+      "26. Függvényvizsgálat": {"alcim": "Monotonitás", "vazlat": "### I. Szélsőérték", "szobeli": "Felelet...", "kviz": [{"k": "Ahol a derivált 0, ott szélsőérték lehet.", "v": true, "m": "Igen."}]},
+      "27. Integrálszámítás": {"alcim": "Határozott integrál", "vazlat": "### I. Területmérés", "szobeli": "Felelet...", "kviz": [{"k": "Az integrál görbe alatti terület.", "v": true, "m": "Igen."}]},
+      "28. Komplex számok": {"alcim": "Képzetes egység", "vazlat": "### I. i^2 = -1", "szobeli": "Felelet...", "kviz": [{"k": "A komplex számok síkja a Gauss-sík.", "v": true, "m": "Igen."}]},
+      "29. Gráfelmélet": {"alcim": "Csúcsok és élek", "vazlat": "### I. Fa, út", "szobeli": "Felelet...", "kviz": [{"k": "Euler-út bejárhatóság.", "v": true, "m": "Igen."}]},
+      "30. Pénzügyi matek": {"alcim": "Hitel, kamat", "vazlat": "### I. Törlesztés", "szobeli": "Felelet...", "kviz": [{"k": "A kamatos kamat növekszik.", "v": true, "m": "Igen."}]}
     },
-    "flashcards": [
-      {"q": "Másodfokú egyenlet megoldóképlete?", "a": "x = (-b ± √(b² - 4ac)) / (2a)"}
-    ],
-    "timeline": [
-      {"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz", "leiras": "A derékszögű háromszög összefüggései."}
-    ],
-    "detektiv": [
-      {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel", "opciok": ["Koszinusztétel", "Pitagorasz"], "info": "Általános háromszögekre."}
-    ]
+    "flashcards": [{"q": "Másodfokú egyenlet megoldóképlete?", "a": "x = (-b ± √(b² - 4ac)) / (2a)"}],
+    "timeline": [{"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz", "leiras": "Geometriai tételek."}],
+    "detektiv": [{"idezet": "a² + b² = c²", "helyes": "Pitagorasz-tétel", "opciok": ["Pitagorasz-tétel", "Koszinusztétel"], "info": "Derékszögű háromszög."}]
   }
 }
