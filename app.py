@@ -19,21 +19,23 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# --- VÉGLEGES KONTRASTOS STÍLUSOK (FÁJLFELTÖLTŐ TELJES JAVÍTÁSA) ---
+# --- VÉGLEGES STÍLUS (FÁJLFELTÖLTŐ GOMB TÖKÉLETESÍTVE) ---
 st.markdown("""
 <style>
     .stApp { background-color: #050505; color: #f3f4f6; }
     .css-1d391kg, .stSidebar { background-color: #111827 !important; border-right: 1px solid #1f2937; }
     p, .stMarkdown, div[data-testid="stMarkdownContainer"] p { color: #e5e7eb !important; font-size: 1.05rem; }
+    
     .stButton>button, .stDownloadButton>button, div[data-testid="stFormSubmitButton"]>button {
         background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
         color: #ffffff !important; font-weight: 700 !important; border-radius: 12px !important; padding: 12px 24px !important;
         border: none; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
     }
+    
     div[data-testid="stExpander"] { background-color: #111827 !important; border: 1px solid #374151 !important; border-radius: 12px !important; }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea { background-color: #111827 !important; color: #ffffff !important; border: 1px solid #374151 !important; border-radius: 10px !important; }
     
-    /* Fájlfeltöltő doboz totális szövegszín kényszerítése */
+    /* Fájlfeltöltő doboz és a gomb teljes stílusjavítása */
     [data-testid="stFileUploader"] { background-color: #111827 !important; padding: 20px; border-radius: 16px; border: 1px solid #374151; }
     [data-testid="stFileUploader"] section { background-color: #1f2937 !important; border: 2px dashed #6366f1 !important; }
     [data-testid="stFileUploader"] section div, 
@@ -41,6 +43,16 @@ st.markdown("""
     [data-testid="stFileUploader"] section small, 
     [data-testid="stFileUploader"] section p { color: #ffffff !important; }
     [data-testid="stFileUploader"] label { color: #ffffff !important; font-size: 1.1rem !important; font-weight: 600 !important; }
+    
+    /* A feltöltő gomb fixálása, hogy látszódjon a felirat */
+    [data-testid="stFileUploader"] button {
+        background-color: #4f46e5 !important;
+        color: #ffffff !important;
+        border: none !important;
+    }
+    [data-testid="stFileUploader"] button p {
+        color: #ffffff !important;
+    }
 
     .stat-badge { background: linear-gradient(135deg, #6366f1, #a855f7); padding: 8px 18px; border-radius: 24px; font-weight: 700; display: inline-block; box-shadow: 0 2px 10px rgba(99,102,241,0.3); }
     .topic-card { background-color: #111827; border: 1px solid #374151; border-radius: 18px; padding: 28px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
@@ -184,13 +196,13 @@ db = {
     }
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 800
-if 'streak' not in st.session_state: st.session_state.streak = 18
+if 'xp' not in st.session_state: st.session_state.xp = 850
+if 'streak' not in st.session_state: st.session_state.streak = 19
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A fájlfeltöltő doboz szövegei most már fixen, mindig látszódnak."}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A fájlfeltöltő gomb és a feliratok most már tökéletesen látszódnak."}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
