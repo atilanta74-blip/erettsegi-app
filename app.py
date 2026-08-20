@@ -79,6 +79,12 @@ tetelek_irodalom = {
         "vazlat": "### I. Keretszín: Lucifer és az Úr vitája.\n### II. Történelmi színek: Egyiptom, Athén, Róma, London, stb.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Ádám és Éva szerepe -> 2. 'Küzdj és bízva bízzál!' üzenet.",
         "kviz": [{"k": "A falanszter színben a művészet és az egyéniség teljes eltörlése jelenik meg.", "v": True, "m": "A tudomány uralma."}]
+    },
+    "5. Ady Endre költészete": {
+        "alcim": "Új versek, szimbolizmus, magyarság- és szerelmi líra",
+        "vazlat": "### I. Ahol az Úr is a sötétséget keresi.\n### II. Léda-szerelem és Kuruc versek.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Ady fellépése 1906-ban -> 2. A megújult költői nyelvezet.",
+        "kviz": [{"k": "Ady Endre költészetére a szimbolizmus és az impresszionizmus volt a jellemző.", "v": True, "m": "Új motívumrendszert hozott."}]
     }
 }
 
@@ -100,6 +106,12 @@ tetelek_nyelvtan = {
         "vazlat": "### I. Alaptagok (ige, főnév, melléknév, számnév, névmás, határozószó).\n### II. Viszonyszók (névelő, névutó, kötőszó, segédige, igekötő, mondatszó).",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Szófaji csoportosítás szempontjai -> 2. Alaptagok és viszonyszók különbsége.",
         "kviz": [{"k": "A segédige viszonyszó, mert önmagában nem megnevező elem.", "v": True, "m": "Nyelvtani viszonyt fejez ki."}]
+    },
+    "4. A mondattan alapjai és mondatfajták": {
+        "alcim": "Alárendelő és mellérendelő összetett mondatok",
+        "vazlat": "### I. Mondatszerkezeti alaptípusok.\n### II. Alárendelő mondatok fajtái (alanyi, tárgyi, határozói, jelzői).",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Mondatrészek kapcsolata -> 2. Összetett mondatok elemzése.",
+        "kviz": [{"k": "A kapcsolatos mellérendelő mondat tagjai között kronológiai vagy logikai kapcsolat van.", "v": True, "m": "Például: Jött is, meg ment is."}]
     }
 }
 
@@ -114,13 +126,19 @@ tetelek_tortenelem = {
         "alcim": "Etelköz, Vereckei-hágó, kalandozó hadjáratok irányai",
         "vazlat": "### I. A magyarság vándorlása és őshazái.\n### II. A Kárpát-medence elfoglalása és a kalandozások kora.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Honfoglalás okai -> 2. Kalandozások európai hatásai.",
-        "kviz": [{"k": "A kalandozások az augsburgi csatában (955) szenvedett vereséggel zárultak nyugat felé.", "v": True, "m": I. Ottó megállította a magyarokat."}]
+        "kviz": [{"k": "A kalandozások az augsburgi csatában (955) szenvedett vereséggel zárultak nyugat felé.", "v": True, "m": "I. Ottó megállította a magyarokat."}]
     },
     "3. Szent István államalapítása és egyházszervezése": {
         "alcim": "Géza politikája, koronázás, vármegyerendszer, tized",
         "vazlat": "### I. Géza fejedelem előkészítő munkája.\n### II. István király egyházmegyéi és törvényei.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Kereszténység felvétele -> 2. Vármegyék és püspökségek.",
         "kviz": [{"k": "Szent István tíz falu után egy templom építését rendelte el.", "v": True, "m": "Ez volt a tizedik falu templomépítési kötelezettsége."}]
+    },
+    "4. Az Aranybulla és a rendi dualizmus kora": {
+        "alcim": "II. András 1222-es oklevele, Nagy Lajos 1351-es reformjai",
+        "vazlat": "### I. Az Aranybulla főbb cikkelyei és az ellenállási záradék.\n### II. Nagy Lajos törvényei: ősiség, kilenced.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Aranybulla jelentősége -> 2. Rendi jogok kibontakozása.",
+        "kviz": [{"k": "Az ősiség törvénye gátolta a birtokok elidegenítését a nemzetségen kívülre.", "v": True, "m": "Védte a birtok integritását."}]
     }
 }
 
@@ -142,6 +160,12 @@ tetelek_matek = {
         "vazlat": "### I. Szögfüggvények értelmezése.\n### II. Háromszögek megoldása.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Pitagorasz tétel alkalmazásai -> 2. Koszinusztétel bizonyítása.",
         "kviz": [{"k": "A szinusztétel minden háromszögre érvényes.", "v": True, "m": "A oldal és szemközti szög szinuszának aránya állandó."}]
+    },
+    "4. Sorozatok és aritmetika": {
+        "alcim": "Aritmetikai és mértani sorozatok, határérték, kamatos kamat",
+        "vazlat": "### I. Aritmetikai sorozat differenciája és összegképlete.\n### II. Mértani sorozat hányadosa.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Sorozatok definíciója -> 2. Pénzügyi számítások (kamatos kamat).",
+        "kviz": [{"k": "A mértani sorozat szomszédos elemeinek hányadosa állandó.", "v": True, "m": "Ez a kvóciens (q)."}]
     }
 }
 
