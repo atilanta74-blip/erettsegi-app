@@ -1,37 +1,44 @@
-import random
+# data.py
 
-# =============================================================
-# DINAMIKUS TÉTELGENERÁLÁS (Bármennyi tételt kezel)
-# =============================================================
-
-def gener_tetelek(tantargy, db=30):
-    """Generál egy részletes adatbázist a megadott mennyiségű tétellel."""
-    return {f"{i}. {tantargy} Tétel": {
-        "alcim": f"Részletes elemzés a {i}. témakörhöz",
-        "vazlat": f"### {i}. Tétel fő pontjai\n- Definíciók és tények.\n- Összefüggések elemzése.",
+def gener_tetelek(tantargy, temak):
+    """Egyedi témákat rendel az egyes tételekhez."""
+    return {f"{i+1}. {tema}": {
+        "alcim": f"Részletek a(z) {tema} témakörhöz",
+        "vazlat": f"### {tema} vázlat\n- Alapfogalmak és összefüggések a tételhez.",
         "szobeli": "🎙️ 3 perces feleletvázlat a vizsgához.",
-        "kviz": [{"k": "Ez egy fontos tétel?", "v": True, "m": "Igen, a tanterv része."}]
-    } for i in range(1, db + 1)}
+        "kviz": [{"k": f"Az {tema} témakörhöz kapcsolódó alapvető kérdés?", "v": True, "m": "Helyes válasz és magyarázat."}]
+    } for i, tema in enumerate(temak)}
 
-# Dinamikus adatbázisok
-tetelek_irodalom = gener_tetelek("Irodalom", 22)
-tetelek_nyelvtan = gener_tetelek("Nyelvtan", 16)
-tetelek_tortenelem = gener_tetelek("Történelem", 30)
-tetelek_matek = gener_tetelek("Matek", 16)
+# Itt a teljes lista, mostantól ezek fognak megjelenni a legördülő menüben:
+tetelek_irodalom = gener_tetelek("Irodalom", [
+    "Ókori eposzok", "Shakespeare drámái", "Balassi Bálint", "Zrínyi Miklós", 
+    "Mikes Kelemen", "Csokonai Vitéz Mihály", "Katona József: Bánk bán", 
+    "Kölcsey és Vörösmarty", "Petőfi Sándor", "Arany János", "Jókai Mór", 
+    "Madách Imre", "Mikszáth Kálmán", "Ady Endre", "Móricz Zsigmond", 
+    "Babits Mihály", "Kosztolányi Dezső", "József Attila", "Radnóti Miklós", 
+    "Örkény István", "Pilinszky és Nagy László", "Kortárs irodalom"
+])
 
-# =============================================================
-# BŐVÍTETT KIEGÉSZÍTŐK (Flashcards, Idővonalak, Detektív)
-# =============================================================
-# Mostantól bármelyik listát tetszés szerint bővítheted!
-flashcards_irodalom = [{"q": f"Irodalom tétel {i} kérdése?", "a": "Válasz a tételhez."} for i in range(1, 23)]
-flashcards_nyelvtan = [{"q": f"Nyelvtan tétel {i} kérdése?", "a": "Válasz a tételhez."} for i in range(1, 17)]
-flashcards_tortenelem = [{"q": f"Történelem esemény {i}?", "a": "Évszám és leírás."} for i in range(1, 31)]
-flashcards_matek = [{"q": f"Matematikai képlet {i}?", "a": "Definíció."} for i in range(1, 17)]
+tetelek_nyelvtan = gener_tetelek("Nyelvtan", [
+    "Kommunikáció", "Helyesírás alapelvei", "Szófajok rendszere", "Mondattan", 
+    "Jelentéstan", "Stilisztika", "Nyelv és társadalom", "Nyelvtörténet",
+    "Szövegtan", "Retorika", "Érvelés", "Vita kultúra", "Hivatalos levelek",
+    "Sajtónyelv", "Szaknyelvek", "Nyelvi babonák"
+])
 
-detektiv_irodalom = [{"idezet": f"Idézet {i}", "helyes": "Szerző", "opciok": ["Szerző1", "Szerző2"], "info": "Magyarázat."} for i in range(1, 23)]
-detektiv_nyelvtan = [{"idezet": f"Nyelvtani példa {i}", "helyes": "Szabály", "opciok": ["Szabály1", "Szabály2"], "info": "Elemzés."} for i in range(1, 17)]
-detektiv_tortenelem = [{"idezet": f"Történelmi forrás {i}", "helyes": "Esemény", "opciok": ["Esemény1", "Esemény2"], "info": "Háttér."} for i in range(1, 31)]
-detektiv_matek = [{"idezet": f"Képlet {i}", "helyes": "Név", "opciok": ["Név1", "Név2"], "info": "Alkalmazás."} for i in range(1, 17)]
+tetelek_tortenelem = gener_tetelek("Történelem", [
+    "Athéni demokrácia", "Honfoglalás", "Szent István", "Aranybulla", 
+    "Anjou-kor", "Hunyadiak", "Mohács", "Reformáció", "Rákóczi szabadságharc",
+    "Felvilágosult abszolutizmus", "Reformkor", "1848-as forradalom", "Kiegyezés",
+    "Dualizmus", "I. világháború", "Trianon", "Horthy-korszak", "II. világháború",
+    "Rákosi-korszak", "1956-os forradalom", "Kádár-korszak", "Rendszerváltás",
+    "EU csatlakozás", "Hidegháború", "Ipari forradalom", "Kolonializmus",
+    "Nacionalizmus", "Liberalizmus", "Totalitárius rendszerek", "Globalizáció"
+])
 
-timeline_irodalom = [{"ev": f"19{i:02d}", "cim": "Irodalmi esemény", "leiras": "Jelentős mű."} for i in range(10, 50)]
-# ... (hasonlóan bővíthető minden lista)
+tetelek_matek = gener_tetelek("Matek", [
+    "Halmazok", "Logika", "Másodfokú egyenletek", "Függvények",
+    "Trigonometria", "Geometria", "Vektorok", "Kombinatorika",
+    "Valószínűségszámítás", "Sorozatok", "Hatványozás", "Logaritmus",
+    "Differenciálszámítás", "Integrálszámítás", "Statistika", "Pénzügyi matek"
+])
