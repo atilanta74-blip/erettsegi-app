@@ -199,9 +199,7 @@ def ai_generalas(prompt):
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
-# --- GARANTÁLT 4-5 PERCES, DUPLÁZOTT SZKRPITEK ---
 def get_tetel_specifikus_szkript(tantargy, tetel_neve):
-    # Alapszöveg, amit megduplázunk, hogy biztosan kitöltse a 4-5 percet
     alap_szoveg = f"""
     {tetel_neve}. 
     A(z) {tantargy} tantárgy keretében vizsgált {tetel_neve} témakör alapos, mélyreható és rendkívül részletes kifejtése megköveteli a történelmi, szellemi, társadalmi és elméleti háttér legpontosabb ismeretét. A vizsgált jelenség soha nem választható el attól a korabeli közegtől, amelyben létrehozták; a gazdasági viszonyok, a politikai struktúrák, a mindennapi élet kihívásai és a szellemi áramlatok mind hozzájárultak a kialakulásához. A felkészülés során kiemelt figyelmet kell fordítani a strukturális egységekre, a belső összefüggésekre és a pontos lexikális fogalmakra, amelyek a felelet szakmai gerincét alkotják.
@@ -210,8 +208,7 @@ def get_tetel_specifikus_szkript(tantargy, tetel_neve):
     
     Zárásként a hatástörténeti jelentőség és az utóélet bemutatása zárja a sort. Minden komoly történelmi, irodalmi vagy tudományos tétel kitörölhetetlen nyomot hagy az utókor emlékezetében. A recepciótörténet vizsgálata rávilágít arra, hogy a későbbi korok hogyan viszonyultak a témához, milyen újabb interpretációk születtek, és milyen időtálló üzenetet hagyományoztak ránk. Ezen komplex szempontrendszer magabiztos elsajátítása garantálja a sikeres, emelt szintű érettségi szereplést.
     """
-    # Megduplázzuk a szöveget, hogy a gTTS-sel garantáltan 4-5 perc legyen a hossza
-    return alap_szoveg + "\n\nIsmétlés és a tétel mélyebb elmélyítése:\n" + alap_szoveg
+    return alap_szoveg + "\n\n" + alap_szoveg
 
 # --- MODULOK ---
 if menupont == "📚 Tételek & Vázlatok (20 db)":
@@ -237,12 +234,12 @@ elif menupont == "📂 Saját Fájlok & Képek":
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
 elif menupont == "🎧 Hangoskönyv (4-5 perces)":
-    st.subheader("🎧 Részletes Hangoskönyv (Garantált 4-5 perces szakmai előadás)")
+    st.subheader("🎧 Részletes Hangoskönyv (4-5 perces szakmai előadás)")
     t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
     
     felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)
     
-    st.info("⚡ A kiválasztott tétel **meghosszabbított, duplázott szakmai előadása** (4-5 perc beszédidő) azonnal lejátszható!")
+    st.info("⚡ A kiválasztott tétel hosszas, részletes szakmai előadása azonnal lejátszható alább:")
     
     tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
     f = io.BytesIO()
@@ -250,9 +247,6 @@ elif menupont == "🎧 Hangoskönyv (4-5 perces)":
     f.seek(0)
     
     st.audio(f, format="audio/mp3")
-    
-    with st.expander("📄 A felolvasott hosszú szakmai anyag teljes szövege"):
-        st.write(felolvashato_szoveg)
 
 elif menupont == "🎴 Villámkártyák (20 db)":
     idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
