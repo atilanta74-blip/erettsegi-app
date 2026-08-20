@@ -270,20 +270,11 @@ elif menupont == "📂 Saját Fájlok & Képek":
                         q_payload = [img_data, "Készíts 5 db feleletválasztós vizsgakérdést a képen látható tartalom alapján. Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n[\n  {\n    \"question\": \"A kérdés szövege?\",\n    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n    \"answer\": \"A) opció 1\",\n    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]"]
                     else:
                         doc_text = st.session_state.get('aktiv_fajl_szoveg', '')[:8000]
-                        prompt_text = (
-                            "Készíts 5 db feleletválasztós vizsgakérdést a következő dokumentum alapján. "
-                            "Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy "
-                            "markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n"
-                            "[\n  {\n    \"question\": \"A kérdés szövege?\",\n"
-                            "    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n"
-                            "    \"answer\": \"A) opció 1\",\n"
-                            "    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]\n"
-                            f"Dokumentum: {doc_text}"
-                        )
+                        prompt_text = "Készíts 5 db feleletválasztós vizsgakérdést a következő dokumentum alapján. Add vissza KIZÁRÓLAG érvényes JSON formátumban, semmilyen egyéb szöveget vagy markdown kódblokkot ne adj vissza, csak a tiszta JSON tömböt az alábbi szerkezet szerint:\n[\n  {\n    \"question\": \"A kérdés szövege?\",\n    \"options\": [\"A) opció 1\", \"B) opció 2\", \"C) opció 3\", \"D) opció 4\"],\n    \"answer\": \"A) opció 1\",\n    \"explanation\": \"A helyes válasz magyarázata...\"\n  }\n]\nDokumentum: " + doc_text
                         q_payload = [prompt_text]
 
                     raw_res = ai_generalas_tartalom(q_payload)
                     try:
                         cleaned = raw_res.strip()
-                        if cleaned.startswith("```"):
-                            parts = cleaned.split("
+                        if "```" in cleaned:
+                            cleaned = cleaned.split("
