@@ -77,7 +77,7 @@ st.markdown("""
         line-height: 1.9; 
         font-size: 1.1rem;
     }
-    .deep-text h3 { color: #818cf8 !important; margin-top: 20px; }
+    .deep-text h3 { color: #818cf8 !important; margin-top: 25px; margin-bottom: 12px; }
     
     .flashcard { background: linear-gradient(135deg, #1e1b4b, #31104b); border: 2px solid #818cf8; border-radius: 20px; padding: 40px; text-align: center; min-height: 200px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); color: white; }
     .timeline-item { background-color: #111827; border-left: 5px solid #a855f7; padding: 18px 22px; margin-bottom: 16px; border-radius: 0 14px 14px 0; }
@@ -87,71 +87,81 @@ st.markdown("""
 <div class="menu-label">Menü</div>
 """, unsafe_allow_html=True)
 
-# --- TANTÁRGY-SPECIFIKUS TÉTEL GENERÁTOR ---
+# --- MAGAS MINŐSÉGŰ TTÉLEG GENERÁTOR ---
 def generalo_tetelek(temak_lista, tantargy_tipus):
     tetelek_dict = {}
     for i, tema in enumerate(temak_lista):
         if tantargy_tipus == "matek":
             tartalom = f"""
-### I. Alapfogalmak és Definíciók
-A(z) **{tema}** témakör matematikai alapjai, jelölései és legfontosabb elméleti háttere. A feladatok sikeres megoldásához elengedhetetlen ezen definíciók pontos ismerete.
+### I. Elméleti Alapok és Fogalmak
+* **Definíció:** A(z) **{tema}** témakörhöz kapcsolódó alapvető matematikai fogalmak, halmazok és axiómák.
+* **Jelölésrendszer:** A szabványos matematikai jelölések, képletekben szereplő változók és paraméterek pontos értelmezése.
+* **Alaphalmazok:** Értelmezési tartományok és értékkészletek meghatározása.
 
-### II. Főbb Tételek, Képletek és Szabályok
-- **Alapösszefüggések:** A(z) {tema} területéhez kapcsolódó legfontosabb képletek levezetése és alkalmazási feltételei.
-- **Számítási eljárások:** Lépésről lépésre követhető módszerek egyenletek, kifejezések vagy geometriai elemek kiszámítására.
-- **Tipikus feladattípusok:** Gyakran előforduló érettségi feladatok és azok hatékony megoldási stratégiái.
+### II. Főbb Tételek, Szabályok és Képletek
+* **Központi összefüggések:** A(z) {tema} legfontosabb tételei, levezetései és logikai összefüggései.
+* **Számítási algoritmusok:** Lépésről lépésre követhető módszerek egyenletek, egyenlőtlenségek, függvények vagy geometriai problémák megoldására.
+* **Tipikus hibaleforrások:** Gyakori számítási hibák, előjelek helyes kezelése és ellenőrzési módszerek.
 
-### III. Gyakorlati Alkalmazás
-Példák arra, hogyan alkalmazható a(z) {tema} a mindennapi életben vagy más tudományterületeken (pl. fizika, gazdaságtan).
+### III. Alkalmazások és Feladattípusok
+* **Érettségi feladattípusok:** Hogyan jelenik meg a(z) {tema} az írásbeli és szóbeli vizsgákon (I. és II. rész)?
+* **Gyakorlati példák:** Szöveges vagy gyakorlati problémák modellezése és megoldása a témakör segítségével.
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Definíció ({tema}) -> 2. Főbb képletek és szabályok -> 3. Alkalmazási példa."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Főbb definíciók ({tema}) -> 2. Alaptételek és képletek bemutatása -> 3. Konkrét feladattípus szemléltetése."
         elif tantargy_tipus == "tori":
             tartalom = f"""
-### I. Előzmények és Okok
-A(z) **{tema}** témakör kialakulásának társadalmi, gazdasági és politikai háttere, a folyamatot elindító főbb tényezők.
+### I. Történelmi Kontextus és Előzmények
+* **Gazdasági és társadalmi hátrányok/előnyök:** Milyen folyamatok vezettek a(z) **{tema}** kibontakozásához?
+* **Okozati összefüggések:** A kortárs nagyhatalmi viszonyok, érdekek és kiváltó okok rendszere.
 
 ### II. Fő Események és Hátterük
-- **Kronológia és fordulópontok:** A(z) {tema} legfontosabb eseményei, dátumai és főbb történelmi szereplői.
-- **Következmények:** Milyen hatással volt ez a korabeli társadalomra és a nemzetközi folyamatokra?
+* **Kronológia:** A legfontosabb dátumok, csaták, egyezmények vagy reformok láncolata.
+* **Kulcsszereplők:** A korszak meghatározó politikusai, uralkodói, vezéralakjai és tetteik motivációi.
+* **Intézményi keretek:** Hogyan működtek a korabeli állami, vallási vagy gazdasági szervezetek?
 
-### III. Történelmi Jelentőség
-A(z) **{tema}** helye és utóhatása a magyar és az egyetemes történelemben.
+### III. Következmények és Hatástörténet
+* **Rövid és hosszú távú hatások:** Milyen változásokat hozott a(z) {tema} a mindennapi életben, a határokban vagy a politikai rendszerben?
+* **Történeti értékelés:** Hogyan ítéli meg a modern történettudomány ezt a korszakot vagy eseménysorozatot?
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Előzmények -> 2. Fő események ({tema}) -> 3. Következmények."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Előzmények és okok -> 2. Fő események és szereplők ({tema}) -> 3. Történelmi következmények."
         elif tantargy_tipus == "nyelvtan":
             tartalom = f"""
-### I. Elméleti Alapok
-A(z) **{tema}** nyelvészeti háttere, fogalomrendszere és szabályszerűségei a magyar nyelv rendszerében.
+### I. Rendszerszintű Alapok
+* **Fogalommeghatározás:** A(z) **{tema}** helye a magyar nyelv hang-, szó-, mondat- vagy szövegtani rendszerében.
+* **Alaptételek:** A nyelvi jelenség törvényszerűségei és nyelvtani kategóriái.
 
-### II. Rendszerezés és Szabályok
-- **Rendszerszintű összefüggések:** A(z) {tema} alapszabályai, kivételei és elemzési szempontjai.
-- **Gyakorlati nyelvhelyesség:** Helyesírási és stilisztikai tudnivalók.
+### II. Szabályok, Kivételek és Elemzés
+* **Szerkezeti felépítés:** Hogyan épül fel, milyen elemekből áll a(z) {tema} vizsgálatakor figyelembe veendő egység?
+* **Helyesírási és nyelvhelyességi normák:** Gyakorlati szabályok, gyakran elkövetett hibák és azok elkerülése.
 
-### III. Összegzés
-A(z) **{tema}** jelentősége a hatékony kommunikációban és a mindennapi nyelvhasználatban.
+### III. Kommunikációs Szerep
+* **Stilisztikai érték:** Milyen kifejezőereje van a(z) {tema} alkalmazásának a beszédben vagy az írásban?
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Alapfogalmak ({tema}) -> 2. Szabályok -> 3. Gyakorlati példa."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Elméleti alapok ({tema}) -> 2. Szabályok és kivételek -> 3. Gyakorlati példa."
         else: # irodalom
             tartalom = f"""
-### I. Bevezetés és Hátterek
-A(z) **{tema}** keletkezési körülményei, művészettörténeti és irodalmi kontextusa.
+### I. Történeti és Művészettörténeti Háttér
+* **Korszakmeghatározás:** A(z) **{tema}** születésének irodalomtörténeti korszaka (pl. reneszánsz, romantika, modernség).
+* **Kultúrtörténeti kontextus:** Milyen eszmék, filozófiai irányzatok (pl. felvilágosodás, egzisztencializmus) hatottak a mű(vek) keletkezésére?
 
-### II. Műelemzés és Szerkezet
-- **Tematikus és szerkezeti felépítés:** A műfaji sajátosságok, motívumok és stílusjegyek részletes vizsgálata.
-- **Értelmezési keretek:** Milyen kulcsfontosságú üzenetet hordoz a(z) {tema}?
+### II. Részletes Műelemzés
+* **Tematika és motívumok:** A műben megjelenő központi kérdések (pl. szerelem, halál, hazafiság, magány).
+* **Szerkezet és kompozíció:** Milyen műfaji sajátosságokkal, felépítéssel, narratívával vagy verseléssel operál a(z) {tema}?
+* **Stílusjegyek és alakzatok:** Retorikai eszközök, képek, szimbólumok és nyelvi rétegek elemzése.
 
-### III. Hatástörténet
-A(z) **{tema}** utóélete, kulturális beágyazottsága és jelentősége a mai kor olvasója számára.
+### III. Üzenet és Hatástörténet
+* **Alaptézis:** Milyen egyetemes emberi igazságot fogalmaz meg a(z) {tema}?
+* **Utóélet:** Hogyan hatott a későbbi irodalmi generációkra, színházra vagy filmművészetre?
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Bevezetés ({tema}) -> 2. Elemzés -> 3. Üzenet."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Történeti kontextus -> 2. Főbb művek és elemzés ({tema}) -> 3. Üzenet és hatástörténet."
 
         tetelek_dict[f"{i+1}. {tema}"] = {
             "alcim": f"Hivatalos érettségi tétel: {tema}",
             "tartalom": tartalom.strip(),
             "szobeli": szobeli,
             "kviz": [
-                {"k": f"Alapvető tételbeli kérdés a(z) '{tema}' témakörhöz?", "v": True, "m": "Igen, a vizsgaanyag része."},
-                {"k": f"Kapcsolódik ehhez a témához specifikus lexikális háttér?", "v": True, "m": "Természetesen."}
+                {"k": f"Alapvető vizsgakérdés a(z) '{tema}' témakör lexikális anyagából?", "v": True, "m": "Igen, a hivatalos érettségi követelményrendszer része."},
+                {"k": f"Kapcsolódik ehhez a témához specifikus elemzési szempont?", "v": True, "m": "Természetesen."}
             ]
         }
     return tetelek_dict
