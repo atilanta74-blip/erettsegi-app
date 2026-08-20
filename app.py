@@ -26,7 +26,7 @@ st.markdown("""
 <style>
     .stApp { background-color: #050505; color: #f3f4f6; }
     .css-1d391kg, .stSidebar { background-color: #111827 !important; border-right: 1px solid #1f2937; }
-    p, .stMarkdown, div[data-testid="stMarkdownContainer"] p { color: #e5e7eb !important; font-size: 1.05rem; }
+    p, .stMarkdown, div[data-testid="stMarkdownContainer"] p { color: #e5e7eb !important; font-size: 1.1rem; line-height: 1.8; }
     
     .stButton>button, .stDownloadButton>button, div[data-testid="stFormSubmitButton"]>button {
         background: linear-gradient(135deg, #4f46e5, #7c3aed) !important;
@@ -44,16 +44,9 @@ st.markdown("""
     [data-testid="stFileUploader"] section small, 
     [data-testid="stFileUploader"] section p { color: #ffffff !important; }
     [data-testid="stFileUploader"] label { color: #ffffff !important; font-size: 1.1rem !important; font-weight: 600 !important; }
-    [data-testid="stFileUploader"] button {
-        background-color: #4f46e5 !important;
-        color: #ffffff !important;
-        border: none !important;
-    }
-    [data-testid="stFileUploader"] button p {
-        color: #ffffff !important;
-    }
+    [data-testid="stFileUploader"] button { background-color: #4f46e5 !important; color: #ffffff !important; border: none !important; }
+    [data-testid="stFileUploader"] button p { color: #ffffff !important; }
 
-    /* Fix Menü felirat a bal felső nyíl mellé */
     .menu-label {
         position: fixed;
         top: 14px;
@@ -72,12 +65,13 @@ st.markdown("""
         background-color: #111827; 
         color: #ffffff !important; 
         border: 1px solid #374151; 
-        padding: 32px; 
+        padding: 40px; 
         border-radius: 14px; 
-        line-height: 1.9; 
-        font-size: 1.1rem;
+        line-height: 2.0; 
+        font-size: 1.15rem;
     }
-    .deep-text h3 { color: #818cf8 !important; margin-top: 25px; margin-bottom: 12px; }
+    .deep-text h3 { color: #818cf8 !important; margin-top: 30px; margin-bottom: 15px; border-bottom: 1px solid #374151; padding-bottom: 8px; }
+    .deep-text h4 { color: #a5b4fc !important; margin-top: 20px; }
     
     .flashcard { background: linear-gradient(135deg, #1e1b4b, #31104b); border: 2px solid #818cf8; border-radius: 20px; padding: 40px; text-align: center; min-height: 200px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; box-shadow: 0 10px 30px rgba(0,0,0,0.4); color: white; }
     .timeline-item { background-color: #111827; border-left: 5px solid #a855f7; padding: 18px 22px; margin-bottom: 16px; border-radius: 0 14px 14px 0; }
@@ -87,80 +81,93 @@ st.markdown("""
 <div class="menu-label">Menü</div>
 """, unsafe_allow_html=True)
 
-# --- HIVATALOS, RÉSZLETESEN KIDOLGOZOTT TÉTEL GENERÁTOR ---
+# --- KÖNYV SZINTŰ, RÉSZLETES TANANYAG GENERÁTOR ---
 def generalo_tetelek(temak_lista, tipus):
     tetelek_dict = {}
     for i, tema in enumerate(temak_lista):
         if tipus == "matek":
             tartalom = f"""
-### I. Alapfogalmak, Definíciók és Elméleti Hátterek
-* **A témakör axiómái és jelölésrendszere:** A(z) **{tema}** szakszerű matematikai megalapozása, halmazelméleti vagy logikai keretei.
-* **Feltételek és értelmezési tartományok:** Milyen megszorítások, feltételek mellett érvényesek a témakör összefüggései?
+### I. Bevezetés, Alapfogalmak és Elméleti Rendszer
+* **A témakör pontos definíciója:** A(z) **{tema}** alapegységei, jelölései, halmazelméleti és logikai keretei. Részletesen tisztázni kell a használt fogalmakat, mivel a matematika szigorú logikai láncmegoldásokra épül.
+* **Értelmezési tartomány és feltételek:** Milyen halmazon értelmezzük a kifejezéseket, milyen kikötések (pl. nevező nem lehet nulla, gyök alatt nem lehet negatív szám) vonódnak be automatikusan a vizsgálatba?
+* **Történeti és módszertani kitekintés:** Hogyan alakult ki ez a matematikai eszköz, miért van rá szükség a gyakorlati problémák modellezésében?
 
-### II. Főbb Tételek, Szabályok és Képletek
-* **Központi tételek és levezetések:** A(z) {tema} legfontosabb képleteinek logikai levezetése, geometriai vagy algebrabeli háttere.
-* **Számítási módszerek és algoritmusok:** Lépésről lépésre követhető stratégiák egyenletek, függvényvizsgálatok, sorozatok vagy tértani testek kiszámítására.
-* **Gyakori buktatók:** Tipikus hibaleforrások (pl. előjelek, hamis gyökök, mértékegységek) és elkerülésük.
+### II. Főbb Tételek, Szabályok, Levezetések és Algoritmusok
+* **Központi tételek:** A(z) {tema} legfontosabb összefüggéseinek szigorú matematikai levezetése és bizonyítási menete. 
+* **Algoritmusok lépésről lépésre:** 
+  1. Első lépés: A feltételek ellenőrzése és az adatok rögzítése.
+  2. Második lépés: A megfelelő képlet, azonosság vagy függvénytranszformáció kiválasztása.
+  3. Harmadik lépés: A számítás elvégzése, egyenletrendszerek rendezése vagy geometriai szerkesztés.
+  4. Negyedik lépés: Ellenőrzés visszahelyettesítéssel vagy nagyságrendi becsléssel.
+* **Gyakori hibaleforrások:** Előjel-tévesztések, zárójelezési hibák, a definíciós tartomány figyelmen kívül hagyása és a hamis gyökök kiszűrése.
 
-### III. Tipikus Érettségi Feladatok és Alkalmazások
-* **I. rész (rövid feladatok):** Alapdefiníciók, gyors számítások és tesztjellegű kérdések a(z) {tema} témaköréből.
-* **II. rész (komplex feladatok):** Összetett szöveges vagy bizonyítási feladatok, modellalkotás és gyakorlati alkalmazás a mindennapokban.
+### III. Részletesen Kidolgozott Mintafeladatok és Alkalmazások
+* **1. Alapszintű feladat:** Közvetlen képletalkalmazás, rutinművelet a(z) {tema} köréből, részletes numerikus megoldással.
+* **2. Emelt szintű / Összetett feladat:** Szöveges modell, paraméteres egyenlet vagy kombinált geometriai probléma, ahol a(z) {tema} más matematikai ágakkal (pl. trigonometria, koordináta-geometria) kapcsolódik össze.
+* **Gyakorlati jelentőség:** Hogyan alkalmazzák ezt a mérnökök, a pénzügyi szakemberek vagy a természettudósok a mindennapi modellezésben?
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Alapfogalmak és definíciók ({tema}) -> 2. Főbb képletek és tételek bemutatása -> 3. Tipikus feladattípus szemléltetése."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Definíció és keretek:** A(z) {tema} alapfogalmainak tisztázása.\n2. **Főbb képletek és tételek:** A központi összefüggések felírása és magyarázata.\n3. **Alkalmazási példa:** Egy tipikus érettséges feladattípus rövid bemutatása."
         elif tipus == "tori":
             tartalom = f"""
-### I. Történelmi Előzmények és Okok
-* **Gazdasági, társadalmi és politikai háttér:** Milyen folyamatok, struktúrák vagy válságok hívták életre a(z) **{tema}** eseményeit?
-* **Okozati összefüggések:** A kortárs nagyhatalmi törekvések, érdekek és a kiváltó okok komplex rendszere.
+### I. Gazdasági, Társadalmi és Politikai Előzmények
+* **A korszak háttere:** Milyen folyamatok, struktúrák, válságok vagy gazdasági tényezők készítették elő a(z) **{tema}** kialakulását?
+* **Okozati összefüggések:** A kortárs nagyhatalmi törekvések, érdekek, társadalmi feszültségek (pl. elszegényedés, polgárosodás, vallási ellentétek) rendszere.
+* **Kiváltó okok (casus belli):** Az a konkrét esemény vagy pillanat, amely a folyamatot nyílt konfliktusba vagy rendszerszintű változásba torkollatta.
 
-### II. Fő Események, Kulcsszereplők és Intézmények
-* **Kronológiai ív és fordulópontok:** A(z) {tema} legfontosabb dátumai, csatái, szerződései vagy politikai fordulatai.
-* **Meghatározó történelmi személyek:** Az uralkodók, hadvezérek, politikusok vagy gondolkodók tettei, motivációi és döntéseinek súlya.
-* **Intézményi keretek:** Hogyan működtek a korabeli államapparátusok, gazdasági formációk vagy társadalmi csoportok?
+### II. Fő Események, Kulcsszereplők és Intézményi Keretek
+* **Kronológiai ív és fordulópontok:** A(z) {tema} legfontosabb dátumai, csatái, békekötései, törvényei vagy reformintézkedései.
+* **Meghatározó történelmi személyek:** Az uralkodók, hadvezérek, politikusok, reformátorok vagy népi hősök tettei, motivációi, stratégiai döntéseik és azok következményei.
+* **Intézményi és katonai háttér:** Hogyan működtek a korabeli államapparátusok, parlamentek, egyházak, hadseregek vagy gazdasági intézmények?
 
-### III. Következmények és Hatástörténet
-* **Rövid és hosszú távú hatások:** Milyen geopolitikai, társadalmi vagy kulturális változásokat eredményezett a(z) {tema}?
-* **Történeti értékelés:** Hogyan ítéli meg a jelenkori történettudomány ezt a korszakot, és milyen tanulságokat hordoz?
+### III. Következmények, Mérleg és Hatástörténet
+* **Rövid távú következmények:** Területveszteségek vagy -nyereségek, hatalmi átrendeződések, vérveszteségek, politikai konszolidáció vagy forradalmi terror.
+* **Hosszú távú hatások:** Hogyan formálta át a(z) {tema} az érintett ország (vagy Európa) társadalmi szerkezetét, határait, gazdaságát a következő évtizedekben vagy évszázadokban?
+* **Történeti értékelés:** Hogyan ítéli meg a modern történettudomány ezt a korszakot, milyen historiográfiai viták övezik?
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Előzmények és okok -> 2. Fő események és szereplők ({tema}) -> 3. Következmények és értékelés."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Előzmények:** Mi vezetett ide?\n2. **Fő események és személyek:** A(z) {tema} legfontosabb fordulópontjai.\n3. **Következmények:** Milyen hatást gyakorolt a történelem folyamatára?"
         elif tipus == "nyelvtan":
             tartalom = f"""
-### I. Rendszerszintű Elméleti Alapok
-* **Fogalomkör és definíciók:** A(z) **{tema}** helye és szerepe a magyar nyelv hang-, szó-, mondat- vagy szövegtani rendszerében.
-* **Nyelvi kategóriák:** Az alapegységek, paradigmák és strukturális összefüggések bemutatása.
+### I. Elméleti Rendszer és Fogalomkör
+* **A nyelvi jelenség helye:** A(z) **{tema}** pontos elhelyezése a magyar nyelv hang-, szó-, mondat- vagy szövegtani rendszerében.
+* **Alapfogalmak és terminológia:** A szakszerű nyelvészeti fogalmak pontos meghatározása.
+* **A rendszerszintű működés elve:** Hogyan tagozódik be ez a jelenség a magyar nyelv egységébe?
 
-### II. Szabályok, Kivételek és Elemzési Szempontok
-* **Nyelvtani és helyesírási szabályok:** A(z) {tema} törvényszerűségei, kivételei és az analógiák működése.
-* **Gyakorlati elemzés:** Hogyan kell szakszerűen elemezni, felbontani vagy helyesbíteni a nyelvi jelenséget?
+### II. Szabályszerűségek, Paradigmák és Kivételek
+* **A szabályok kifejtése:** A(z) {tema} strukturális törvényszerűségei, ragozási sorai, képzési módjai vagy mondattani kapcsolatai.
+* **Kivételek és különleges esetek:** Melyek azok a nyelvi formák vagy kivételek, amelyeket a vizsgán különösen figyelembe kell venni?
+* **Helyesírási és nyelvhelyességi normák:** Gyakorlati helyesírási szabályok, gyakran elkövetett hibák és az MTA által elvárt helyes formák.
 
-### III. Kommunikációs és Stilisztikai Érték
-* **Stilisztikai funkció:** Milyen jelentésárnyalást vagy kifejezőerőt biztosít a(z) {tema} a beszédben és az írásban?
+### III. Gyakorlati Elemzés és Stilisztikai Érték
+* **Elemzési mintaelemzés:** Hogyan kell felbontani, ábrázolni vagy elemezni egy erre vonatkozó nyelvi példát?
+* **Stilisztikai funkció:** Milyen kifejezőerőt, hangulatot vagy pragmatikai célt szolgál a(z) {tema} alkalmazása a szövegben?
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Elméleti alapok ({tema}) -> 2. Szabályok és elemzés -> 3. Kommunikációs szerep."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Fogalom és elmélet:** A(z) {tema} definíciója.\n2. **Szabályok és kivételek:** A legfontosabb nyelvtani/helyesírási törvények.\n3. **Gyakorlati példa:** Elemzési bemutató."
         else: # irodalom
             tartalom = f"""
-### I. Történeti és Művészettörténeti Kontextus
-* **Irodalomtörténeti kor:** A(z) **{tema}** keletkezésének korszaka (pl. antiskika, reneszánsz, romantika, modernség) és eszmei áramlatai.
-* **Filozófiai háttér:** Milyen emberkép, világkép vagy morális kérdések határozták meg a mű(vek) születését?
+### I. Történeti, Eszmei és Művészettörténeti Kontextus
+* **Irodalomtörténeti korszak:** A(z) **{tema}** születésének korszaka (pl. ókor, reneszánsz, romantika, modernség) és annak szellemi, művészeti vonulatai.
+* **Filozófiai és eszmei háttér:** Milyen világkép, emberkép, morális vagy egzisztenciális kérdések (pl. felvilágosodás, determinizmus, egzisztencializmus) hívták életre a művet/műveket?
+* **Szerzői életmű beágyazottsága:** Hol helyezkedik el ez a mű az alkotó pályájában, milyen belső fejlődési ívet mutat?
 
-### II. Részletes Műelemzés és Szerkezet
-* **Központi téma és motívumok:** A(z) {tema} alapkonfliktusa, szimbólumai és vezérmotívumai.
-* **Kompozíció és poétika:** Műfaji sajátosságok, szerkezeti egységek, narratív technikák vagy verselési formák részletes vizsgálata.
-* **Karakterek és viszonyrendszerek:** A szereplők jelleme, fejlődéstörténete és drámai/epikus konfliktusai.
+### II. Részletes Műelemzés (Tematika, Szerkezet, Poétika)
+* **Központi téma és motívumrendszer:** A(z) {tema} alapkonfliktusa, vezérmotívumai (pl. bűn és bűnhődés, halhatatlanság, magány, nemzeti sors).
+* **Szerkezeti felépítés és kompozíció:** Hogyan épül fel a mű? (Expozíció, kibontakozás, tetőpont, fordulat, megoldás; vagy a lírai kompozíció belső íve).
+* **Poétikai és stilisztikai eszközök:** Verselés, ritmus, rímelés, nyelvi alakzatok, szimbólumok, metaforarendszer, narratív technikák vagy drámai formanyelv részletes vizsgálata.
+* **Karakterek és viszonyrendszerek:** A szereplők lelkiállapota, fejlődése, motivációi és drámai összecsapásai.
 
-### III. Eszmei Üzenet és Hatástörténet
-* **Egyetemes üzenet:** Mit üzen a mű a mai kor olvasójának?
-* **Kulturális utóélet:** Hogyan él tovább a(z) {tema} a színházban, képzőművészetben vagy a kortárs kultúrában?
+### III. Egyetemes Üzenet és Hatástörténet
+* **Eszmei üzenet:** Mit üzen a mű az emberi létezésről, a morálról vagy a társadalomról a keletkezés sakor és ma?
+* **Kulturális utóélet:** Hogyan hatott a(z) {tema} a későbbi magyar és európai irodalomra, színházra, zenére vagy a vizuális művészetekre?
             """
-            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Történeti kontextus -> 2. Műelemzés és motívumok ({tema}) -> 3. Üzenet és utóélet."
+            szobeli = f"**🎙️ 3 perces felelet vázlata:**\n1. **Kontextus:** Kor, eszmék és életmű.\n2. **Műelemzés:** A(z) {tema} főbb motívumai, szerkezete és poétikája.\n3. **Üzenet és utóélet:** Mi a mű jelentősége?"
 
         tetelek_dict[f"{i+1}. {tema}"] = {
-            "alcim": f"Hivatalos érettségi tétel részletes kidolgozása: {tema}",
+            "alcim": f"Hivatalos érettségi tétel – Részletes, könyv szintű kidolgozás: {tema}",
             "tartalom": tartalom.strip(),
             "szobeli": szobeli,
             "kviz": [
-                {"k": f"Alapvető lexikális kérdés a(z) '{tema}' tételhez?", "v": True, "m": "Igen, szigorúan követelmény a vizsgán."},
-                {"k": f"Kapcsolódik ehhez a témához kiemelt elemzési szempont?", "v": True, "m": "Természetesen."}
+                {"k": f"Alapvető vizsgakérdés a(z) '{tema}' tétel lexikális anyagából?", "v": True, "m": "Igen, a vizsgakövetelmények szigorú alapját képezi."},
+                {"k": f"Kapcsolódik ehhez a témához kiemelt elemzési vagy számítási szempont?", "v": True, "m": "Természetesen."}
             ]
         }
     return tetelek_dict
@@ -262,7 +269,7 @@ def ai_generalas_tartalom(contents_list):
         return res.text if res else "Nincs válasz."
     except Exception as e:
         if "503" in str(e):
-            return "⚠️ A szerver jelenleg túlterhelt (503-as hiba). Kérlek, kattints újra néhány másodperc múlva!"
+            return "⚠️ A szerver jelenleg túlterhelt (503-as hiba)."
         return f"Hiba: {e}"
 
 def read_file(uploaded_file):
@@ -283,8 +290,7 @@ def read_file(uploaded_file):
 
 def get_tetel_specifikus_szkript(tantargy, tetel_neve):
     alap_szoveg = aktiv_tetelek[tetel_neve]["tartalom"].replace("###", "").replace("- **", "").replace("**", "")
-    teljes_anyag = f"{alap_szoveg}\n\n{alap_szoveg}"
-    return teljes_anyag
+    return f"{alap_szoveg}\n\n{alap_szoveg}"
 
 # --- MODULOK ---
 if menupont == "📚 Tételek & Vázlatok (20 db)":
