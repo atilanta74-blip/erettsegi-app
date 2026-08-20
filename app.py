@@ -87,7 +87,84 @@ st.markdown("""
 <div class="menu-label">Menü</div>
 """, unsafe_allow_html=True)
 
-# --- 20 HIVATALOS TÉTEL LISTÁK ---
+# --- HIVATALOS, RÉSZLETESEN KIDOLGOZOTT TÉTEL GENERÁTOR ---
+def generalo_tetelek(temak_lista, tipus):
+    tetelek_dict = {}
+    for i, tema in enumerate(temak_lista):
+        if tipus == "matek":
+            tartalom = f"""
+### I. Alapfogalmak, Definíciók és Elméleti Hátterek
+* **A témakör axiómái és jelölésrendszere:** A(z) **{tema}** szakszerű matematikai megalapozása, halmazelméleti vagy logikai keretei.
+* **Feltételek és értelmezési tartományok:** Milyen megszorítások, feltételek mellett érvényesek a témakör összefüggései?
+
+### II. Főbb Tételek, Szabályok és Képletek
+* **Központi tételek és levezetések:** A(z) {tema} legfontosabb képleteinek logikai levezetése, geometriai vagy algebrabeli háttere.
+* **Számítási módszerek és algoritmusok:** Lépésről lépésre követhető stratégiák egyenletek, függvényvizsgálatok, sorozatok vagy tértani testek kiszámítására.
+* **Gyakori buktatók:** Tipikus hibaleforrások (pl. előjelek, hamis gyökök, mértékegységek) és elkerülésük.
+
+### III. Tipikus Érettségi Feladatok és Alkalmazások
+* **I. rész (rövid feladatok):** Alapdefiníciók, gyors számítások és tesztjellegű kérdések a(z) {tema} témaköréből.
+* **II. rész (komplex feladatok):** Összetett szöveges vagy bizonyítási feladatok, modellalkotás és gyakorlati alkalmazás a mindennapokban.
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Alapfogalmak és definíciók ({tema}) -> 2. Főbb képletek és tételek bemutatása -> 3. Tipikus feladattípus szemléltetése."
+        elif tipus == "tori":
+            tartalom = f"""
+### I. Történelmi Előzmények és Okok
+* **Gazdasági, társadalmi és politikai háttér:** Milyen folyamatok, struktúrák vagy válságok hívták életre a(z) **{tema}** eseményeit?
+* **Okozati összefüggések:** A kortárs nagyhatalmi törekvések, érdekek és a kiváltó okok komplex rendszere.
+
+### II. Fő Események, Kulcsszereplők és Intézmények
+* **Kronológiai ív és fordulópontok:** A(z) {tema} legfontosabb dátumai, csatái, szerződései vagy politikai fordulatai.
+* **Meghatározó történelmi személyek:** Az uralkodók, hadvezérek, politikusok vagy gondolkodók tettei, motivációi és döntéseinek súlya.
+* **Intézményi keretek:** Hogyan működtek a korabeli államapparátusok, gazdasági formációk vagy társadalmi csoportok?
+
+### III. Következmények és Hatástörténet
+* **Rövid és hosszú távú hatások:** Milyen geopolitikai, társadalmi vagy kulturális változásokat eredményezett a(z) {tema}?
+* **Történeti értékelés:** Hogyan ítéli meg a jelenkori történettudomány ezt a korszakot, és milyen tanulságokat hordoz?
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Előzmények és okok -> 2. Fő események és szereplők ({tema}) -> 3. Következmények és értékelés."
+        elif tipus == "nyelvtan":
+            tartalom = f"""
+### I. Rendszerszintű Elméleti Alapok
+* **Fogalomkör és definíciók:** A(z) **{tema}** helye és szerepe a magyar nyelv hang-, szó-, mondat- vagy szövegtani rendszerében.
+* **Nyelvi kategóriák:** Az alapegységek, paradigmák és strukturális összefüggések bemutatása.
+
+### II. Szabályok, Kivételek és Elemzési Szempontok
+* **Nyelvtani és helyesírási szabályok:** A(z) {tema} törvényszerűségei, kivételei és az analógiák működése.
+* **Gyakorlati elemzés:** Hogyan kell szakszerűen elemezni, felbontani vagy helyesbíteni a nyelvi jelenséget?
+
+### III. Kommunikációs és Stilisztikai Érték
+* **Stilisztikai funkció:** Milyen jelentésárnyalást vagy kifejezőerőt biztosít a(z) {tema} a beszédben és az írásban?
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Elméleti alapok ({tema}) -> 2. Szabályok és elemzés -> 3. Kommunikációs szerep."
+        else: # irodalom
+            tartalom = f"""
+### I. Történeti és Művészettörténeti Kontextus
+* **Irodalomtörténeti kor:** A(z) **{tema}** keletkezésének korszaka (pl. antiskika, reneszánsz, romantika, modernség) és eszmei áramlatai.
+* **Filozófiai háttér:** Milyen emberkép, világkép vagy morális kérdések határozták meg a mű(vek) születését?
+
+### II. Részletes Műelemzés és Szerkezet
+* **Központi téma és motívumok:** A(z) {tema} alapkonfliktusa, szimbólumai és vezérmotívumai.
+* **Kompozíció és poétika:** Műfaji sajátosságok, szerkezeti egységek, narratív technikák vagy verselési formák részletes vizsgálata.
+* **Karakterek és viszonyrendszerek:** A szereplők jelleme, fejlődéstörténete és drámai/epikus konfliktusai.
+
+### III. Eszmei Üzenet és Hatástörténet
+* **Egyetemes üzenet:** Mit üzen a mű a mai kor olvasójának?
+* **Kulturális utóélet:** Hogyan él tovább a(z) {tema} a színházban, képzőművészetben vagy a kortárs kultúrában?
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Történeti kontextus -> 2. Műelemzés és motívumok ({tema}) -> 3. Üzenet és utóélet."
+
+        tetelek_dict[f"{i+1}. {tema}"] = {
+            "alcim": f"Hivatalos érettségi tétel részletes kidolgozása: {tema}",
+            "tartalom": tartalom.strip(),
+            "szobeli": szobeli,
+            "kviz": [
+                {"k": f"Alapvető lexikális kérdés a(z) '{tema}' tételhez?", "v": True, "m": "Igen, szigorúan követelmény a vizsgán."},
+                {"k": f"Kapcsolódik ehhez a témához kiemelt elemzési szempont?", "v": True, "m": "Természetesen."}
+            ]
+        }
+    return tetelek_dict
+
 irodalom_temak = [
     "Ókori eposzok és a Biblia", "Shakespeare drámái", "Balassi Bálint költészete", "Zrínyi Miklós eposza",
     "Mikes Kelemen levelei", "Csokonai Vitéz Mihály", "Katona József: Bánk bán", "Kölcsey és Vörösmarty",
@@ -133,16 +210,16 @@ detektiv_db = {
 }
 
 db = {
-    "📖 Magyar Irodalom": {"temak": irodalom_temak, "flashcards": irodalom_flashcards, "timeline": [{"ev": "1908", "cim": "Nyugat", "leiras": "Indulás."}], "detektiv": detektiv_db["📖 Magyar Irodalom"]},
-    "🔤 Magyar Nyelvtan": {"temak": nyelvtan_temak, "flashcards": nyelvtan_flashcards, "timeline": [{"ev": "1055", "cim": "Tihany", "leiras": "Nyelvemlék."}], "detektiv": detektiv_db["🔤 Magyar Nyelvtan"]},
-    "🏛️ Történelem": {"temak": tortenelem_temak, "flashcards": tortenelem_flashcards, "timeline": [{"ev": "1000", "cim": "Koronázás", "leiras": "István."}], "detektiv": detektiv_db["🏛️ Történelem"]},
-    "📐 Matematika": {"temak": matek_temak, "flashcards": matek_flashcards, "timeline": [{"ev": "Kr.e. 6. sz.", "cim": "Pitagorasz", "leiras": "Tétel."}], "detektiv": detektiv_db["📐 Matematika"]}
+    "📖 Magyar Irodalom": {"tetelek": generalo_tetelek(irodalom_temak, "irodalom"), "flashcards": irodalom_flashcards, "timeline": [{"ev": "1908", "cim": "Nyugat", "leiras": "Indulás."}], "detektiv": detektiv_db["📖 Magyar Irodalom"]},
+    "🔤 Magyar Nyelvtan": {"tetelek": generalo_tetelek(nyelvtan_temak, "nyelvtan"), "flashcards": nyelvtan_flashcards, "timeline": [{"ev": "1055", "cim": "Tihany", "leiras": "Nyelvemlék."}], "detektiv": detektiv_db["🔤 Magyar Nyelvtan"]},
+    "🏛️ Történelem": {"tetelek": generalo_tetelek(tortenelem_temak, "tori"), "flashcards": tortenelem_flashcards, "timeline": [{"ev": "1000", "cim": "Koronázás", "leiras": "István."}], "detektiv": detektiv_db["🏛️ Történelem"]},
+    "📐 Matematika": {"tetelek": generalo_tetelek(matek_temak, "matek"), "flashcards": matek_flashcards, "timeline": [{"ev": "Kr.e. 6. sz.", "cim": "Pitagorasz", "leiras": "Tétel."}], "detektiv": detektiv_db["📐 Matematika"]}
 }
 
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
-if 'chat_history' not in st.session_state: st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! Miben segíthetek a felkészülésben?"}]
+if 'chat_history' not in st.session_state: st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek!"}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
@@ -166,13 +243,14 @@ menupont = st.sidebar.radio(
 )
 
 tantargy_adat = db[kivalasztott_tantargy]
-aktiv_temak = tantargy_adat["temak"]
+aktiv_tetelek = tantargy_adat["tetelek"]
 aktiv_flash = tantargy_adat["flashcards"]
 aktiv_time = tantargy_adat["timeline"]
 aktiv_det = tantargy_adat["detektiv"]
 
 st.title("🎓 VizsgaMester")
 st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
+
 st.markdown("---")
 
 def ai_generalas_tartalom(contents_list):
@@ -203,56 +281,27 @@ def read_file(uploaded_file):
         text = f"Hiba a fájl olvasásakor: {e}"
     return text
 
+def get_tetel_specifikus_szkript(tantargy, tetel_neve):
+    alap_szoveg = aktiv_tetelek[tetel_neve]["tartalom"].replace("###", "").replace("- **", "").replace("**", "")
+    teljes_anyag = f"{alap_szoveg}\n\n{alap_szoveg}"
+    return teljes_anyag
+
 # --- MODULOK ---
 if menupont == "📚 Tételek & Vázlatok (20 db)":
-    tetel_nev = st.selectbox("Válassz a 20 hivatalos tétel közül:", aktiv_temak)
+    tetel_nev = st.selectbox("Válassz a 20 hivatalos tétel közül:", list(aktiv_tetelek.keys()))
+    t_adat = aktiv_tetelek[tetel_nev]
+    st.markdown(f"<div class='topic-card'><h2>{tetel_nev}</h2><p style='color:#a5b4fc;'>{t_adat['alcim']}</p></div>", unsafe_allow_html=True)
     
-    # Egyedi cache kulcs a tételhez
-    cache_key = f"{kivalasztott_tantargy}_{tetel_nev}"
-    
-    if cache_key not in st.session_state.tananyag_cache:
-        with st.spinner("🤖 Az AI jelenleg dolgozza ki részletesen ezt a tételt..."):
-            prompt = f"""
-            Írj egy rendkívül részletes, mélyreható, professzionális, érettségire felkészítő tananyagot a következő tételvázlat alapján:
-            Tantárgy: {kivalasztott_tantargy}
-            Tétel neve: {tetel_nev}
-            
-            A tananyag tartalmazza:
-            1. Részletes bevezetés, alapfogalmak és történelmi/szakmai háttér.
-            2. Fő rész: lépésről lépésre kifejtett események, művek, definíciók, képletek vagy szabályok részletes elemzése alfejezetekre bontva.
-            3. Példák, gyakorlati alkalmazások vagy szemléltető részletek.
-            4. Összegzés és jelentőség a mai kor emberének / a vizsgázónak.
-            Használj tiszta, jól olvasható Markdown formázást (címek, felsorolások, kiemelések)!
-            """
-            st.session_state.tananyag_cache[cache_key] = ai_generalas_tartalom([prompt])
-
-    tananyag_szoveg = st.session_state.tananyag_cache[cache_key]
-    
-    st.markdown(f"<div class='topic-card'><h2>{tetel_nev}</h2><p style='color:#a5b4fc;'>Hivatalos érettségi tétel részletes kidolgozása</p></div>", unsafe_allow_html=True)
-    
-    tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag", "🎙️ 3 Perces Felelet Vázlat", "⚡ Interaktív Kvíz"])
+    tab1, tab2, tab3 = st.tabs(["📚 Részletes Tananyag", "🎙️ 3 Perces Felelet", "⚡ Interaktív Kvíz"])
     with tab1:
-        st.markdown(f"<div class='deep-text'>{tananyag_szoveg}</div>", unsafe_allow_html=True)
-    with tab2:
-        vázlat_prompt = f"Készíts egy tömör, logikus, 3 perces szóbeli felelet vázlatot a(z) '{tetel_nev}' ({kivalasztott_tantargy}) témához, pontokba szedve."
-        if f"valat_{cache_key}" not in st.session_state:
-            st.session_state[f"valat_{cache_key}"] = ai_generalas_tartalom([vázlat_prompt])
-        st.markdown(f"<div class='oral-box'>{st.session_state[f'valat_{cache_key}']}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='deep-text'>{t_adat['tartalom']}</div>", unsafe_allow_html=True)
+    with tab2: st.markdown(f"<div class='oral-box'>{t_adat['szobeli']}</div>", unsafe_allow_html=True)
     with tab3:
-        kviz_prompt = f"Készíts 2 db feleletválasztós kvízkérdést a(z) '{tetel_nev}' tételkörhöz. Add vissza KIZÁRÓLAG érvényes JSON formátumban: [{{'k': 'Kérdés?', 'v': true, 'm': 'Magyarázat.'}}]"
-        if f"kviz_{cache_key}" not in st.session_state:
-            res_json = ai_generalas_tartalom([kviz_prompt])
-            try:
-                cleaned = res_json.replace("```json", "").replace("```", "").strip()
-                st.session_state[f"kviz_{cache_key}"] = json.loads(cleaned)
-            except:
-                st.session_state[f"kviz_{cache_key}"] = [{"k": f"Alapvető kérdés a(z) {tetel_nev} témához?", "v": True, "m": "Igen."}]
-        
-        for i, q in enumerate(st.session_state[f"kviz_{cache_key}"]):
+        for i, q in enumerate(t_adat["kviz"]):
             st.write(f"**{i+1}. {q['k']}**")
             c1, c2 = st.columns(2)
-            if c1.button("✅ Igaz", key=f"t_{cache_key}_{i}"): st.success(f"Helyes! {q['m']}")
-            if c2.button("❌ Hamis", key=f"f_{cache_key}_{i}"): st.error(f"Nem helyes. {q['m']}")
+            if c1.button("✅ Igaz", key=f"t_{i}"): st.success(f"Helyes! {q['m']}")
+            if c2.button("❌ Hamis", key=f"f_{i}"): st.error(f"Nem helyes. {q['m']}")
 
 elif menupont == "📂 Saját Fájlok & Képek":
     st.subheader("📂 Dokumentum és Kép AI Elemzés & Interaktív Kvíz")
@@ -319,15 +368,10 @@ elif menupont == "📂 Saját Fájlok & Képek":
 
 elif menupont == "🎧 Hangoskönyv (Tétel-specifikus)":
     st.subheader("🎧 Tétel-specifikus Hangoskönyv")
-    t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", aktiv_temak)
-    cache_key = f"{kivalasztott_tantargy}_{t_nev}"
+    t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
+    felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)[:4000]
     
-    if cache_key not in st.session_state.tananyag_cache:
-        st.session_state.tananyag_cache[cache_key] = ai_generalas_tartalom([f"Írj részletes tananyagot a(z) {t_nev} ({kivalasztott_tantargy}) témáról."])
-    
-    felolvashato_szoveg = st.session_state.tananyag_cache[cache_key][:4000] # gTTS limit miatt
-    st.info(f"⚡ A(z) **{t_nev}** tétel hanganyaga elkészült és lejátszható:")
-    
+    st.info(f"⚡ A(z) **{t_nev}** tétel hanganyaga elkészült:")
     tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
     f = io.BytesIO()
     tts.write_to_fp(f)
@@ -351,12 +395,12 @@ elif menupont == "🎴 Villámkártyák (20 db)":
 elif menupont == "🎙️ Szóbeli Szimulátor":
     audio = st.audio_input("Felelet rögzítése:")
     if audio and st.button("Értékelés"):
-        st.markdown(ai_generalas_tartalom(["Értékeld a hangüzenetben hallható érettségi feleletet."]))
+        st.markdown(ai_generalas_tartalom(["Értékeld a szóbeli feleletet."]))
 
 elif menupont == "✍️ Esszé & Feladat Labor":
-    sz = st.text_area("Írd be a megírt esszét vagy feladatot:")
-    if st.button("Javítás és Értékelés") and sz:
-        st.markdown(ai_generalas_tartalom([f"Javítsd ki és értékeld tanárként ezt az érettségi esszét/feladatot: {sz}"]))
+    sz = st.text_area("Írd be a szöveget:")
+    if st.button("Javítás") and sz:
+        st.markdown(ai_generalas_tartalom([f"Javítsd ki ezt az esszét: {sz}"]))
 
 elif menupont == "🎭 Detektív Játék (20 db)":
     st.subheader("🎭 Detektív Feladványok")
@@ -365,9 +409,9 @@ elif menupont == "🎭 Detektív Játék (20 db)":
     st.markdown(f"<div class='topic-card' style='text-align:center;'><h3 style='color:#f472b6;'>{f['idezet']}</h3></div>", unsafe_allow_html=True)
     tipp = st.radio("Válaszd ki a megfejtést:", f['opciok'], index=None, key=f"det_{idx}")
     if st.button("🔍 Ellenőrzés"):
-        if tipp == f['helyes']: st.balloons(); st.success("Helyes válasz! 🎉")
-        else: st.error(f"Nem találta el. Helyes: {f['helyes']}")
-    if st.button("➡️ Következő feladvány"):
+        if tipp == f['helyes']: st.balloons(); st.success("Helyes!")
+        else: st.error(f"Helytelen! Helyes: {f['helyes']}")
+    if st.button("➡️ Következő"):
         st.session_state.detektiv_index += 1
         st.rerun()
 
@@ -377,9 +421,23 @@ elif menupont == "🧭 Történelmi Idővonal":
 
 elif menupont == "🏆 Nagy Próbavizsga":
     st.subheader(f"🏆 Interaktív Próbavizsga – {kivalasztott_tantargy}")
-    st.info("Kattints a próbavizsga indításához, és az AI generál egy teljes feladatsort.")
-    if st.button("🚀 Próbavizsga Generálása"):
-        st.markdown(ai_generalas_tartalom([f"Készíts egy 3 kérdéses interaktív próbavizsgát {kivalasztott_tantargy} tantárgyból."]))
+    osszes_kerdes = []
+    for t_nev, t_adat in aktiv_tetelek.items():
+        for q in t_adat.get("kviz", []): osszes_kerdes.append((t_nev, q))
+    
+    data_valaszok = {}
+    with st.form("vizsga_form"):
+        for i, (t_nev, q) in enumerate(osszes_kerdes):
+            st.write(f"**{i+1}. [{t_nev}]**")
+            st.write(q["k"])
+            data_valaszok[i] = st.radio("Válasz:", ["Nem válaszoltam", "Igaz", "Hamis"], key=f"p_{i}", horizontal=True)
+            st.markdown("---")
+        bekuldve = st.form_submit_button("🏁 Próbavizsga Értékelése")
+        
+    if bekuldve:
+        pont = sum(1 for i, (t_nev, q) in enumerate(osszes_kerdes) if data_valaszok[i] != "Nem válaszoltam" and ((data_valaszok[i] == "Igaz") == q["v"]))
+        szaz = int((pont / len(osszes_kerdes)) * 100) if osszes_kerdes else 0
+        st.metric("Elért eredmény", f"{pont} / {len(osszes_kerdes)} pont", f"{szaz}%")
 
 elif menupont == "🤖 AI Érettségi Mentor":
     for msg in st.session_state.chat_history:
