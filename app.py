@@ -226,7 +226,7 @@ elif menupont == "📂 Saját Fájlok & Képek":
     if fajl:
         if fajl.type.startswith("image/"):
             img_obj = Image.open(fajl)
-            st.image(img_obj, caption="Feltöltött kép előnézete", use_column_width=True)
+            st.image(img_obj, caption="Feltöltött kép előnézete")
             fajl.seek(0)
 
         if st.button("🚀 Elemzés és Összefoglalás"):
