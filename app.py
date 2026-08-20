@@ -195,7 +195,7 @@ def ai_generalas(prompt, file_bytes=None, mime_type=None):
         client = genai.Client(api_key=api_k)
         c = [prompt]
         if file_bytes and mime_type: c.append({"inline_data": {"mime_type": mime_type, "data": file_bytes}})
-        res = client.models.generate_content(model='gemini-2.0-flash', contents=c)
+        res = client.models.generate_content(model='gemini-3.6-flash', contents=c)
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
