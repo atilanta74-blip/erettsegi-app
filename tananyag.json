@@ -3,52 +3,139 @@
     "tetelek": {
       "1. Ókori eposzok és a Biblia": {
         "alcim": "Homérosz és az európai kultúra alapkövei",
-        "vazlat": "### I. Eposzi kellékek\n- Invokáció, propozíció, in medias res, csodás elemek.\n### II. Iliász és Odüsszeia\n- Trójai háború, emberi sorsok és istenek.",
+        "vazlat": "### I. Eposzi kellékek\n- Invokáció, propozíció, in medias res, csodás elemek.\n### II. Iliász és Odüsszeia\n- Trójai háború, emberi sorsok és istenek világa.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Műfaj jellemzői -> 2. Hősök ábrázolása.",
         "kviz": [
           {"k": "Az eposz nagy terjedelmű verses epikai mű.", "v": true, "m": "Igen, a klasszikus ókori műfajok egyike."},
-          {"k": "Az in medias res azt jelenti, hogy a dolgok végén kezdődik a mű.", "v": false, "m": "Nem, a történet sűrűjébe vágó kezdést jelent."}
+          {"k": "Az in medias res a mű végén történő lezárást jelent.", "v": false, "m": "Nem, a dolgok sűrűjébe vágó kezdést jelenti."}
         ]
       },
-      "2. Shakespeare drámái": {
+      "2. William Shakespeare drámái": {
         "alcim": "A reneszánsz színház és a Hamlet",
-        "vazlat": "### I. Globe Színház\n- Erzsébet-kori dráma, jellemfejlődés.\n### II. Hamlet\n- A tettek halasztása, morális válság.",
+        "vazlat": "### I. Globe Színház\n- Erzsébet-kori dráma, jellemfejlődés.\n### II. Hamlet\n- A tettek halasztása, morális válság és belső vívódások.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Drámatörténeti kontextus -> 2. A Hamlet dilemmája.",
         "kviz": [
-          {"k": "A Hamlet dráma főhőse dán királyfi.", "v": true, "m": "Igen."}
+          {"k": "A Hamlet dráma főhőse dán királyfi.", "v": true, "m": "Igen, Claudius ellen fordul."}
+        ]
+      },
+      "3. Petőfi Sándor költészete": {
+        "alcim": "Népies helyzetdalok, tájleíró versek és a látomásköltészet",
+        "vazlat": "### I. Népies költészet\n- Helyzetdalok, tájköltészet.\n### II. Látomásversek\n- Az Apostol, XIX. századi költők.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Petőfi szerepe a magyar lírában -> 2. Prófétaság.",
+        "kviz": [
+          {"k": "A Tisza egyszerre tájleírás és életkép.", "v": true, "m": "Igen."}
+        ]
+      },
+      "4. Arany János balladái": {
+        "alcim": "A ballada műfajelmélete, nagykőrösi korszak",
+        "vazlat": "### I. Műfajelmélet\n- Líra, epika és dráma szintézise (Greguss Ágost).\n### II. Nagykőrösi balladák\n- Ágnes asszony, A walesi bárdok.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Arany balladapoétikája -> 2. Bűn és bűnhődés.",
+        "kviz": [
+          {"k": "A walesi bárdok a hatalom kritikája.", "v": true, "m": "Igen, a cenzúra elleni mű."}
         ]
       }
     },
     "flashcards": [
       {"q": "Mit jelent az in medias res?", "a": "A dolgok sűrűjébe vágó eposzi kezdés."},
-      {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."}
+      {"q": "Ki írta Az ember tragédiáját?", "a": "Madách Imre."},
+      {"q": "Mikor indult a Nyugat folyóirat?", "a": "1908-ban."}
     ],
     "timeline": [
-      {"ev": "Kr. e. VIII. sz.", "cim": "Homéroszi eposzok", "leiras": "Az Iliász és az Odüsszeia keletkezése."}
+      {"ev": "Kr. e. VIII. sz.", "cim": "Homéroszi eposzok", "leiras": "Az Iliász és az Odüsszeia keletkezése."},
+      {"ev": "1908", "cim": "A Nyugat indulása", "leiras": "Osvát Ernő szerkesztésében elindul a modern magyar irodalom."}
     ],
     "detektiv": [
-      {"idezet": "„Férfiat zengj nekem, múzsa...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius", "Dante"], "info": "Az Odüsszeia nyitánya."}
+      {"idezet": "„Férfiat zengj nekem, múzsa...”", "helyes": "Homérosz: Odüsszeia", "opciok": ["Homérosz: Odüsszeia", "Virgilius", "Dante"], "info": "Az Odüsszeia nyitánya."},
+      {"idezet": "„Mert vétkesek közt cinkos, aki néma...”", "helyes": "Babits Mihály: Jónás könyve", "opciok": ["Babits Mihály: Jónás könyve", "Ady Endre", "Arany János"], "info": "A felelősségvállalás parancsa."}
     ]
   },
   "Történelem": {
     "tetelek": {
-      "1. Az athéni demokrácia": {
+      "1. Az athéni demokrácia működése": {
         "alcim": "Szolón, Kleiszthenész és Periklész reformjai",
-        "vazlat": "### I. Intézmények\n- Népgyűlés, Boule, Héliaia.\n### II. Démosz jogai\n- Cserépszavazás, napidíj.",
+        "vazlat": "### I. Intézmények\n- Népgyűlés, Boule, Héliaia, sztratégoszok.\n### II. Démosz jogai\n- Cserépszavazás, napidíj.",
         "szobeli": "**🎙️ 3 perces felelet:** 1. Kialakulás -> 2. Működés.",
         "kviz": [
           {"k": "Az athéni demokrácia közvetlen demokrácia volt.", "v": true, "m": "Igen."}
         ]
+      },
+      "2. Szent István államalapítása": {
+        "alcim": "Géza politikája, koronázás, egyházszervezés",
+        "vazlat": "### I. Koronázás\n- 1000/1001, nyugati kereszténység felvétele.\n### II. Vármegyerendszer\n- Tized, egyházmegyék.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Államalapítás okai -> 2. Törvények.",
+        "kviz": [
+          {"k": "Szent István pápai koronát kapott.", "v": true, "m": "II. Szilveszter pápától."}
+        ]
+      },
+      "3. Az 1848–49-es forradalom": {
+        "alcim": "Március 15., Áprilisi törvények, szabadságharc",
+        "vazlat": "### I. Pesti események\n- 12 pont, Nemzeti Dal.\n### II. Katonai fordulatok\n- Tavaszi hadjárat.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Forradalom menete -> 2. Honvédsereg győzelmei.",
+        "kviz": [
+          {"k": "Az Áprilisi törvényeket V. Ferdinánd szentesítette.", "v": true, "m": "Igen."}
+        ]
       }
     },
     "flashcards": [
-      {"q": "Mikor volt a honfoglalás?", "a": "895-ben."}
+      {"q": "Mikor kezdődött a honfoglalás?", "a": "895-ben."},
+      {"q": "Mikor adta ki II. András az Aranybullát?", "a": "1222-ben."}
     ],
     "timeline": [
-      {"ev": "1000", "cim": "Államalapítás", "leiras": "Szent István koronázása."}
+      {"ev": "1000", "cim": "Államalapítás", "leiras": "Szent István koronázása."},
+      {"ev": "1222", "cim": "Aranybulla", "leiras": "II. András oklevele Székesfehérváron."}
     ],
     "detektiv": [
       {"idezet": "„Ius resistendi”", "helyes": "Az 1222-es Aranybulla 31. cikkelye", "opciok": ["Az 1222-es Aranybulla 31. cikkelye", "Szent István"], "info": "A nemesek ellenállási joga."}
+    ]
+  },
+  "Magyar Nyelvtan": {
+    "tetelek": {
+      "1. A kommunikáció folyamata": {
+        "alcim": "A Jakobson-féle modell és nyelvi funkciók",
+        "vazlat": "### I. Modell elemei\n- Adó, Vevő, Üzenet, Kód, Csatorna, Referens.\n### II. Funkciók\n- Emotív, konatív, fatikus, poétikai.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Kommunikációs tényezők -> 2. Példák.",
+        "kviz": [{"k": "A fatikus funkció a kapcsolat fenntartását szolgálja.", "v": true, "m": "Igen."}]
+      },
+      "2. A magyar helyesírás alapelvei": {
+        "alcim": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés",
+        "vazlat": "### I. Négy fő alapelv\n- Részletes szabályok és kivételek.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Alapelvek ismertetése.",
+        "kviz": [{"k": "A szóelemzés elve szerint látszik a toldalék.", "v": true, "m": "Igen."}]
+      }
+    },
+    "flashcards": [
+      {"q": "Mik a helyesírás alapelvei?", "a": "Kiejtés, szóelemzés, hagyomány, egyszerűsítés."}
+    ],
+    "timeline": [
+      {"ev": "1055", "cim": "Tihanyi alapítólevél", "leiras": "Az első magyar nyelvemlékünk."}
+    ],
+    "detektiv": [
+      {"idezet": "„barátság [kiejtve: baraccság]”", "helyes": "Összeolvadás mássalhangzótörvény", "opciok": ["Összeolvadás mássalhangzótörvény", "Hasonulás"], "info": "t + s -> [ccs]."}
+    ]
+  },
+  "Matematika": {
+    "tetelek": {
+      "1. Másodfokú egyenletek": {
+        "alcim": "Megoldóképlet, diszkrimináns, Viète-formulák",
+        "vazlat": "### I. Képlet\n- x1,2 = (-b ± √(b² - 4ac)) / 2a.\n### II. Diszkrimináns\n- D > 0, D = 0, D < 0 esetek.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Gyökök meghatározása.",
+        "kviz": [{"k": "Ha a diszkrimináns negatív, nincs valós gyök.", "v": true, "m": "Igen."}]
+      },
+      "2. Trigonometria alapjai": {
+        "alcim": "Szögfüggvények, szinusztétel, koszinusztétel",
+        "vazlat": "### I. Derékszögű háromszög\n- Sin, cos, tg, ctg.\n### II. Általános háromszög\n- Koszinusztétel.",
+        "szobeli": "**🎙️ 3 perces felelet:** 1. Tételek alkalmazása.",
+        "kviz": [{"k": "A szinusztétel minden háromszögre érvényes.", "v": true, "m": "Igen."}]
+      }
+    },
+    "flashcards": [
+      {"q": "Másodfokú egyenlet megoldóképlete?", "a": "x = (-b ± √(b² - 4ac)) / (2a)"}
+    ],
+    "timeline": [
+      {"ev": "Kr. e. VI. sz.", "cim": "Pitagorasz", "leiras": "A derékszögű háromszög összefüggései."}
+    ],
+    "detektiv": [
+      {"idezet": "a² = b² + c² - 2bc · cos(α)", "helyes": "Koszinusztétel", "opciok": ["Koszinusztétel", "Pitagorasz"], "info": "Általános háromszögekre."}
     ]
   }
 }
