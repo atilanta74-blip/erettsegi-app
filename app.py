@@ -9,7 +9,7 @@ import PyPDF2
 import docx
 
 st.set_page_config(
-    page_title="Astra Pro Érettségi Központ",
+    page_title="VizsgaMester - Érettségi Központ",
     page_icon="🎓",
     layout="wide"
 )
@@ -183,7 +183,7 @@ aktiv_det = tantargy_adat["detektiv"]
 
 col_h1, col_h2 = st.columns([3, 2])
 with col_h1:
-    st.title("🎓 Astra Pro Érettségi Központ")
+    st.title("🎓 VizsgaMester")
     st.caption(f"Aktív tantárgy: **{kivalasztott_tantargy}**")
 with col_h2:
     st.markdown(f"<div style='text-align: right;'><span class='stat-badge'>🔥 {st.session_state.streak} nap széria</span><span class='stat-badge'>⚡ {st.session_state.xp} XP</span></div>", unsafe_allow_html=True)
@@ -199,10 +199,10 @@ def ai_generalas(prompt):
         return res.text if res else "Nincs válasz."
     except Exception as e: return f"Hiba: {e}"
 
-# --- TÉTEL-SPECIFIKUS SZKRIPT FEJLÉC NÉLKÜL ---
+# --- EGYEDI TÉTEL-SPECIFIKUS SZKRIPT FEJLÉC NÉLKÜL ---
 def get_tetel_specifikus_szkript(tantargy, tetel_neve):
-    # Kivesszük a jelöléseket, és kétszer összefűzzük, hogy hosszan, fejlécek nélkül szóljon a tétel saját tartalma
     alap_szoveg = aktiv_tetelek[tetel_neve]["tartalom"].replace("###", "").replace("- **", "").replace("**", "")
+    # Megduplázzuk a saját tartalmát, hogy hosszan szóljon
     teljes_anyag = f"{alap_szoveg}\n\n{alap_szoveg}"
     return teljes_anyag
 
@@ -235,7 +235,7 @@ elif menupont == "🎧 Hangoskönyv (Tétel-specifikus)":
     
     felolvashato_szoveg = get_tetel_specifikus_szkript(kivalasztott_tantargy, t_nev)
     
-    st.info(f"⚡ A(z) **{t_nev}** tétel saját, részletes szakmaianyaga azonnal lejátszható:")
+    st.info(f"⚡ A(z) **{t_nev}** tétel saját szakmaianyaga azonnal lejátszható:")
     
     tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
     f = io.BytesIO()
