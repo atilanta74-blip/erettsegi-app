@@ -1,1 +1,10 @@
 
+{
+  "Irodalom": [
+    {"cim": "1. Ókori eposzok", "alcim": "Homérosz", "vazlat": "Eposzi kellékek...", "kviz": "Az Iliász trójai?"},
+    {"cim": "2. Shakespeare", "alcim": "Hamlet", "vazlat": "Lenni vagy nem lenni...", "kviz": "Hamlet dán?"}
+  ],
+  "Tortenelem": [
+    {"cim": "1. Athéni demokrácia", "alcim": "Periklész", "vazlat": "Népgyűlés...", "kviz": "Démosz?"}
+  ]
+}
