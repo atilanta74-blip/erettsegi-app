@@ -87,28 +87,74 @@ st.markdown("""
 <div class="menu-label">Menü</div>
 """, unsafe_allow_html=True)
 
-# --- 20 TÉTEL GENERÁTOR ---
-def generalo_tetelek(temak_lista):
-    return {f"{i+1}. {tema}": {
-        "alcim": f"Hivatalos érettségi tétel: {tema}",
-        "tartalom": f"""
-### I. Bevezetés és Alapfogalmak
-A(z) **{tema}** témakör alapos és részletes kifejtése során ki kell térnünk a legfontosabb alapfogalmakra. Ezen terület megértése kulcsfontosságú a {tema} jellegzetességeinek átlátásához, hiszen a vizsgán szigorúan követelik a precíz lexikális hátteret.
+# --- TANTÁRGY-SPECIFIKUS TÉTEL GENERÁTOR ---
+def generalo_tetelek(temak_lista, tantargy_tipus):
+    tetelek_dict = {}
+    for i, tema in enumerate(temak_lista):
+        if tantargy_tipus == "matek":
+            tartalom = f"""
+### I. Alapfogalmak és Definíciók
+A(z) **{tema}** témakör matematikai alapjai, jelölései és legfontosabb elméleti háttere. A feladatok sikeres megoldásához elengedhetetlen ezen definíciók pontos ismerete.
 
-### II. Fő Események, Művek és Részletes Elemzés
-- **Történeti és szakmai kontextus:** A(z) {tema} hátterében álló korabeli viszonyok, előzmények és kiváltó okok részletes elemzése.
-- **Szerkezeti felépítés:** A tétel belső összefüggései, a főbb egységek, alaptézisek és a kapcsolódó kulcsfogalmak rendszere.
-- **Szakmai példák:** Konkrét példák és szempontok bemutatása, amelyekkel a felelet teljesen összeáll és logikusan felépíthető.
+### II. Főbb Tételek, Képletek és Szabályok
+- **Alapösszefüggések:** A(z) {tema} területéhez kapcsolódó legfontosabb képletek levezetése és alkalmazási feltételei.
+- **Számítási eljárások:** Lépésről lépésre követhető módszerek egyenletek, kifejezések vagy geometriai elemek kiszámítására.
+- **Tipikus feladattípusok:** Gyakran előforduló érettségi feladatok és azok hatékony megoldási stratégiái.
 
-### III. Összegzés és Hatástörténet
-A vizsgán elengedhetetlen annak bizonyítása, hogy a(z) {tema} milyen tartós hatást gyakorolt a fejlődésre, és milyen tanulságokat hordoz a modern kor embere számára.
-        """,
-        "szobeli": f"**🎙️ 3 perces felelet vázlata:** 1. Bevezetés ({tema}) -> 2. Fő tézisek kifejtése -> 3. Összegzés.",
-        "kviz": [
-            {"k": f"Alapvető tételbeli kérdés a(z) '{tema}' témakörhöz?", "v": True, "m": "Igen, ez a hivatalos vizsgaanyag része."},
-            {"k": f"Kapcsolódik lexikális háttér ehhez a tételhez?", "v": True, "m": "Természetesen."}
-        ]
-    } for i, tema in enumerate(temak_lista)}
+### III. Gyakorlati Alkalmazás
+Példák arra, hogyan alkalmazható a(z) {tema} a mindennapi életben vagy más tudományterületeken (pl. fizika, gazdaságtan).
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Definíció ({tema}) -> 2. Főbb képletek és szabályok -> 3. Alkalmazási példa."
+        elif tantargy_tipus == "tori":
+            tartalom = f"""
+### I. Előzmények és Okok
+A(z) **{tema}** témakör kialakulásának társadalmi, gazdasági és politikai háttere, a folyamatot elindító főbb tényezők.
+
+### II. Fő Események és Hátterük
+- **Kronológia és fordulópontok:** A(z) {tema} legfontosabb eseményei, dátumai és főbb történelmi szereplői.
+- **Következmények:** Milyen hatással volt ez a korabeli társadalomra és a nemzetközi folyamatokra?
+
+### III. Történelmi Jelentőség
+A(z) **{tema}** helye és utóhatása a magyar és az egyetemes történelemben.
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Előzmények -> 2. Fő események ({tema}) -> 3. Következmények."
+        elif tantargy_tipus == "nyelvtan":
+            tartalom = f"""
+### I. Elméleti Alapok
+A(z) **{tema}** nyelvészeti háttere, fogalomrendszere és szabályszerűségei a magyar nyelv rendszerében.
+
+### II. Rendszerezés és Szabályok
+- **Rendszerszintű összefüggések:** A(z) {tema} alapszabályai, kivételei és elemzési szempontjai.
+- **Gyakorlati nyelvhelyesség:** Helyesírási és stilisztikai tudnivalók.
+
+### III. Összegzés
+A(z) **{tema}** jelentősége a hatékony kommunikációban és a mindennapi nyelvhasználatban.
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Alapfogalmak ({tema}) -> 2. Szabályok -> 3. Gyakorlati példa."
+        else: # irodalom
+            tartalom = f"""
+### I. Bevezetés és Hátterek
+A(z) **{tema}** keletkezési körülményei, művészettörténeti és irodalmi kontextusa.
+
+### II. Műelemzés és Szerkezet
+- **Tematikus és szerkezeti felépítés:** A műfaji sajátosságok, motívumok és stílusjegyek részletes vizsgálata.
+- **Értelmezési keretek:** Milyen kulcsfontosságú üzenetet hordoz a(z) {tema}?
+
+### III. Hatástörténet
+A(z) **{tema}** utóélete, kulturális beágyazottsága és jelentősége a mai kor olvasója számára.
+            """
+            szobeli = f"**🎙️ 3 perces felelet vázlata:** 1. Bevezetés ({tema}) -> 2. Elemzés -> 3. Üzenet."
+
+        tetelek_dict[f"{i+1}. {tema}"] = {
+            "alcim": f"Hivatalos érettségi tétel: {tema}",
+            "tartalom": tartalom.strip(),
+            "szobeli": szobeli,
+            "kviz": [
+                {"k": f"Alapvető tételbeli kérdés a(z) '{tema}' témakörhöz?", "v": True, "m": "Igen, a vizsgaanyag része."},
+                {"k": f"Kapcsolódik ehhez a témához specifikus lexikális háttér?", "v": True, "m": "Természetesen."}
+            ]
+        }
+    return tetelek_dict
 
 irodalom_temak = [
     "Ókori eposzok és a Biblia", "Shakespeare drámái", "Balassi Bálint költészete", "Zrínyi Miklós eposza",
@@ -155,10 +201,10 @@ detektiv_db = {
 }
 
 db = {
-    "📖 Magyar Irodalom": {"tetelek": generalo_tetelek(irodalom_temak), "flashcards": irodalom_flashcards, "timeline": [{"ev": "1908", "cim": "Nyugat", "leiras": "Indulás."}], "detektiv": detektiv_db["📖 Magyar Irodalom"]},
-    "🔤 Magyar Nyelvtan": {"tetelek": generalo_tetelek(nyelvtan_temak), "flashcards": nyelvtan_flashcards, "timeline": [{"ev": "1055", "cim": "Tihany", "leiras": "Nyelvemlék."}], "detektiv": detektiv_db["🔤 Magyar Nyelvtan"]},
-    "🏛️ Történelem": {"tetelek": generalo_tetelek(tortenelem_temak), "flashcards": tortenelem_flashcards, "timeline": [{"ev": "1000", "cim": "Koronázás", "leiras": "István."}], "detektiv": detektiv_db["🏛️ Történelem"]},
-    "📐 Matematika": {"tetelek": generalo_tetelek(matek_temak), "flashcards": matek_flashcards, "timeline": [{"ev": "Kr.e. 6. sz.", "cim": "Pitagorasz", "leiras": "Tétel."}], "detektiv": detektiv_db["📐 Matematika"]}
+    "📖 Magyar Irodalom": {"tetelek": generalo_tetelek(irodalom_temak, "irodalom"), "flashcards": irodalom_flashcards, "timeline": [{"ev": "1908", "cim": "Nyugat", "leiras": "Indulás."}], "detektiv": detektiv_db["📖 Magyar Irodalom"]},
+    "🔤 Magyar Nyelvtan": {"tetelek": generalo_tetelek(nyelvtan_temak, "nyelvtan"), "flashcards": nyelvtan_flashcards, "timeline": [{"ev": "1055", "cim": "Tihany", "leiras": "Nyelvemlék."}], "detektiv": detektiv_db["🔤 Magyar Nyelvtan"]},
+    "🏛️ Történelem": {"tetelek": generalo_tetelek(tortenelem_temak, "tori"), "flashcards": tortenelem_flashcards, "timeline": [{"ev": "1000", "cim": "Koronázás", "leiras": "István."}], "detektiv": detektiv_db["🏛️ Történelem"]},
+    "📐 Matematika": {"tetelek": generalo_tetelek(matek_temak, "matek"), "flashcards": matek_flashcards, "timeline": [{"ev": "Kr.e. 6. sz.", "cim": "Pitagorasz", "leiras": "Tétel."}], "detektiv": detektiv_db["📐 Matematika"]}
 }
 
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
