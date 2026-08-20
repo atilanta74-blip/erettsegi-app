@@ -238,18 +238,28 @@ if menupont == "📚 Tételek & Vázlatok (20 db)":
             if c2.button("❌ Hamis", key=f"f_{i}"): st.error(f"Nem helyes. {q['m']}")
 
 elif menupont == "📂 Saját Fájlok & Képek":
-    st.subheader("📂 Dokumentum és Kép AI Elemzés")
-    fajl = st.file_uploader("Fájl feltöltése", type=["txt", "pdf", "docx", "jpg", "jpeg", "png"])
+    st.subheader("📂 Dokumentum AI Elemzés & Kérdéssorozat")
+    fajl = st.file_uploader("Fájl feltöltése (.docx, .pdf, .txt)", type=["txt", "pdf", "docx"])
     
-    if fajl and st.button("🚀 Elemzés"):
-        with st.spinner("Fájl olvasása és elemzése folyamatban..."):
-            szoveg = read_file(fajl)
-            if szoveg:
-                st.write("### Elemzés eredménye:")
-                eredmeny = ai_generalas(f"Elemezd az alábbi feltöltött tananyagot és készíts belőle részletes, érettségire felkészítő összefoglalót: {szoveg[:10000]}")
-                st.markdown(f"<div class='deep-text'>{eredmeny}</div>", unsafe_allow_html=True)
-            else:
-                st.error("Nem sikerült szöveget kivonatolni a fájlból.")
+    if fajl:
+        if st.button("🚀 Elemzés és Összefoglalás"):
+            with st.spinner("Fájl olvasása és elemzése folyamatban..."):
+                szoveg = read_file(fajl)
+                if szoveg and not szoveg.startswith("Hiba"):
+                    st.session_state.aktiv_fajl_szoveg = szoveg
+                    st.write("### 📌 Elemzés eredménye:")
+                    eredmeny = ai_generalas(f"Elemezd az alábbi feltöltött tananyagot és készíts belőle részletes, érettségire felkészítő összefoglalót: {szoveg[:10000]}")
+                    st.markdown(f"<div class='deep-text'>{eredmeny}</div>", unsafe_allow_html=True)
+                else:
+                    st.error("Nem sikerült szöveget kivonatolni a fájlból.")
+        
+        if "aktiv_fajl_szoveg" in st.session_state and st.session_state.aktiv_fajl_szoveg:
+            st.markdown("---")
+            if st.button("🎯 Kérdéssorozat (Kvíz) generálása a dokumentumból"):
+                with st.spinner("Kérdéssorozat generálása az AI segítségével..."):
+                    kviz_szoveg = ai_generalas(f"Készíts 5 db interaktív vizsgakérdést (válaszokkal és magyarázatokkal) a következő dokumentum alapján: {st.session_state.aktiv_fajl_szoveg[:10000]}")
+                    st.write("### 🎯 Generált Kérdéssorozat:")
+                    st.markdown(f"<div class='deep-text'>{kviz_szoveg}</div>", unsafe_allow_html=True)
 
 elif menupont == "🎧 Hangoskönyv (Tétel-specifikus)":
     st.subheader("🎧 Tétel-specifikus Hangoskönyv")
@@ -294,7 +304,7 @@ elif menupont == "✍️ Esszé & Feladat Labor":
     if st.button("Javítás") and sz: st.markdown(ai_generalas(f"Javítsd ki: {sz}"))
 
 elif menupont == "🎭 Detektív Játék (20 db)":
-    st.subheader(f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
+    st.subheader(f> f"🎭 Detektív Feladványok ({len(aktiv_det)} db)")
     st.session_state.detektiv_index = st.session_state.detektiv_index % len(aktiv_det)
     idx = st.session_state.detektiv_index
     f = aktiv_det[idx]
