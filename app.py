@@ -19,7 +19,7 @@ def get_api_key():
         return st.secrets["GEMINI_API_KEY"].strip()
     return os.environ.get("GEMINI_API_KEY", "")
 
-# --- VÉGLEGES STÍLUS (FÁJLFELTÖLTŐ GOMB TÖKÉLETESÍTVE) ---
+# --- STÍLUSOK ---
 st.markdown("""
 <style>
     .stApp { background-color: #050505; color: #f3f4f6; }
@@ -35,7 +35,7 @@ st.markdown("""
     div[data-testid="stExpander"] { background-color: #111827 !important; border: 1px solid #374151 !important; border-radius: 12px !important; }
     .stTextInput>div>div>input, .stTextArea>div>div>textarea { background-color: #111827 !important; color: #ffffff !important; border: 1px solid #374151 !important; border-radius: 10px !important; }
     
-    /* Fájlfeltöltő doboz és a gomb teljes stílusjavítása */
+    /* Fájlfeltöltő gomb és doboz fixálás */
     [data-testid="stFileUploader"] { background-color: #111827 !important; padding: 20px; border-radius: 16px; border: 1px solid #374151; }
     [data-testid="stFileUploader"] section { background-color: #1f2937 !important; border: 2px dashed #6366f1 !important; }
     [data-testid="stFileUploader"] section div, 
@@ -43,8 +43,6 @@ st.markdown("""
     [data-testid="stFileUploader"] section small, 
     [data-testid="stFileUploader"] section p { color: #ffffff !important; }
     [data-testid="stFileUploader"] label { color: #ffffff !important; font-size: 1.1rem !important; font-weight: 600 !important; }
-    
-    /* A feltöltő gomb fixálása, hogy látszódjon a felirat */
     [data-testid="stFileUploader"] button {
         background-color: #4f46e5 !important;
         color: #ffffff !important;
@@ -196,13 +194,13 @@ db = {
     }
 }
 
-if 'xp' not in st.session_state: st.session_state.xp = 850
-if 'streak' not in st.session_state: st.session_state.streak = 19
+if 'xp' not in st.session_state: st.session_state.xp = 900
+if 'streak' not in st.session_state: st.session_state.streak = 20
 if 'card_flipped' not in st.session_state: st.session_state.card_flipped = False
 if 'detektiv_index' not in st.session_state: st.session_state.detektiv_index = 0
 if 'tananyag_cache' not in st.session_state: st.session_state.tananyag_cache = {}
 if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A fájlfeltöltő gomb és a feliratok most már tökéletesen látszódnak."}]
+    st.session_state.chat_history = [{"role": "ai", "text": "Üdvözöllek! A hangoskönyv mostantól a tétel teljes tartalmát felolvassa!"}]
 
 st.sidebar.markdown("<h2 style='color:#818cf8;'>📚 Tantárgy Választó</h2>", unsafe_allow_html=True)
 kivalasztott_tantargy = st.sidebar.selectbox("Válassz tantárgyat:", list(db.keys()))
@@ -280,10 +278,24 @@ elif menupont == "📂 Saját Fájlok & Képek":
         st.markdown(ai_generalas("Elemezd a feltöltött fájlt és készíts belőle összefoglalót:"))
 
 elif menupont == "🎧 Hangoskönyv":
-    t_nev = st.selectbox("Válassz tételt:", list(aktiv_tetelek.keys()))
-    if st.button("▶️ Hangoskönyv Indítása"):
-        tts = gTTS(text=f"{t_nev}. {aktiv_tetelek[t_nev]['alcim']}", lang='hu', slow=False)
-        f = io.BytesIO(); tts.write_to_fp(f); f.seek(0); st.audio(f, format="audio/mp3")
+    st.subheader("🎧 Tétel Hangoskönyv")
+    t_nev = st.selectbox("Válassz tételt a hallgatáshoz:", list(aktiv_tetelek.keys()))
+    t_adat = aktiv_tetelek[t_nev]
+    
+    # Kivesszük a jelöléseket (### stb.), hogy sima, természetesen olvasható szöveg legyen
+    tisztitott_szoveg = t_adat['tartalom'].replace("###", "").replace("- **", "").replace("**", "")
+    felolvashato_szoveg = f"Figyelem. {t_nev}. {t_adat['alcim']}. {t_szoveg := tisztitott_szoveg}"
+    
+    st.info("Kattints a gombra a hangfájl generálásához. Ez eltarthat néhány másodpercig, amíg a tétel teljes szövegét átalakítja a rendszer hanggá.")
+    
+    if st.button("▶️ Teljes Tétel Hangoskönyv Generálása"):
+        with st.spinner("Hangoskönyv generálása folyamatban..."):
+            tts = gTTS(text=felolvashato_szoveg, lang='hu', slow=False)
+            f = io.BytesIO()
+            tts.write_to_fp(f)
+            f.seek(0)
+            st.audio(f, format="audio/mp3")
+            st.success("A hangoskönyv elkészült! Most már lejátszhatod vagy letöltheted.")
 
 elif menupont == "🎴 Villámkártyák (20 db)":
     idx = st.session_state.get('f_idx', 0) % len(aktiv_flash)
